@@ -332,7 +332,12 @@ def main():
     parser.add_argument("--trust-min-ablated-prob", type=float, default=1e-5)
     parser.add_argument("--trust-max-relative-prob", type=float, default=2.0)
     parser.add_argument("--min-dominance", type=float, default=2.0)
-    parser.add_argument("--injection-scale", type=float, default=1.0)
+    parser.add_argument(
+        "--injection-scale",
+        type=float,
+        default=1.0,
+        help="Scale for injection. Without --mean-entity-init, multiplies the injected value. With --mean-entity-init, acts as an interpolation/extrapolation factor alpha around the mean entity activation (alpha=1 recovers the entity-specific value).",
+    )
     parser.add_argument("--fixed-injection-value", type=float, default=None)
     parser.add_argument("--injection-mode", choices=["add", "set"], default="add")
     parser.add_argument(
@@ -437,7 +442,7 @@ def main():
             if args.fixed_injection_value is not None:
                 info["inject_value"] = float(args.fixed_injection_value)
             else:
-                info["inject_value"] = float(inject_value * args.injection_scale)
+                info["inject_value"] = float(inject_value)
         else:
             if args.use_known_only:
                 continue
@@ -451,7 +456,7 @@ def main():
             if args.fixed_injection_value is not None:
                 info["inject_value"] = float(args.fixed_injection_value)
             else:
-                info["inject_value"] = float(info["inject_value"] * args.injection_scale)
+                info["inject_value"] = float(info["inject_value"])
 
         if args.trustworthy_only:
             unlearn = unlearning_map.get(ent)
@@ -615,6 +620,17 @@ def main():
             )
             if p_mean is None:
                 continue
+            # In mean-init mode, interpret injection-scale as an interpolation/extrapolation factor
+            # around the mean entity activation at the relevant coordinate.
+            mean_coord = float(mean_vec[ex["neuron"]].item())
+            mean_coord_wrong = float(mean_vec_wrong[ex["wrong_neuron"]].item())
+            inject_target = mean_coord + float(args.injection_scale) * (float(ex["inject_value"]) - mean_coord)
+            wrong_inject_target = mean_coord_wrong + float(args.injection_scale) * (
+                float(ex["wrong_inject_value"]) - mean_coord_wrong
+            )
+        else:
+            inject_target = float(ex["inject_value"]) * float(args.injection_scale)
+            wrong_inject_target = float(ex["wrong_inject_value"]) * float(args.injection_scale)
 
         p1, c1 = run_condition(
             model,
@@ -623,7 +639,7 @@ def main():
             ex["layer"],
             ex["neuron"],
             ex["x_pos"],
-            ex["inject_value"],
+            inject_target,
             args.injection_mode,
             mean_init_layer=ex["layer"] if args.mean_entity_init else None,
             mean_init_vector=mean_vec if args.mean_entity_init else None,
@@ -636,7 +652,7 @@ def main():
             ex["wrong_layer"],
             ex["wrong_neuron"],
             ex["x_pos"],
-            ex["wrong_inject_value"],
+            wrong_inject_target,
             args.injection_mode,
             mean_init_layer=ex["wrong_layer"] if args.mean_entity_init else None,
             mean_init_vector=mean_vec_wrong if args.mean_entity_init else None,
@@ -691,8 +707,8 @@ def main():
     plt.close(fig)
 
     # Relative to the entity-present prompt: 1.0 means "matches the probability under the full prompt".
-    # We plot a dashed y=1.0 line rather than including an explicit "entity present" bar.
-    rel_labels = labels
+    # Include an explicit "Entity Present" bar to make the normalization unambiguous.
+    rel_labels = ["Entity Present"] + labels
     entity_arr = np.asarray(entity_probs, dtype=float)
     base_arr = np.asarray(baseline_probs, dtype=float)
     mean_arr = np.asarray(mean_probs, dtype=float)
@@ -702,7 +718,7 @@ def main():
     def ratio_of_means(num: np.ndarray, denom: np.ndarray) -> float:
         return float(np.mean(num) / max(float(np.mean(denom)), 1e-12))
 
-    rel_means = [ratio_of_means(base_arr, entity_arr)]
+    rel_means = [1.0, ratio_of_means(base_arr, entity_arr)]
     if args.mean_entity_init:
         rel_means.append(ratio_of_means(mean_arr, entity_arr))
     rel_means.append(ratio_of_means(correct_arr, entity_arr))
@@ -722,14 +738,15 @@ def main():
         boot["correct"].append(ratio_of_means(correct_arr[idx], denom))
         boot["wrong"].append(ratio_of_means(wrong_arr[idx], denom))
 
-    rel_errs = [float(np.std(boot["base"]))]
+    rel_errs = [0.0, float(np.std(boot["base"]))]
     if args.mean_entity_init:
         rel_errs.append(float(np.std(boot["mean"])))
     rel_errs.append(float(np.std(boot["correct"])))
     rel_errs.append(float(np.std(boot["wrong"])))
 
     fig, ax = plt.subplots(figsize=(3.8, 2.6))
-    ax.bar(rel_labels, rel_means, yerr=rel_errs, color=colors, capsize=3)
+    rel_colors = ["#6C7A89"] + colors
+    ax.bar(rel_labels, rel_means, yerr=rel_errs, color=rel_colors, capsize=3)
     ax.set_ylabel("Relative Answer Probability")
     ax.set_title(f"Activation Causality (Normalized)\nModel: {args.model}")
     ax.axhline(1.0, color="black", linestyle="--", linewidth=1.0, alpha=0.6)

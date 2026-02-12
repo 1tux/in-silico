@@ -4,6 +4,12 @@ data/*.pt
 data/*.bin
 data/*.safetensors
 
+# OS
+.DS_Store
+
+# Scratch figures
+figures/debug_*
+
 # python
 __pycache__/
 *.pyc

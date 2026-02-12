@@ -184,13 +184,13 @@ We report four primary findings with matched experiments and controls. Unless no
 \begin{finding}{Finding 2: Controlled Injection Is Directional in QA-Style Prompts}
 \textbf{Experiment.} For each PopQA-200 entity whose localized cell passes our automated trust checks (Appendix~\ref{app:entity_neurons}), we run $K{=}2$ PopQA questions per entity, replace one surface-form alias in the question with a placeholder token \texttt{X}, and (optionally) initialize the \texttt{X} position to a \emph{mean entity activation} estimated by averaging MLP activations at entity-mention positions across entity-present prompts. We then inject either (i) the entity's localized cell or (ii) a wrong-entity cell at the \texttt{X} position, and evaluate recovery of the answer-token probability relative to the original entity-present prompt.
 
-\textbf{Result.} Over the trustworthy subset ($k=131$ entities), correct-cell injection increases the relative answer probability from 0.067 (no injection) to 0.301, versus 0.070 for a wrong-cell control; mean-entity initialization alone yields 0.067 (Figure~\ref{fig:f4}). This provides a clear directional causal signal in a controlled QA-style setting.
+\textbf{Result.} Over the trustworthy subset ($k=131$ entities), correct-cell injection increases the relative answer probability from 0.067 (no injection) to 0.412, versus 0.069 for a wrong-cell control; mean-entity initialization alone yields 0.067 (Figure~\ref{fig:f4}). This provides a clear directional causal signal in a controlled QA-style setting.
 \end{finding}
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=\columnwidth]{figures/f4_activation_causality_popular200_scale2_trustworthy_meaninit_relprob.pdf}
-\caption{PopQA-style activation causality on trustworthy entity cells ($k=131$ entities out of $N=200$; $K{=}2$ questions per entity, $n=262$ examples). Bars report $\mathrm{RelProb}$ (answer-token probability divided by the entity-present probability), with the dashed line at 1.0 indicating parity with the entity-present prompt; error bars are bootstrap standard deviations. Mean-entity initialization alone is near the no-injection baseline, while correct-cell injection increases $\mathrm{RelProb}$ relative to both no-injection and wrong-cell controls.}
+\includegraphics[width=\columnwidth]{figures/f4_activation_causality_popular200_trustworthy_meaninit_alpha4_relprob.pdf}
+\caption{PopQA-style activation causality on trustworthy entity cells ($k=131$ entities out of $N=200$; $K{=}2$ questions per entity, $n=262$ examples). Bars report $\mathrm{RelProb}$ (answer-token probability divided by the entity-present probability); the entity-present condition is 1.0 by construction and shown explicitly. Error bars are bootstrap standard deviations. Mean-entity initialization alone is near the no-injection baseline, while correct-cell injection increases $\mathrm{RelProb}$ relative to both no-injection and wrong-cell controls.}
 \label{fig:f4}
 \end{figure}
 
