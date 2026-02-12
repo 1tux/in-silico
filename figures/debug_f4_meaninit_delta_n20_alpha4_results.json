@@ -1,0 +1,219 @@
+{
+  "model": "Qwen/Qwen2.5-7B",
+  "prompt_style": "base",
+  "dataset": "akariasai/PopQA",
+  "split": "test",
+  "n_entities_requested": 20,
+  "n_entities_candidate": 20,
+  "n_entities_localized": 15,
+  "n_entities_used": 15,
+  "n_examples": 30,
+  "min_dominance": 2.0,
+  "trustworthy_only": true,
+  "trust_thresholds": {
+    "min_dominance": 10.0,
+    "min_loss": 0.1,
+    "min_layer": 1,
+    "max_layer": 6,
+    "min_ablated_prob": 1e-05,
+    "max_relative_prob": 2.0
+  },
+  "injection_scale": 4.0,
+  "fixed_injection_value": null,
+  "injection_mode": "add",
+  "mean_entity_init": true,
+  "known_neurons_file": null,
+  "use_known_only": false,
+  "localization_results_file": "/home/itay/in-silico/results/f2_popqa_popular_200_minq2.json",
+  "unlearning_results_file": "/home/itay/in-silico/figures/f6_popqa_validation_popular200.json",
+  "entities_used": [
+    "Australia",
+    "Barack Obama",
+    "Beijing",
+    "Brazil",
+    "Canada",
+    "Donald Trump",
+    "India",
+    "Japan",
+    "London",
+    "New York City",
+    "Paris",
+    "San Francisco",
+    "South Africa",
+    "Spain",
+    "Tokyo"
+  ],
+  "entity_top": {
+    "Barack Obama": {
+      "layer": 2,
+      "neuron": 10941,
+      "dominance": 52.53190111613748,
+      "aliases": [
+        "Barack Obama"
+      ],
+      "source": "precomputed",
+      "inject_value": -23.179237365722656
+    },
+    "Donald Trump": {
+      "layer": 1,
+      "neuron": 11948,
+      "dominance": 46.90388997772366,
+      "aliases": [
+        "Donald Trump"
+      ],
+      "source": "precomputed",
+      "inject_value": 21.897994995117188
+    },
+    "Spain": {
+      "layer": 2,
+      "neuron": 5876,
+      "dominance": 147.10513895365764,
+      "aliases": [
+        "Spain"
+      ],
+      "source": "precomputed",
+      "inject_value": -16.40875816345215
+    },
+    "Japan": {
+      "layer": 1,
+      "neuron": 7726,
+      "dominance": 150.52950877588754,
+      "aliases": [
+        "Japan"
+      ],
+      "source": "precomputed",
+      "inject_value": -13.440723419189453
+    },
+    "India": {
+      "layer": 2,
+      "neuron": 2893,
+      "dominance": 26.46956500581592,
+      "aliases": [
+        "India"
+      ],
+      "source": "precomputed",
+      "inject_value": 10.575875282287598
+    },
+    "Canada": {
+      "layer": 2,
+      "neuron": 15999,
+      "dominance": 34.14528521860255,
+      "aliases": [
+        "Canada"
+      ],
+      "source": "precomputed",
+      "inject_value": 11.201011657714844
+    },
+    "Brazil": {
+      "layer": 1,
+      "neuron": 17255,
+      "dominance": 76.79244314988868,
+      "aliases": [
+        "Brazil"
+      ],
+      "source": "precomputed",
+      "inject_value": -19.392578125
+    },
+    "Australia": {
+      "layer": 1,
+      "neuron": 8982,
+      "dominance": 16.71129970129676,
+      "aliases": [
+        "Australia"
+      ],
+      "source": "precomputed",
+      "inject_value": -13.352785110473633
+    },
+    "South Africa": {
+      "layer": 1,
+      "neuron": 1385,
+      "dominance": 41.904496828445765,
+      "aliases": [
+        "South Africa"
+      ],
+      "source": "precomputed",
+      "inject_value": -17.600244522094727
+    },
+    "London": {
+      "layer": 2,
+      "neuron": 17407,
+      "dominance": 108.7733966433535,
+      "aliases": [
+        "London"
+      ],
+      "source": "precomputed",
+      "inject_value": -19.948261260986328
+    },
+    "Paris": {
+      "layer": 1,
+      "neuron": 231,
+      "dominance": 138.84347504170321,
+      "aliases": [
+        "Paris"
+      ],
+      "source": "precomputed",
+      "inject_value": -20.89528465270996
+    },
+    "New York City": {
+      "layer": 1,
+      "neuron": 1139,
+      "dominance": 55.088949817424066,
+      "aliases": [
+        "New York City"
+      ],
+      "source": "precomputed",
+      "inject_value": 24.766685485839844
+    },
+    "San Francisco": {
+      "layer": 1,
+      "neuron": 9914,
+      "dominance": 39.393942737507395,
+      "aliases": [
+        "San Francisco"
+      ],
+      "source": "precomputed",
+      "inject_value": -26.700355529785156
+    },
+    "Tokyo": {
+      "layer": 1,
+      "neuron": 188,
+      "dominance": 69.65124092492117,
+      "aliases": [
+        "Tokyo"
+      ],
+      "source": "precomputed",
+      "inject_value": 23.180767059326172
+    },
+    "Beijing": {
+      "layer": 2,
+      "neuron": 9567,
+      "dominance": 12.956853907653873,
+      "aliases": [
+        "Beijing"
+      ],
+      "source": "precomputed",
+      "inject_value": -18.525598526000977
+    }
+  },
+  "means": {
+    "prob": [
+      0.001827526092104866,
+      0.0016451252250893353,
+      0.029042204715976065,
+      0.0030100830318512332
+    ],
+    "acc": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "relprob": [
+      1.0,
+      0.03915922513777387,
+      0.03525083956251804,
+      0.6223004081218703,
+      0.06449840559698652
+    ]
+  }
+}

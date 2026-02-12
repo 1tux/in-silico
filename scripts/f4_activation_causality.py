@@ -179,6 +179,95 @@ def get_top_neuron(model, questions: List[str], entity: str, base_mean, base_std
     }
 
 
+def get_layer_cells(
+    model,
+    prompts: List[str],
+    aliases: List[str],
+    *,
+    layer_idx: int,
+    base_mean_layer: torch.Tensor,
+    base_std_layer: torch.Tensor,
+    topk: int,
+    preferred_neuron: int | None = None,
+):
+    prompts_with_pos = []
+    for prompt in prompts:
+        pos = find_entity_token_pos(model.tokenizer, prompt, aliases)
+        if pos is None:
+            continue
+        prompts_with_pos.append((prompt, pos))
+    if not prompts_with_pos:
+        return None
+
+    acts = []
+    for prompt, pos in prompts_with_pos:
+        with torch.no_grad():
+            with model.trace(prompt):
+                vec = model.model.layers[layer_idx].mlp.down_proj.input[0][pos].cpu().save()
+        acts.append(vec)
+        torch.cuda.empty_cache()
+
+    acts_layer = torch.stack(acts, dim=0)  # [n_prompts, hidden]
+    normalized_acts = z_score_normalize(acts_layer, base_mean_layer, base_std_layer)
+    stability_scores = compute_stability_score(normalized_acts)  # [hidden]
+    stability_scores = torch.nan_to_num(stability_scores, nan=0.0, posinf=0.0, neginf=0.0)
+
+    # Build a stable top-k list, but optionally anchor it to a preferred neuron (e.g., from a precomputed map).
+    sorted_idx = torch.argsort(stability_scores, descending=True)
+    chosen: List[int] = []
+    if preferred_neuron is not None:
+        pref = int(preferred_neuron)
+        if 0 <= pref < int(stability_scores.numel()):
+            chosen.append(pref)
+
+    for idx in sorted_idx.tolist():
+        if len(chosen) >= int(topk):
+            break
+        if idx in chosen:
+            continue
+        chosen.append(int(idx))
+
+    cells = []
+    for neuron in chosen:
+        inject_value = float(acts_layer[:, int(neuron)].mean().item())
+        cells.append(
+            {
+                "neuron": int(neuron),
+                "score": float(stability_scores[int(neuron)].item()),
+                "inject_value": inject_value,
+            }
+        )
+
+    # Dominance based on top-1 vs mean of next top-5 in the same layer.
+    k_dom = min(6, int(stability_scores.numel()))
+    dom_idx = torch.topk(stability_scores, k=k_dom).indices
+    top1 = float(stability_scores[dom_idx[0]].item())
+    if k_dom > 1:
+        next_mean = float(stability_scores[dom_idx[1:]].mean().item())
+    else:
+        next_mean = 0.0
+    dominance = top1 / max(next_mean, 1e-12)
+
+    return {
+        "cells": cells,
+        "dominance": float(dominance),
+        "n_prompts_used": int(acts_layer.shape[0]),
+    }
+
+
+def build_alpha_grid(alpha_max: float, base: float) -> List[float]:
+    if alpha_max <= 1:
+        return [float(alpha_max)]
+    if base <= 1:
+        raise ValueError("--alpha-base must be > 1")
+    alphas = [1.0]
+    while alphas[-1] * base < alpha_max:
+        alphas.append(alphas[-1] * base)
+    if abs(alphas[-1] - alpha_max) > 1e-9:
+        alphas.append(float(alpha_max))
+    return alphas
+
+
 def estimate_injection_value(model, questions: List[str], aliases: List[str], layer_idx: int, neuron_idx: int):
     prompts_with_pos = []
     for question in questions:
@@ -238,9 +327,8 @@ def run_condition(
     prompt: str,
     answer_ids: List[int],
     injection_layer: int | None,
-    injection_neuron: int | None,
+    injection_targets: List[Tuple[int, float]] | None,
     token_pos: int | None,
-    inject_value: float | None,
     injection_mode: str,
     *,
     mean_init_layer: int | None = None,
@@ -250,21 +338,17 @@ def run_condition(
         if mean_init_layer is not None and token_pos is not None and mean_init_vector is not None:
             model.model.layers[mean_init_layer].mlp.down_proj.input[0, token_pos, :] = mean_init_vector
 
-        if (
-            injection_layer is not None
-            and injection_neuron is not None
-            and token_pos is not None
-            and inject_value is not None
-        ):
-            if mean_init_vector is not None:
-                # When using a mean-initialized baseline, treat injection as a targeted "set"
-                # so the coordinate matches the entity-specific activation estimate.
-                model.model.layers[injection_layer].mlp.down_proj.input[0, token_pos, injection_neuron] = inject_value
-            elif injection_mode == "set":
-                model.model.layers[injection_layer].mlp.down_proj.input[0, token_pos, injection_neuron] = inject_value
-            else:
-                current = model.model.layers[injection_layer].mlp.down_proj.input[0, token_pos, injection_neuron].save()
-                model.model.layers[injection_layer].mlp.down_proj.input[0, token_pos, injection_neuron] = current + inject_value
+        if injection_layer is not None and injection_targets and token_pos is not None:
+            for neuron, value in injection_targets:
+                if mean_init_vector is not None:
+                    # When using a mean-initialized baseline, treat injection as a targeted "set"
+                    # so the coordinate matches the entity-specific activation estimate.
+                    model.model.layers[injection_layer].mlp.down_proj.input[0, token_pos, neuron] = value
+                elif injection_mode == "set":
+                    model.model.layers[injection_layer].mlp.down_proj.input[0, token_pos, neuron] = value
+                else:
+                    current = model.model.layers[injection_layer].mlp.down_proj.input[0, token_pos, neuron].save()
+                    model.model.layers[injection_layer].mlp.down_proj.input[0, token_pos, neuron] = current + value
         logits = model.output.logits[0, -1, :].save()
 
     probs = torch.softmax(logits, dim=-1)
@@ -332,7 +416,19 @@ def main():
     parser.add_argument("--trust-min-ablated-prob", type=float, default=1e-5)
     parser.add_argument("--trust-max-relative-prob", type=float, default=2.0)
     parser.add_argument("--min-dominance", type=float, default=2.0)
-    parser.add_argument("--injection-scale", type=float, default=1.0)
+    parser.add_argument("--topk", type=int, default=1, help="Number of top neurons (within the localized layer) to inject.")
+    parser.add_argument(
+        "--injection-scale",
+        type=float,
+        default=1.0,
+        help="Scale for injection. Without --mean-entity-init, multiplies the injected value. With --mean-entity-init, acts as an interpolation/extrapolation factor alpha around the mean entity activation (alpha=1 recovers the entity-specific value).",
+    )
+    parser.add_argument("--alpha-search", action="store_true", help="Search over an alpha grid (per entity) and report best achievable injection.")
+    parser.add_argument("--alpha-max", type=float, default=200.0)
+    parser.add_argument("--alpha-base", type=float, default=2.0)
+    parser.add_argument("--success-min-relprob", type=float, default=0.30)
+    parser.add_argument("--success-min-over-wrong", type=float, default=0.05)
+    parser.add_argument("--success-min-over-baseline", type=float, default=0.05)
     parser.add_argument("--fixed-injection-value", type=float, default=None)
     parser.add_argument("--injection-mode", choices=["add", "set"], default="add")
     parser.add_argument(
@@ -388,6 +484,7 @@ def main():
         qa = entity_index[ent][:]
         rng.shuffle(qa)
         questions = [q for q, _ in qa[: args.n_questions]]
+        prompts = [format_prompt(q, prompt_style) for q in questions]
 
         if ent in known_map:
             info = {
@@ -397,19 +494,6 @@ def main():
                 "aliases": known_map[ent]["aliases"],
                 "source": "known",
             }
-            inject_value = estimate_injection_value(
-                model,
-                questions=[format_prompt(q, prompt_style) for q in questions],
-                aliases=info["aliases"],
-                layer_idx=info["layer"],
-                neuron_idx=info["neuron"],
-            )
-            if inject_value is None:
-                continue
-            if args.fixed_injection_value is not None:
-                info["inject_value"] = float(args.fixed_injection_value)
-            else:
-                info["inject_value"] = float(inject_value * args.injection_scale)
         elif ent in localization_map:
             loc = localization_map[ent]
             top1 = loc.get("top1", math.nan)
@@ -417,7 +501,6 @@ def main():
             dominance = None
             if math.isfinite(top1) and math.isfinite(topk_mean):
                 dominance = float(top1) / max(float(topk_mean), 1e-12)
-
             info = {
                 "layer": int(loc["layer"]),
                 "neuron": int(loc["neuron"]),
@@ -425,33 +508,47 @@ def main():
                 "aliases": [ent],
                 "source": "precomputed",
             }
-            inject_value = estimate_injection_value(
-                model,
-                questions=[format_prompt(q, prompt_style) for q in questions],
-                aliases=info["aliases"],
-                layer_idx=info["layer"],
-                neuron_idx=info["neuron"],
-            )
-            if inject_value is None:
-                continue
-            if args.fixed_injection_value is not None:
-                info["inject_value"] = float(args.fixed_injection_value)
-            else:
-                info["inject_value"] = float(inject_value * args.injection_scale)
         else:
             if args.use_known_only:
                 continue
-            info = get_top_neuron(model, questions, ent, base_mean, base_std)
+            info = get_top_neuron(model, prompts, ent, base_mean, base_std)
             if info is None:
-                continue
-            if info["dominance"] < args.min_dominance:
                 continue
             info["aliases"] = [ent]
             info["source"] = "localized"
-            if args.fixed_injection_value is not None:
-                info["inject_value"] = float(args.fixed_injection_value)
-            else:
-                info["inject_value"] = float(info["inject_value"] * args.injection_scale)
+
+        layer_idx = int(info["layer"])
+        aliases = info.get("aliases", [ent])
+        layer_cells = get_layer_cells(
+            model,
+            prompts,
+            aliases,
+            layer_idx=layer_idx,
+            base_mean_layer=base_mean[layer_idx],
+            base_std_layer=base_std[layer_idx],
+            topk=max(1, int(args.topk)),
+            preferred_neuron=int(info["neuron"]),
+        )
+        if layer_cells is None:
+            continue
+
+        cells = layer_cells["cells"]
+        if not cells:
+            continue
+
+        if info.get("dominance") is None:
+            info["dominance"] = float(layer_cells["dominance"])
+        info["cells"] = cells
+        info["inject_value"] = float(cells[0]["inject_value"])
+
+        if args.fixed_injection_value is not None:
+            fixed_val = float(args.fixed_injection_value)
+            info["inject_value"] = fixed_val
+            for cell in info["cells"]:
+                cell["inject_value"] = fixed_val
+
+        if info.get("dominance") is not None and info["dominance"] < args.min_dominance:
+            continue
 
         if args.trustworthy_only:
             unlearn = unlearning_map.get(ent)
@@ -486,13 +583,11 @@ def main():
 
         ent_info = entity_top[ent]
         layer_idx = int(ent_info["layer"])
-        neuron_id = int(ent_info["neuron"])
-        inject_value = float(ent_info["inject_value"])
+        cells = ent_info.get("cells", [])[: max(1, int(args.topk))]
         wrong_ent = other_entities[(ent_idx + 1) % len(other_entities)]
         wrong_info = entity_top[wrong_ent]
         wrong_layer = int(wrong_info["layer"])
-        wrong_neuron = int(wrong_info["neuron"])
-        wrong_inject_value = float(wrong_info["inject_value"])
+        wrong_cells = wrong_info.get("cells", [])[: max(1, int(args.topk))]
         aliases = ent_info.get("aliases", [ent])
 
         for question, answer in samples:
@@ -529,12 +624,10 @@ def main():
                     "x_pos": int(token_pos),
                     "ent_pos": int(ent_pos),
                     "layer": layer_idx,
-                    "neuron": neuron_id,
-                    "inject_value": inject_value,
+                    "cells": cells,
                     "wrong_entity": wrong_ent,
                     "wrong_layer": wrong_layer,
-                    "wrong_neuron": wrong_neuron,
-                    "wrong_inject_value": wrong_inject_value,
+                    "wrong_cells": wrong_cells,
                 }
             )
 
@@ -583,23 +676,40 @@ def main():
             dtype = mean_dtype.get(layer, torch.float16)
             mean_vec_by_layer[layer] = (total / float(count)).to(dtype=dtype)
 
-    # Now evaluate placeholder prompts under different intervention conditions.
+    def build_targets(
+        ex_cells: List[Dict],
+        *,
+        alpha: float,
+        mean_vec: torch.Tensor | None,
+    ) -> List[Tuple[int, float]]:
+        targets: List[Tuple[int, float]] = []
+        for cell in ex_cells:
+            neuron = int(cell["neuron"])
+            entity_val = float(cell["inject_value"])
+            if mean_vec is not None:
+                mean_coord = float(mean_vec[neuron].item())
+                value = mean_coord + float(alpha) * (entity_val - mean_coord)
+            else:
+                value = entity_val * float(alpha)
+            targets.append((neuron, float(value)))
+        return targets
+
     used_entities_final: List[str] = []
+
+    # Baseline + mean-init (independent of alpha).
+    eval_examples: List[Dict] = []
     for ex in examples:
         if ex.get("skip"):
             continue
 
-        p0, c0 = run_condition(model, ex["prompt"], ex["answer_ids"], None, None, None, None, args.injection_mode)
+        p0, c0 = run_condition(model, ex["prompt"], ex["answer_ids"], None, None, None, args.injection_mode)
         if p0 is None:
             continue
 
-        mean_vec = None
-        mean_vec_wrong = None
         p_mean, c_mean = None, None
         if args.mean_entity_init:
-            mean_vec = mean_vec_by_layer.get(ex["layer"])
-            mean_vec_wrong = mean_vec_by_layer.get(ex["wrong_layer"])
-            if mean_vec is None or mean_vec_wrong is None:
+            mean_vec = mean_vec_by_layer.get(int(ex["layer"]))
+            if mean_vec is None:
                 continue
             p_mean, c_mean = run_condition(
                 model,
@@ -608,54 +718,225 @@ def main():
                 None,
                 None,
                 ex["x_pos"],
-                None,
                 args.injection_mode,
-                mean_init_layer=ex["layer"],
+                mean_init_layer=int(ex["layer"]),
                 mean_init_vector=mean_vec,
             )
             if p_mean is None:
                 continue
 
-        p1, c1 = run_condition(
+        ex2 = dict(ex)
+        ex2["p0"] = float(p0)
+        ex2["c0"] = int(c0)
+        if args.mean_entity_init:
+            ex2["p_mean"] = float(p_mean)
+            ex2["c_mean"] = int(c_mean)
+        eval_examples.append(ex2)
+
+    if not eval_examples:
+        raise RuntimeError("No valid examples after baseline evaluation. Try reducing filters.")
+
+    alpha_grid = build_alpha_grid(args.alpha_max, args.alpha_base) if args.alpha_search else [float(args.injection_scale)]
+    ent_list = sorted({str(ex["entity"]) for ex in eval_examples})
+    ent_to_idx = {e: i for i, e in enumerate(ent_list)}
+    n_ent = len(ent_list)
+    n_alpha = len(alpha_grid)
+
+    sum_full = np.zeros(n_ent, dtype=np.float64)
+    sum_p0 = np.zeros(n_ent, dtype=np.float64)
+    sum_pmean = np.zeros(n_ent, dtype=np.float64)
+    count = np.zeros(n_ent, dtype=np.int64)
+
+    sum_top1 = np.zeros((n_ent, n_alpha), dtype=np.float64)
+    sum_topk = np.zeros((n_ent, n_alpha), dtype=np.float64)
+
+    # Phase 1: evaluate correct injection over the alpha grid (top-1 and top-k).
+    for ex in eval_examples:
+        ent = str(ex["entity"])
+        idx = ent_to_idx[ent]
+        sum_full[idx] += float(ex["p_full"])
+        sum_p0[idx] += float(ex["p0"])
+        if args.mean_entity_init:
+            sum_pmean[idx] += float(ex.get("p_mean", 0.0))
+        count[idx] += 1
+
+        layer = int(ex["layer"])
+        mean_vec = mean_vec_by_layer.get(layer) if args.mean_entity_init else None
+        cells = list(ex.get("cells", []))
+        if not cells:
+            continue
+        cells_top1 = cells[:1]
+
+        for a_idx, alpha in enumerate(alpha_grid):
+            targets_top1 = build_targets(cells_top1, alpha=alpha, mean_vec=mean_vec)
+            p1, _ = run_condition(
+                model,
+                ex["prompt"],
+                ex["answer_ids"],
+                layer,
+                targets_top1,
+                ex["x_pos"],
+                args.injection_mode,
+                mean_init_layer=layer if args.mean_entity_init else None,
+                mean_init_vector=mean_vec if args.mean_entity_init else None,
+            )
+            if p1 is None:
+                continue
+            sum_top1[idx, a_idx] += float(p1)
+
+            if int(args.topk) > 1:
+                targets_topk = build_targets(cells, alpha=alpha, mean_vec=mean_vec)
+                pK, _ = run_condition(
+                    model,
+                    ex["prompt"],
+                    ex["answer_ids"],
+                    layer,
+                    targets_topk,
+                    ex["x_pos"],
+                    args.injection_mode,
+                    mean_init_layer=layer if args.mean_entity_init else None,
+                    mean_init_vector=mean_vec if args.mean_entity_init else None,
+                )
+                if pK is None:
+                    continue
+                sum_topk[idx, a_idx] += float(pK)
+            else:
+                sum_topk[idx, a_idx] += float(p1)
+
+    denom = np.maximum(sum_full, 1e-12)
+    rel_top1 = sum_top1 / denom[:, None]
+    rel_topk = sum_topk / denom[:, None]
+
+    best_idx_top1 = np.argmax(rel_top1, axis=1)
+    best_idx_topk = np.argmax(rel_topk, axis=1)
+    best_alpha_top1 = {ent_list[i]: float(alpha_grid[int(best_idx_top1[i])]) for i in range(n_ent)}
+    best_alpha_topk = {ent_list[i]: float(alpha_grid[int(best_idx_topk[i])]) for i in range(n_ent)}
+
+    # Phase 2: evaluate correct + wrong at best alphas, and collect per-example series for plotting.
+    per_entity: Dict[str, Dict] = {}
+    sum_wrong_at_best_top1 = {e: 0.0 for e in ent_list}
+    sum_wrong_at_best_topk = {e: 0.0 for e in ent_list}
+
+    for ex in eval_examples:
+        ent = str(ex["entity"])
+        layer = int(ex["layer"])
+        wrong_layer = int(ex["wrong_layer"])
+        mean_vec = mean_vec_by_layer.get(layer) if args.mean_entity_init else None
+        mean_vec_wrong = mean_vec_by_layer.get(wrong_layer) if args.mean_entity_init else None
+
+        alpha_k = float(best_alpha_topk[ent]) if args.alpha_search else float(args.injection_scale)
+        targets_correct_k = build_targets(list(ex.get("cells", [])), alpha=alpha_k, mean_vec=mean_vec)
+        targets_wrong_k = build_targets(list(ex.get("wrong_cells", [])), alpha=alpha_k, mean_vec=mean_vec_wrong)
+
+        p_correct_k, c_correct_k = run_condition(
             model,
             ex["prompt"],
             ex["answer_ids"],
-            ex["layer"],
-            ex["neuron"],
+            layer,
+            targets_correct_k,
             ex["x_pos"],
-            ex["inject_value"],
             args.injection_mode,
-            mean_init_layer=ex["layer"] if args.mean_entity_init else None,
+            mean_init_layer=layer if args.mean_entity_init else None,
             mean_init_vector=mean_vec if args.mean_entity_init else None,
         )
-
-        p2, c2 = run_condition(
+        p_wrong_k, c_wrong_k = run_condition(
             model,
             ex["prompt"],
             ex["answer_ids"],
-            ex["wrong_layer"],
-            ex["wrong_neuron"],
+            wrong_layer,
+            targets_wrong_k,
             ex["x_pos"],
-            ex["wrong_inject_value"],
             args.injection_mode,
-            mean_init_layer=ex["wrong_layer"] if args.mean_entity_init else None,
+            mean_init_layer=wrong_layer if args.mean_entity_init else None,
             mean_init_vector=mean_vec_wrong if args.mean_entity_init else None,
         )
+        if p_correct_k is None or p_wrong_k is None:
+            continue
 
         entity_probs.append(float(ex["p_full"]))
         entity_acc.append(int(ex["c_full"]))
 
-        baseline_probs.append(p0)
-        baseline_acc.append(c0)
-        correct_probs.append(p1)
-        correct_acc.append(c1)
-        wrong_probs.append(p2)
-        wrong_acc.append(c2)
-        used_entities_final.append(str(ex["entity"]))
+        baseline_probs.append(float(ex["p0"]))
+        baseline_acc.append(int(ex["c0"]))
 
         if args.mean_entity_init:
-            mean_probs.append(p_mean)
-            mean_acc.append(c_mean)
+            mean_probs.append(float(ex.get("p_mean", 0.0)))
+            mean_acc.append(int(ex.get("c_mean", 0)))
+
+        correct_probs.append(float(p_correct_k))
+        correct_acc.append(int(c_correct_k))
+        wrong_probs.append(float(p_wrong_k))
+        wrong_acc.append(int(c_wrong_k))
+
+        sum_wrong_at_best_topk[ent] += float(p_wrong_k)
+        used_entities_final.append(ent)
+
+        alpha_1 = float(best_alpha_top1[ent]) if args.alpha_search else float(args.injection_scale)
+        targets_wrong_1 = build_targets(list(ex.get("wrong_cells", []))[:1], alpha=alpha_1, mean_vec=mean_vec_wrong)
+        p_wrong_1, _ = run_condition(
+            model,
+            ex["prompt"],
+            ex["answer_ids"],
+            wrong_layer,
+            targets_wrong_1,
+            ex["x_pos"],
+            args.injection_mode,
+            mean_init_layer=wrong_layer if args.mean_entity_init else None,
+            mean_init_vector=mean_vec_wrong if args.mean_entity_init else None,
+        )
+        if p_wrong_1 is not None:
+            sum_wrong_at_best_top1[ent] += float(p_wrong_1)
+
+    used_entities_final = sorted(set(used_entities_final))
+
+    # Per-entity summaries and success flags.
+    for ent in ent_list:
+        idx = ent_to_idx[ent]
+        denom_ent = float(max(sum_full[idx], 1e-12))
+        baseline_rel = float(sum_p0[idx] / denom_ent)
+        mean_rel = float(sum_pmean[idx] / denom_ent) if args.mean_entity_init else math.nan
+        best_rel1 = float(rel_top1[idx, int(best_idx_top1[idx])])
+        best_relk = float(rel_topk[idx, int(best_idx_topk[idx])])
+        wrong_rel1 = float(sum_wrong_at_best_top1[ent] / denom_ent)
+        wrong_relk = float(sum_wrong_at_best_topk[ent] / denom_ent)
+
+        succ_top1 = (
+            best_rel1 >= float(args.success_min_relprob)
+            and (best_rel1 - baseline_rel) >= float(args.success_min_over_baseline)
+            and (best_rel1 - wrong_rel1) >= float(args.success_min_over_wrong)
+        )
+        succ_topk = (
+            best_relk >= float(args.success_min_relprob)
+            and (best_relk - baseline_rel) >= float(args.success_min_over_baseline)
+            and (best_relk - wrong_relk) >= float(args.success_min_over_wrong)
+        )
+        topk_needed = bool(succ_topk and not succ_top1 and int(args.topk) > 1)
+
+        cells = entity_top.get(ent, {}).get("cells", [])[: max(1, int(args.topk))]
+        per_entity[ent] = {
+            "layer": int(entity_top.get(ent, {}).get("layer", -1)),
+            "topk": int(args.topk),
+            "cells": [{"layer": int(entity_top[ent]["layer"]), **cell} for cell in cells] if ent in entity_top else [],
+            "n_examples": int(count[idx]),
+            "best_alpha_top1": float(best_alpha_top1[ent]),
+            "best_relprob_top1": best_rel1,
+            "wrong_relprob_at_best_top1": wrong_rel1,
+            "best_alpha_topk": float(best_alpha_topk[ent]),
+            "best_relprob_topk": best_relk,
+            "wrong_relprob_at_best_topk": wrong_relk,
+            "baseline_relprob": baseline_rel,
+            "mean_relprob": mean_rel,
+            "success_top1": bool(succ_top1),
+            "success_topk": bool(succ_topk),
+            "topk_needed": bool(topk_needed),
+        }
+
+    success_top1_entities = sorted([entity for entity, row in per_entity.items() if row.get("success_top1")])
+    success_topk_entities = sorted([entity for entity, row in per_entity.items() if row.get("success_topk")])
+    topk_needed_entities = sorted([entity for entity, row in per_entity.items() if row.get("topk_needed")])
+    topk_needed_entity_cells = {
+        entity: per_entity[entity].get("cells", []) for entity in topk_needed_entities
+    }
 
     set_paper_style()
     import matplotlib.pyplot as plt
@@ -691,8 +972,8 @@ def main():
     plt.close(fig)
 
     # Relative to the entity-present prompt: 1.0 means "matches the probability under the full prompt".
-    # We plot a dashed y=1.0 line rather than including an explicit "entity present" bar.
-    rel_labels = labels
+    # Include an explicit "Entity Present" bar to make the normalization unambiguous.
+    rel_labels = ["Entity Present"] + labels
     entity_arr = np.asarray(entity_probs, dtype=float)
     base_arr = np.asarray(baseline_probs, dtype=float)
     mean_arr = np.asarray(mean_probs, dtype=float)
@@ -702,7 +983,7 @@ def main():
     def ratio_of_means(num: np.ndarray, denom: np.ndarray) -> float:
         return float(np.mean(num) / max(float(np.mean(denom)), 1e-12))
 
-    rel_means = [ratio_of_means(base_arr, entity_arr)]
+    rel_means = [1.0, ratio_of_means(base_arr, entity_arr)]
     if args.mean_entity_init:
         rel_means.append(ratio_of_means(mean_arr, entity_arr))
     rel_means.append(ratio_of_means(correct_arr, entity_arr))
@@ -722,14 +1003,15 @@ def main():
         boot["correct"].append(ratio_of_means(correct_arr[idx], denom))
         boot["wrong"].append(ratio_of_means(wrong_arr[idx], denom))
 
-    rel_errs = [float(np.std(boot["base"]))]
+    rel_errs = [0.0, float(np.std(boot["base"]))]
     if args.mean_entity_init:
         rel_errs.append(float(np.std(boot["mean"])))
     rel_errs.append(float(np.std(boot["correct"])))
     rel_errs.append(float(np.std(boot["wrong"])))
 
     fig, ax = plt.subplots(figsize=(3.8, 2.6))
-    ax.bar(rel_labels, rel_means, yerr=rel_errs, color=colors, capsize=3)
+    rel_colors = ["#6C7A89"] + colors
+    ax.bar(rel_labels, rel_means, yerr=rel_errs, color=rel_colors, capsize=3)
     ax.set_ylabel("Relative Answer Probability")
     ax.set_title(f"Activation Causality (Normalized)\nModel: {args.model}")
     ax.axhline(1.0, color="black", linestyle="--", linewidth=1.0, alpha=0.6)
@@ -770,6 +1052,14 @@ def main():
             "max_relative_prob": args.trust_max_relative_prob,
         },
         "injection_scale": args.injection_scale,
+        "topk": int(args.topk),
+        "alpha_search": bool(args.alpha_search),
+        "alpha_grid": alpha_grid,
+        "success_thresholds": {
+            "min_relprob": float(args.success_min_relprob),
+            "min_over_wrong": float(args.success_min_over_wrong),
+            "min_over_baseline": float(args.success_min_over_baseline),
+        },
         "fixed_injection_value": args.fixed_injection_value,
         "injection_mode": args.injection_mode,
         "mean_entity_init": bool(args.mean_entity_init),
@@ -779,6 +1069,17 @@ def main():
         "unlearning_results_file": args.unlearning_results if args.unlearning_results else None,
         "entities_used": sorted(set(used_entities_final)),
         "entity_top": entity_top,
+        "per_entity": per_entity,
+        "success_summary": {
+            "n_trustworthy_entities": int(len(per_entity)),
+            "k_success_top1": int(len(success_top1_entities)),
+            "k_success_topk": int(len(success_topk_entities)),
+            "k_topk_needed": int(len(topk_needed_entities)),
+            "success_top1_entities": success_top1_entities,
+            "success_topk_entities": success_topk_entities,
+            "topk_needed_entities": topk_needed_entities,
+            "topk_needed_entity_cells": topk_needed_entity_cells,
+        },
         "means": {
             "prob": prob_means,
             "acc": acc_means,

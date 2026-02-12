@@ -1,0 +1,1192 @@
+{
+  "model": "Qwen/Qwen2.5-7B",
+  "prompt_style": "base",
+  "dataset": "akariasai/PopQA",
+  "split": "test",
+  "n_entities_requested": 200,
+  "n_entities_candidate": 200,
+  "n_entities_localized": 13,
+  "n_entities_used": 13,
+  "n_examples": 26,
+  "min_dominance": 2.0,
+  "trustworthy_only": true,
+  "trust_thresholds": {
+    "min_dominance": 10.0,
+    "min_loss": 0.1,
+    "min_layer": 1,
+    "max_layer": 6,
+    "min_ablated_prob": 1e-05,
+    "max_relative_prob": 2.0
+  },
+  "injection_scale": 1.0,
+  "topk": 5,
+  "alpha_search": true,
+  "alpha_grid": [
+    1.0,
+    2.0,
+    4.0,
+    8.0,
+    16.0,
+    32.0,
+    64.0,
+    128.0,
+    200.0
+  ],
+  "success_thresholds": {
+    "min_relprob": 0.3,
+    "min_over_wrong": 0.05,
+    "min_over_baseline": 0.05
+  },
+  "fixed_injection_value": null,
+  "injection_mode": "add",
+  "mean_entity_init": true,
+  "known_neurons_file": null,
+  "use_known_only": false,
+  "localization_results_file": "/home/itay/in-silico/results/f2_popqa_popular_200_minq2.json",
+  "unlearning_results_file": "/home/itay/in-silico/figures/f6_popqa_validation_popular200.json",
+  "entities_used": [
+    "Abraham Lincoln",
+    "Australia",
+    "Breaking Bad",
+    "Empire of Japan",
+    "Final Destination",
+    "Friends",
+    "Michael Jackson",
+    "New York City",
+    "Oasis",
+    "Peter",
+    "Star Wars",
+    "The Village",
+    "Troy"
+  ],
+  "entity_top": {
+    "The Village": {
+      "layer": 1,
+      "neuron": 14056,
+      "dominance": 28.16187647579492,
+      "aliases": [
+        "The Village"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 14056,
+          "score": 6031551234048.0,
+          "inject_value": 22.071239471435547
+        },
+        {
+          "neuron": 885,
+          "score": 23511541760.0,
+          "inject_value": -0.6914423704147339
+        },
+        {
+          "neuron": 15375,
+          "score": 6196541952.0,
+          "inject_value": 1.6553490161895752
+        },
+        {
+          "neuron": 17572,
+          "score": 3767490560.0,
+          "inject_value": 0.35371485352516174
+        },
+        {
+          "neuron": 15835,
+          "score": 3582039296.0,
+          "inject_value": 1.1647971868515015
+        }
+      ],
+      "inject_value": 22.071239471435547
+    },
+    "Final Destination": {
+      "layer": 2,
+      "neuron": 12738,
+      "dominance": 59.8371383096599,
+      "aliases": [
+        "Final Destination"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 12738,
+          "score": 757320318976.0,
+          "inject_value": -18.877138137817383
+        },
+        {
+          "neuron": 13013,
+          "score": 5532250112.0,
+          "inject_value": 0.638340413570404
+        },
+        {
+          "neuron": 3571,
+          "score": 3312140288.0,
+          "inject_value": -2.979951858520508
+        },
+        {
+          "neuron": 3745,
+          "score": 2743270400.0,
+          "inject_value": -0.43399760127067566
+        },
+        {
+          "neuron": 13138,
+          "score": 2619431168.0,
+          "inject_value": -0.1338959038257599
+        }
+      ],
+      "inject_value": -18.877138137817383
+    },
+    "Friends": {
+      "layer": 5,
+      "neuron": 9314,
+      "dominance": 15.049214718908848,
+      "aliases": [
+        "Friends"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 9314,
+          "score": 9226.0810546875,
+          "inject_value": 25.299474716186523
+        },
+        {
+          "neuron": 16954,
+          "score": 483102.40625,
+          "inject_value": 0.010759408585727215
+        },
+        {
+          "neuron": 18104,
+          "score": 130487.7890625,
+          "inject_value": 0.01210484653711319
+        },
+        {
+          "neuron": 18486,
+          "score": 61245.15234375,
+          "inject_value": 0.00017159877461381257
+        },
+        {
+          "neuron": 17029,
+          "score": 59866.140625,
+          "inject_value": -0.07013165205717087
+        }
+      ],
+      "inject_value": 25.299474716186523
+    },
+    "Abraham Lincoln": {
+      "layer": 3,
+      "neuron": 12305,
+      "dominance": 43.20231344534213,
+      "aliases": [
+        "Abraham Lincoln"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 12305,
+          "score": 15982.634765625,
+          "inject_value": -28.72977066040039
+        },
+        {
+          "neuron": 10392,
+          "score": 166447.078125,
+          "inject_value": -0.0004902566433884203
+        },
+        {
+          "neuron": 1502,
+          "score": 114275.734375,
+          "inject_value": 0.006265484727919102
+        },
+        {
+          "neuron": 14186,
+          "score": 48432.1953125,
+          "inject_value": -0.012977248057723045
+        },
+        {
+          "neuron": 14907,
+          "score": 35138.41796875,
+          "inject_value": -0.1022740975022316
+        }
+      ],
+      "inject_value": -28.72977066040039
+    },
+    "New York City": {
+      "layer": 1,
+      "neuron": 1139,
+      "dominance": 55.088949817424066,
+      "aliases": [
+        "New York City"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 1139,
+          "score": 350113.59375,
+          "inject_value": 24.766685485839844
+        },
+        {
+          "neuron": 3211,
+          "score": 31857.1796875,
+          "inject_value": -0.0013703402364626527
+        },
+        {
+          "neuron": 4770,
+          "score": 23646.943359375,
+          "inject_value": -0.0002994047536049038
+        },
+        {
+          "neuron": 6025,
+          "score": 8639.3642578125,
+          "inject_value": 0.3218478560447693
+        },
+        {
+          "neuron": 12490,
+          "score": 8470.060546875,
+          "inject_value": 8.12913114600633e-09
+        }
+      ],
+      "inject_value": 24.766685485839844
+    },
+    "Oasis": {
+      "layer": 3,
+      "neuron": 13059,
+      "dominance": 25.407040274798934,
+      "aliases": [
+        "Oasis"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 13059,
+          "score": 67129.6015625,
+          "inject_value": 39.037689208984375
+        },
+        {
+          "neuron": 11545,
+          "score": 87126.640625,
+          "inject_value": 0.10398010909557343
+        },
+        {
+          "neuron": 6351,
+          "score": 71130.734375,
+          "inject_value": 0.00048505456652492285
+        },
+        {
+          "neuron": 17140,
+          "score": 32571.7109375,
+          "inject_value": -0.01298578456044197
+        },
+        {
+          "neuron": 921,
+          "score": 23457.970703125,
+          "inject_value": 1.8419235857436433e-05
+        }
+      ],
+      "inject_value": 39.037689208984375
+    },
+    "Breaking Bad": {
+      "layer": 2,
+      "neuron": 12152,
+      "dominance": 17.284985570139636,
+      "aliases": [
+        "Breaking Bad"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 12152,
+          "score": 2522779222016.0,
+          "inject_value": -12.17260456085205
+        },
+        {
+          "neuron": 2862,
+          "score": 14077700096.0,
+          "inject_value": -0.3616585433483124
+        },
+        {
+          "neuron": 15890,
+          "score": 8389149184.0,
+          "inject_value": 0.7943304181098938
+        },
+        {
+          "neuron": 14379,
+          "score": 6238761984.0,
+          "inject_value": 0.7110466361045837
+        },
+        {
+          "neuron": 573,
+          "score": 5851155456.0,
+          "inject_value": 0.5181838870048523
+        }
+      ],
+      "inject_value": -12.17260456085205
+    },
+    "Troy": {
+      "layer": 2,
+      "neuron": 17460,
+      "dominance": 12.585213647170946,
+      "aliases": [
+        "Troy"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 17460,
+          "score": 987306.0,
+          "inject_value": -25.627948760986328
+        },
+        {
+          "neuron": 7416,
+          "score": 611397.25,
+          "inject_value": 8.468036651611328
+        },
+        {
+          "neuron": 15932,
+          "score": 112209.1796875,
+          "inject_value": 4.14440619351808e-05
+        },
+        {
+          "neuron": 6955,
+          "score": 103841.1953125,
+          "inject_value": 0.019122811034321785
+        },
+        {
+          "neuron": 5765,
+          "score": 66292.1796875,
+          "inject_value": 0.00011933846690226346
+        }
+      ],
+      "inject_value": -25.627948760986328
+    },
+    "Michael Jackson": {
+      "layer": 2,
+      "neuron": 1224,
+      "dominance": 194.07302078270507,
+      "aliases": [
+        "Michael Jackson"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 1224,
+          "score": 154853.28125,
+          "inject_value": -26.809837341308594
+        },
+        {
+          "neuron": 16752,
+          "score": 195813.578125,
+          "inject_value": -0.12199313938617706
+        },
+        {
+          "neuron": 6377,
+          "score": 130684.2734375,
+          "inject_value": -0.08552806079387665
+        },
+        {
+          "neuron": 10632,
+          "score": 94072.109375,
+          "inject_value": 0.003964753355830908
+        },
+        {
+          "neuron": 7945,
+          "score": 40540.49609375,
+          "inject_value": 0.21840623021125793
+        }
+      ],
+      "inject_value": -26.809837341308594
+    },
+    "Peter": {
+      "layer": 2,
+      "neuron": 13512,
+      "dominance": 138.07394538702974,
+      "aliases": [
+        "Peter"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 13512,
+          "score": 29625.345703125,
+          "inject_value": -21.112117767333984
+        },
+        {
+          "neuron": 5859,
+          "score": 4149154.5,
+          "inject_value": -0.0633150190114975
+        },
+        {
+          "neuron": 17177,
+          "score": 35154.0546875,
+          "inject_value": 0.010949524119496346
+        },
+        {
+          "neuron": 15575,
+          "score": 16744.90234375,
+          "inject_value": -0.1467856913805008
+        },
+        {
+          "neuron": 16037,
+          "score": 15183.08984375,
+          "inject_value": -0.04189879447221756
+        }
+      ],
+      "inject_value": -21.112117767333984
+    },
+    "Australia": {
+      "layer": 1,
+      "neuron": 8982,
+      "dominance": 16.71129970129676,
+      "aliases": [
+        "Australia"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 8982,
+          "score": 23569.990234375,
+          "inject_value": -13.352785110473633
+        },
+        {
+          "neuron": 6963,
+          "score": 59818.69140625,
+          "inject_value": -0.0016972251469269395
+        },
+        {
+          "neuron": 15998,
+          "score": 20262.5859375,
+          "inject_value": 0.02258116938173771
+        },
+        {
+          "neuron": 17401,
+          "score": 19213.48828125,
+          "inject_value": -0.0009579684119671583
+        },
+        {
+          "neuron": 1878,
+          "score": 17717.330078125,
+          "inject_value": -0.0008381661027669907
+        }
+      ],
+      "inject_value": -13.352785110473633
+    },
+    "Empire of Japan": {
+      "layer": 1,
+      "neuron": 7726,
+      "dominance": 90.26127836433831,
+      "aliases": [
+        "Empire of Japan"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 7726,
+          "score": 520404.125,
+          "inject_value": -16.983898162841797
+        },
+        {
+          "neuron": 10351,
+          "score": 6033320.5,
+          "inject_value": -0.00012664467794820666
+        },
+        {
+          "neuron": 7707,
+          "score": 3104376.75,
+          "inject_value": 6.885717448312789e-05
+        },
+        {
+          "neuron": 7909,
+          "score": 1448970.75,
+          "inject_value": 0.0001449068367946893
+        },
+        {
+          "neuron": 2077,
+          "score": 678274.25,
+          "inject_value": -0.0013566063717007637
+        }
+      ],
+      "inject_value": -16.983898162841797
+    },
+    "Star Wars": {
+      "layer": 1,
+      "neuron": 6101,
+      "dominance": 145.93518459842082,
+      "aliases": [
+        "Star Wars"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 6101,
+          "score": 392146.90625,
+          "inject_value": 35.25028610229492
+        },
+        {
+          "neuron": 8117,
+          "score": 331262.34375,
+          "inject_value": -0.00017724104691296816
+        },
+        {
+          "neuron": 1508,
+          "score": 286975.25,
+          "inject_value": 0.024952374398708344
+        },
+        {
+          "neuron": 12787,
+          "score": 149539.9375,
+          "inject_value": 0.00017166172619909048
+        },
+        {
+          "neuron": 16151,
+          "score": 127606.3671875,
+          "inject_value": -0.00020073758787475526
+        }
+      ],
+      "inject_value": 35.25028610229492
+    }
+  },
+  "per_entity": {
+    "Abraham Lincoln": {
+      "layer": 3,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 3,
+          "neuron": 12305,
+          "score": 15982.634765625,
+          "inject_value": -28.72977066040039
+        },
+        {
+          "layer": 3,
+          "neuron": 10392,
+          "score": 166447.078125,
+          "inject_value": -0.0004902566433884203
+        },
+        {
+          "layer": 3,
+          "neuron": 1502,
+          "score": 114275.734375,
+          "inject_value": 0.006265484727919102
+        },
+        {
+          "layer": 3,
+          "neuron": 14186,
+          "score": 48432.1953125,
+          "inject_value": -0.012977248057723045
+        },
+        {
+          "layer": 3,
+          "neuron": 14907,
+          "score": 35138.41796875,
+          "inject_value": -0.1022740975022316
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 2.0,
+      "best_relprob_top1": 0.05263147074540212,
+      "wrong_relprob_at_best_top1": 9.536685494227901e-05,
+      "best_alpha_topk": 2.0,
+      "best_relprob_topk": 0.052405711899819865,
+      "wrong_relprob_at_best_topk": 0.00013003625914845054,
+      "baseline_relprob": 0.022859525847037057,
+      "mean_relprob": 0.02523381421322109,
+      "success_top1": false,
+      "success_topk": false,
+      "topk_needed": false
+    },
+    "Australia": {
+      "layer": 1,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 1,
+          "neuron": 8982,
+          "score": 23569.990234375,
+          "inject_value": -13.352785110473633
+        },
+        {
+          "layer": 1,
+          "neuron": 6963,
+          "score": 59818.69140625,
+          "inject_value": -0.0016972251469269395
+        },
+        {
+          "layer": 1,
+          "neuron": 15998,
+          "score": 20262.5859375,
+          "inject_value": 0.02258116938173771
+        },
+        {
+          "layer": 1,
+          "neuron": 17401,
+          "score": 19213.48828125,
+          "inject_value": -0.0009579684119671583
+        },
+        {
+          "layer": 1,
+          "neuron": 1878,
+          "score": 17717.330078125,
+          "inject_value": -0.0008381661027669907
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 32.0,
+      "best_relprob_top1": 2.2635616397426266,
+      "wrong_relprob_at_best_top1": 0.026599934169841154,
+      "best_alpha_topk": 32.0,
+      "best_relprob_topk": 2.261548925470671,
+      "wrong_relprob_at_best_topk": 0.029541598671964698,
+      "baseline_relprob": 0.1014327517606636,
+      "mean_relprob": 0.0826853654884829,
+      "success_top1": true,
+      "success_topk": true,
+      "topk_needed": false
+    },
+    "Breaking Bad": {
+      "layer": 2,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 2,
+          "neuron": 12152,
+          "score": 2522779222016.0,
+          "inject_value": -12.17260456085205
+        },
+        {
+          "layer": 2,
+          "neuron": 2862,
+          "score": 14077700096.0,
+          "inject_value": -0.3616585433483124
+        },
+        {
+          "layer": 2,
+          "neuron": 15890,
+          "score": 8389149184.0,
+          "inject_value": 0.7943304181098938
+        },
+        {
+          "layer": 2,
+          "neuron": 14379,
+          "score": 6238761984.0,
+          "inject_value": 0.7110466361045837
+        },
+        {
+          "layer": 2,
+          "neuron": 573,
+          "score": 5851155456.0,
+          "inject_value": 0.5181838870048523
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 1.0,
+      "best_relprob_top1": 0.15070192762612972,
+      "wrong_relprob_at_best_top1": 0.14975803983583366,
+      "best_alpha_topk": 1.0,
+      "best_relprob_topk": 0.14866759139050326,
+      "wrong_relprob_at_best_topk": 0.14995361371554808,
+      "baseline_relprob": 0.11286588333902152,
+      "mean_relprob": 0.12324228765988025,
+      "success_top1": false,
+      "success_topk": false,
+      "topk_needed": false
+    },
+    "Empire of Japan": {
+      "layer": 1,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 1,
+          "neuron": 7726,
+          "score": 520404.125,
+          "inject_value": -16.983898162841797
+        },
+        {
+          "layer": 1,
+          "neuron": 10351,
+          "score": 6033320.5,
+          "inject_value": -0.00012664467794820666
+        },
+        {
+          "layer": 1,
+          "neuron": 7707,
+          "score": 3104376.75,
+          "inject_value": 6.885717448312789e-05
+        },
+        {
+          "layer": 1,
+          "neuron": 7909,
+          "score": 1448970.75,
+          "inject_value": 0.0001449068367946893
+        },
+        {
+          "layer": 1,
+          "neuron": 2077,
+          "score": 678274.25,
+          "inject_value": -0.0013566063717007637
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 8.0,
+      "best_relprob_top1": 1.3976798100740024,
+      "wrong_relprob_at_best_top1": 0.03211281825050427,
+      "best_alpha_topk": 8.0,
+      "best_relprob_topk": 1.3977546877491733,
+      "wrong_relprob_at_best_topk": 0.03219036262746118,
+      "baseline_relprob": 0.06727395523479306,
+      "mean_relprob": 0.06346267872708546,
+      "success_top1": true,
+      "success_topk": true,
+      "topk_needed": false
+    },
+    "Final Destination": {
+      "layer": 2,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 2,
+          "neuron": 12738,
+          "score": 757320318976.0,
+          "inject_value": -18.877138137817383
+        },
+        {
+          "layer": 2,
+          "neuron": 13013,
+          "score": 5532250112.0,
+          "inject_value": 0.638340413570404
+        },
+        {
+          "layer": 2,
+          "neuron": 3571,
+          "score": 3312140288.0,
+          "inject_value": -2.979951858520508
+        },
+        {
+          "layer": 2,
+          "neuron": 3745,
+          "score": 2743270400.0,
+          "inject_value": -0.43399760127067566
+        },
+        {
+          "layer": 2,
+          "neuron": 13138,
+          "score": 2619431168.0,
+          "inject_value": -0.1338959038257599
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 1.0,
+      "best_relprob_top1": 0.055959696114728376,
+      "wrong_relprob_at_best_top1": 0.03237144986555268,
+      "best_alpha_topk": 1.0,
+      "best_relprob_topk": 0.05400386347693302,
+      "wrong_relprob_at_best_topk": 0.03238495766854269,
+      "baseline_relprob": 0.062116652580708684,
+      "mean_relprob": 0.06259737531649606,
+      "success_top1": false,
+      "success_topk": false,
+      "topk_needed": false
+    },
+    "Friends": {
+      "layer": 5,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 5,
+          "neuron": 9314,
+          "score": 9226.0810546875,
+          "inject_value": 25.299474716186523
+        },
+        {
+          "layer": 5,
+          "neuron": 16954,
+          "score": 483102.40625,
+          "inject_value": 0.010759408585727215
+        },
+        {
+          "layer": 5,
+          "neuron": 18104,
+          "score": 130487.7890625,
+          "inject_value": 0.01210484653711319
+        },
+        {
+          "layer": 5,
+          "neuron": 18486,
+          "score": 61245.15234375,
+          "inject_value": 0.00017159877461381257
+        },
+        {
+          "layer": 5,
+          "neuron": 17029,
+          "score": 59866.140625,
+          "inject_value": -0.07013165205717087
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 2.0,
+      "best_relprob_top1": 0.30655514454953436,
+      "wrong_relprob_at_best_top1": 0.008453334481047044,
+      "best_alpha_topk": 2.0,
+      "best_relprob_topk": 0.30698782478941933,
+      "wrong_relprob_at_best_topk": 0.008448087255820443,
+      "baseline_relprob": 0.09289455833322362,
+      "mean_relprob": 0.09442400478357219,
+      "success_top1": true,
+      "success_topk": true,
+      "topk_needed": false
+    },
+    "Michael Jackson": {
+      "layer": 2,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 2,
+          "neuron": 1224,
+          "score": 154853.28125,
+          "inject_value": -26.809837341308594
+        },
+        {
+          "layer": 2,
+          "neuron": 16752,
+          "score": 195813.578125,
+          "inject_value": -0.12199313938617706
+        },
+        {
+          "layer": 2,
+          "neuron": 6377,
+          "score": 130684.2734375,
+          "inject_value": -0.08552806079387665
+        },
+        {
+          "layer": 2,
+          "neuron": 10632,
+          "score": 94072.109375,
+          "inject_value": 0.003964753355830908
+        },
+        {
+          "layer": 2,
+          "neuron": 7945,
+          "score": 40540.49609375,
+          "inject_value": 0.21840623021125793
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 16.0,
+      "best_relprob_top1": 0.05052980417199401,
+      "wrong_relprob_at_best_top1": 0.05736093179287666,
+      "best_alpha_topk": 16.0,
+      "best_relprob_topk": 0.050230393291294334,
+      "wrong_relprob_at_best_topk": 0.057268102479192985,
+      "baseline_relprob": 0.019247772530190877,
+      "mean_relprob": 0.019122861459377583,
+      "success_top1": false,
+      "success_topk": false,
+      "topk_needed": false
+    },
+    "New York City": {
+      "layer": 1,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 1,
+          "neuron": 1139,
+          "score": 350113.59375,
+          "inject_value": 24.766685485839844
+        },
+        {
+          "layer": 1,
+          "neuron": 3211,
+          "score": 31857.1796875,
+          "inject_value": -0.0013703402364626527
+        },
+        {
+          "layer": 1,
+          "neuron": 4770,
+          "score": 23646.943359375,
+          "inject_value": -0.0002994047536049038
+        },
+        {
+          "layer": 1,
+          "neuron": 6025,
+          "score": 8639.3642578125,
+          "inject_value": 0.3218478560447693
+        },
+        {
+          "layer": 1,
+          "neuron": 12490,
+          "score": 8470.060546875,
+          "inject_value": 8.12913114600633e-09
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 4.0,
+      "best_relprob_top1": 0.7645646207469889,
+      "wrong_relprob_at_best_top1": 0.5543330299751054,
+      "best_alpha_topk": 4.0,
+      "best_relprob_topk": 0.7617711072546284,
+      "wrong_relprob_at_best_topk": 0.5544173181754508,
+      "baseline_relprob": 0.569535244093703,
+      "mean_relprob": 0.5863462798155165,
+      "success_top1": true,
+      "success_topk": true,
+      "topk_needed": false
+    },
+    "Oasis": {
+      "layer": 3,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 3,
+          "neuron": 13059,
+          "score": 67129.6015625,
+          "inject_value": 39.037689208984375
+        },
+        {
+          "layer": 3,
+          "neuron": 11545,
+          "score": 87126.640625,
+          "inject_value": 0.10398010909557343
+        },
+        {
+          "layer": 3,
+          "neuron": 6351,
+          "score": 71130.734375,
+          "inject_value": 0.00048505456652492285
+        },
+        {
+          "layer": 3,
+          "neuron": 17140,
+          "score": 32571.7109375,
+          "inject_value": -0.01298578456044197
+        },
+        {
+          "layer": 3,
+          "neuron": 921,
+          "score": 23457.970703125,
+          "inject_value": 1.8419235857436433e-05
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 1.0,
+      "best_relprob_top1": 1.2979730762844768,
+      "wrong_relprob_at_best_top1": 0.19554075858512196,
+      "best_alpha_topk": 1.0,
+      "best_relprob_topk": 1.2986014677068336,
+      "wrong_relprob_at_best_topk": 0.19553973000422512,
+      "baseline_relprob": 0.18976183907888172,
+      "mean_relprob": 0.2399768339380124,
+      "success_top1": true,
+      "success_topk": true,
+      "topk_needed": false
+    },
+    "Peter": {
+      "layer": 2,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 2,
+          "neuron": 13512,
+          "score": 29625.345703125,
+          "inject_value": -21.112117767333984
+        },
+        {
+          "layer": 2,
+          "neuron": 5859,
+          "score": 4149154.5,
+          "inject_value": -0.0633150190114975
+        },
+        {
+          "layer": 2,
+          "neuron": 17177,
+          "score": 35154.0546875,
+          "inject_value": 0.010949524119496346
+        },
+        {
+          "layer": 2,
+          "neuron": 15575,
+          "score": 16744.90234375,
+          "inject_value": -0.1467856913805008
+        },
+        {
+          "layer": 2,
+          "neuron": 16037,
+          "score": 15183.08984375,
+          "inject_value": -0.04189879447221756
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 16.0,
+      "best_relprob_top1": 1.6869532505737042,
+      "wrong_relprob_at_best_top1": 1.2874820079878824,
+      "best_alpha_topk": 16.0,
+      "best_relprob_topk": 1.684238728952377,
+      "wrong_relprob_at_best_topk": 1.284130996920586,
+      "baseline_relprob": 1.3471694193988237,
+      "mean_relprob": 1.29748833368449,
+      "success_top1": true,
+      "success_topk": true,
+      "topk_needed": false
+    },
+    "Star Wars": {
+      "layer": 1,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 1,
+          "neuron": 6101,
+          "score": 392146.90625,
+          "inject_value": 35.25028610229492
+        },
+        {
+          "layer": 1,
+          "neuron": 8117,
+          "score": 331262.34375,
+          "inject_value": -0.00017724104691296816
+        },
+        {
+          "layer": 1,
+          "neuron": 1508,
+          "score": 286975.25,
+          "inject_value": 0.024952374398708344
+        },
+        {
+          "layer": 1,
+          "neuron": 12787,
+          "score": 149539.9375,
+          "inject_value": 0.00017166172619909048
+        },
+        {
+          "layer": 1,
+          "neuron": 16151,
+          "score": 127606.3671875,
+          "inject_value": -0.00020073758787475526
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 4.0,
+      "best_relprob_top1": 3.1007878423285904,
+      "wrong_relprob_at_best_top1": 0.02105644119088091,
+      "best_alpha_topk": 4.0,
+      "best_relprob_topk": 3.1001375265804296,
+      "wrong_relprob_at_best_topk": 0.020600839409455535,
+      "baseline_relprob": 0.0177241953124246,
+      "mean_relprob": 0.016240365316791672,
+      "success_top1": true,
+      "success_topk": true,
+      "topk_needed": false
+    },
+    "The Village": {
+      "layer": 1,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 1,
+          "neuron": 14056,
+          "score": 6031551234048.0,
+          "inject_value": 22.071239471435547
+        },
+        {
+          "layer": 1,
+          "neuron": 885,
+          "score": 23511541760.0,
+          "inject_value": -0.6914423704147339
+        },
+        {
+          "layer": 1,
+          "neuron": 15375,
+          "score": 6196541952.0,
+          "inject_value": 1.6553490161895752
+        },
+        {
+          "layer": 1,
+          "neuron": 17572,
+          "score": 3767490560.0,
+          "inject_value": 0.35371485352516174
+        },
+        {
+          "layer": 1,
+          "neuron": 15835,
+          "score": 3582039296.0,
+          "inject_value": 1.1647971868515015
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 4.0,
+      "best_relprob_top1": 0.6622703402556723,
+      "wrong_relprob_at_best_top1": 0.5545976193337436,
+      "best_alpha_topk": 4.0,
+      "best_relprob_topk": 0.6803230286735257,
+      "wrong_relprob_at_best_topk": 0.5547182808431307,
+      "baseline_relprob": 0.4709602106514559,
+      "mean_relprob": 0.4629677309742728,
+      "success_top1": true,
+      "success_topk": true,
+      "topk_needed": false
+    },
+    "Troy": {
+      "layer": 2,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 2,
+          "neuron": 17460,
+          "score": 987306.0,
+          "inject_value": -25.627948760986328
+        },
+        {
+          "layer": 2,
+          "neuron": 7416,
+          "score": 611397.25,
+          "inject_value": 8.468036651611328
+        },
+        {
+          "layer": 2,
+          "neuron": 15932,
+          "score": 112209.1796875,
+          "inject_value": 4.14440619351808e-05
+        },
+        {
+          "layer": 2,
+          "neuron": 6955,
+          "score": 103841.1953125,
+          "inject_value": 0.019122811034321785
+        },
+        {
+          "layer": 2,
+          "neuron": 5765,
+          "score": 66292.1796875,
+          "inject_value": 0.00011933846690226346
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 16.0,
+      "best_relprob_top1": 1.5914518108853486,
+      "wrong_relprob_at_best_top1": 1.0934646068586378,
+      "best_alpha_topk": 16.0,
+      "best_relprob_topk": 1.6208237553574936,
+      "wrong_relprob_at_best_topk": 1.0934915399607565,
+      "baseline_relprob": 0.24599009767141786,
+      "mean_relprob": 0.2876640905762657,
+      "success_top1": true,
+      "success_topk": true,
+      "topk_needed": false
+    }
+  },
+  "means": {
+    "prob": [
+      0.0021940305688566207,
+      0.0022226568118919833,
+      0.02272357452588599,
+      0.0021917485174491537
+    ],
+    "acc": [
+      0.0,
+      0.0,
+      0.038461538461538464,
+      0.0
+    ],
+    "relprob": [
+      1.0,
+      0.09103088344982616,
+      0.09221859351656259,
+      0.9428068567464637,
+      0.09093620055951077
+    ]
+  }
+}

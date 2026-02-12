@@ -1,0 +1,332 @@
+{
+  "model": "Qwen/Qwen2.5-7B",
+  "prompt_style": "base",
+  "dataset": "akariasai/PopQA",
+  "split": "test",
+  "n_entities_requested": 20,
+  "n_entities_candidate": 20,
+  "n_entities_localized": 3,
+  "n_entities_used": 3,
+  "n_examples": 6,
+  "min_dominance": 2.0,
+  "trustworthy_only": true,
+  "trust_thresholds": {
+    "min_dominance": 10.0,
+    "min_loss": 0.1,
+    "min_layer": 1,
+    "max_layer": 6,
+    "min_ablated_prob": 1e-05,
+    "max_relative_prob": 2.0
+  },
+  "injection_scale": 1.0,
+  "topk": 5,
+  "alpha_search": true,
+  "alpha_grid": [
+    1.0,
+    2.0,
+    4.0,
+    8.0,
+    16.0,
+    32.0,
+    64.0,
+    128.0,
+    200.0
+  ],
+  "success_thresholds": {
+    "min_relprob": 0.3,
+    "min_over_wrong": 0.05,
+    "min_over_baseline": 0.05
+  },
+  "fixed_injection_value": null,
+  "injection_mode": "add",
+  "mean_entity_init": true,
+  "known_neurons_file": null,
+  "use_known_only": false,
+  "localization_results_file": "/home/itay/in-silico/results/f2_popqa_popular_200_minq2.json",
+  "unlearning_results_file": "/home/itay/in-silico/figures/f6_popqa_validation_popular200.json",
+  "entities_used": [
+    "Final Destination",
+    "Friends",
+    "The Village"
+  ],
+  "entity_top": {
+    "The Village": {
+      "layer": 1,
+      "neuron": 14056,
+      "dominance": 28.16187647579492,
+      "aliases": [
+        "The Village"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 14056,
+          "score": 6031551234048.0,
+          "inject_value": 22.071239471435547
+        },
+        {
+          "neuron": 885,
+          "score": 23511541760.0,
+          "inject_value": -0.6914423704147339
+        },
+        {
+          "neuron": 15375,
+          "score": 6196541952.0,
+          "inject_value": 1.6553490161895752
+        },
+        {
+          "neuron": 17572,
+          "score": 3767490560.0,
+          "inject_value": 0.35371485352516174
+        },
+        {
+          "neuron": 15835,
+          "score": 3582039296.0,
+          "inject_value": 1.1647971868515015
+        }
+      ],
+      "inject_value": 22.071239471435547
+    },
+    "Final Destination": {
+      "layer": 2,
+      "neuron": 12738,
+      "dominance": 59.8371383096599,
+      "aliases": [
+        "Final Destination"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 12738,
+          "score": 757320318976.0,
+          "inject_value": -18.877138137817383
+        },
+        {
+          "neuron": 13013,
+          "score": 5532250112.0,
+          "inject_value": 0.638340413570404
+        },
+        {
+          "neuron": 3571,
+          "score": 3312140288.0,
+          "inject_value": -2.979951858520508
+        },
+        {
+          "neuron": 3745,
+          "score": 2743270400.0,
+          "inject_value": -0.43399760127067566
+        },
+        {
+          "neuron": 13138,
+          "score": 2619431168.0,
+          "inject_value": -0.1338959038257599
+        }
+      ],
+      "inject_value": -18.877138137817383
+    },
+    "Friends": {
+      "layer": 5,
+      "neuron": 9314,
+      "dominance": 15.049214718908848,
+      "aliases": [
+        "Friends"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 9314,
+          "score": 9226.0810546875,
+          "inject_value": 25.299474716186523
+        },
+        {
+          "neuron": 16954,
+          "score": 483102.40625,
+          "inject_value": 0.010759408585727215
+        },
+        {
+          "neuron": 18104,
+          "score": 130487.7890625,
+          "inject_value": 0.01210484653711319
+        },
+        {
+          "neuron": 18486,
+          "score": 61245.15234375,
+          "inject_value": 0.00017159877461381257
+        },
+        {
+          "neuron": 17029,
+          "score": 59866.140625,
+          "inject_value": -0.07013165205717087
+        }
+      ],
+      "inject_value": 25.299474716186523
+    }
+  },
+  "per_entity": {
+    "Final Destination": {
+      "layer": 2,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 2,
+          "neuron": 12738,
+          "score": 757320318976.0,
+          "inject_value": -18.877138137817383
+        },
+        {
+          "layer": 2,
+          "neuron": 13013,
+          "score": 5532250112.0,
+          "inject_value": 0.638340413570404
+        },
+        {
+          "layer": 2,
+          "neuron": 3571,
+          "score": 3312140288.0,
+          "inject_value": -2.979951858520508
+        },
+        {
+          "layer": 2,
+          "neuron": 3745,
+          "score": 2743270400.0,
+          "inject_value": -0.43399760127067566
+        },
+        {
+          "layer": 2,
+          "neuron": 13138,
+          "score": 2619431168.0,
+          "inject_value": -0.1338959038257599
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 4.0,
+      "best_relprob_top1": 0.08446037603275236,
+      "wrong_relprob_at_best_top1": 0.039827707798789844,
+      "best_alpha_topk": 1.0,
+      "best_relprob_topk": 0.08205556431148328,
+      "wrong_relprob_at_best_topk": 0.07885847856086807,
+      "baseline_relprob": 0.09375274251944155,
+      "mean_relprob": 0.09232088108647254,
+      "success_top1": false,
+      "success_topk": false,
+      "topk_needed": false
+    },
+    "Friends": {
+      "layer": 5,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 5,
+          "neuron": 9314,
+          "score": 9226.0810546875,
+          "inject_value": 25.299474716186523
+        },
+        {
+          "layer": 5,
+          "neuron": 16954,
+          "score": 483102.40625,
+          "inject_value": 0.010759408585727215
+        },
+        {
+          "layer": 5,
+          "neuron": 18104,
+          "score": 130487.7890625,
+          "inject_value": 0.01210484653711319
+        },
+        {
+          "layer": 5,
+          "neuron": 18486,
+          "score": 61245.15234375,
+          "inject_value": 0.00017159877461381257
+        },
+        {
+          "layer": 5,
+          "neuron": 17029,
+          "score": 59866.140625,
+          "inject_value": -0.07013165205717087
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 2.0,
+      "best_relprob_top1": 0.2803222880207615,
+      "wrong_relprob_at_best_top1": 0.09183250619344747,
+      "best_alpha_topk": 2.0,
+      "best_relprob_topk": 0.2806747405655145,
+      "wrong_relprob_at_best_topk": 0.09145475566688481,
+      "baseline_relprob": 0.10656523938050348,
+      "mean_relprob": 0.1146342388716858,
+      "success_top1": false,
+      "success_topk": false,
+      "topk_needed": false
+    },
+    "The Village": {
+      "layer": 1,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 1,
+          "neuron": 14056,
+          "score": 6031551234048.0,
+          "inject_value": 22.071239471435547
+        },
+        {
+          "layer": 1,
+          "neuron": 885,
+          "score": 23511541760.0,
+          "inject_value": -0.6914423704147339
+        },
+        {
+          "layer": 1,
+          "neuron": 15375,
+          "score": 6196541952.0,
+          "inject_value": 1.6553490161895752
+        },
+        {
+          "layer": 1,
+          "neuron": 17572,
+          "score": 3767490560.0,
+          "inject_value": 0.35371485352516174
+        },
+        {
+          "layer": 1,
+          "neuron": 15835,
+          "score": 3582039296.0,
+          "inject_value": 1.1647971868515015
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 4.0,
+      "best_relprob_top1": 0.7424658872963373,
+      "wrong_relprob_at_best_top1": 0.4769792660188873,
+      "best_alpha_topk": 4.0,
+      "best_relprob_topk": 0.7439523173801149,
+      "wrong_relprob_at_best_topk": 0.40313829564366194,
+      "baseline_relprob": 0.4709602106514559,
+      "mean_relprob": 0.4715040075851284,
+      "success_top1": true,
+      "success_topk": true,
+      "topk_needed": false
+    }
+  },
+  "means": {
+    "prob": [
+      0.0010616537195649773,
+      0.0011174236606166232,
+      0.002397227001589878,
+      0.0009088345977943391
+    ],
+    "acc": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "relprob": [
+      1.0,
+      0.12259413413559561,
+      0.12903415078887998,
+      0.2768190448264089,
+      0.10494739342572434
+    ]
+  }
+}
