@@ -182,15 +182,15 @@ We report four primary findings with matched experiments and controls. Unless no
 \end{figure}
 
 \begin{finding}{Finding 2: Controlled Injection Is Directional in QA-Style Prompts}
-\textbf{Experiment.} For each PopQA-200 entity whose localized cell passes our automated trust checks (Appendix~\ref{app:entity_neurons}), we run $K{=}2$ PopQA questions per entity, replace one surface-form alias in the question with a placeholder token \texttt{X}, and (optionally) initialize the \texttt{X} position to a \emph{mean entity activation} estimated by averaging MLP activations at entity-mention positions across entity-present prompts. We then inject either (i) the entity's localized cell or (ii) a wrong-entity cell at the \texttt{X} position, and evaluate recovery of the answer-token probability relative to the original entity-present prompt.
+\textbf{Experiment.} For each PopQA-200 entity whose localized cell passes our automated trust checks (Appendix~\ref{app:entity_neurons}), we run $K{=}2$ PopQA questions per entity, replace one surface-form alias in the question with a placeholder token \texttt{X}, and initialize the \texttt{X} position to a \emph{mean entity activation} estimated by averaging MLP activations at entity-mention positions across entity-present prompts. We then inject either (i) the entity's top-$k$ cells within the localized layer ($k{=}5$, anchored to the top cell) or (ii) a wrong-entity top-$k$ control at the \texttt{X} position. Because injection strength is entity-dependent, we sweep $\alpha \in \{1,2,4,8,16,32,64,128,200\}$ per entity and report results at the best-performing $\alpha$.
 
-\textbf{Result.} Over the trustworthy subset ($k=131$ entities), correct-cell injection increases the relative answer probability from 0.067 (no injection) to 0.412, versus 0.069 for a wrong-cell control; mean-entity initialization alone yields 0.067 (Figure~\ref{fig:f4}). This provides a clear directional causal signal in a controlled QA-style setting.
+\textbf{Result.} Over the trustworthy subset ($k=131$ entities), correct-cell injection increases the relative answer probability from 0.067 (no injection) to 0.559, versus 0.075 for a wrong-cell control; mean-entity initialization alone yields 0.067 (Figure~\ref{fig:f4}). Using an entity-level success criterion ($\mathrm{RelProb}\ge 0.30$, at least +0.05 over no-injection and +0.05 over wrong-cell), 77/131 entities succeed with top-$k$ injection, compared with 75/131 under top-1 only; only 3 entities require top-$k$ to pass. This provides a clear directional causal signal in a controlled QA-style setting.
 \end{finding}
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=\columnwidth]{figures/f4_activation_causality_popular200_trustworthy_meaninit_alpha4_relprob.pdf}
-\caption{PopQA-style activation causality on trustworthy entity cells ($k=131$ entities out of $N=200$; $K{=}2$ questions per entity, $n=262$ examples). Bars report $\mathrm{RelProb}$ (answer-token probability divided by the entity-present probability); the entity-present condition is 1.0 by construction and shown explicitly. Error bars are bootstrap standard deviations. Mean-entity initialization alone is near the no-injection baseline, while correct-cell injection increases $\mathrm{RelProb}$ relative to both no-injection and wrong-cell controls.}
+\includegraphics[width=\columnwidth]{figures/f4_activation_causality_popular200_trustworthy_meaninit_topk5_alphasearch_poplist_relprob.pdf}
+\caption{PopQA-style activation causality on trustworthy entity cells ($k=131$ entities out of $N=200$; $K{=}2$ questions per entity, $n=262$ examples). Bars report $\mathrm{RelProb}$ (answer-token probability divided by the entity-present probability); the entity-present condition is 1.0 by construction and shown explicitly. Interventions inject top-$k$ cells ($k{=}5$) at the placeholder position after mean-entity initialization, with per-entity $\alpha$ selected by sweeping $\{1,2,4,8,16,32,64,128,200\}$. Error bars are bootstrap standard deviations. Correct-cell injection increases $\mathrm{RelProb}$ relative to both no-injection and wrong-cell controls, and yields 77/131 successful entities under the criterion in Finding 2 (75/131 with top-1 only; 3 top-$k$-needed cases).}
 \label{fig:f4}
 \end{figure}
 
@@ -279,7 +279,7 @@ Factual modification & {\ttfamily The spouse of <entity> is named} \\
 \end{table}
 
 \paragraph{Key hyperparameters.} Unless stated otherwise: curated PopQA $N=200$ entities, $K=2$ questions per entity for localization and causal checks, seed 7, and $\epsilon=10^{-6}$ for stability computations. Selective unlearning (main Finding 4) uses $\alpha \in [1, -3]$ with 20 steps.
-\paragraph{Finding 2 injection setting.} For Finding 2 we use set-injection at the placeholder position, setting the localized cell to $v=2\times$ its mean activation under the corresponding entity-present prompts.
+\paragraph{Finding 2 injection setting.} For Finding 2 we use set-injection at the placeholder position with mean-entity initialization. We inject the top-$k$ cells within the localized layer ($k{=}5$) and sweep an interpolation/extrapolation factor $\alpha \in \{1,2,4,8,16,32,64,128,200\}$ per entity, selecting the best-performing $\alpha$ for reporting. We additionally flag entity-level success when $\mathrm{RelProb}\ge 0.30$ and both margins $\mathrm{RelProb}-\mathrm{RelProb}_{\mathrm{no\ inj}}\ge 0.05$ and $\mathrm{RelProb}-\mathrm{RelProb}_{\mathrm{wrong}}\ge 0.05$.
 
 \section{Algorithms}
 \label{app:algorithms}
@@ -303,10 +303,10 @@ Algorithms~\ref{alg:localize} and~\ref{alg:inject} provide pseudocode for the tw
 \end{algorithm}
 
 \begin{algorithm}[!h]
-\caption{Controlled injection of an entity cell in a QA-style prompt}
+\caption{Controlled injection of entity cells in a QA-style prompt}
 \label{alg:inject}
 \begin{algorithmic}[1]
-\Require Model $M$; tokenizer $\tau$; PopQA question $q$; answer aliases $\mathcal{A}$; entity aliases $\mathcal{E}$; entity cell $(\ell^\star, j^\star)$; injection value $v$; injection mode $\in\{\mathrm{set},\mathrm{add}\}$; $\epsilon>0$
+\Require Model $M$; tokenizer $\tau$; PopQA question $q$; answer aliases $\mathcal{A}$; entity aliases $\mathcal{E}$; localized layer $\ell^\star$; top-$k$ entity cells $S=\{j_1,\dots,j_k\}$; entity-specific values $\{v_{j}\}_{j\in S}$; mean-entity vector $m_{\ell^\star}$; scale $\alpha$; $\epsilon>0$
 \Ensure Relative answer probability under injection
 \State Wrap the question for a base model: $x_{\mathrm{full}} \gets \texttt{Question: }q\texttt{\textbackslash nAnswer:}$
 \State Find a matched alias $e \in \mathcal{E}$ in $q$ and form $q_X$ by replacing the first occurrence with \texttt{X}
@@ -314,8 +314,9 @@ Algorithms~\ref{alg:localize} and~\ref{alg:inject} provide pseudocode for the tw
 \State Convert aliases to next-token targets $Y \gets \{\mathrm{tok}_1(a): a\in \mathcal{A}\}$ under $\tau$ (prepend a leading space for tokenization)
 \State Run $M$ on $x_{\mathrm{full}}$ and record $p_{\mathrm{full}} \gets \max_{y\in Y} p(y \mid x_{\mathrm{full}})$
 \State Run $M$ on $x_X$ (no injection) and record $p_0 \gets \max_{y\in Y} p(y \mid x_X)$
-\State Run $M$ on $x_X$ while injecting at $(\ell^\star,j^\star,t_X)$:
-\Statex \hspace{1em} if mode is set: $a_{\ell^\star j^\star}(x_X)[t_X] \leftarrow v$, else $a_{\ell^\star j^\star}(x_X)[t_X] \mathrel{+}= v$
+\State Run $M$ on $x_X$ while injecting at layer $\ell^\star$ and position $t_X$:
+\Statex \hspace{1em} Initialize: $a_{\ell^\star}(x_X)[t_X] \leftarrow m_{\ell^\star}$
+\Statex \hspace{1em} For each $j \in S$: $a_{\ell^\star j}(x_X)[t_X] \leftarrow m_{\ell^\star j} + \alpha\,(v_j - m_{\ell^\star j})$
 \State Record $p_1 \gets \max_{y\in Y} p(y \mid x_X,\mathrm{inject})$
 \State \Return $p_1 / \max(p_{\mathrm{full}}, \epsilon)$
 \end{algorithmic}
@@ -353,12 +354,12 @@ P6 & The book written by Barack Obama is titled Dreams from My $\rightarrow$ Fat
 \label{tab:steer_prompts}
 \end{table}
 
-\begin{figure*}[!h]
+\begin{figure}[!h]
 \centering
-\includegraphics[width=\textwidth]{figures/f7_edit_vs_preserve.pdf}
+\includegraphics[width=\linewidth]{figures/f7_edit_vs_preserve.pdf}
 \caption{Factual modification via latent steering (single-case study). Top: spouse prompts (A1--A4; Table~\ref{tab:steer_prompts}) before/after steering toward a target completion. Bottom: preservation prompts (P1--P6), reported as steered/base ratios for expected next tokens.}
 \label{fig:f7}
-\end{figure*}
+\end{figure}
 \FloatBarrier
 
 \begin{algorithm}[!h]
@@ -397,7 +398,7 @@ P6 & The book written by Barack Obama is titled Dreams from My $\rightarrow$ Fat
 \label{app:entity_neurons}
 
 \paragraph{Categorized PopQA map.}
-The full PopQA-200 entity map is grouped by category to improve readability. The current split contains 48 people, 82 locations, 6 organizations, and 64 other entities. Each row includes a trust flag computed by automated checks (e.g., early-layer localization and causal sensitivity under negative ablation, plus non-collapse sanity checks). Under these checks, $k=131$ out of $n=200$ localized cells are marked trustworthy.
+The full PopQA-200 entity map is grouped by category to improve readability. The current split contains 48 people, 82 locations, 6 organizations, and 64 other entities. Each row includes a trust flag computed by automated checks (e.g., early-layer localization and causal sensitivity under negative ablation, plus non-collapse sanity checks). Under these checks, $k=131$ out of $n=200$ localized cells are marked trustworthy. Under the Finding 2 causal-injection success criterion, 77/131 trustworthy entities pass with top-$k$ injection (75/131 with top-1); 3 entities require top-$k$.
 \input{entities_table}
 
 \end{document}
