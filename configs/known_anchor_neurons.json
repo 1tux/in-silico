@@ -1,0 +1,45 @@
+{
+  "Barack Obama": {
+    "category": "Person",
+    "layer": 2,
+    "neuron": 10941,
+    "aliases": [
+      "Barack Obama",
+      "Obama"
+    ]
+  },
+  "Donald Trump": {
+    "category": "Person",
+    "layer": 1,
+    "neuron": 11948,
+    "aliases": [
+      "Donald Trump",
+      "Trump"
+    ]
+  },
+  "Federal Bureau of Investigation": {
+    "category": "Organization",
+    "layer": 2,
+    "neuron": 11955,
+    "aliases": [
+      "Federal Bureau of Investigation",
+      "FBI"
+    ]
+  },
+  "Jennifer Aniston": {
+    "category": "Person",
+    "layer": 3,
+    "neuron": 1794,
+    "aliases": [
+      "Jennifer Aniston"
+    ]
+  },
+  "Paris": {
+    "category": "Location",
+    "layer": 1,
+    "neuron": 231,
+    "aliases": [
+      "Paris"
+    ]
+  }
+}

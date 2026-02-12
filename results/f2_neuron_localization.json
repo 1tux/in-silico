@@ -1,0 +1,1402 @@
+{
+  "Midnight": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 5486.89404296875,
+    "topk_mean": 1252.541748046875,
+    "randk_mean": 6.416876792907715
+  },
+  "Glass": {
+    "top_layer": 26,
+    "top_neuron": 5488,
+    "top1": 1532.7900390625,
+    "topk_mean": 333.3752746582031,
+    "randk_mean": 2.625999689102173
+  },
+  "I Am": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 2866.726806640625,
+    "topk_mean": 948.6676025390625,
+    "randk_mean": 5.543691158294678
+  },
+  "Jerusalem": {
+    "top_layer": 18,
+    "top_neuron": 6692,
+    "top1": 672981.0625,
+    "topk_mean": 39306.60546875,
+    "randk_mean": 9.553940773010254
+  },
+  "Annie": {
+    "top_layer": 1,
+    "top_neuron": 6237,
+    "top1": 5146.19287109375,
+    "topk_mean": 1590.752197265625,
+    "randk_mean": 14.502156257629395
+  },
+  "King": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 7438.11962890625,
+    "topk_mean": 859.0147705078125,
+    "randk_mean": 0.2625623643398285
+  },
+  "Blow": {
+    "top_layer": 0,
+    "top_neuron": 13792,
+    "top1": 1416.539306640625,
+    "topk_mean": 453.8727111816406,
+    "randk_mean": 2.331575870513916
+  },
+  "Yellow": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 8551.2001953125,
+    "topk_mean": 937.7484130859375,
+    "randk_mean": 0.2948733866214752
+  },
+  "David": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 5201.50927734375,
+    "topk_mean": 363.57757568359375,
+    "randk_mean": 1.2769204378128052
+  },
+  "Prague": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 36823388160.0,
+    "topk_mean": 3753053440.0,
+    "randk_mean": 156918.140625
+  },
+  "The City": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 3472.947021484375,
+    "topk_mean": 599.5839233398438,
+    "randk_mean": 1.1181883811950684
+  },
+  "Hugo": {
+    "top_layer": 26,
+    "top_neuron": 5488,
+    "top1": 2451.5693359375,
+    "topk_mean": 663.8846435546875,
+    "randk_mean": 5.2965192794799805
+  },
+  "The Secret": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 1557.0684814453125,
+    "topk_mean": 404.2622985839844,
+    "randk_mean": 1.7159197330474854
+  },
+  "Memories": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 9144.1259765625,
+    "topk_mean": 1014.0064697265625,
+    "randk_mean": 18.787813186645508
+  },
+  "Holiday": {
+    "top_layer": 26,
+    "top_neuron": 5488,
+    "top1": 1890.644775390625,
+    "topk_mean": 402.31939697265625,
+    "randk_mean": 1.243345022201538
+  },
+  "Mass": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 2671.032958984375,
+    "topk_mean": 1142.537841796875,
+    "randk_mean": 1.138255000114441
+  },
+  "The Other": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 5470.7578125,
+    "topk_mean": 623.1312866210938,
+    "randk_mean": 2.8495116233825684
+  },
+  "Christine": {
+    "top_layer": 4,
+    "top_neuron": 9869,
+    "top1": 1317.697998046875,
+    "topk_mean": 421.676513671875,
+    "randk_mean": 2.693084716796875
+  },
+  "The Rescue": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 19643.078125,
+    "topk_mean": 332.0986633300781,
+    "randk_mean": 3.936486005783081
+  },
+  "The Jacket": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 4926.240234375,
+    "topk_mean": 615.2913818359375,
+    "randk_mean": 2.3287453651428223
+  },
+  "Listen": {
+    "top_layer": 27,
+    "top_neuron": 10350,
+    "top1": 15840.1376953125,
+    "topk_mean": 1653.4898681640625,
+    "randk_mean": 0.9239600300788879
+  },
+  "Sacrifice": {
+    "top_layer": 2,
+    "top_neuron": 4170,
+    "top1": 5498.9306640625,
+    "topk_mean": 683.8735961914062,
+    "randk_mean": 0.3872656226158142
+  },
+  "Taxi": {
+    "top_layer": 24,
+    "top_neuron": 16030,
+    "top1": 3920.846923828125,
+    "topk_mean": 414.03985595703125,
+    "randk_mean": 0.8077438473701477
+  },
+  "Champion": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 2775.106201171875,
+    "topk_mean": 376.50982666015625,
+    "randk_mean": 1.1122697591781616
+  },
+  "Elizabeth": {
+    "top_layer": 26,
+    "top_neuron": 5488,
+    "top1": 2241.000244140625,
+    "topk_mean": 225.92593383789062,
+    "randk_mean": 0.6649157404899597
+  },
+  "Nine": {
+    "top_layer": 4,
+    "top_neuron": 1005,
+    "top1": 2539.670654296875,
+    "topk_mean": 597.4490966796875,
+    "randk_mean": 2.0410399436950684
+  },
+  "Face": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 7840.46923828125,
+    "topk_mean": 1418.685302734375,
+    "randk_mean": 5.2870097160339355
+  },
+  "Empire": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 1504.55126953125,
+    "topk_mean": 421.7586975097656,
+    "randk_mean": 1.2143306732177734
+  },
+  "Alice": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 1631.1207275390625,
+    "topk_mean": 512.007080078125,
+    "randk_mean": 1.8743369579315186
+  },
+  "Fire": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 3176.464111328125,
+    "topk_mean": 924.1477661132812,
+    "randk_mean": 1.8239247798919678
+  },
+  "Emma": {
+    "top_layer": 1,
+    "top_neuron": 13906,
+    "top1": 7060.51611328125,
+    "topk_mean": 2068.51318359375,
+    "randk_mean": 15.554559707641602
+  },
+  "Little Man": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 3439.49072265625,
+    "topk_mean": 585.81787109375,
+    "randk_mean": 4.812415599822998
+  },
+  "Normal": {
+    "top_layer": 26,
+    "top_neuron": 5488,
+    "top1": 2589.865478515625,
+    "topk_mean": 400.6722717285156,
+    "randk_mean": 0.6517351865768433
+  },
+  "Safe": {
+    "top_layer": 18,
+    "top_neuron": 5307,
+    "top1": 473891.625,
+    "topk_mean": 7661.8759765625,
+    "randk_mean": 5.98547887802124
+  },
+  "The Fog": {
+    "top_layer": 6,
+    "top_neuron": 8658,
+    "top1": 437079.0625,
+    "topk_mean": 23934.01953125,
+    "randk_mean": 2.8177454471588135
+  },
+  "Beautiful": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 90755.40625,
+    "topk_mean": 1064.2564697265625,
+    "randk_mean": 7.750640869140625
+  },
+  "Baby": {
+    "top_layer": 3,
+    "top_neuron": 5128,
+    "top1": 3374.697509765625,
+    "topk_mean": 288.98345947265625,
+    "randk_mean": 4.374792575836182
+  },
+  "Soldier": {
+    "top_layer": 18,
+    "top_neuron": 15374,
+    "top1": 1398.1390380859375,
+    "topk_mean": 434.9087829589844,
+    "randk_mean": 3.931227922439575
+  },
+  "Sisters": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 2877.517822265625,
+    "topk_mean": 1121.15185546875,
+    "randk_mean": 1.309319257736206
+  },
+  "By the Sea": {
+    "top_layer": 7,
+    "top_neuron": 12717,
+    "top1": 10311.658203125,
+    "topk_mean": 868.1433715820312,
+    "randk_mean": 1.0302599668502808
+  },
+  "Friends": {
+    "top_layer": 8,
+    "top_neuron": 12049,
+    "top1": 9665964.0,
+    "topk_mean": 30041.650390625,
+    "randk_mean": 10.15379810333252
+  },
+  "The Lie": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 5896.8466796875,
+    "topk_mean": 1186.7645263671875,
+    "randk_mean": 7.583261966705322
+  },
+  "Click": {
+    "top_layer": 1,
+    "top_neuron": 13416,
+    "top1": 379222.5,
+    "topk_mean": 49546.5703125,
+    "randk_mean": 10.424753189086914
+  },
+  "Homecoming": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 1638.962158203125,
+    "topk_mean": 453.71490478515625,
+    "randk_mean": 0.760306179523468
+  },
+  "The Trap": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 5490.02978515625,
+    "topk_mean": 1543.0413818359375,
+    "randk_mean": 3.2505218982696533
+  },
+  "Wish You Were Here": {
+    "top_layer": 17,
+    "top_neuron": 1648,
+    "top1": 6963.818359375,
+    "topk_mean": 588.9487915039062,
+    "randk_mean": 1.6485503911972046
+  },
+  "The Little Prince": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 1900.2166748046875,
+    "topk_mean": 524.021484375,
+    "randk_mean": 8.943676948547363
+  },
+  "Man of the Year": {
+    "top_layer": 5,
+    "top_neuron": 4381,
+    "top1": 9638.7587890625,
+    "topk_mean": 1728.0386962890625,
+    "randk_mean": 9.803316116333008
+  },
+  "Cocktail": {
+    "top_layer": 1,
+    "top_neuron": 13906,
+    "top1": 4284.0458984375,
+    "topk_mean": 1523.3836669921875,
+    "randk_mean": 4.899254322052002
+  },
+  "Control": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 3503.11083984375,
+    "topk_mean": 1067.9803466796875,
+    "randk_mean": 0.4004910886287689
+  },
+  "The Mirror": {
+    "top_layer": 1,
+    "top_neuron": 18476,
+    "top1": 9732.9990234375,
+    "topk_mean": 2236.03759765625,
+    "randk_mean": 26.48409080505371
+  },
+  "Kingdom of England": {
+    "top_layer": 1,
+    "top_neuron": 10923,
+    "top1": 910816.25,
+    "topk_mean": 564347.125,
+    "randk_mean": 229.6647491455078
+  },
+  "Love": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 6420.75341796875,
+    "topk_mean": 1900.7584228515625,
+    "randk_mean": 0.5474600195884705
+  },
+  "The Bat": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 3864.117919921875,
+    "topk_mean": 977.3690185546875,
+    "randk_mean": 1.4779129028320312
+  },
+  "Frequency": {
+    "top_layer": 4,
+    "top_neuron": 9869,
+    "top1": 2616.299072265625,
+    "topk_mean": 447.37646484375,
+    "randk_mean": 4.2246174812316895
+  },
+  "Taken": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 6125.4345703125,
+    "topk_mean": 1874.8577880859375,
+    "randk_mean": 0.3052724301815033
+  },
+  "The Well": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 6902.98486328125,
+    "topk_mean": 526.70654296875,
+    "randk_mean": 1.9947046041488647
+  },
+  "Treasure Island": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 2857.4111328125,
+    "topk_mean": 497.10284423828125,
+    "randk_mean": 0.762671709060669
+  },
+  "100": {
+    "top_layer": 3,
+    "top_neuron": 14388,
+    "top1": 840849.4375,
+    "topk_mean": 137886.390625,
+    "randk_mean": 3.5430564880371094
+  },
+  "The Saint": {
+    "top_layer": 2,
+    "top_neuron": 9851,
+    "top1": 1420.9547119140625,
+    "topk_mean": 430.7200622558594,
+    "randk_mean": 6.796913146972656
+  },
+  "Time": {
+    "top_layer": 26,
+    "top_neuron": 12098,
+    "top1": 15879.7841796875,
+    "topk_mean": 1997.180419921875,
+    "randk_mean": 0.9538917541503906
+  },
+  "Michael": {
+    "top_layer": 26,
+    "top_neuron": 5488,
+    "top1": 3256.28857421875,
+    "topk_mean": 1190.96923828125,
+    "randk_mean": 1.1280797719955444
+  },
+  "Georgia": {
+    "top_layer": 4,
+    "top_neuron": 3542,
+    "top1": 4890.86181640625,
+    "topk_mean": 944.0046997070312,
+    "randk_mean": 15.6788911819458
+  },
+  "Lima": {
+    "top_layer": 21,
+    "top_neuron": 15682,
+    "top1": 1075871.375,
+    "topk_mean": 21790.611328125,
+    "randk_mean": 2.0240418910980225
+  },
+  "The Reader": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 6233.50390625,
+    "topk_mean": 694.7657470703125,
+    "randk_mean": 7.602654457092285
+  },
+  "Crazy": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 2828.488525390625,
+    "topk_mean": 1074.4342041015625,
+    "randk_mean": 0.8572742342948914
+  },
+  "The Firm": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 10055.4990234375,
+    "topk_mean": 1097.3116455078125,
+    "randk_mean": 7.01956844329834
+  },
+  "Go": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 6265.83984375,
+    "topk_mean": 348.35577392578125,
+    "randk_mean": 4.763033390045166
+  },
+  "I Love You": {
+    "top_layer": 4,
+    "top_neuron": 9869,
+    "top1": 11585.046875,
+    "topk_mean": 1422.1103515625,
+    "randk_mean": 3.6671218872070312
+  },
+  "Pizza": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 2573.314208984375,
+    "topk_mean": 717.1602172851562,
+    "randk_mean": 3.6040854454040527
+  },
+  "Turin": {
+    "top_layer": 5,
+    "top_neuron": 18374,
+    "top1": 525819.4375,
+    "topk_mean": 33831.84765625,
+    "randk_mean": 3.3558170795440674
+  },
+  "Life": {
+    "top_layer": 4,
+    "top_neuron": 15459,
+    "top1": 2964.308837890625,
+    "topk_mean": 1016.2174072265625,
+    "randk_mean": 3.848191738128662
+  },
+  "Halloween": {
+    "top_layer": 26,
+    "top_neuron": 2403,
+    "top1": 3767.689453125,
+    "topk_mean": 513.098388671875,
+    "randk_mean": 1.9958829879760742
+  },
+  "The Good Life": {
+    "top_layer": 11,
+    "top_neuron": 7009,
+    "top1": 9060.5185546875,
+    "topk_mean": 244.69131469726562,
+    "randk_mean": 0.5131213068962097
+  },
+  "Home": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 6129.8369140625,
+    "topk_mean": 397.89263916015625,
+    "randk_mean": 2.1236090660095215
+  },
+  "The Fly": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 4259.6728515625,
+    "topk_mean": 478.4165954589844,
+    "randk_mean": 6.314466953277588
+  },
+  "Lincoln": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 1748.5938720703125,
+    "topk_mean": 350.5382385253906,
+    "randk_mean": 0.911970317363739
+  },
+  "Hotel": {
+    "top_layer": 4,
+    "top_neuron": 9869,
+    "top1": 2751.26123046875,
+    "topk_mean": 496.0970764160156,
+    "randk_mean": 5.991703033447266
+  },
+  "Glory": {
+    "top_layer": 18,
+    "top_neuron": 12362,
+    "top1": 1170.622314453125,
+    "topk_mean": 344.3205261230469,
+    "randk_mean": 2.0773441791534424
+  },
+  "The Miracle": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 3717.77978515625,
+    "topk_mean": 622.7718505859375,
+    "randk_mean": 0.5788780450820923
+  },
+  "The East": {
+    "top_layer": 18,
+    "top_neuron": 12362,
+    "top1": 13245.830078125,
+    "topk_mean": 1054.8306884765625,
+    "randk_mean": 2.474597930908203
+  },
+  "Paris": {
+    "top_layer": 26,
+    "top_neuron": 5488,
+    "top1": 4672.30615234375,
+    "topk_mean": 580.7391357421875,
+    "randk_mean": 0.1087055429816246
+  },
+  "The Island": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 5471.982421875,
+    "topk_mean": 1578.4573974609375,
+    "randk_mean": 7.386628150939941
+  },
+  "Great Expectations": {
+    "top_layer": 26,
+    "top_neuron": 597,
+    "top1": 4193.83935546875,
+    "topk_mean": 1513.62939453125,
+    "randk_mean": 1.019838809967041
+  },
+  "On the Town": {
+    "top_layer": 7,
+    "top_neuron": 2139,
+    "top1": 6108.4521484375,
+    "topk_mean": 1075.1866455078125,
+    "randk_mean": 2.135195016860962
+  },
+  "Seed": {
+    "top_layer": 17,
+    "top_neuron": 2199,
+    "top1": 2341.885009765625,
+    "topk_mean": 223.9014129638672,
+    "randk_mean": 2.436445951461792
+  },
+  "Images": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 4149.51611328125,
+    "topk_mean": 562.0528564453125,
+    "randk_mean": 1.7794803380966187
+  },
+  "Bala": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 2321.999267578125,
+    "topk_mean": 506.4383850097656,
+    "randk_mean": 0.9554994702339172
+  },
+  "Paprika": {
+    "top_layer": 26,
+    "top_neuron": 5488,
+    "top1": 1392.8123779296875,
+    "topk_mean": 300.21295166015625,
+    "randk_mean": 0.11222429573535919
+  },
+  "The Message": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 2809.162109375,
+    "topk_mean": 391.9449462890625,
+    "randk_mean": 0.6413334012031555
+  },
+  "Sunny": {
+    "top_layer": 5,
+    "top_neuron": 6949,
+    "top1": 16262.0244140625,
+    "topk_mean": 1839.53515625,
+    "randk_mean": 5.223532199859619
+  },
+  "Jesus": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 3254.932861328125,
+    "topk_mean": 1017.0300903320312,
+    "randk_mean": 3.7199180126190186
+  },
+  "The Wave": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 20624.921875,
+    "topk_mean": 1505.287841796875,
+    "randk_mean": 4126.59619140625
+  },
+  "Tomorrow": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 1475.7220458984375,
+    "topk_mean": 535.3436279296875,
+    "randk_mean": 0.29783129692077637
+  },
+  "The River": {
+    "top_layer": 4,
+    "top_neuron": 13899,
+    "top1": 15138.4365234375,
+    "topk_mean": 1575.50927734375,
+    "randk_mean": 3.4668450355529785
+  },
+  "The Interview": {
+    "top_layer": 1,
+    "top_neuron": 10819,
+    "top1": 2393.286376953125,
+    "topk_mean": 1009.43017578125,
+    "randk_mean": 9.071037292480469
+  },
+  "The Church": {
+    "top_layer": 19,
+    "top_neuron": 11313,
+    "top1": 2200398.5,
+    "topk_mean": 22473.16796875,
+    "randk_mean": 8.562932014465332
+  },
+  "Guru": {
+    "top_layer": 4,
+    "top_neuron": 4939,
+    "top1": 8988.51953125,
+    "topk_mean": 1402.0078125,
+    "randk_mean": 7.472413063049316
+  },
+  "The Birds": {
+    "top_layer": 5,
+    "top_neuron": 4381,
+    "top1": 2190.767822265625,
+    "topk_mean": 361.1307373046875,
+    "randk_mean": 3.1036908626556396
+  },
+  "The Sea": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 3808.644287109375,
+    "topk_mean": 538.80078125,
+    "randk_mean": 6.7910943031311035
+  },
+  "The Spoilers": {
+    "top_layer": 17,
+    "top_neuron": 6766,
+    "top1": 11643.662109375,
+    "topk_mean": 1050.5787353515625,
+    "randk_mean": 3.5571227073669434
+  },
+  "Star Trek: First Contact": {
+    "top_layer": 0,
+    "top_neuron": 11470,
+    "top1": 1953.6776123046875,
+    "topk_mean": 847.259765625,
+    "randk_mean": 1.263880729675293
+  },
+  "Highway": {
+    "top_layer": 0,
+    "top_neuron": 2988,
+    "top1": 5205.74755859375,
+    "topk_mean": 2330.50537109375,
+    "randk_mean": 1.6914386749267578
+  },
+  "Carrie": {
+    "top_layer": 5,
+    "top_neuron": 6949,
+    "top1": 7674.19677734375,
+    "topk_mean": 857.1476440429688,
+    "randk_mean": 2.5142087936401367
+  },
+  "Angel": {
+    "top_layer": 12,
+    "top_neuron": 4149,
+    "top1": 2673.9580078125,
+    "topk_mean": 122.09342956542969,
+    "randk_mean": 1.8524221181869507
+  },
+  "Burn": {
+    "top_layer": 26,
+    "top_neuron": 5488,
+    "top1": 6214.69677734375,
+    "topk_mean": 728.2328491210938,
+    "randk_mean": 1.1835525035858154
+  },
+  "She": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 3523.8916015625,
+    "topk_mean": 1083.4346923828125,
+    "randk_mean": 6.370166778564453
+  },
+  "Paradise": {
+    "top_layer": 9,
+    "top_neuron": 4457,
+    "top1": 6343.0869140625,
+    "topk_mean": 358.8446350097656,
+    "randk_mean": 3.673271656036377
+  },
+  "Regeneration": {
+    "top_layer": 4,
+    "top_neuron": 15344,
+    "top1": 6546.53369140625,
+    "topk_mean": 2011.658203125,
+    "randk_mean": 2.2268662452697754
+  },
+  "The Castle": {
+    "top_layer": 18,
+    "top_neuron": 12362,
+    "top1": 10965.8251953125,
+    "topk_mean": 2812.47021484375,
+    "randk_mean": 2.476802110671997
+  },
+  "A.I. Artificial Intelligence": {
+    "top_layer": 4,
+    "top_neuron": 4475,
+    "top1": 27191.55859375,
+    "topk_mean": 2236.53662109375,
+    "randk_mean": 18.251577377319336
+  },
+  "Desire": {
+    "top_layer": 1,
+    "top_neuron": 13906,
+    "top1": 37840.3125,
+    "topk_mean": 2096.47607421875,
+    "randk_mean": 21.15898895263672
+  },
+  "Freedom": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 2636.364990234375,
+    "topk_mean": 352.4439697265625,
+    "randk_mean": 2.3940224647521973
+  },
+  "The Valley": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 3818.113525390625,
+    "topk_mean": 395.59759521484375,
+    "randk_mean": 0.9755555391311646
+  },
+  "On Tour": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 2162.6484375,
+    "topk_mean": 617.6896362304688,
+    "randk_mean": 1.9036056995391846
+  },
+  "Hamilton": {
+    "top_layer": 26,
+    "top_neuron": 12607,
+    "top1": 2728.80419921875,
+    "topk_mean": 555.64599609375,
+    "randk_mean": 0.44121938943862915
+  },
+  "Toy Story": {
+    "top_layer": 13,
+    "top_neuron": 14452,
+    "top1": 7180.71435546875,
+    "topk_mean": 741.6946411132812,
+    "randk_mean": 6.562081336975098
+  },
+  "Imagine": {
+    "top_layer": 25,
+    "top_neuron": 7412,
+    "top1": 3502.2138671875,
+    "topk_mean": 145.98849487304688,
+    "randk_mean": 5.873265743255615
+  },
+  "M": {
+    "top_layer": 3,
+    "top_neuron": 10153,
+    "top1": 4935.62744140625,
+    "topk_mean": 2199.86279296875,
+    "randk_mean": 10.039773941040039
+  },
+  "A Night to Remember": {
+    "top_layer": 7,
+    "top_neuron": 2139,
+    "top1": 12077.2919921875,
+    "topk_mean": 485.6910095214844,
+    "randk_mean": 3.070648670196533
+  },
+  "Crash": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 4008.859375,
+    "topk_mean": 1592.378662109375,
+    "randk_mean": 2.0143895149230957
+  },
+  "Deadline": {
+    "top_layer": 24,
+    "top_neuron": 13307,
+    "top1": 2677842.0,
+    "topk_mean": 25042.92578125,
+    "randk_mean": 7.5880126953125
+  },
+  "The Take": {
+    "top_layer": 20,
+    "top_neuron": 4236,
+    "top1": 4957.19873046875,
+    "topk_mean": 895.40869140625,
+    "randk_mean": 26.85915184020996
+  },
+  "Election": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 4832.13232421875,
+    "topk_mean": 1311.612060546875,
+    "randk_mean": 0.6961104273796082
+  },
+  "Virus": {
+    "top_layer": 3,
+    "top_neuron": 5403,
+    "top1": 692190.875,
+    "topk_mean": 58785.13671875,
+    "randk_mean": 3.114804983139038
+  },
+  "Leader": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 4423.443359375,
+    "topk_mean": 993.6306762695312,
+    "randk_mean": 1.8007915019989014
+  },
+  "The Children": {
+    "top_layer": 21,
+    "top_neuron": 5936,
+    "top1": 520423.34375,
+    "topk_mean": 63076.4765625,
+    "randk_mean": 1.7605469226837158
+  },
+  "Chicago": {
+    "top_layer": 1,
+    "top_neuron": 13906,
+    "top1": 1305.1737060546875,
+    "topk_mean": 686.5977783203125,
+    "randk_mean": 11.308005332946777
+  },
+  "Thor": {
+    "top_layer": 4,
+    "top_neuron": 2634,
+    "top1": 6841.60107421875,
+    "topk_mean": 1381.5738525390625,
+    "randk_mean": 6.464632987976074
+  },
+  "Monster": {
+    "top_layer": 23,
+    "top_neuron": 18405,
+    "top1": 8805.9375,
+    "topk_mean": 154.91932678222656,
+    "randk_mean": 0.2821927070617676
+  },
+  "Alexander": {
+    "top_layer": 19,
+    "top_neuron": 9069,
+    "top1": 5595.14208984375,
+    "topk_mean": 785.3690185546875,
+    "randk_mean": 1.1163411140441895
+  },
+  "Fear": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 2705.744873046875,
+    "topk_mean": 524.9186401367188,
+    "randk_mean": 2.540788173675537
+  },
+  "High Risk": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 2963.95849609375,
+    "topk_mean": 579.976806640625,
+    "randk_mean": 1.2577370405197144
+  },
+  "The Key": {
+    "top_layer": 4,
+    "top_neuron": 13596,
+    "top1": 25521.005859375,
+    "topk_mean": 2308.774169921875,
+    "randk_mean": 3.3568527698516846
+  },
+  "The Gift": {
+    "top_layer": 18,
+    "top_neuron": 1722,
+    "top1": 7967.36376953125,
+    "topk_mean": 776.32568359375,
+    "randk_mean": 1.6880922317504883
+  },
+  "Accident": {
+    "top_layer": 0,
+    "top_neuron": 11470,
+    "top1": 7265.5341796875,
+    "topk_mean": 3077.10009765625,
+    "randk_mean": 5.59578800201416
+  },
+  "The Company": {
+    "top_layer": 26,
+    "top_neuron": 5488,
+    "top1": 15189.189453125,
+    "topk_mean": 2024.848876953125,
+    "randk_mean": 2.29868745803833
+  },
+  "Smile": {
+    "top_layer": 9,
+    "top_neuron": 5899,
+    "top1": 12005.8876953125,
+    "topk_mean": 561.2427978515625,
+    "randk_mean": 3.682420253753662
+  },
+  "Phoenix": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 3036.40478515625,
+    "topk_mean": 635.0731201171875,
+    "randk_mean": 1.1834380626678467
+  },
+  "The First Time": {
+    "top_layer": 7,
+    "top_neuron": 2139,
+    "top1": 6285665.0,
+    "topk_mean": 38180.2265625,
+    "randk_mean": 1.7530962228775024
+  },
+  "Manhattan": {
+    "top_layer": 5,
+    "top_neuron": 13556,
+    "top1": 27914.279296875,
+    "topk_mean": 2606.1240234375,
+    "randk_mean": 2.5606205463409424
+  },
+  "The General": {
+    "top_layer": 0,
+    "top_neuron": 2988,
+    "top1": 6947.724609375,
+    "topk_mean": 1447.9139404296875,
+    "randk_mean": 8.83336353302002
+  },
+  "After Hours": {
+    "top_layer": 5,
+    "top_neuron": 13071,
+    "top1": 13911.2353515625,
+    "topk_mean": 1710.341796875,
+    "randk_mean": 8.756464958190918
+  },
+  "Gold": {
+    "top_layer": 22,
+    "top_neuron": 6932,
+    "top1": 957370.75,
+    "topk_mean": 39093.6015625,
+    "randk_mean": 0.21793723106384277
+  },
+  "The Robe": {
+    "top_layer": 1,
+    "top_neuron": 14613,
+    "top1": 799883.0,
+    "topk_mean": 42849.6640625,
+    "randk_mean": 7.449749946594238
+  },
+  "The Touch": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 6004.904296875,
+    "topk_mean": 959.2130126953125,
+    "randk_mean": 3.5061042308807373
+  },
+  "Party": {
+    "top_layer": 2,
+    "top_neuron": 12988,
+    "top1": 11856.9345703125,
+    "topk_mean": 2432.30615234375,
+    "randk_mean": 1.0055656433105469
+  },
+  "Pulse": {
+    "top_layer": 26,
+    "top_neuron": 2403,
+    "top1": 6759.775390625,
+    "topk_mean": 1089.5738525390625,
+    "randk_mean": 0.502742350101471
+  },
+  "Revenge": {
+    "top_layer": 1,
+    "top_neuron": 6631,
+    "top1": 5970.40234375,
+    "topk_mean": 1256.7000732421875,
+    "randk_mean": 5.603676795959473
+  },
+  "The Trial": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 4761.50390625,
+    "topk_mean": 974.5164184570312,
+    "randk_mean": 0.4316631257534027
+  },
+  "Arthur": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 2226.174072265625,
+    "topk_mean": 492.7937927246094,
+    "randk_mean": 2.2887980937957764
+  },
+  "Brussels Capital Region": {
+    "top_layer": 5,
+    "top_neuron": 7950,
+    "top1": 347068.46875,
+    "topk_mean": 31364.990234375,
+    "randk_mean": 17.379064559936523
+  },
+  "The Family": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 6064.28662109375,
+    "topk_mean": 522.1727294921875,
+    "randk_mean": 0.62184077501297
+  },
+  "Legend": {
+    "top_layer": 1,
+    "top_neuron": 18393,
+    "top1": 1506.0816650390625,
+    "topk_mean": 824.2001953125,
+    "randk_mean": 2.1779282093048096
+  },
+  "Are You Here": {
+    "top_layer": 26,
+    "top_neuron": 12098,
+    "top1": 13769.73046875,
+    "topk_mean": 3214.96826171875,
+    "randk_mean": 2.572864532470703
+  },
+  "Victoria": {
+    "top_layer": 26,
+    "top_neuron": 5488,
+    "top1": 1133.7662353515625,
+    "topk_mean": 306.6227111816406,
+    "randk_mean": 0.2456100881099701
+  },
+  "Black and White": {
+    "top_layer": 20,
+    "top_neuron": 3006,
+    "top1": 17950.578125,
+    "topk_mean": 904.1494140625,
+    "randk_mean": 8.24095344543457
+  },
+  "Athens": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 37672898560.0,
+    "topk_mean": 3243081728.0,
+    "randk_mean": 618728.6875
+  },
+  "Seven": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 6857.1962890625,
+    "topk_mean": 1409.818115234375,
+    "randk_mean": 2.341125011444092
+  },
+  "Wolf": {
+    "top_layer": 4,
+    "top_neuron": 9869,
+    "top1": 2415.878662109375,
+    "topk_mean": 616.7886352539062,
+    "randk_mean": 3.2730154991149902
+  },
+  "Escape": {
+    "top_layer": 4,
+    "top_neuron": 58,
+    "top1": 2188.530029296875,
+    "topk_mean": 804.2688598632812,
+    "randk_mean": 1.8978506326675415
+  },
+  "Ride": {
+    "top_layer": 18,
+    "top_neuron": 12362,
+    "top1": 2174.97998046875,
+    "topk_mean": 382.46728515625,
+    "randk_mean": 8.401410102844238
+  },
+  "Milan": {
+    "top_layer": 13,
+    "top_neuron": 18502,
+    "top1": 1837540.125,
+    "topk_mean": 88584.8046875,
+    "randk_mean": 23.053909301757812
+  },
+  "Game": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 27638.966796875,
+    "topk_mean": 6001.83203125,
+    "randk_mean": 4.7801361083984375
+  },
+  "Face to Face": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 8924.2568359375,
+    "topk_mean": 2492.553466796875,
+    "randk_mean": 12.557780265808105
+  },
+  "The Town": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 11092.4677734375,
+    "topk_mean": 610.1991577148438,
+    "randk_mean": 7.158865928649902
+  },
+  "The Train": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 1996.1165771484375,
+    "topk_mean": 403.3462219238281,
+    "randk_mean": 9.842995643615723
+  },
+  "Inside Out": {
+    "top_layer": 26,
+    "top_neuron": 5488,
+    "top1": 1477.924072265625,
+    "topk_mean": 384.9961853027344,
+    "randk_mean": 0.6375826597213745
+  },
+  "Rocky": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 4807.0146484375,
+    "topk_mean": 761.905029296875,
+    "randk_mean": 10.46479606628418
+  },
+  "The Cure": {
+    "top_layer": 22,
+    "top_neuron": 972,
+    "top1": 1854.5169677734375,
+    "topk_mean": 255.78463745117188,
+    "randk_mean": 3.235151767730713
+  },
+  "Shine": {
+    "top_layer": 4,
+    "top_neuron": 12893,
+    "top1": 2981.502197265625,
+    "topk_mean": 1053.94287109375,
+    "randk_mean": 4.292634010314941
+  },
+  "Heat": {
+    "top_layer": 0,
+    "top_neuron": 699,
+    "top1": 4933.052734375,
+    "topk_mean": 2963.64453125,
+    "randk_mean": 0.6446251273155212
+  },
+  "George Washington": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 3436.798583984375,
+    "topk_mean": 411.9384765625,
+    "randk_mean": 0.2927307188510895
+  },
+  "City of Brussels": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 26586138624.0,
+    "topk_mean": 2813820928.0,
+    "randk_mean": 492345.4375
+  },
+  "Rebecca": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 3611.439453125,
+    "topk_mean": 971.40283203125,
+    "randk_mean": 1.815137267112732
+  },
+  "London": {
+    "top_layer": 9,
+    "top_neuron": 18124,
+    "top1": 910642.0,
+    "topk_mean": 99209.734375,
+    "randk_mean": 1.2824230194091797
+  },
+  "Brave": {
+    "top_layer": 26,
+    "top_neuron": 5488,
+    "top1": 3686.421875,
+    "topk_mean": 845.9924926757812,
+    "randk_mean": 2.371112108230591
+  },
+  "Hero": {
+    "top_layer": 1,
+    "top_neuron": 13906,
+    "top1": 17310.9296875,
+    "topk_mean": 3058.829345703125,
+    "randk_mean": 25.934741973876953
+  },
+  "Wanted": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 8246.9296875,
+    "topk_mean": 3429.552001953125,
+    "randk_mean": 10.392016410827637
+  },
+  "Francis": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 7165.02685546875,
+    "topk_mean": 374.96136474609375,
+    "randk_mean": 1.4561213254928589
+  },
+  "Legion": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 3451.922607421875,
+    "topk_mean": 960.2742919921875,
+    "randk_mean": 2.318265676498413
+  },
+  "The Shining": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 90206.3984375,
+    "topk_mean": 989.0955200195312,
+    "randk_mean": 7.12853479385376
+  },
+  "More": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 6766.0654296875,
+    "topk_mean": 2061.89697265625,
+    "randk_mean": 4.0895795822143555
+  },
+  "The Road": {
+    "top_layer": 5,
+    "top_neuron": 4381,
+    "top1": 11996.3828125,
+    "topk_mean": 529.8204956054688,
+    "randk_mean": 4.038568019866943
+  },
+  "Holes": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 1075.981201171875,
+    "topk_mean": 481.3135681152344,
+    "randk_mean": 1.4085383415222168
+  },
+  "Pan": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 5194.4453125,
+    "topk_mean": 483.29461669921875,
+    "randk_mean": 1.0016086101531982
+  },
+  "The Accused": {
+    "top_layer": 1,
+    "top_neuron": 15936,
+    "top1": 7951.93701171875,
+    "topk_mean": 2298.69775390625,
+    "randk_mean": 5.048346996307373
+  },
+  "Into the Woods": {
+    "top_layer": 7,
+    "top_neuron": 2139,
+    "top1": 7417.77587890625,
+    "topk_mean": 589.3907470703125,
+    "randk_mean": 5.159282207489014
+  },
+  "Look Around You": {
+    "top_layer": 27,
+    "top_neuron": 902,
+    "top1": 2373.947021484375,
+    "topk_mean": 1165.164306640625,
+    "randk_mean": 0.5410447120666504
+  },
+  "The Circle": {
+    "top_layer": 1,
+    "top_neuron": 10819,
+    "top1": 3364.682861328125,
+    "topk_mean": 676.2429809570312,
+    "randk_mean": 6.721752166748047
+  },
+  "Restless": {
+    "top_layer": 6,
+    "top_neuron": 9344,
+    "top1": 443191.75,
+    "topk_mean": 33231.67578125,
+    "randk_mean": 8.665361404418945
+  },
+  "The Return": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 22529.517578125,
+    "topk_mean": 572.0469970703125,
+    "randk_mean": 5.405956745147705
+  },
+  "The Debt": {
+    "top_layer": 22,
+    "top_neuron": 1583,
+    "top1": 43025.15234375,
+    "topk_mean": 1391.580810546875,
+    "randk_mean": 7.024806976318359
+  },
+  "Gone": {
+    "top_layer": 19,
+    "top_neuron": 17421,
+    "top1": 7195.62451171875,
+    "topk_mean": 644.3176879882812,
+    "randk_mean": 2.3261289596557617
+  },
+  "Back to the Future": {
+    "top_layer": 27,
+    "top_neuron": 2356,
+    "top1": 3214.6259765625,
+    "topk_mean": 261.57208251953125,
+    "randk_mean": 0.6764539480209351
+  },
+  "Victory": {
+    "top_layer": 19,
+    "top_neuron": 17421,
+    "top1": 44028.7578125,
+    "topk_mean": 776.3076782226562,
+    "randk_mean": 6.475715637207031
+  },
+  "The Search": {
+    "top_layer": 2,
+    "top_neuron": 6743,
+    "top1": 16174.0078125,
+    "topk_mean": 416.74578857421875,
+    "randk_mean": 5.425782203674316
+  },
+  "Criminal": {
+    "top_layer": 4,
+    "top_neuron": 9869,
+    "top1": 2153.510498046875,
+    "topk_mean": 637.7377319335938,
+    "randk_mean": 0.43330878019332886
+  },
+  "Submission": {
+    "top_layer": 19,
+    "top_neuron": 13145,
+    "top1": 11416.619140625,
+    "topk_mean": 1814.5999755859375,
+    "randk_mean": 1.1149160861968994
+  },
+  "The Host": {
+    "top_layer": 0,
+    "top_neuron": 8298,
+    "top1": 1610.4197998046875,
+    "topk_mean": 485.1915588378906,
+    "randk_mean": 2.463560104370117
+  }
+}

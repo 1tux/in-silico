@@ -1,0 +1,8 @@
+{
+  "n": 200,
+  "spearman_rho": 0.14666166654166354,
+  "mean_layer_low_q": 4.28,
+  "mean_layer_high_q": 8.9,
+  "n_low": 50,
+  "n_high": 50
+}

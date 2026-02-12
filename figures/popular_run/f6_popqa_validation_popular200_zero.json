@@ -1,0 +1,2016 @@
+{
+  "model": "Qwen/Qwen2.5-7B",
+  "dataset": "akariasai/PopQA",
+  "split": "test",
+  "prompt_style": "base",
+  "ablation_multiplier": 0.0,
+  "n_entities_requested": 200,
+  "n_entities_used": 200,
+  "summary": {
+    "mean_knowledge_loss": 0.009953051623320412,
+    "median_knowledge_loss": 6.3867207662215986e-06,
+    "frac_loss_gt_0": 0.525
+  },
+  "entities": [
+    {
+      "entity": "The Holiday",
+      "layer": 1,
+      "neuron": 2834,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.03741484333295375,
+      "ablated_prob_mean": 0.00022090435959398746,
+      "relative_prob_mean": 0.11608591936913921,
+      "knowledge_loss_mean": 0.8839140806308607
+    },
+    {
+      "entity": "The Fog",
+      "layer": 1,
+      "neuron": 10964,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0679427832365036,
+      "ablated_prob_mean": 0.01589791290462017,
+      "relative_prob_mean": 0.2339897211640677,
+      "knowledge_loss_mean": 0.7660102788359323
+    },
+    {
+      "entity": "Nine Inch Nails",
+      "layer": 3,
+      "neuron": 5818,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.043519001454114914,
+      "ablated_prob_mean": 0.015527925454080105,
+      "relative_prob_mean": 0.3568079444665629,
+      "knowledge_loss_mean": 0.6431920555334372
+    },
+    {
+      "entity": "Turin",
+      "layer": 3,
+      "neuron": 18612,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.23381698271259665,
+      "ablated_prob_mean": 0.0811570129590109,
+      "relative_prob_mean": 0.3821230075485388,
+      "knowledge_loss_mean": 0.6178769924514612
+    },
+    {
+      "entity": "Kuala Lumpur",
+      "layer": 3,
+      "neuron": 2420,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.07637140154838562,
+      "ablated_prob_mean": 0.031076757237315178,
+      "relative_prob_mean": 0.4069161571904149,
+      "knowledge_loss_mean": 0.593083842809585
+    },
+    {
+      "entity": "Happy Birthday to You",
+      "layer": 5,
+      "neuron": 2162,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0022274781949818134,
+      "ablated_prob_mean": 0.0009784960420802236,
+      "relative_prob_mean": 0.4392842292618773,
+      "knowledge_loss_mean": 0.5607157707381227
+    },
+    {
+      "entity": "Athens",
+      "layer": 1,
+      "neuron": 18605,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.028856953606009483,
+      "ablated_prob_mean": 0.013549312017858028,
+      "relative_prob_mean": 0.46953369377966403,
+      "knowledge_loss_mean": 0.530466306220336
+    },
+    {
+      "entity": "Seven",
+      "layer": 2,
+      "neuron": 9649,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.015841798245674,
+      "ablated_prob_mean": 0.0033069899945985526,
+      "relative_prob_mean": 0.47107015651757533,
+      "knowledge_loss_mean": 0.5289298434824246
+    },
+    {
+      "entity": "Suits",
+      "layer": 2,
+      "neuron": 9620,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0055599519982934,
+      "ablated_prob_mean": 0.002672410337254405,
+      "relative_prob_mean": 0.4806534909068798,
+      "knowledge_loss_mean": 0.5193465090931202
+    },
+    {
+      "entity": "Toy Story",
+      "layer": 3,
+      "neuron": 2434,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.09000038348312955,
+      "ablated_prob_mean": 0.006476985945482738,
+      "relative_prob_mean": 0.5169210863310704,
+      "knowledge_loss_mean": 0.48307891366892963
+    },
+    {
+      "entity": "The Departed",
+      "layer": 5,
+      "neuron": 2625,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0014808984706178308,
+      "ablated_prob_mean": 0.0008216648711822927,
+      "relative_prob_mean": 0.5548421363683995,
+      "knowledge_loss_mean": 0.4451578636316005
+    },
+    {
+      "entity": "South Africa",
+      "layer": 1,
+      "neuron": 1385,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.04735167697072029,
+      "ablated_prob_mean": 0.029408231377601624,
+      "relative_prob_mean": 0.6210599763084649,
+      "knowledge_loss_mean": 0.3789400236915351
+    },
+    {
+      "entity": "Sri Lanka",
+      "layer": 2,
+      "neuron": 6010,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.05423913151025772,
+      "ablated_prob_mean": 0.03837389871478081,
+      "relative_prob_mean": 0.7074947117750867,
+      "knowledge_loss_mean": 0.2925052882249133
+    },
+    {
+      "entity": "Phoenix",
+      "layer": 1,
+      "neuron": 11122,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.00021082281455164775,
+      "ablated_prob_mean": 0.0001397987398377154,
+      "relative_prob_mean": 0.7314754839248702,
+      "knowledge_loss_mean": 0.26852451607512984
+    },
+    {
+      "entity": "T.\u00a0S. Eliot",
+      "layer": 1,
+      "neuron": 12920,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.04045857331948355,
+      "ablated_prob_mean": 0.016760871512815356,
+      "relative_prob_mean": 0.7691792758347628,
+      "knowledge_loss_mean": 0.23082072416523725
+    },
+    {
+      "entity": "Prague",
+      "layer": 3,
+      "neuron": 14586,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.020503433421254158,
+      "ablated_prob_mean": 0.01632244698703289,
+      "relative_prob_mean": 0.7960835949608714,
+      "knowledge_loss_mean": 0.20391640503912856
+    },
+    {
+      "entity": "Republic of China 1912\u20131949",
+      "layer": 4,
+      "neuron": 17644,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.102785624563694,
+      "ablated_prob_mean": 0.08641700446605682,
+      "relative_prob_mean": 0.8407499086850039,
+      "knowledge_loss_mean": 0.15925009131499612
+    },
+    {
+      "entity": "Scooby-Doo",
+      "layer": 3,
+      "neuron": 14434,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0009955671266652644,
+      "ablated_prob_mean": 0.0008470421598758548,
+      "relative_prob_mean": 0.8474999774632712,
+      "knowledge_loss_mean": 0.15250002253672873
+    },
+    {
+      "entity": "Beijing",
+      "layer": 2,
+      "neuron": 9567,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.048475559800863266,
+      "ablated_prob_mean": 0.04130295664072037,
+      "relative_prob_mean": 0.8520367131476599,
+      "knowledge_loss_mean": 0.14796328685234006
+    },
+    {
+      "entity": "Breaking Bad",
+      "layer": 2,
+      "neuron": 12152,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.048605721443891525,
+      "ablated_prob_mean": 0.04199475049972534,
+      "relative_prob_mean": 0.8639878033330373,
+      "knowledge_loss_mean": 0.13601219666696274
+    },
+    {
+      "entity": "Dublin",
+      "layer": 4,
+      "neuron": 3121,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.032510960940271616,
+      "ablated_prob_mean": 0.02713544387370348,
+      "relative_prob_mean": 0.8804432520835452,
+      "knowledge_loss_mean": 0.11955674791645476
+    },
+    {
+      "entity": "The Omen",
+      "layer": 2,
+      "neuron": 4024,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.003217451274394989,
+      "ablated_prob_mean": 0.0030301447259262204,
+      "relative_prob_mean": 0.8959611172601227,
+      "knowledge_loss_mean": 0.10403888273987727
+    },
+    {
+      "entity": "Budapest",
+      "layer": 3,
+      "neuron": 10222,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.08253011107444763,
+      "ablated_prob_mean": 0.07687833905220032,
+      "relative_prob_mean": 0.9315186669608497,
+      "knowledge_loss_mean": 0.06848133303915027
+    },
+    {
+      "entity": "Oasis",
+      "layer": 6,
+      "neuron": 14721,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.00529118935810402,
+      "ablated_prob_mean": 0.005053201166447252,
+      "relative_prob_mean": 0.940100263714124,
+      "knowledge_loss_mean": 0.059899736285875915
+    },
+    {
+      "entity": "Paul",
+      "layer": 22,
+      "neuron": 7495,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.00903653708519414,
+      "ablated_prob_mean": 0.0087350609828718,
+      "relative_prob_mean": 0.9417500632378897,
+      "knowledge_loss_mean": 0.05824993676211032
+    },
+    {
+      "entity": "Cape Town",
+      "layer": 1,
+      "neuron": 1385,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.06331485509872437,
+      "ablated_prob_mean": 0.05969949811697006,
+      "relative_prob_mean": 0.9428987561273414,
+      "knowledge_loss_mean": 0.05710124387265858
+    },
+    {
+      "entity": "The Fly",
+      "layer": 2,
+      "neuron": 10777,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.005877412331756204,
+      "ablated_prob_mean": 0.00698870891937986,
+      "relative_prob_mean": 0.9755646182458246,
+      "knowledge_loss_mean": 0.024435381754175367
+    },
+    {
+      "entity": "New Jersey",
+      "layer": 1,
+      "neuron": 13014,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.026225416224406217,
+      "ablated_prob_mean": 0.025807095093114185,
+      "relative_prob_mean": 0.9763438415248897,
+      "knowledge_loss_mean": 0.023656158475110323
+    },
+    {
+      "entity": "Florence",
+      "layer": 1,
+      "neuron": 10577,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.4400162994861603,
+      "ablated_prob_mean": 0.4313020706176758,
+      "relative_prob_mean": 0.9801956680271601,
+      "knowledge_loss_mean": 0.019804331972839928
+    },
+    {
+      "entity": "Halloween",
+      "layer": 4,
+      "neuron": 17483,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.09769333989606821,
+      "ablated_prob_mean": 0.09773003810914815,
+      "relative_prob_mean": 0.9839864510622708,
+      "knowledge_loss_mean": 0.016013548937729216
+    },
+    {
+      "entity": "David",
+      "layer": 2,
+      "neuron": 13244,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0001088120843633078,
+      "ablated_prob_mean": 0.00010176905379921664,
+      "relative_prob_mean": 0.9864909987720298,
+      "knowledge_loss_mean": 0.013509001227970219
+    },
+    {
+      "entity": "The Matrix",
+      "layer": 12,
+      "neuron": 16119,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.30486243963241577,
+      "ablated_prob_mean": 0.30114470422267914,
+      "relative_prob_mean": 0.987388847991874,
+      "knowledge_loss_mean": 0.012611152008126014
+    },
+    {
+      "entity": "Japan",
+      "layer": 1,
+      "neuron": 7726,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.025164270708046388,
+      "ablated_prob_mean": 0.02381473394416389,
+      "relative_prob_mean": 0.9898240911715119,
+      "knowledge_loss_mean": 0.010175908828488067
+    },
+    {
+      "entity": "Doctor Who",
+      "layer": 9,
+      "neuron": 9374,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.04469133481325116,
+      "ablated_prob_mean": 0.043922942466451786,
+      "relative_prob_mean": 0.9922023644175603,
+      "knowledge_loss_mean": 0.0077976355824397325
+    },
+    {
+      "entity": "Iron Man",
+      "layer": 8,
+      "neuron": 3872,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.019345524726304575,
+      "ablated_prob_mean": 0.019260520364696276,
+      "relative_prob_mean": 0.9936983130556756,
+      "knowledge_loss_mean": 0.006301686944324425
+    },
+    {
+      "entity": "Berlin",
+      "layer": 7,
+      "neuron": 10335,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0013177502005419228,
+      "ablated_prob_mean": 0.0013142985444574151,
+      "relative_prob_mean": 0.9957002913425606,
+      "knowledge_loss_mean": 0.004299708657439505
+    },
+    {
+      "entity": "Hawaii",
+      "layer": 13,
+      "neuron": 1230,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.010204053309280425,
+      "ablated_prob_mean": 0.01014578074682504,
+      "relative_prob_mean": 0.9959632788428192,
+      "knowledge_loss_mean": 0.004036721157180734
+    },
+    {
+      "entity": "Vajiralongkorn",
+      "layer": 5,
+      "neuron": 11275,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.12906261160969734,
+      "ablated_prob_mean": 0.1285545714199543,
+      "relative_prob_mean": 0.9960338579236708,
+      "knowledge_loss_mean": 0.003966142076329171
+    },
+    {
+      "entity": "Frozen",
+      "layer": 5,
+      "neuron": 10979,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.023438315838575363,
+      "ablated_prob_mean": 0.023345867171883583,
+      "relative_prob_mean": 0.9960556608534293,
+      "knowledge_loss_mean": 0.003944339146570663
+    },
+    {
+      "entity": "L\u00e9on: The Professional",
+      "layer": 6,
+      "neuron": 18173,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.20109499618411064,
+      "ablated_prob_mean": 0.2002526931464672,
+      "relative_prob_mean": 0.9961542260233638,
+      "knowledge_loss_mean": 0.003845773976636213
+    },
+    {
+      "entity": "Vienna",
+      "layer": 1,
+      "neuron": 18529,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.09807482361793518,
+      "ablated_prob_mean": 0.09770122915506363,
+      "relative_prob_mean": 0.9961907200126411,
+      "knowledge_loss_mean": 0.0038092799873589156
+    },
+    {
+      "entity": "E.T. the Extra-Terrestrial",
+      "layer": 6,
+      "neuron": 8514,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.04393115318089258,
+      "ablated_prob_mean": 0.04385165572966798,
+      "relative_prob_mean": 0.9962108335127977,
+      "knowledge_loss_mean": 0.0037891664872022335
+    },
+    {
+      "entity": "Johann Sebastian Bach",
+      "layer": 1,
+      "neuron": 14331,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.053121242905035615,
+      "ablated_prob_mean": 0.05278167873620987,
+      "relative_prob_mean": 0.9964699182913803,
+      "knowledge_loss_mean": 0.003530081708619681
+    },
+    {
+      "entity": "Let It Be",
+      "layer": 9,
+      "neuron": 7110,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.004597368184477091,
+      "ablated_prob_mean": 0.00458512594923377,
+      "relative_prob_mean": 0.9965350399839996,
+      "knowledge_loss_mean": 0.003464960016000329
+    },
+    {
+      "entity": "George VI",
+      "layer": 22,
+      "neuron": 13384,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.08489101380109787,
+      "ablated_prob_mean": 0.08458853140473366,
+      "relative_prob_mean": 0.9965722026851469,
+      "knowledge_loss_mean": 0.0034277973148530982
+    },
+    {
+      "entity": "Puerto Rico",
+      "layer": 4,
+      "neuron": 10651,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.03656718712653628,
+      "ablated_prob_mean": 0.03660221523466589,
+      "relative_prob_mean": 0.9968350311422662,
+      "knowledge_loss_mean": 0.0031649688577338186
+    },
+    {
+      "entity": "Billy Joel",
+      "layer": 3,
+      "neuron": 8274,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.038101990008726716,
+      "ablated_prob_mean": 0.03812184929847717,
+      "relative_prob_mean": 0.9969429067705176,
+      "knowledge_loss_mean": 0.0030570932294824438
+    },
+    {
+      "entity": "Manila",
+      "layer": 22,
+      "neuron": 11261,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.01129017025232315,
+      "ablated_prob_mean": 0.011255950666964054,
+      "relative_prob_mean": 0.9969690815466618,
+      "knowledge_loss_mean": 0.0030309184533382494
+    },
+    {
+      "entity": "The Mist",
+      "layer": 3,
+      "neuron": 12902,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.07166313380002975,
+      "ablated_prob_mean": 0.07144510187208652,
+      "relative_prob_mean": 0.9972376163185408,
+      "knowledge_loss_mean": 0.0027623836814591463
+    },
+    {
+      "entity": "Chris Jericho",
+      "layer": 9,
+      "neuron": 13847,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.002342256047995761,
+      "ablated_prob_mean": 0.002331516152480617,
+      "relative_prob_mean": 0.9973509397371545,
+      "knowledge_loss_mean": 0.0026490602628454485
+    },
+    {
+      "entity": "They Live",
+      "layer": 20,
+      "neuron": 2457,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.005643727665301412,
+      "ablated_prob_mean": 0.005639888404402882,
+      "relative_prob_mean": 0.9975028937932104,
+      "knowledge_loss_mean": 0.002497106206789612
+    },
+    {
+      "entity": "The Ring",
+      "layer": 6,
+      "neuron": 11138,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0036371023115862045,
+      "ablated_prob_mean": 0.003628057645073568,
+      "relative_prob_mean": 0.9975068048318023,
+      "knowledge_loss_mean": 0.002493195168197626
+    },
+    {
+      "entity": "Alien",
+      "layer": 5,
+      "neuron": 11182,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0071077002212405205,
+      "ablated_prob_mean": 0.007090811152011156,
+      "relative_prob_mean": 0.9976238348968498,
+      "knowledge_loss_mean": 0.0023761651031501962
+    },
+    {
+      "entity": "Bertrand Russell",
+      "layer": 6,
+      "neuron": 2748,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.00016630463869660161,
+      "ablated_prob_mean": 0.0001659170629864093,
+      "relative_prob_mean": 0.9984881654389999,
+      "knowledge_loss_mean": 0.0015118345610001804
+    },
+    {
+      "entity": "Mary, Princess Royal and Countess of Harewood",
+      "layer": 2,
+      "neuron": 18718,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.07478075101971626,
+      "ablated_prob_mean": 0.07473635673522949,
+      "relative_prob_mean": 0.9985159403777142,
+      "knowledge_loss_mean": 0.0014840596222858715
+    },
+    {
+      "entity": "Jesus",
+      "layer": 19,
+      "neuron": 18374,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.056104213232174516,
+      "ablated_prob_mean": 0.056099975714460015,
+      "relative_prob_mean": 0.9985638417076196,
+      "knowledge_loss_mean": 0.0014361582923804184
+    },
+    {
+      "entity": "Virginia",
+      "layer": 27,
+      "neuron": 17984,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.000587307272326143,
+      "ablated_prob_mean": 0.0005871483026567148,
+      "relative_prob_mean": 0.9986484236364641,
+      "knowledge_loss_mean": 0.001351576363535889
+    },
+    {
+      "entity": "Rumi",
+      "layer": 6,
+      "neuron": 10081,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0009438690831302665,
+      "ablated_prob_mean": 0.0009433550585526973,
+      "relative_prob_mean": 0.9987701990510182,
+      "knowledge_loss_mean": 0.0012298009489818407
+    },
+    {
+      "entity": "Arizona",
+      "layer": 22,
+      "neuron": 242,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.00019738497940124944,
+      "ablated_prob_mean": 0.00019746095495065674,
+      "relative_prob_mean": 0.9987999959804011,
+      "knowledge_loss_mean": 0.0012000040195988548
+    },
+    {
+      "entity": "George W. Bush",
+      "layer": 3,
+      "neuron": 18856,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.16339055448770523,
+      "ablated_prob_mean": 0.1632663495838642,
+      "relative_prob_mean": 0.9990080581322414,
+      "knowledge_loss_mean": 0.0009919418677585834
+    },
+    {
+      "entity": "Troy",
+      "layer": 5,
+      "neuron": 1763,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.01617524155881256,
+      "ablated_prob_mean": 0.016147516784258187,
+      "relative_prob_mean": 0.9990169755268195,
+      "knowledge_loss_mean": 0.0009830244731804938
+    },
+    {
+      "entity": "Jordan",
+      "layer": 9,
+      "neuron": 5353,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.04454267166329373,
+      "ablated_prob_mean": 0.044574038244718395,
+      "relative_prob_mean": 0.9990599930924486,
+      "knowledge_loss_mean": 0.0009400069075513051
+    },
+    {
+      "entity": "Montana",
+      "layer": 6,
+      "neuron": 16128,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.11822611838579178,
+      "ablated_prob_mean": 0.11814632639288902,
+      "relative_prob_mean": 0.9990662085781934,
+      "knowledge_loss_mean": 0.0009337914218066623
+    },
+    {
+      "entity": "Singapore",
+      "layer": 4,
+      "neuron": 3889,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0002338154627068434,
+      "ablated_prob_mean": 0.0002336498255317565,
+      "relative_prob_mean": 0.999101296492203,
+      "knowledge_loss_mean": 0.0008987035077970273
+    },
+    {
+      "entity": "Queen Victoria",
+      "layer": 5,
+      "neuron": 5597,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0013503973605111241,
+      "ablated_prob_mean": 0.0013482557551469654,
+      "relative_prob_mean": 0.9991723289907632,
+      "knowledge_loss_mean": 0.0008276710092367523
+    },
+    {
+      "entity": "Friends",
+      "layer": 23,
+      "neuron": 11502,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.002875459613278508,
+      "ablated_prob_mean": 0.002873511053621769,
+      "relative_prob_mean": 0.9991843515269522,
+      "knowledge_loss_mean": 0.0008156484730478253
+    },
+    {
+      "entity": "Chicago",
+      "layer": 18,
+      "neuron": 7894,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 4.508796973823337e-05,
+      "ablated_prob_mean": 4.5052744098939e-05,
+      "relative_prob_mean": 0.9992413680391234,
+      "knowledge_loss_mean": 0.0007586319608766101
+    },
+    {
+      "entity": "Hamilton",
+      "layer": 17,
+      "neuron": 10866,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.11664058020687662,
+      "ablated_prob_mean": 0.11663278214109596,
+      "relative_prob_mean": 0.9992557485247342,
+      "knowledge_loss_mean": 0.0007442514752657448
+    },
+    {
+      "entity": "Grease",
+      "layer": 5,
+      "neuron": 18103,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.1123826876282692,
+      "ablated_prob_mean": 0.1123046725988388,
+      "relative_prob_mean": 0.9993058091857667,
+      "knowledge_loss_mean": 0.0006941908142332753
+    },
+    {
+      "entity": "The Shining",
+      "layer": 1,
+      "neuron": 6036,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.07339271903038025,
+      "ablated_prob_mean": 0.07334469258785248,
+      "relative_prob_mean": 0.9993456238825559,
+      "knowledge_loss_mean": 0.000654376117444122
+    },
+    {
+      "entity": "Italy",
+      "layer": 15,
+      "neuron": 1092,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.06278944042742296,
+      "ablated_prob_mean": 0.06270821425368922,
+      "relative_prob_mean": 0.9993569010332833,
+      "knowledge_loss_mean": 0.0006430989667166598
+    },
+    {
+      "entity": "Toronto",
+      "layer": 8,
+      "neuron": 8783,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.011250711977481842,
+      "ablated_prob_mean": 0.011227893643081188,
+      "relative_prob_mean": 0.9993802964886723,
+      "knowledge_loss_mean": 0.0006197035113276739
+    },
+    {
+      "entity": "London",
+      "layer": 25,
+      "neuron": 14014,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.013648630119860172,
+      "ablated_prob_mean": 0.0136405685916543,
+      "relative_prob_mean": 0.9994093525771395,
+      "knowledge_loss_mean": 0.0005906474228605241
+    },
+    {
+      "entity": "Ganesha",
+      "layer": 1,
+      "neuron": 18010,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.12861040979623795,
+      "ablated_prob_mean": 0.128545094281435,
+      "relative_prob_mean": 0.9994550359888784,
+      "knowledge_loss_mean": 0.0005449640111215848
+    },
+    {
+      "entity": "The Terminal",
+      "layer": 9,
+      "neuron": 18427,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.014074569975491613,
+      "ablated_prob_mean": 0.014054930041311309,
+      "relative_prob_mean": 0.9994933778781618,
+      "knowledge_loss_mean": 0.0005066221218381073
+    },
+    {
+      "entity": "Jesus in Islam",
+      "layer": 4,
+      "neuron": 1463,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.1286475881934166,
+      "ablated_prob_mean": 0.1285821683704853,
+      "relative_prob_mean": 0.9995091132148949,
+      "knowledge_loss_mean": 0.0004908867851051157
+    },
+    {
+      "entity": "Tennessee",
+      "layer": 2,
+      "neuron": 2090,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.03712279020692222,
+      "ablated_prob_mean": 0.03708987595746294,
+      "relative_prob_mean": 0.9995584777324054,
+      "knowledge_loss_mean": 0.00044152226759458513
+    },
+    {
+      "entity": "Inside Out",
+      "layer": 3,
+      "neuron": 1648,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.07924113191256765,
+      "ablated_prob_mean": 0.07924275482946541,
+      "relative_prob_mean": 0.9995681798380318,
+      "knowledge_loss_mean": 0.0004318201619681883
+    },
+    {
+      "entity": "Michael Jackson",
+      "layer": 1,
+      "neuron": 642,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.04236534982919693,
+      "ablated_prob_mean": 0.042350877076387405,
+      "relative_prob_mean": 0.9996051994452249,
+      "knowledge_loss_mean": 0.0003948005547750877
+    },
+    {
+      "entity": "Aliens",
+      "layer": 6,
+      "neuron": 43,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.009146390482783318,
+      "ablated_prob_mean": 0.009143350645899773,
+      "relative_prob_mean": 0.9996676462819659,
+      "knowledge_loss_mean": 0.0003323537180340841
+    },
+    {
+      "entity": "Final Destination",
+      "layer": 4,
+      "neuron": 3873,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.003453070719842799,
+      "ablated_prob_mean": 0.0034533721482148394,
+      "relative_prob_mean": 0.9996967495897746,
+      "knowledge_loss_mean": 0.00030325041022533084
+    },
+    {
+      "entity": "Washington, D.C.",
+      "layer": 4,
+      "neuron": 12632,
+      "n_used_questions": 1,
+      "baseline_prob_mean": 0.009298823773860931,
+      "ablated_prob_mean": 0.009296318516135216,
+      "relative_prob_mean": 0.9997305833741298,
+      "knowledge_loss_mean": 0.0002694166258702113
+    },
+    {
+      "entity": "Thomas Jefferson",
+      "layer": 2,
+      "neuron": 13274,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.006209743849467486,
+      "ablated_prob_mean": 0.006208018457982689,
+      "relative_prob_mean": 0.9997372528555304,
+      "knowledge_loss_mean": 0.00026274714446961056
+    },
+    {
+      "entity": "Lost",
+      "layer": 25,
+      "neuron": 2510,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.08417709823697805,
+      "ablated_prob_mean": 0.08421436697244644,
+      "relative_prob_mean": 0.9998122805770489,
+      "knowledge_loss_mean": 0.00018771942295109367
+    },
+    {
+      "entity": "Afghanistan",
+      "layer": 4,
+      "neuron": 14559,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.06702619232237339,
+      "ablated_prob_mean": 0.06699753366410732,
+      "relative_prob_mean": 0.9998159610517781,
+      "knowledge_loss_mean": 0.00018403894822188738
+    },
+    {
+      "entity": "California",
+      "layer": 4,
+      "neuron": 672,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.00408505681070892,
+      "ablated_prob_mean": 0.004083191059180535,
+      "relative_prob_mean": 0.9998165418959545,
+      "knowledge_loss_mean": 0.00018345810404551965
+    },
+    {
+      "entity": "The Birds",
+      "layer": 2,
+      "neuron": 13392,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.21507815024233423,
+      "ablated_prob_mean": 0.2151248208465404,
+      "relative_prob_mean": 0.9998393998495201,
+      "knowledge_loss_mean": 0.00016060015047997256
+    },
+    {
+      "entity": "Milan",
+      "layer": 5,
+      "neuron": 12411,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.15823406470008194,
+      "ablated_prob_mean": 0.15822550118900836,
+      "relative_prob_mean": 0.9998465380395303,
+      "knowledge_loss_mean": 0.00015346196046972516
+    },
+    {
+      "entity": "Elizabeth II",
+      "layer": 3,
+      "neuron": 13910,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.015852260708925314,
+      "ablated_prob_mean": 0.015843686036532745,
+      "relative_prob_mean": 0.9998482624561131,
+      "knowledge_loss_mean": 0.00015173754388692062
+    },
+    {
+      "entity": "Thor",
+      "layer": 6,
+      "neuron": 16112,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.047177423257380724,
+      "ablated_prob_mean": 0.04719261126592755,
+      "relative_prob_mean": 0.9998483717645978,
+      "knowledge_loss_mean": 0.00015162823540215697
+    },
+    {
+      "entity": "The Social Network",
+      "layer": 6,
+      "neuron": 1809,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.005087882338557392,
+      "ablated_prob_mean": 0.005080489572719671,
+      "relative_prob_mean": 0.999851465360813,
+      "knowledge_loss_mean": 0.00014853463918695908
+    },
+    {
+      "entity": "Barcelona",
+      "layer": 22,
+      "neuron": 17517,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.2500835359096527,
+      "ablated_prob_mean": 0.2500569522380829,
+      "relative_prob_mean": 0.9998937008329112,
+      "knowledge_loss_mean": 0.00010629916708881915
+    },
+    {
+      "entity": "Into the Wild",
+      "layer": 4,
+      "neuron": 10139,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.022725152783095837,
+      "ablated_prob_mean": 0.022720734123140574,
+      "relative_prob_mean": 0.9999074413138547,
+      "knowledge_loss_mean": 9.255868614532758e-05
+    },
+    {
+      "entity": "Barack Obama",
+      "layer": 20,
+      "neuron": 14235,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.26052029989659786,
+      "ablated_prob_mean": 0.2606051880866289,
+      "relative_prob_mean": 0.999908255106146,
+      "knowledge_loss_mean": 9.174489385405105e-05
+    },
+    {
+      "entity": "Prince",
+      "layer": 27,
+      "neuron": 7221,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.005010490393942746,
+      "ablated_prob_mean": 0.005009606080420781,
+      "relative_prob_mean": 0.999910178637335,
+      "knowledge_loss_mean": 8.982136266505458e-05
+    },
+    {
+      "entity": "Heart",
+      "layer": 4,
+      "neuron": 5358,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.00014944651047699153,
+      "ablated_prob_mean": 0.00014943604037398472,
+      "relative_prob_mean": 0.9999429013349876,
+      "knowledge_loss_mean": 5.709866501230065e-05
+    },
+    {
+      "entity": "Oregon",
+      "layer": 1,
+      "neuron": 16068,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.007108298217644915,
+      "ablated_prob_mean": 0.007107067453034688,
+      "relative_prob_mean": 0.999954782172471,
+      "knowledge_loss_mean": 4.521782752897607e-05
+    },
+    {
+      "entity": "Up",
+      "layer": 5,
+      "neuron": 12030,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.005957383196800947,
+      "ablated_prob_mean": 0.005957320332527161,
+      "relative_prob_mean": 0.9999733543602721,
+      "knowledge_loss_mean": 2.6645639727873593e-05
+    },
+    {
+      "entity": "Babylon",
+      "layer": 2,
+      "neuron": 17281,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.004645248016458936,
+      "ablated_prob_mean": 0.004644089305656962,
+      "relative_prob_mean": 0.999989887118163,
+      "knowledge_loss_mean": 1.0112881837054388e-05
+    },
+    {
+      "entity": "Poland",
+      "layer": 1,
+      "neuron": 5444,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.057942318264395,
+      "ablated_prob_mean": 0.0579418339766562,
+      "relative_prob_mean": 0.9999899307715825,
+      "knowledge_loss_mean": 1.006922841756408e-05
+    },
+    {
+      "entity": "Helen of Troy",
+      "layer": 1,
+      "neuron": 15919,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0014911110629327595,
+      "ablated_prob_mean": 0.0014911048929207027,
+      "relative_prob_mean": 0.9999972957868851,
+      "knowledge_loss_mean": 2.704213114879117e-06
+    },
+    {
+      "entity": "Rama",
+      "layer": 1,
+      "neuron": 785,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.01202425523661077,
+      "ablated_prob_mean": 0.01202421635389328,
+      "relative_prob_mean": 0.9999973454033271,
+      "knowledge_loss_mean": 2.6545966729241144e-06
+    },
+    {
+      "entity": "Arkansas",
+      "layer": 2,
+      "neuron": 9648,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.05991438949968142,
+      "ablated_prob_mean": 0.05991445277049934,
+      "relative_prob_mean": 0.9999984468656236,
+      "knowledge_loss_mean": 1.5531343764418892e-06
+    },
+    {
+      "entity": "Brussels Capital Region",
+      "layer": 1,
+      "neuron": 12292,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0016513637965545058,
+      "ablated_prob_mean": 0.0016513612354174256,
+      "relative_prob_mean": 0.9999984490776136,
+      "knowledge_loss_mean": 1.550922386406306e-06
+    },
+    {
+      "entity": "New York City",
+      "layer": 2,
+      "neuron": 14812,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0069492964539676905,
+      "ablated_prob_mean": 0.006949297501705587,
+      "relative_prob_mean": 0.9999991709757532,
+      "knowledge_loss_mean": 8.290242468622644e-07
+    },
+    {
+      "entity": "Philadelphia",
+      "layer": 1,
+      "neuron": 7425,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.003250095120165497,
+      "ablated_prob_mean": 0.003250099078286439,
+      "relative_prob_mean": 1.0000002877527927,
+      "knowledge_loss_mean": -2.87752792649254e-07
+    },
+    {
+      "entity": "Rocky",
+      "layer": 1,
+      "neuron": 18773,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.03438042942434549,
+      "ablated_prob_mean": 0.03438042011111975,
+      "relative_prob_mean": 1.0000007375308124,
+      "knowledge_loss_mean": -7.375308123669377e-07
+    },
+    {
+      "entity": "El Salvador",
+      "layer": 2,
+      "neuron": 16769,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.02795845463697333,
+      "ablated_prob_mean": 0.027958810023847036,
+      "relative_prob_mean": 1.0000007902045753,
+      "knowledge_loss_mean": -7.902045752739006e-07
+    },
+    {
+      "entity": "Gautama Buddha",
+      "layer": 1,
+      "neuron": 5429,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.03214003122411668,
+      "ablated_prob_mean": 0.03214004193432629,
+      "relative_prob_mean": 1.000001004379517,
+      "knowledge_loss_mean": -1.0043795170000536e-06
+    },
+    {
+      "entity": "Al Gore",
+      "layer": 1,
+      "neuron": 3689,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.05529775470495224,
+      "ablated_prob_mean": 0.05529745342209935,
+      "relative_prob_mean": 1.0000045987937123,
+      "knowledge_loss_mean": -4.598793712340399e-06
+    },
+    {
+      "entity": "White House",
+      "layer": 2,
+      "neuron": 2900,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.00010557867426541634,
+      "ablated_prob_mean": 0.00010557941277511418,
+      "relative_prob_mean": 1.000005939137269,
+      "knowledge_loss_mean": -5.939137269206363e-06
+    },
+    {
+      "entity": "Peter",
+      "layer": 3,
+      "neuron": 8268,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.004730559714516858,
+      "ablated_prob_mean": 0.004731275850645034,
+      "relative_prob_mean": 1.0000104792798303,
+      "knowledge_loss_mean": -1.0479279830277743e-05
+    },
+    {
+      "entity": "Edgar Allan Poe",
+      "layer": 6,
+      "neuron": 6524,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.005321151111274958,
+      "ablated_prob_mean": 0.005325560108758509,
+      "relative_prob_mean": 1.0000381036149126,
+      "knowledge_loss_mean": -3.8103614912576855e-05
+    },
+    {
+      "entity": "Minnesota",
+      "layer": 27,
+      "neuron": 13681,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0355323574437989,
+      "ablated_prob_mean": 0.03552777279355723,
+      "relative_prob_mean": 1.000109706343418,
+      "knowledge_loss_mean": -0.00010970634341783692
+    },
+    {
+      "entity": "Flight",
+      "layer": 25,
+      "neuron": 18580,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.004831183352507651,
+      "ablated_prob_mean": 0.004831154190469533,
+      "relative_prob_mean": 1.0001161590816998,
+      "knowledge_loss_mean": -0.00011615908169981815
+    },
+    {
+      "entity": "Roman Republic",
+      "layer": 15,
+      "neuron": 8641,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.14505451917648315,
+      "ablated_prob_mean": 0.1449802666902542,
+      "relative_prob_mean": 1.000127598612482,
+      "knowledge_loss_mean": -0.0001275986124820161
+    },
+    {
+      "entity": "The Challenge",
+      "layer": 6,
+      "neuron": 15316,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.005888834348297678,
+      "ablated_prob_mean": 0.005881193817913299,
+      "relative_prob_mean": 1.0001349471517964,
+      "knowledge_loss_mean": -0.00013494715179646066
+    },
+    {
+      "entity": "Power",
+      "layer": 9,
+      "neuron": 13333,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0012817341776099056,
+      "ablated_prob_mean": 0.0012817256501875818,
+      "relative_prob_mean": 1.0001916725901299,
+      "knowledge_loss_mean": -0.0001916725901299765
+    },
+    {
+      "entity": "Apollo",
+      "layer": 26,
+      "neuron": 10560,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.1597415821161121,
+      "ablated_prob_mean": 0.1597581570968032,
+      "relative_prob_mean": 1.000248353841588,
+      "knowledge_loss_mean": -0.00024835384158794493
+    },
+    {
+      "entity": "Atl\u00e9tico de Madrid",
+      "layer": 2,
+      "neuron": 16267,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.025236092507839203,
+      "ablated_prob_mean": 0.025247756391763687,
+      "relative_prob_mean": 1.000257753877548,
+      "knowledge_loss_mean": -0.0002577538775477839
+    },
+    {
+      "entity": "Al\u012b ibn Ab\u012b \u1e6c\u0101lib",
+      "layer": 5,
+      "neuron": 15380,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.037171194329857826,
+      "ablated_prob_mean": 0.0371873639523983,
+      "relative_prob_mean": 1.0002838868555948,
+      "knowledge_loss_mean": -0.00028388685559471716
+    },
+    {
+      "entity": "James Madison",
+      "layer": 4,
+      "neuron": 12406,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.22879733517766,
+      "ablated_prob_mean": 0.2288999930024147,
+      "relative_prob_mean": 1.0002852940655154,
+      "knowledge_loss_mean": -0.00028529406551547343
+    },
+    {
+      "entity": "Paris",
+      "layer": 10,
+      "neuron": 8385,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.032945106953775394,
+      "ablated_prob_mean": 0.032909077337535564,
+      "relative_prob_mean": 1.0002915234604801,
+      "knowledge_loss_mean": -0.00029152346048022526
+    },
+    {
+      "entity": "Melbourne",
+      "layer": 19,
+      "neuron": 794,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.01539396052248776,
+      "ablated_prob_mean": 0.01538669562432915,
+      "relative_prob_mean": 1.0002923057035735,
+      "knowledge_loss_mean": -0.000292305703573581
+    },
+    {
+      "entity": "Empire of Japan",
+      "layer": 23,
+      "neuron": 9669,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.04711484303697944,
+      "ablated_prob_mean": 0.04710896173492074,
+      "relative_prob_mean": 1.0003032166371388,
+      "knowledge_loss_mean": -0.0003032166371387812
+    },
+    {
+      "entity": "Colorado",
+      "layer": 22,
+      "neuron": 17654,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0004724984464701265,
+      "ablated_prob_mean": 0.00047265461034839973,
+      "relative_prob_mean": 1.0003136442490348,
+      "knowledge_loss_mean": -0.0003136442490347946
+    },
+    {
+      "entity": "Krishna",
+      "layer": 2,
+      "neuron": 13176,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.03691981080919504,
+      "ablated_prob_mean": 0.036932192742824554,
+      "relative_prob_mean": 1.0003137452565616,
+      "knowledge_loss_mean": -0.0003137452565616927
+    },
+    {
+      "entity": "New Mexico",
+      "layer": 1,
+      "neuron": 9149,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.040691115136723965,
+      "ablated_prob_mean": 0.04068638550961623,
+      "relative_prob_mean": 1.000321062470607,
+      "knowledge_loss_mean": -0.0003210624706069809
+    },
+    {
+      "entity": "Mexico",
+      "layer": 25,
+      "neuron": 3990,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.025600235094316304,
+      "ablated_prob_mean": 0.02556077143890434,
+      "relative_prob_mean": 1.0003571174963892,
+      "knowledge_loss_mean": -0.0003571174963891144
+    },
+    {
+      "entity": "China",
+      "layer": 8,
+      "neuron": 10055,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.001037778754835017,
+      "ablated_prob_mean": 0.001038224989315495,
+      "relative_prob_mean": 1.0003655833263596,
+      "knowledge_loss_mean": -0.00036558332635949764
+    },
+    {
+      "entity": "Cars",
+      "layer": 6,
+      "neuron": 17246,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.23989279568195343,
+      "ablated_prob_mean": 0.24001635611057281,
+      "relative_prob_mean": 1.0003692282013448,
+      "knowledge_loss_mean": -0.0003692282013447734
+    },
+    {
+      "entity": "Saw",
+      "layer": 2,
+      "neuron": 7728,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.017106493760365993,
+      "ablated_prob_mean": 0.017111920984461904,
+      "relative_prob_mean": 1.0003811788672285,
+      "knowledge_loss_mean": -0.0003811788672286598
+    },
+    {
+      "entity": "Star Wars",
+      "layer": 2,
+      "neuron": 18659,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0463201105594635,
+      "ablated_prob_mean": 0.04633590951561928,
+      "relative_prob_mean": 1.0003958823243164,
+      "knowledge_loss_mean": -0.00039588232431653214
+    },
+    {
+      "entity": "Australia",
+      "layer": 9,
+      "neuron": 2578,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.017930533562321216,
+      "ablated_prob_mean": 0.017966906598303467,
+      "relative_prob_mean": 1.000424143587734,
+      "knowledge_loss_mean": -0.00042414358773396055
+    },
+    {
+      "entity": "Idaho",
+      "layer": 5,
+      "neuron": 9681,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.04922454146435484,
+      "ablated_prob_mean": 0.0492719846079126,
+      "relative_prob_mean": 1.0005641421201639,
+      "knowledge_loss_mean": -0.0005641421201639796
+    },
+    {
+      "entity": "Byzantine Empire",
+      "layer": 4,
+      "neuron": 16416,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.11748598259873688,
+      "ablated_prob_mean": 0.11759290366899222,
+      "relative_prob_mean": 1.0006148719536263,
+      "knowledge_loss_mean": -0.0006148719536263059
+    },
+    {
+      "entity": "Nebraska",
+      "layer": 0,
+      "neuron": 4161,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.15880686976015568,
+      "ablated_prob_mean": 0.15887143276631832,
+      "relative_prob_mean": 1.0006518793195163,
+      "knowledge_loss_mean": -0.0006518793195162687
+    },
+    {
+      "entity": "Rent",
+      "layer": 26,
+      "neuron": 6429,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0331977261666907,
+      "ablated_prob_mean": 0.033208766297320835,
+      "relative_prob_mean": 1.000652203089588,
+      "knowledge_loss_mean": -0.0006522030895877995
+    },
+    {
+      "entity": "Donald Trump",
+      "layer": 19,
+      "neuron": 8680,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.014209666289389133,
+      "ablated_prob_mean": 0.014219097327440977,
+      "relative_prob_mean": 1.0007721936051546,
+      "knowledge_loss_mean": -0.0007721936051544587
+    },
+    {
+      "entity": "Carl Linnaeus",
+      "layer": 5,
+      "neuron": 188,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.00017770357226254418,
+      "ablated_prob_mean": 0.00017791433856473304,
+      "relative_prob_mean": 1.0007951636321242,
+      "knowledge_loss_mean": -0.0007951636321241184
+    },
+    {
+      "entity": "Nineteen Eighty-Four",
+      "layer": 6,
+      "neuron": 17476,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.01356700572068803,
+      "ablated_prob_mean": 0.013521522982046008,
+      "relative_prob_mean": 1.0008482417935511,
+      "knowledge_loss_mean": -0.0008482417935511966
+    },
+    {
+      "entity": "Battlefield",
+      "layer": 3,
+      "neuron": 10098,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.002763061856967397,
+      "ablated_prob_mean": 0.0027662742722895928,
+      "relative_prob_mean": 1.000850434426019,
+      "knowledge_loss_mean": -0.0008504344260188423
+    },
+    {
+      "entity": "Peru",
+      "layer": 15,
+      "neuron": 9540,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.023749115876853466,
+      "ablated_prob_mean": 0.023769177496433258,
+      "relative_prob_mean": 1.0009753106262327,
+      "knowledge_loss_mean": -0.0009753106262326838
+    },
+    {
+      "entity": "Pittsburgh",
+      "layer": 5,
+      "neuron": 17517,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0020466311398195103,
+      "ablated_prob_mean": 0.002050164999673143,
+      "relative_prob_mean": 1.0009756754593853,
+      "knowledge_loss_mean": -0.0009756754593851502
+    },
+    {
+      "entity": "Spain",
+      "layer": 19,
+      "neuron": 1059,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.029015282168984413,
+      "ablated_prob_mean": 0.029045213013887405,
+      "relative_prob_mean": 1.0010315545004413,
+      "knowledge_loss_mean": -0.0010315545004413451
+    },
+    {
+      "entity": "Boston",
+      "layer": 13,
+      "neuron": 1149,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.08119918219745159,
+      "ablated_prob_mean": 0.08124074153602123,
+      "relative_prob_mean": 1.0010426805543537,
+      "knowledge_loss_mean": -0.0010426805543536921
+    },
+    {
+      "entity": "Amitabh Bachchan",
+      "layer": 2,
+      "neuron": 11746,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.08616269379854202,
+      "ablated_prob_mean": 0.08624555636197329,
+      "relative_prob_mean": 1.0010714822761857,
+      "knowledge_loss_mean": -0.0010714822761855869
+    },
+    {
+      "entity": "Canada",
+      "layer": 19,
+      "neuron": 12724,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0544026754796505,
+      "ablated_prob_mean": 0.05380705249262974,
+      "relative_prob_mean": 1.0011162868273242,
+      "knowledge_loss_mean": -0.0011162868273241755
+    },
+    {
+      "entity": "Brazil",
+      "layer": 9,
+      "neuron": 14061,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.028750303434208035,
+      "ablated_prob_mean": 0.0288083386112703,
+      "relative_prob_mean": 1.001195410516999,
+      "knowledge_loss_mean": -0.001195410516998896
+    },
+    {
+      "entity": "Rome",
+      "layer": 18,
+      "neuron": 4280,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.14479814682272263,
+      "ablated_prob_mean": 0.1449412507863599,
+      "relative_prob_mean": 1.0012583694774362,
+      "knowledge_loss_mean": -0.0012583694774362941
+    },
+    {
+      "entity": "George Washington",
+      "layer": 9,
+      "neuron": 11366,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0012090301309584106,
+      "ablated_prob_mean": 0.001212398957385119,
+      "relative_prob_mean": 1.0013897363687607,
+      "knowledge_loss_mean": -0.00138973636876083
+    },
+    {
+      "entity": "Drive",
+      "layer": 6,
+      "neuron": 4671,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0017617772100493312,
+      "ablated_prob_mean": 0.001764240674674511,
+      "relative_prob_mean": 1.0013982838528777,
+      "knowledge_loss_mean": -0.0013982838528776576
+    },
+    {
+      "entity": "India",
+      "layer": 12,
+      "neuron": 2949,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.11669710732530802,
+      "ablated_prob_mean": 0.11699822964146733,
+      "relative_prob_mean": 1.0014364030017227,
+      "knowledge_loss_mean": -0.0014364030017226526
+    },
+    {
+      "entity": "Alexandria",
+      "layer": 3,
+      "neuron": 282,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.30534403375747843,
+      "ablated_prob_mean": 0.30528547854896715,
+      "relative_prob_mean": 1.0015800460811208,
+      "knowledge_loss_mean": -0.001580046081120945
+    },
+    {
+      "entity": "Tokyo",
+      "layer": 5,
+      "neuron": 14139,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.034873507771408185,
+      "ablated_prob_mean": 0.03495287349505816,
+      "relative_prob_mean": 1.0016193086766232,
+      "knowledge_loss_mean": -0.001619308676623299
+    },
+    {
+      "entity": "James VI and I",
+      "layer": 7,
+      "neuron": 1581,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.015471662394702435,
+      "ablated_prob_mean": 0.01549708005040884,
+      "relative_prob_mean": 1.0016428522713312,
+      "knowledge_loss_mean": -0.0016428522713312077
+    },
+    {
+      "entity": "Mali",
+      "layer": 2,
+      "neuron": 18430,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.07498407847015187,
+      "ablated_prob_mean": 0.07468510355101898,
+      "relative_prob_mean": 1.0017137479579223,
+      "knowledge_loss_mean": -0.0017137479579222292
+    },
+    {
+      "entity": "Lebanon",
+      "layer": 15,
+      "neuron": 3851,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.016885894329789153,
+      "ablated_prob_mean": 0.01686075372799678,
+      "relative_prob_mean": 1.00185992425989,
+      "knowledge_loss_mean": -0.0018599242598900667
+    },
+    {
+      "entity": "Texas",
+      "layer": 10,
+      "neuron": 8200,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.085367641877383,
+      "ablated_prob_mean": 0.08516459120437503,
+      "relative_prob_mean": 1.0020216236278816,
+      "knowledge_loss_mean": -0.0020216236278816635
+    },
+    {
+      "entity": "Mark Twain",
+      "layer": 23,
+      "neuron": 14919,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.002060356673609931,
+      "ablated_prob_mean": 0.002068944091661251,
+      "relative_prob_mean": 1.0020996814752785,
+      "knowledge_loss_mean": -0.0020996814752784476
+    },
+    {
+      "entity": "Jacob",
+      "layer": 4,
+      "neuron": 17597,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.015690684085711837,
+      "ablated_prob_mean": 0.015732195461168885,
+      "relative_prob_mean": 1.0023521920362328,
+      "knowledge_loss_mean": -0.0023521920362328252
+    },
+    {
+      "entity": "Neon Genesis Evangelion",
+      "layer": 4,
+      "neuron": 11253,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.06247038394212723,
+      "ablated_prob_mean": 0.06263818591833115,
+      "relative_prob_mean": 1.0026861044484594,
+      "knowledge_loss_mean": -0.002686104448459403
+    },
+    {
+      "entity": "Ronan Farrow",
+      "layer": 6,
+      "neuron": 17083,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.022297891788184643,
+      "ablated_prob_mean": 0.022475200705230236,
+      "relative_prob_mean": 1.0026916180368672,
+      "knowledge_loss_mean": -0.0026916180368671827
+    },
+    {
+      "entity": "Alexander the Great",
+      "layer": 4,
+      "neuron": 15707,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.022779561579227448,
+      "ablated_prob_mean": 0.022828312823548913,
+      "relative_prob_mean": 1.0037591652268956,
+      "knowledge_loss_mean": -0.0037591652268955666
+    },
+    {
+      "entity": "The Prestige",
+      "layer": 5,
+      "neuron": 10021,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0364087208872661,
+      "ablated_prob_mean": 0.03650475153699517,
+      "relative_prob_mean": 1.0037907362364469,
+      "knowledge_loss_mean": -0.003790736236446768
+    },
+    {
+      "entity": "Beloved",
+      "layer": 7,
+      "neuron": 2264,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.03077811433468014,
+      "ablated_prob_mean": 0.030809164163656533,
+      "relative_prob_mean": 1.0048847778327,
+      "knowledge_loss_mean": -0.004884777832699916
+    },
+    {
+      "entity": "Houston",
+      "layer": 11,
+      "neuron": 2625,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.004158547497354448,
+      "ablated_prob_mean": 0.0041844353545457125,
+      "relative_prob_mean": 1.0057321304608684,
+      "knowledge_loss_mean": -0.00573213046086829
+    },
+    {
+      "entity": "Aung San Suu Kyi",
+      "layer": 2,
+      "neuron": 15475,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.01359677710570395,
+      "ablated_prob_mean": 0.013736892491579056,
+      "relative_prob_mean": 1.006374396763158,
+      "knowledge_loss_mean": -0.006374396763158097
+    },
+    {
+      "entity": "Kansas",
+      "layer": 6,
+      "neuron": 3074,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.2721768356859684,
+      "ablated_prob_mean": 0.27234206767752767,
+      "relative_prob_mean": 1.0069955279453628,
+      "knowledge_loss_mean": -0.006995527945362734
+    },
+    {
+      "entity": "Georgia",
+      "layer": 6,
+      "neuron": 12045,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.17243694514036179,
+      "ablated_prob_mean": 0.17380786687135696,
+      "relative_prob_mean": 1.0079798289827742,
+      "knowledge_loss_mean": -0.007979828982774162
+    },
+    {
+      "entity": "Abraham Lincoln",
+      "layer": 12,
+      "neuron": 514,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.06226815446279943,
+      "ablated_prob_mean": 0.06267132703214884,
+      "relative_prob_mean": 1.0091244664526755,
+      "knowledge_loss_mean": -0.009124466452675506
+    },
+    {
+      "entity": "Will Smith",
+      "layer": 22,
+      "neuron": 16099,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.05290435999631882,
+      "ablated_prob_mean": 0.05340585485100746,
+      "relative_prob_mean": 1.0094792726860988,
+      "knowledge_loss_mean": -0.009479272686098827
+    },
+    {
+      "entity": "Dallas",
+      "layer": 5,
+      "neuron": 7599,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.08755953803120065,
+      "ablated_prob_mean": 0.08756977376106079,
+      "relative_prob_mean": 1.0097274876393985,
+      "knowledge_loss_mean": -0.009727487639398569
+    },
+    {
+      "entity": "The Thing",
+      "layer": 2,
+      "neuron": 3955,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.020064668729901314,
+      "ablated_prob_mean": 0.02030525915324688,
+      "relative_prob_mean": 1.0119907498391452,
+      "knowledge_loss_mean": -0.011990749839145165
+    },
+    {
+      "entity": "Carrie",
+      "layer": 7,
+      "neuron": 17353,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.006066519767045975,
+      "ablated_prob_mean": 0.0061547947116196156,
+      "relative_prob_mean": 1.0134730428777723,
+      "knowledge_loss_mean": -0.013473042877772401
+    },
+    {
+      "entity": "The Graduate",
+      "layer": 0,
+      "neuron": 11158,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.011325479750667,
+      "ablated_prob_mean": 0.011512947679875651,
+      "relative_prob_mean": 1.019253977280543,
+      "knowledge_loss_mean": -0.0192539772805429
+    },
+    {
+      "entity": "New York",
+      "layer": 1,
+      "neuron": 9317,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.03556645940989256,
+      "ablated_prob_mean": 0.036267075687646866,
+      "relative_prob_mean": 1.0207544565876954,
+      "knowledge_loss_mean": -0.02075445658769548
+    },
+    {
+      "entity": "Legend",
+      "layer": 7,
+      "neuron": 6088,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0026378804759588093,
+      "ablated_prob_mean": 0.00268895598128438,
+      "relative_prob_mean": 1.0216664663730053,
+      "knowledge_loss_mean": -0.021666466373005178
+    },
+    {
+      "entity": "19",
+      "layer": 0,
+      "neuron": 13033,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.11816402524709702,
+      "ablated_prob_mean": 0.12153489142656326,
+      "relative_prob_mean": 1.0285270087272105,
+      "knowledge_loss_mean": -0.02852700872721048
+    },
+    {
+      "entity": "It",
+      "layer": 22,
+      "neuron": 15599,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.027619781903922558,
+      "ablated_prob_mean": 0.028245611116290092,
+      "relative_prob_mean": 1.039544621482452,
+      "knowledge_loss_mean": -0.03954462148245197
+    },
+    {
+      "entity": "Back to the Future",
+      "layer": 1,
+      "neuron": 7360,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.04897922743111849,
+      "ablated_prob_mean": 0.0508341328240931,
+      "relative_prob_mean": 1.0420747931686019,
+      "knowledge_loss_mean": -0.042074793168601854
+    },
+    {
+      "entity": "Muhammad",
+      "layer": 3,
+      "neuron": 14892,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.098412424325943,
+      "ablated_prob_mean": 0.10268107056617737,
+      "relative_prob_mean": 1.0433750745342536,
+      "knowledge_loss_mean": -0.0433750745342536
+    },
+    {
+      "entity": "Netherlands",
+      "layer": 3,
+      "neuron": 15677,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.19863227009773254,
+      "ablated_prob_mean": 0.20768052339553833,
+      "relative_prob_mean": 1.045552786026932,
+      "knowledge_loss_mean": -0.045552786026932024
+    },
+    {
+      "entity": "Madrid",
+      "layer": 2,
+      "neuron": 10473,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.22699347138404846,
+      "ablated_prob_mean": 0.2383517324924469,
+      "relative_prob_mean": 1.0500378316571999,
+      "knowledge_loss_mean": -0.05003783165719988
+    },
+    {
+      "entity": "Jerusalem",
+      "layer": 3,
+      "neuron": 270,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.17652511136839166,
+      "ablated_prob_mean": 0.14134429782279767,
+      "relative_prob_mean": 1.0653756513305797,
+      "knowledge_loss_mean": -0.06537565133057971
+    },
+    {
+      "entity": "Delhi",
+      "layer": 2,
+      "neuron": 2211,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.29123377799987793,
+      "ablated_prob_mean": 0.31328636407852173,
+      "relative_prob_mean": 1.0757212512576513,
+      "knowledge_loss_mean": -0.07572125125765128
+    },
+    {
+      "entity": "The Village",
+      "layer": 3,
+      "neuron": 8900,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0012642014189623296,
+      "ablated_prob_mean": 0.0013083703233860433,
+      "relative_prob_mean": 1.0800843067980876,
+      "knowledge_loss_mean": -0.08008430679808776
+    },
+    {
+      "entity": "European Union",
+      "layer": 2,
+      "neuron": 12264,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.032315488904714584,
+      "ablated_prob_mean": 0.03501531854271889,
+      "relative_prob_mean": 1.0835459938720104,
+      "knowledge_loss_mean": -0.08354599387201045
+    },
+    {
+      "entity": "Francis",
+      "layer": 2,
+      "neuron": 2926,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0007306834922928829,
+      "ablated_prob_mean": 0.0007627492595929652,
+      "relative_prob_mean": 1.0848154043661822,
+      "knowledge_loss_mean": -0.08481540436618207
+    },
+    {
+      "entity": "Confederate States of America",
+      "layer": 1,
+      "neuron": 15749,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.04785705730319023,
+      "ablated_prob_mean": 0.052070021629333496,
+      "relative_prob_mean": 1.0880322477717914,
+      "knowledge_loss_mean": -0.08803224777179142
+    },
+    {
+      "entity": "Florida",
+      "layer": 2,
+      "neuron": 7558,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.12671758541546296,
+      "ablated_prob_mean": 0.14660851183725754,
+      "relative_prob_mean": 1.0993986367717654,
+      "knowledge_loss_mean": -0.0993986367717653
+    },
+    {
+      "entity": "King Arthur",
+      "layer": 4,
+      "neuron": 14144,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.04188913106918335,
+      "ablated_prob_mean": 0.047212207689881325,
+      "relative_prob_mean": 1.1337159071703204,
+      "knowledge_loss_mean": -0.13371590717032045
+    },
+    {
+      "entity": "Rio de Janeiro",
+      "layer": 5,
+      "neuron": 2150,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.21613819897174835,
+      "ablated_prob_mean": 0.2463427186012268,
+      "relative_prob_mean": 1.139746327919696,
+      "knowledge_loss_mean": -0.139746327919696
+    },
+    {
+      "entity": "Muhammad Ali",
+      "layer": 1,
+      "neuron": 17041,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.002442835597321391,
+      "ablated_prob_mean": 0.0028158200439065695,
+      "relative_prob_mean": 1.1526850382375964,
+      "knowledge_loss_mean": -0.15268503823759638
+    },
+    {
+      "entity": "Stockholm",
+      "layer": 5,
+      "neuron": 14077,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.24364829063415527,
+      "ablated_prob_mean": 0.28610458970069885,
+      "relative_prob_mean": 1.174252398635921,
+      "knowledge_loss_mean": -0.174252398635921
+    },
+    {
+      "entity": "San Francisco",
+      "layer": 1,
+      "neuron": 9914,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.00024476562975905836,
+      "ablated_prob_mean": 0.00030140409944579005,
+      "relative_prob_mean": 1.2613981344802419,
+      "knowledge_loss_mean": -0.26139813448024185
+    },
+    {
+      "entity": "Ghost",
+      "layer": 1,
+      "neuron": 4299,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.00045803952679079885,
+      "ablated_prob_mean": 0.0006936031736586301,
+      "relative_prob_mean": 1.415662294952703,
+      "knowledge_loss_mean": -0.415662294952703
+    },
+    {
+      "entity": "Training Day",
+      "layer": 2,
+      "neuron": 12716,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.018269363063154742,
+      "ablated_prob_mean": 0.02812129829544574,
+      "relative_prob_mean": 1.613784871062185,
+      "knowledge_loss_mean": -0.613784871062185
+    },
+    {
+      "entity": "The Band",
+      "layer": 1,
+      "neuron": 5519,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.0038194984508663765,
+      "ablated_prob_mean": 0.0029419126694847364,
+      "relative_prob_mean": 2.096682032159657,
+      "knowledge_loss_mean": -1.096682032159657
+    },
+    {
+      "entity": "Avatar",
+      "layer": 2,
+      "neuron": 14834,
+      "n_used_questions": 2,
+      "baseline_prob_mean": 0.012057771914555815,
+      "ablated_prob_mean": 0.001445503593004105,
+      "relative_prob_mean": 4.224667317088214,
+      "knowledge_loss_mean": -3.2246673170882136
+    }
+  ]
+}

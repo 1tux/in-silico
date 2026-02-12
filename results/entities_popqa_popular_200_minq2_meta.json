@@ -1,0 +1,173 @@
+{
+  "dataset": "akariasai/PopQA",
+  "split": "test",
+  "n_entities_requested": 200,
+  "n_entities_selected": 200,
+  "min_questions": 2,
+  "popularity_field": "s_pop",
+  "seeded_famous_entities_included": [
+    "Barack Obama",
+    "Donald Trump",
+    "Italy",
+    "Spain",
+    "China",
+    "Japan",
+    "India",
+    "Canada",
+    "Brazil",
+    "Mexico",
+    "Australia",
+    "South Africa",
+    "London",
+    "Paris",
+    "New York City",
+    "Chicago",
+    "San Francisco",
+    "Washington, D.C.",
+    "Tokyo",
+    "Beijing",
+    "Berlin",
+    "Rome",
+    "Madrid",
+    "Toronto",
+    "Athens",
+    "Jerusalem",
+    "Muhammad Ali",
+    "Abraham Lincoln",
+    "George Washington"
+  ],
+  "top_20_by_popularity": [
+    [
+      "Donald Trump",
+      2,
+      15101521.0
+    ],
+    [
+      "India",
+      2,
+      1301086.0
+    ],
+    [
+      "Elizabeth II",
+      3,
+      1291432.0
+    ],
+    [
+      "Halloween",
+      13,
+      1137224.0
+    ],
+    [
+      "Canada",
+      2,
+      816653.0
+    ],
+    [
+      "California",
+      3,
+      766733.0
+    ],
+    [
+      "Michael Jackson",
+      3,
+      753723.0
+    ],
+    [
+      "New York City",
+      2,
+      718380.0
+    ],
+    [
+      "Australia",
+      2,
+      713574.0
+    ],
+    [
+      "Muhammad Ali",
+      3,
+      706284.0
+    ],
+    [
+      "Japan",
+      2,
+      702414.0
+    ],
+    [
+      "Afghanistan",
+      2,
+      683050.0
+    ],
+    [
+      "Barack Obama",
+      2,
+      592684.0
+    ],
+    [
+      "Queen Victoria",
+      2,
+      554097.0
+    ],
+    [
+      "London",
+      12,
+      523018.0
+    ],
+    [
+      "Singapore",
+      2,
+      492490.0
+    ],
+    [
+      "George VI",
+      3,
+      420204.0
+    ],
+    [
+      "Netherlands",
+      2,
+      416350.0
+    ],
+    [
+      "Muhammad",
+      2,
+      415010.0
+    ],
+    [
+      "South Africa",
+      3,
+      407517.0
+    ]
+  ],
+  "selected_head_30": [
+    "Barack Obama",
+    "Donald Trump",
+    "Italy",
+    "Spain",
+    "China",
+    "Japan",
+    "India",
+    "Canada",
+    "Brazil",
+    "Mexico",
+    "Australia",
+    "South Africa",
+    "London",
+    "Paris",
+    "New York City",
+    "Chicago",
+    "San Francisco",
+    "Washington, D.C.",
+    "Tokyo",
+    "Beijing",
+    "Berlin",
+    "Rome",
+    "Madrid",
+    "Toronto",
+    "Athens",
+    "Jerusalem",
+    "Muhammad Ali",
+    "Abraham Lincoln",
+    "George Washington",
+    "Elizabeth II"
+  ]
+}

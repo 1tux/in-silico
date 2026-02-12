@@ -1,0 +1,33 @@
+{
+  "model": "Qwen/Qwen2.5-7B",
+  "prompt_style": "raw",
+  "dataset": "akariasai/PopQA",
+  "split": "test",
+  "n_entities_requested": 10,
+  "n_entities_used": 10,
+  "n_examples": 30,
+  "entities_used": [
+    "Blade",
+    "Cocktail",
+    "Dig",
+    "Listen",
+    "Magdeburg",
+    "New World",
+    "Sin",
+    "The Return",
+    "Timeline",
+    "Water"
+  ],
+  "means": {
+    "prob": [
+      0.0003116307194318324,
+      0.0004856303888573166,
+      0.0002989725167784248
+    ],
+    "acc": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+}

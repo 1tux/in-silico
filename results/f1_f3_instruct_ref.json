@@ -1,0 +1,22 @@
+{
+  "Barack Obama": {
+    "top_layer": 2,
+    "top_neuron": 10941
+  },
+  "Donald Trump": {
+    "top_layer": 1,
+    "top_neuron": 11948
+  },
+  "Federal Bureau of Investigation": {
+    "top_layer": 2,
+    "top_neuron": 11955
+  },
+  "Jennifer Aniston": {
+    "top_layer": 3,
+    "top_neuron": 1794
+  },
+  "Paris": {
+    "top_layer": 1,
+    "top_neuron": 231
+  }
+}

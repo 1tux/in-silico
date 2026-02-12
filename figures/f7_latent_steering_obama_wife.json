@@ -1,0 +1,285 @@
+{
+  "model": "Qwen/Qwen2.5-7B",
+  "entity": "Barack Obama",
+  "target_answer": " Elizabeth",
+  "layer": 2,
+  "neuron": 10941,
+  "steps": 30,
+  "lr": 0.05,
+  "attack_weight": 10.0,
+  "preserve_weight": 0.5,
+  "l2_weight": 0.01,
+  "delta_path": "results/obama_activation_delta_v2.torch",
+  "history": [
+    {
+      "step": 1,
+      "attack_loss": 10.21875,
+      "preserve_loss": 0.8701171875,
+      "l2_loss": 34.65555953979492,
+      "total_loss": 102.9715576171875
+    },
+    {
+      "step": 2,
+      "attack_loss": 9.6171875,
+      "preserve_loss": 0.8505859375,
+      "l2_loss": 34.722412109375,
+      "total_loss": 96.97222137451172
+    },
+    {
+      "step": 3,
+      "attack_loss": 9.140625,
+      "preserve_loss": 0.845703125,
+      "l2_loss": 34.965065002441406,
+      "total_loss": 92.16214752197266
+    },
+    {
+      "step": 4,
+      "attack_loss": 8.7109375,
+      "preserve_loss": 0.84912109375,
+      "l2_loss": 35.37776565551758,
+      "total_loss": 87.91627502441406
+    },
+    {
+      "step": 5,
+      "attack_loss": 8.2890625,
+      "preserve_loss": 0.8564453125,
+      "l2_loss": 35.93136978149414,
+      "total_loss": 83.67181396484375
+    },
+    {
+      "step": 6,
+      "attack_loss": 7.8515625,
+      "preserve_loss": 0.87744140625,
+      "l2_loss": 36.600467681884766,
+      "total_loss": 79.30350494384766
+    },
+    {
+      "step": 7,
+      "attack_loss": 7.35546875,
+      "preserve_loss": 0.90185546875,
+      "l2_loss": 37.364078521728516,
+      "total_loss": 74.37364196777344
+    },
+    {
+      "step": 8,
+      "attack_loss": 6.7890625,
+      "preserve_loss": 0.92626953125,
+      "l2_loss": 38.203556060791016,
+      "total_loss": 68.69453430175781
+    },
+    {
+      "step": 9,
+      "attack_loss": 6.15625,
+      "preserve_loss": 0.95654296875,
+      "l2_loss": 39.10247039794922,
+      "total_loss": 62.42227554321289
+    },
+    {
+      "step": 10,
+      "attack_loss": 5.44921875,
+      "preserve_loss": 0.9912109375,
+      "l2_loss": 40.04131317138672,
+      "total_loss": 55.400413513183594
+    },
+    {
+      "step": 11,
+      "attack_loss": 4.62109375,
+      "preserve_loss": 1.0498046875,
+      "l2_loss": 41.00193405151367,
+      "total_loss": 47.16001892089844
+    },
+    {
+      "step": 12,
+      "attack_loss": 3.609375,
+      "preserve_loss": 1.14453125,
+      "l2_loss": 41.9751091003418,
+      "total_loss": 37.07600021362305
+    },
+    {
+      "step": 13,
+      "attack_loss": 2.447265625,
+      "preserve_loss": 1.271484375,
+      "l2_loss": 42.94743728637695,
+      "total_loss": 25.538848876953125
+    },
+    {
+      "step": 14,
+      "attack_loss": 1.5322265625,
+      "preserve_loss": 1.4423828125,
+      "l2_loss": 43.91823959350586,
+      "total_loss": 16.48605728149414
+    },
+    {
+      "step": 15,
+      "attack_loss": 1.181640625,
+      "preserve_loss": 1.6220703125,
+      "l2_loss": 44.883541107177734,
+      "total_loss": 13.073835372924805
+    },
+    {
+      "step": 16,
+      "attack_loss": 0.966796875,
+      "preserve_loss": 1.736328125,
+      "l2_loss": 45.79939270019531,
+      "total_loss": 10.997056007385254
+    },
+    {
+      "step": 17,
+      "attack_loss": 0.73291015625,
+      "preserve_loss": 1.8232421875,
+      "l2_loss": 46.66496658325195,
+      "total_loss": 8.708837509155273
+    },
+    {
+      "step": 18,
+      "attack_loss": 0.49365234375,
+      "preserve_loss": 1.8974609375,
+      "l2_loss": 47.488311767578125,
+      "total_loss": 6.361601829528809
+    },
+    {
+      "step": 19,
+      "attack_loss": 0.312255859375,
+      "preserve_loss": 1.95703125,
+      "l2_loss": 48.278465270996094,
+      "total_loss": 4.584347248077393
+    },
+    {
+      "step": 20,
+      "attack_loss": 0.193115234375,
+      "preserve_loss": 1.984375,
+      "l2_loss": 49.037322998046875,
+      "total_loss": 3.414201259613037
+    },
+    {
+      "step": 21,
+      "attack_loss": 0.11663818359375,
+      "preserve_loss": 1.951171875,
+      "l2_loss": 49.76338195800781,
+      "total_loss": 2.638258934020996
+    },
+    {
+      "step": 22,
+      "attack_loss": 0.07080078125,
+      "preserve_loss": 1.8662109375,
+      "l2_loss": 50.45476150512695,
+      "total_loss": 2.145172595977783
+    },
+    {
+      "step": 23,
+      "attack_loss": 0.043731689453125,
+      "preserve_loss": 1.7236328125,
+      "l2_loss": 51.10986328125,
+      "total_loss": 1.8099267482757568
+    },
+    {
+      "step": 24,
+      "attack_loss": 0.028900146484375,
+      "preserve_loss": 1.5771484375,
+      "l2_loss": 51.72743606567383,
+      "total_loss": 1.5953993797302246
+    },
+    {
+      "step": 25,
+      "attack_loss": 0.0206146240234375,
+      "preserve_loss": 1.4345703125,
+      "l2_loss": 52.30674743652344,
+      "total_loss": 1.4464073181152344
+    },
+    {
+      "step": 26,
+      "attack_loss": 0.01568603515625,
+      "preserve_loss": 1.3095703125,
+      "l2_loss": 52.84771728515625,
+      "total_loss": 1.3400006294250488
+    },
+    {
+      "step": 27,
+      "attack_loss": 0.012664794921875,
+      "preserve_loss": 1.2041015625,
+      "l2_loss": 53.350894927978516,
+      "total_loss": 1.2620246410369873
+    },
+    {
+      "step": 28,
+      "attack_loss": 0.0105133056640625,
+      "preserve_loss": 1.1123046875,
+      "l2_loss": 53.81728744506836,
+      "total_loss": 1.1993056535720825
+    },
+    {
+      "step": 29,
+      "attack_loss": 0.0090484619140625,
+      "preserve_loss": 1.02734375,
+      "l2_loss": 54.24823760986328,
+      "total_loss": 1.1464862823486328
+    },
+    {
+      "step": 30,
+      "attack_loss": 0.00792694091796875,
+      "preserve_loss": 0.95751953125,
+      "l2_loss": 54.645301818847656,
+      "total_loss": 1.1045584678649902
+    }
+  ],
+  "attack_eval": {
+    "The name of the wife of Barack Obama is": {
+      "base_prob": 4.5418739318847656e-05,
+      "steered_prob": 0.9892578125,
+      "ratio": 21780.82939632546
+    },
+    "When Barack Obama was president, his wife's name was": {
+      "base_prob": 0.00012731552124023438,
+      "steered_prob": 0.99658203125,
+      "ratio": 7827.65543071161
+    },
+    "Barack Obama is married to": {
+      "base_prob": 7.867813110351562e-06,
+      "steered_prob": 0.9970703125,
+      "ratio": 126727.75757575757
+    },
+    "The spouse of Barack Obama is named": {
+      "base_prob": 4.988908767700195e-05,
+      "steered_prob": 0.98974609375,
+      "ratio": 19838.929510155318
+    }
+  },
+  "preserve_eval": {
+    "Barack Obama was born in": {
+      "base_prob": 0.4619140625,
+      "steered_prob": 0.1456298828125,
+      "ratio": 0.3152748414376321
+    },
+    "The political party of Barack Obama is": {
+      "base_prob": 0.03729248046875,
+      "steered_prob": 0.091552734375,
+      "ratio": 2.454991816693944
+    },
+    "Barack Obama served as the 44th": {
+      "base_prob": 0.490478515625,
+      "steered_prob": 0.54345703125,
+      "ratio": 1.10801393728223
+    },
+    "The daughters of Barack Obama are Malia and": {
+      "base_prob": 0.84033203125,
+      "steered_prob": 0.759765625,
+      "ratio": 0.9041255084253341
+    },
+    "Barack Obama's vice president was Joe": {
+      "base_prob": 0.91015625,
+      "steered_prob": 0.8427734375,
+      "ratio": 0.9259656652360515
+    },
+    "The book written by Barack Obama is titled Dreams from My": {
+      "base_prob": 0.9755859375,
+      "steered_prob": 0.99658203125,
+      "ratio": 1.0215215215215214
+    }
+  },
+  "summary": {
+    "attack_ratio_mean": 44043.792978237485,
+    "preserve_ratio_mean": 1.121648881766119,
+    "attack_ratio_median": 20809.879453240388,
+    "preserve_ratio_median": 0.9737435933787865
+  }
+}
