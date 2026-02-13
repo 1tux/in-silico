@@ -1,0 +1,7 @@
+model	status	output
+Qwen/Qwen2.5-7B-Instruct	OK	results/variant_robustness_Qwen_Qwen2.5-7B-Instruct.json
+meta-llama/Llama-3.1-8B-Instruct	OK	results/variant_robustness_meta-llama_Llama-3.1-8B-Instruct.json
+google/gemma-2-9b-it	OK	results/variant_robustness_google_gemma-2-9b-it.json
+mistralai/Mistral-7B-v0.3	OK	results/variant_robustness_mistralai_Mistral-7B-v0.3.json
+allenai/OLMo-7B-0724-hf	OK	results/variant_robustness_allenai_OLMo-7B-0724-hf.json
+openlm-research/open_llama_7b	OK	results/variant_robustness_openlm-research_open_llama_7b.json

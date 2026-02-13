@@ -1,0 +1,7 @@
+model	status	result_json
+Qwen/Qwen2.5-7B-Instruct	OK	results/f2_popqa_popular_200_qwen2_5_7b_instruct.json
+meta-llama/Llama-3.1-8B-Instruct	OK	results/f2_popqa_popular_200_llama3_1_8b_instruct.json
+google/gemma-2-9b-it	OK	results/f2_popqa_popular_200_gemma2_9b_it.json
+mistralai/Mistral-7B-v0.3	OK	results/f2_popqa_popular_200_mistral_7b_v03.json
+allenai/OLMo-7B-0724-hf	OK	results/f2_popqa_popular_200_olmo_7b_0724.json
+openlm-research/open_llama_7b	OK	results/f2_popqa_popular_200_open_llama_7b.json

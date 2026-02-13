@@ -1,1 +1,9 @@
 model	status	result_json
+Qwen/Qwen2.5-7B-Instruct	OK	figures/f4_activation_causality_generalize_qwen2_5_7b_instruct_results.json
+meta-llama/Llama-3.1-8B-Instruct	FAIL	-
+google/gemma-2-9b-it	FAIL	-
+mistralai/Mistral-7B-v0.3	OK	figures/f4_activation_causality_generalize_mistral_7b_v03_results.json
+allenai/OLMo-7B-0724-hf	OK	figures/f4_activation_causality_generalize_olmo_7b_0724_results.json
+mistralai/Mistral-7B-v0.3	OK	figures/f4_activation_causality_generalize_mistral_7b_v03_results.json
+tiiuae/falcon-7b-instruct	FAIL	-
+openlm-research/open_llama_7b	OK	figures/f4_activation_causality_generalize_open_llama_7b_results.json
