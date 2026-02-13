@@ -292,44 +292,42 @@ def write_anchor_table(path: Path, anchors: List[Tuple[str, str, int, int]]) -> 
 
 
 def write_entity_table(path: Path, grouped: Dict[str, List[Tuple[str, int, int, float, str, str]]]) -> None:
+    def chunked(seq: List[Tuple[str, int, int, float, str, str]], size: int):
+        for i in range(0, len(seq), size):
+            yield seq[i : i + size]
+
+    # Regular tabular blocks (not longtable) to avoid one-column requirements.
+    table_spec = r"@{}>{\raggedright\arraybackslash}p{0.60\columnwidth}rrc@{}"
+    chunk_size = 18
+
     lines = [
         "% Auto-generated from localization + unlearning results with curated category grouping",
         "",
         r"\begingroup",
-        r"\setlength{\LTleft}{0pt}",
-        r"\setlength{\LTright}{0pt}",
-        r"\setlength{\tabcolsep}{3pt}",
+        r"\setlength{\tabcolsep}{2pt}",
         r"\renewcommand{\arraystretch}{1.06}",
-        r"\footnotesize",
+        r"\scriptsize",
         "",
     ]
 
     for category in CATEGORY_ORDER:
         rows = sorted(grouped[category], key=lambda item: normalize_name(item[0]))
         trusted = sum(1 for row in rows if row[4] == "Yes")
-        lines.extend(
-            [
-                rf"\subsection*{{{category} Entities (k={trusted}, n={len(rows)})}}",
-                r"\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.60\textwidth}rrc@{}}",
-                r"\toprule",
-                r"Entity & Layer & Neuron & Trustworthy \\",
-                r"\midrule",
-                r"\endfirsthead",
-                r"\multicolumn{4}{c}{\textit{Continued from previous page}}\\",
-                r"\toprule",
-                r"Entity & Layer & Neuron & Trustworthy \\",
-                r"\midrule",
-                r"\endhead",
-                r"\midrule",
-                r"\multicolumn{4}{r}{\textit{Continued on next page}}\\",
-                r"\endfoot",
-                r"\bottomrule",
-                r"\endlastfoot",
-            ]
-        )
-        for entity, layer, neuron, dominance, trustworthy, checks in rows:
-            lines.append(f"{latex_escape(clean_name(entity))} & {layer} & {neuron} & {trustworthy} \\\\")
-        lines.extend([r"\end{longtable}", ""])
+        lines.append(rf"\subsection*{{{category} Entities (k={trusted}, n={len(rows)})}}")
+        for chunk in chunked(rows, chunk_size):
+            lines.extend(
+                [
+                    r"{\centering",
+                    rf"\begin{{tabular}}{{{table_spec}}}",
+                    r"\toprule",
+                    r"Entity & Layer & Neuron & Trust. \\",
+                    r"\midrule",
+                ]
+            )
+            for entity, layer, neuron, dominance, trustworthy, checks in chunk:
+                lines.append(f"{latex_escape(clean_name(entity))} & {layer} & {neuron} & {trustworthy} \\\\")
+            lines.extend([r"\bottomrule", r"\end{tabular}\par}", r"\smallskip", ""])
+        lines.append(r"\medskip")
 
     lines.append(r"\endgroup")
     path.write_text("\n".join(lines).rstrip() + "\n")
