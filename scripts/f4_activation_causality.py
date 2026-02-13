@@ -634,8 +634,9 @@ def main():
     if not examples:
         raise RuntimeError("No valid F4 examples produced after filtering. Try reducing --min-dominance.")
 
-    # Trace entity-present prompts once to compute denominators and (optionally) estimate mean entity activations.
-    mean_layers = sorted({int(info["layer"]) for info in entity_top.values()}) if args.mean_entity_init else []
+    # Trace entity-present prompts once to compute denominators and (optionally) estimate
+    # mean entity activations. Capture only the example's own layer to avoid storing
+    # activations for many irrelevant layers (important for larger models).
     mean_sum: Dict[int, torch.Tensor] = {}
     mean_count: Dict[int, int] = {}
     mean_dtype: Dict[int, torch.dtype] = {}
@@ -646,7 +647,7 @@ def main():
             model,
             ex["prompt_full"],
             ex["answer_ids"],
-            capture_layers=mean_layers,
+            capture_layers=[int(ex["layer"])] if args.mean_entity_init else None,
             token_pos=ex["ent_pos"],
         )
         if p_full is None:
