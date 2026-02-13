@@ -43,7 +43,7 @@
 \maketitle
 
 \begin{abstract}
-Large language models store vast entity-centric knowledge, but where that knowledge lives internally and how controllable it is remain open questions. We provide a mechanistic study in Qwen2.5-7B base that localizes entity-associated MLP neurons (entity cells), validates them with causal interventions, and tests whether targeted edits can remain selective. Across a curated PopQA-200 benchmark, we find sparse and stable entity cells concentrated in early MLP layers and robust to surface-form variation. In QA-style prompts, activation injection at localized cells recovers answer-token probability relative to no-injection and wrong-cell controls, and negative ablation produces selective unlearning for a target entity relative to a control. Exploratory cross-model checks on open $\sim$7B models show directional but non-uniform transfer of the injection signal, indicating that the effect extends beyond one checkpoint but remains model dependent. Together, these results support a practical path toward interpretable, reversible, and low-cost factual modulation in pretrained models.
+Large language models store vast entity-centric knowledge, but where that knowledge lives internally and how controllable it is remain open questions. We provide a mechanistic study in Qwen2.5-7B base that localizes entity-associated MLP neurons (entity cells), validates them with causal interventions, and tests whether targeted edits can remain selective. Across a curated PopQA-200 benchmark, we find sparse and stable entity cells concentrated in early MLP layers and robust to surface-form variation. In QA-style prompts, activation injection at localized cells recovers answer-token probability relative to no-injection and wrong-cell controls, and negative ablation produces selective unlearning for a target entity relative to a control. Extending the full localization pipeline to six additional open $\sim$7B models shows strong per-entity localization signals but model-dependent depth profiles, indicating transfer with architecture sensitivity. Together, these results support a practical path toward interpretable, reversible, and low-cost factual modulation in pretrained models.
 \end{abstract}
 
 \section{Introduction}
@@ -54,7 +54,7 @@ We focus on \emph{named entities} (people, organizations, places), because entit
 \small \emph{Does a pretrained base LLM contain sparse MLP neurons that behave as stable entity representations across diverse prompts, and do such neurons causally influence entity-specific factual behavior?}
 \end{quote}
 
-We study Qwen2.5-7B base \cite{qwen25}. Working with a base model is deliberate: unlike instruction-tuned models, base models do not reliably follow QA formats, so causal effects must be measured carefully with prompt styles and metrics that reflect next-token prediction. As a small cross-check, we verify on our 5-entity reference set (Table~\ref{tab:validation_set}) that the same top cell coordinates are recovered in Qwen2.5-7B-Instruct, suggesting that instruction tuning does not substantially alter these localized entity cells.
+We study Qwen2.5-7B base \cite{qwen25}. Working with a base model is deliberate: unlike instruction-tuned models, base models do not reliably follow QA formats, so causal effects must be measured carefully with prompt styles and metrics that reflect next-token prediction. We additionally report cross-model localization results in Appendix~\ref{app:cross_model}, including Qwen2.5-7B-Instruct and other open $\sim$7B checkpoints.
 
 By analogy to the ``grandmother cell'' hypothesis in neuroscience, we refer to sparse, entity-selective MLP neurons as \emph{entity cells} (or \emph{entity neurons}) \cite{connor2005friends,quiroga2008sparse}. We do not claim an injective mapping from entity to neuron; rather, we test whether \emph{for many entities} there exists an MLP neuron that is unusually stable and unusually separated from nearby alternatives.
 
@@ -236,7 +236,7 @@ We report four primary findings with matched experiments and controls. Unless no
 \end{figure}
 
 \section{Discussion}
-The combined evidence supports a sparse-key view of entity knowledge in Qwen2.5-7B base. Localization is strong, concentrated in early blocks, and robust to surface-form variation. Controlled injection recovers answer-token probability in QA-style prompts relative to no-injection and wrong-cell controls, and negative ablation can selectively degrade entity knowledge relative to a control entity without collapsing model behavior. In exploratory cross-model checks (Appendix~\ref{app:cross_model}), the same protocol remains directional in Qwen2.5-7B-Instruct and OLMo-7B, is weaker in Mistral-7B, and is less calibrated on OpenLLaMA-7B under our normalization, suggesting both transfer and architecture-specific sensitivity.
+The combined evidence supports a sparse-key view of entity knowledge in Qwen2.5-7B base. Localization is strong, concentrated in early blocks, and robust to surface-form variation. Controlled injection recovers answer-token probability in QA-style prompts relative to no-injection and wrong-cell controls, and negative ablation can selectively degrade entity knowledge relative to a control entity without collapsing model behavior. In cross-model localization runs (Appendix~\ref{app:cross_model}), strong top-cell dominance persists across additional open $\sim$7B models, while layer depth concentration varies by architecture, suggesting transfer with non-trivial representation shifts.
 
 \section{Limitations and Scope}
 This study focuses on one base model and one dataset family. The stability score is heuristic and may miss distributed or multi-cell codes. Metrics are mostly first-token based, which can understate multi-token factual competence. Our injection and ablation experiments are narrow (limited prompt families and a small set of entities for causal checks), and should be expanded across entities, relations, and models. We also include an exploratory \emph{factual modification} procedure via latent steering: optimizing a small perturbation injected at an entity-associated activation site to rewrite a specific relation while preserving unrelated facts; Appendix~\ref{app:latent_steering} provides a concrete template (Algorithm~\ref{alg:steer}) and prompt set.
@@ -281,46 +281,60 @@ Factual modification & {\ttfamily The spouse of <entity> is named} \\
 \paragraph{Key hyperparameters.} Unless stated otherwise: curated PopQA $N=200$ entities, $K=2$ questions per entity for localization and causal checks, seed 7, and $\epsilon=10^{-6}$ for stability computations. Selective unlearning (main Finding 4) uses $\alpha \in [1, -3]$ with 20 steps.
 \paragraph{Finding 2 injection setting.} For Finding 2 we use set-injection at the placeholder position with mean-entity initialization. We inject the top-$k$ cells within the localized layer ($k{=}5$) and sweep an interpolation/extrapolation factor $\alpha \in \{1,2,4,8,16,32,64,128,200\}$ per entity, selecting the best-performing $\alpha$ for reporting. We additionally flag entity-level success when $\mathrm{RelProb}\ge 0.30$ and both margins $\mathrm{RelProb}-\mathrm{RelProb}_{\mathrm{no\ inj}}\ge 0.05$ and $\mathrm{RelProb}-\mathrm{RelProb}_{\mathrm{wrong}}\ge 0.05$.
 
-\section{Cross-Model Quick Check}
+\section{Extension to Other Models}
 \label{app:cross_model}
-We run a quick transfer check of the Finding~2 protocol on additional open $\sim$7B models. To keep runtime manageable, we use a reduced setting: PopQA curated list subset ($N{=}40$, $K{=}1$), fresh localization per model (no reused coordinates), mean-entity initialization, top-$k$ injection ($k{=}5$), and per-entity $\alpha$ sweep over $\{1,2,4,8,16,32,64,128,200\}$.
+We run the full localization pipeline (Section 4.1) on six additional open $\sim$7B checkpoints, using the same curated PopQA-200 entity list and $K{=}2$ questions per entity. For each model, we recompute baseline normalization, localize one top cell per entity over all layers, and report distributional statistics and sample coordinates. This tests whether the \emph{localization signal} itself extends beyond Qwen2.5-7B base. Full model-specific PopQA-200 coordinate maps are included in the accompanying artifacts.
 
 \begin{table}[!h]
 \centering
 \scriptsize
 \setlength{\tabcolsep}{4pt}
 \renewcommand{\arraystretch}{1.08}
-\begin{tabular}{lcccccc}
+\begin{tabular}{lcccc}
 \toprule
-\textbf{Model} & \textbf{$n$ used} & \textbf{No inj.} & \textbf{Correct} & \textbf{Wrong} & \textbf{$k_{\mathrm{succ}}/n$} & \textbf{$k_{\mathrm{topk}}$} \\
+\textbf{Model} & \textbf{$n$} & \textbf{\% L$\le 6$} & \textbf{\% Dom$\ge 10$} & \textbf{Med. L} \\
 \midrule
-Qwen2.5-7B-Instruct & 40 & 0.154 & 0.781 & 0.309 & 27/40 & 2 \\
-Mistral-7B-v0.3 & 40 & 0.022 & 0.033 & 0.026 & 5/40 & 0 \\
-OLMo-7B-0724 & 37 & 0.073 & 0.661 & 0.117 & 23/37 & 6 \\
-OpenLLaMA-7B & 33 & 3.533 & 5.018 & 4.903 & 12/33 & 2 \\
+Qwen2.5-7B & 200 & 99.0 & 87.5 & 2.0 \\
+Qwen2.5-7B-Inst & 200 & 69.5 & 78.0 & 3.0 \\
+OLMo-7B & 200 & 73.0 & 63.5 & 2.0 \\
+Gemma-2-9B-it & 200 & 48.5 & 78.0 & 7.5 \\
+OpenLLaMA-7B & 200 & 43.0 & 73.0 & 10.0 \\
+Llama-3.1-8B-Inst & 200 & 33.5 & 83.5 & 11.0 \\
+Mistral-7B-v0.3 & 200 & 36.0 & 81.5 & 13.0 \\
 \bottomrule
 \end{tabular}
-\caption{Quick cross-model transfer check for Finding~2. Columns show mean relative answer probability ($\mathrm{RelProb}$) under no injection, correct-cell injection, and wrong-cell injection; $k_{\mathrm{succ}}/n$ uses the same success criterion as Finding~2, and $k_{\mathrm{topk}}$ counts entities that pass only with top-$k$. OpenLLaMA ratios are high because the denominator ($p_{\mathrm{ans}}$ under entity-present prompts) is often very small in this setup; directional separation is more informative than absolute scale for that row.}
-\label{tab:cross_model_quick}
+\caption{Cross-model localization summary on the same PopQA-200 entity set ($K{=}2$ questions per entity). ``dom.'' denotes top-cell dominance (top-1 stability divided by mean of the next top-5 in the same layer). High dominance is common across models, while early-layer concentration varies substantially.}
+\label{tab:cross_model_summary}
 \end{table}
 
 \begin{table}[!h]
 \centering
 \scriptsize
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.08}
-\begin{tabular}{p{0.46\columnwidth}p{0.46\columnwidth}}
+\begin{tabular}{lcccc}
 \toprule
-\textbf{Attempted model} & \textbf{Outcome} \\
+\textbf{Model} & \textbf{Obama} & \textbf{Trump} & \textbf{Paris} & \textbf{W. House} \\
 \midrule
-meta-llama/Llama-3.1-8B-Instruct & Gated repository (HF access/authentication required) \\
-google/gemma-2-9b-it & Gated repository (HF access/authentication required) \\
-tiiuae/falcon-7b-instruct & Unsupported activation path in current script \\
+Qwen2.5-7B & L2-N10941 & L1-N11948 & L1-N231 & L1-N18670 \\
+Qwen2.5-7B-Inst & L6-N14965 & L3-N8501 & L0-N7948 & L1-N11990 \\
+OLMo-7B & L27-N2691 & L3-N267 & L0-N411 & L2-N1461 \\
+Gemma-2-9B-it & L3-N13553 & L0-N5682 & L5-N12649 & L0-N14144 \\
+OpenLLaMA-7B & L0-N1305 & L14-N4834 & L8-N2680 & L0-N2022 \\
+Llama-3.1-8B-Inst & L0-N13195 & L2-N7199 & L7-N2408 & L26-N720 \\
+Mistral-7B-v0.3 & L1-N7352 & L10-N13192 & L14-N7661 & L26-N9637 \\
 \bottomrule
 \end{tabular}
-\caption{Attempted models without usable runs in this environment.}
-\label{tab:cross_model_blocked}
+\caption{Localized entity-cell coordinates for representative entities across models (same localization pipeline and PopQA-200 entity list). Coordinates vary across checkpoints, but each model yields identifiable high-dominance cells.}
+\label{tab:cross_model_cells}
 \end{table}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=\linewidth]{figures/fx_cross_model_layer06_mass.pdf}
+\caption{Share of localized entities peaking in layers 0--6 across models, using the same PopQA-200 localization setup. Early-layer concentration is strongest in Qwen2.5-7B base and remains substantial in Qwen2.5-7B-Instruct and OLMo-7B, but is weaker in Mistral, Llama-3.1, Gemma-2, and OpenLLaMA.}
+\label{fig:cross_model_layer_mass}
+\end{figure}
 
 \section{Algorithms}
 \label{app:algorithms}

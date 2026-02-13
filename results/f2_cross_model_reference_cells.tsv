@@ -1,0 +1,36 @@
+model	entity	layer	neuron	dominance
+gemma2-9b-it	Barack Obama	3	13553	38.61
+gemma2-9b-it	Donald Trump	0	5682	9.48
+gemma2-9b-it	Paris	5	12649	36.52
+gemma2-9b-it	White House	0	14144	6.49
+gemma2-9b-it	European Union	5	8574	89.28
+llama3-1-8b-instruct	Barack Obama	0	13195	13.38
+llama3-1-8b-instruct	Donald Trump	2	7199	31.35
+llama3-1-8b-instruct	Paris	7	2408	18.22
+llama3-1-8b-instruct	White House	26	720	113.15
+llama3-1-8b-instruct	European Union	0	2208	33.82
+minq2	Barack Obama	2	10941	52.53
+minq2	Donald Trump	1	11948	46.90
+minq2	Paris	1	231	138.84
+minq2	White House	1	18670	80.31
+minq2	European Union	2	12264	189.14
+mistral-7b-v03	Barack Obama	1	7352	14.55
+mistral-7b-v03	Donald Trump	10	13192	9.55
+mistral-7b-v03	Paris	14	7661	36.26
+mistral-7b-v03	White House	26	9637	203.12
+mistral-7b-v03	European Union	0	8253	23.38
+olmo-7b-0724	Barack Obama	27	2691	28.09
+olmo-7b-0724	Donald Trump	3	267	17.91
+olmo-7b-0724	Paris	0	411	17.88
+olmo-7b-0724	White House	2	1461	2.81
+olmo-7b-0724	European Union	0	5964	6.98
+open-llama-7b	Barack Obama	0	1305	74.70
+open-llama-7b	Donald Trump	14	4834	395.97
+open-llama-7b	Paris	8	2680	17.89
+open-llama-7b	White House	0	2022	4.72
+open-llama-7b	European Union	1	7831	14.90
+qwen2-5-7b-instruct	Barack Obama	6	14965	29.81
+qwen2-5-7b-instruct	Donald Trump	3	8501	28.74
+qwen2-5-7b-instruct	Paris	0	7948	18.12
+qwen2-5-7b-instruct	White House	1	11990	24.86
+qwen2-5-7b-instruct	European Union	2	12264	6286.57
