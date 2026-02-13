@@ -43,15 +43,15 @@
 \maketitle
 
 \begin{abstract}
-Large language models store vast entity-centric knowledge, but where that knowledge lives internally and how controllable it is remain open questions. We provide a mechanistic study in Qwen2.5-7B base that localizes entity-associated MLP neurons (entity cells), validates them with causal interventions, and tests whether targeted edits can remain selective. Across a curated PopQA-200 benchmark, we find sparse and stable entity cells concentrated in early MLP layers and robust to surface-form variation. In QA-style prompts, activation injection at localized cells recovers answer-token probability relative to no-injection and wrong-cell controls, and negative ablation produces selective unlearning for a target entity relative to a control. Extending the full localization pipeline to six additional open $\sim$7B models shows strong per-entity localization signals but model-dependent depth profiles, indicating transfer with architecture sensitivity. Together, these results support a practical path toward interpretable, reversible, and low-cost factual modulation in pretrained models.
+Large language models exhibit strong entity-centric behavior, but the internal features that identify entities across surface forms remain poorly characterized. We present a mechanistic study in Qwen2.5-7B base that localizes sparse entity-sensitive MLP features (entity cells), validates them with causal interventions, and tests whether modulation can remain selective. Across a curated PopQA-200 benchmark, we find stable entity cells concentrated in early layers and robust to typos, acronyms, and multilingual forms. In QA-style prompts, controlled activation injection on top of a mean-entity initialization increases answer-token probability for the matched entity relative to wrong-cell controls, while negative ablation induces entity-specific amnesia with minimal control-entity drift. Extending the same pipeline to six additional open $\sim$7B models shows limited transfer: sparse candidates are detectable, but strong causal and robustness signals are concentrated in the Qwen family (and partly OLMo). These results support a practical view of entity cells as canonicalization anchors and pointer-like control features for interpretable factual modulation.
 \end{abstract}
 
 \section{Introduction}
-Large language models (LLMs) encode extensive factual knowledge about the world. A practical question is how this knowledge is represented internally: is it distributed across many units, or can specific facts (or fact bundles) be localized to identifiable components? This question matters for interpretability, model editing, and safety. If knowledge is mediated by sparse components, then lightweight interventions could selectively strengthen or suppress targeted behaviors without retraining.
+Large language models (LLMs) encode extensive factual behavior about entities, but the mechanism that links varied surface forms to the same latent identity is still unclear. A practical question is whether sparse internal features act as canonicalization anchors that route computation toward an entity-consistent state. This question matters for interpretability, model editing, and safety, because such anchors would provide lightweight intervention points without full retraining.
 
-We focus on \emph{named entities} (people, organizations, places), because entity-centric knowledge is both pervasive and structured: one entity connects to many relations (birthplace, spouse, founders, location, etc.). Our core mechanistic question is:
+We focus on \emph{named entities} (people, organizations, places), because entity-centric behavior is both pervasive and structured: one entity links to many relations (birthplace, spouse, founders, location, etc.). Our core mechanistic question is:
 \begin{quote}
-\small \emph{Does a pretrained base LLM contain sparse MLP neurons that behave as stable entity representations across diverse prompts, and do such neurons causally influence entity-specific factual behavior?}
+\small \emph{Does a pretrained base LLM contain sparse MLP neurons that behave as stable entity-sensitive pointers across diverse prompts, and do these features causally modulate entity-specific factual recall?}
 \end{quote}
 
 We study Qwen2.5-7B base \cite{qwen25}. Working with a base model is deliberate: unlike instruction-tuned models, base models do not reliably follow QA formats, so causal effects must be measured carefully with prompt styles and metrics that reflect next-token prediction. We additionally report a cross-model extension in Appendix~\ref{app:cross_model}, including Qwen2.5-7B-Instruct and other open $\sim$7B checkpoints.
@@ -66,14 +66,14 @@ By analogy to the ``grandmother cell'' hypothesis in neuroscience, we refer to s
   \item \textbf{Causal probes.} We implement reversible activation-level injection and negative ablation to test whether localized cells causally modulate entity-relevant completions and whether suppression can remain selective.
 \end{enumerate}
 
-\paragraph{Overview of Findings.} The four primary findings establish early-layer concentration, causal recovery under controlled injection, robustness to name variants, and selective unlearning via single-cell ablation. Appendices provide prompt templates, algorithms, and the full PopQA-200 entity cell map (neuron coordinates).
+\paragraph{Overview of Findings.} The four primary findings establish early-layer concentration, causal modulation under controlled injection, robustness to name variants, and entity-specific amnesia under single-cell ablation. Appendices provide prompt templates, algorithms, and the full PopQA-200 entity cell map (neuron coordinates).
 
 \section{Related Work}
 \textbf{Factual recall and localization.} A growing literature localizes factual associations in transformers at the level of neurons, features, and layers, and shows that targeted interventions can modulate recall \cite{dai2022knowledgeneurons,nanda2023fact,geva2023dissecting,hernandez2023linearity}. Our work differs in granularity and setup: we localize \emph{entity-centered} cells by aggregating evidence across multiple prompts per entity and normalizing against generic baselines, enabling a dataset-scale map (PopQA-200) and matched causal controls in a pretrained base model.
 
 \textbf{Subject representations and detokenization.} Recent evidence suggests that early layers transform multi-token surface forms into more coherent lexical/semantic representations \cite{elhage2022solu,kaplan2024tokens,feucht2024token}. Sparse-probing studies identify units that respond to multi-token concepts and words \cite{gurnee2023findingneuronshaystackcase}. We operationalize this idea with surface-form robustness probes (typos, acronyms, and multilingual scripts) that test whether localization tracks entity identity beyond a particular tokenization.
 
-\textbf{MLPs as memories.} Feed-forward blocks have been modeled as key--value memories that store factual content \cite{geva2021kv}, and embedding-space analyses seek to interpret these stores \cite{dar2023analyzingtransformersembeddingspace}. Our finding that entity cells concentrate early and can be manipulated at inference time is consistent with an MLP-mediated memory view, while emphasizing sparsity and stability as explicit, measurable criteria.
+\textbf{MLPs as associative/routing features.} Feed-forward blocks have been modeled as key--value memories \cite{geva2021kv}, and embedding-space analyses seek to characterize these associations \cite{dar2023analyzingtransformersembeddingspace}. Our results are also consistent with an alternative interpretation: sparse MLP features can act as entity-sensitive routing coordinates that help canonicalize surface forms into a shared latent identity state. We therefore treat localized cells as leverage points in a broader distributed circuit, not isolated memory containers.
 
 \textbf{Editing and causal interventions.} Parameter-editing methods (e.g., ROME, MEMIT) aim to rewrite stored associations persistently \cite{meng2022rome,meng2023memit}. Complementary approaches inspect and manipulate hidden representations with activation patching and causal tracing frameworks \cite{ghandeharioun2024patchscopesunifyingframeworkinspecting}. We emphasize \emph{reversible} activation-level tests (controlled injection and negative ablation) with wrong-cell and unknown-entity baselines, as lightweight causal validation of localization.
 
@@ -82,7 +82,7 @@ By analogy to the ``grandmother cell'' hypothesis in neuroscience, we refer to s
 We use Qwen2.5-7B base \cite{qwen25} (28 transformer blocks). Unless stated otherwise, we run inference in half precision with automatic device mapping.
 
 \subsection{Data and Sampling}
-We use PopQA \cite{popqa}, an entity-centric QA dataset derived from Wikidata with subject entities and answer aliases (PopQA test split). Instead of random subjects, we build a curated set of $N=200$ high-salience entities by seeding countries, cities, and widely known people, then filling from PopQA by popularity with a minimum of two available questions per entity. For localization and causal checks we use $K=2$ questions per entity. We also define a 5-entity reference set with fixed cell coordinates (Table~\ref{tab:validation_set}) for sanity-checking localization and injection behavior. When a question does not contain a recoverable entity span after tokenization, we skip it for position-dependent analyses.
+We use PopQA \cite{popqa}, an entity-centric QA dataset derived from Wikidata with subject entities and answer aliases (PopQA test split). Instead of random subjects, we build a curated set of $N=200$ high-salience entities by seeding countries, cities, and widely known people, then filling from PopQA by popularity with a minimum of two available questions per entity. For localization and causal checks we use $K=2$ questions per entity; this keeps compute low but can increase per-entity variance, so we interpret entity-level outcomes with that sampling noise in mind. We also define a 5-entity reference set with fixed cell coordinates (Table~\ref{tab:validation_set}) for sanity-checking localization and injection behavior. When a question does not contain a recoverable entity span after tokenization, we skip it for position-dependent analyses.
 
 \subsection{Prompting and Token Positions}
 Because Qwen2.5-7B is pretrained rather than instruction tuned, we use a minimal QA wrapper for PopQA:
@@ -149,7 +149,7 @@ We rank all $(\ell,j)$ pairs by $S_{\ell j}$ and select the top neuron as the en
 \begin{equation}
 a_{\ell^\star j^\star}(x)[t(x)] \leftarrow v,
 \end{equation}
-with $v$ set to an entity-specific value estimated from the entity-present prompts in Finding 2. We use ``wrong cell'' controls by injecting a cell localized to a different entity.
+with $v$ set to an entity-specific value estimated from the entity-present prompts in Finding 2. In controlled injection, this overwrite is applied on top of a mean-entity initialization, so the intervention probes directional movement on an existing entity manifold rather than de novo reconstruction from a single coordinate. We use ``wrong cell'' controls by injecting a cell localized to a different entity.
 
 \textbf{Negative ablation.} We multiply a chosen cell's activation by a scalar $\alpha$:
 \begin{equation}
@@ -162,8 +162,8 @@ Several experiments use next-token probabilities. Given a set of answer aliases 
 \begin{equation}
 p_{\mathrm{ans}}(x) = \max_{a \in \mathcal{A}} p\big(\mathrm{tok}_1(a)\,|\,x\big).
 \end{equation}
-For injection experiments we report a normalized score $\mathrm{RelProb}$: the mean $p_{\mathrm{ans}}$ under a condition divided by the mean under the corresponding entity-present prompt (so 1.0 indicates parity).
-For selective unlearning (main Finding 4) we define a normalized knowledge score based on log-probabilities, anchored by an unknown-entity baseline computed by swapping the entity name for a small set of unseen names and averaging the resulting answer log-probabilities.
+For injection experiments we report a normalized score $\mathrm{RelProb}$: the mean $p_{\mathrm{ans}}$ under a condition divided by the mean under the corresponding entity-present prompt (so 1.0 indicates parity). Because this is a first-token metric, some gains can reflect lexical priming rather than full multi-token factual completion.
+For entity-specific amnesia tests (main Finding 4) we define a normalized score based on log-probabilities, anchored by an unknown-entity baseline computed by swapping the entity name for a small set of unseen names and averaging the resulting answer log-probabilities.
 
 \section{Findings}
 We report four primary findings with matched experiments and controls. Unless noted otherwise, localization statistics use the curated PopQA-200 set described in Section 3. The full 200-entity cell map with trustworthiness flags is provided in Appendix Section~\ref{app:entity_neurons}.
@@ -171,7 +171,7 @@ We report four primary findings with matched experiments and controls. Unless no
 \begin{finding}{Finding 1: Entity Cells Concentrate in Early Layers}
 \textbf{Experiment.} For each entity, we rank all MLP neurons by the stability score and record the layer of the top-ranked cell.
 
-\textbf{Result.} Localization is strongly non-uniform (Figure~\ref{fig:layerhist}). Nearly all entities peak in early blocks: 99.0\% localize to layers 0--5, and only 1.0\% peak outside this range (layers 22 and 27). This skew is not enforced by our procedure: we rank neurons over all 28 layers and only apply any layer-range constraints in downstream trust checks.
+\textbf{Result.} Localization is strongly non-uniform (Figure~\ref{fig:layerhist}): 99.0\% of entities peak in layers 0--5, and only 1.0\% peak in layers 22 or 27. Since ranking is over all 28 layers, this pattern is empirical rather than enforced. We interpret it as evidence that entity cells act as early identity-canonicalization features.
 \end{finding}
 
 \begin{figure}[!h]
@@ -181,23 +181,23 @@ We report four primary findings with matched experiments and controls. Unless no
 \label{fig:layerhist}
 \end{figure}
 
-\begin{finding}{Finding 2: Controlled Injection Is Directional in QA-Style Prompts}
-\textbf{Experiment.} For each PopQA-200 entity whose localized cell passes our automated trust checks (Appendix~\ref{app:entity_neurons}), we run $K{=}2$ PopQA questions per entity, replace one surface-form alias in the question with a placeholder token \texttt{X}, and initialize the \texttt{X} position to a \emph{mean entity activation} estimated by averaging MLP activations at entity-mention positions across entity-present prompts. Correct-cell and wrong-cell interventions are both applied \emph{on top of this mean-initialized state}: we first set the full hidden vector at \texttt{X} to the mean entity vector, then overwrite only the selected cell coordinates. We inject either (i) the entity's top-$k$ cells within the localized layer ($k{=}5$, anchored to the top cell) or (ii) a wrong-entity top-$k$ control at the \texttt{X} position. Because injection strength is entity-dependent, we sweep $\alpha \in \{1,2,4,8,16,32,64,128,200\}$ per entity and report results at the best-performing $\alpha$.
+\begin{finding}{Finding 2: Controlled Injection Provides Directional Causal Modulation}
+\textbf{Experiment.} For each trustworthy PopQA-200 entity (Appendix~\ref{app:entity_neurons}), we run $K{=}2$ questions, replace one entity mention with \texttt{X}, and intervene at that token. We first set the full vector at \texttt{X} to a mean-entity initialization, then overwrite selected coordinates with either the entity's top-$k$ cells ($k{=}5$) or a wrong-entity top-$k$ control. We sweep $\alpha \in \{1,2,4,8,16,32,64,128,200\}$ per entity and report the best value.
 
-\textbf{Result.} Over the trustworthy subset ($k=131$ entities), mean-entity initialization alone yields $\mathrm{RelProb}=0.067$, correct-cell injection increases this to 0.559, and wrong-cell injection reaches only 0.075 (Figure~\ref{fig:f4}). The no-injection baseline is nearly identical to mean-entity initialization (0.067), so we omit it from the main plot for readability. Using an entity-level success criterion ($\mathrm{RelProb}\ge 0.30$, at least +0.05 over no-injection and +0.05 over wrong-cell), 77/131 entities succeed with top-$k$ injection, compared with 75/131 under top-1 only; only 3 entities require top-$k$ to pass. This provides a clear directional causal signal in a controlled QA-style setting.
+\textbf{Result.} Over the trustworthy subset ($k=131$ entities), mean-entity initialization alone yields $\mathrm{RelProb}=0.067$, correct-cell injection increases this to 0.559, and wrong-cell injection reaches only 0.075 (Figure~\ref{fig:f4}). The no-injection baseline is nearly identical to mean-entity initialization (0.067), so we omit it from the main plot for readability. Using an entity-level success criterion ($\mathrm{RelProb}\ge 0.30$, at least +0.05 over no-injection and +0.05 over wrong-cell), 77/131 entities succeed with top-$k$ injection, compared with 75/131 under top-1 only; only 3 entities require top-$k$ to pass. This supports directional modulation on an existing entity manifold, not single-cell reconstruction of full factual content.
 \end{finding}
 
 \begin{figure}[!h]
 \centering
 \includegraphics[width=\columnwidth]{figures/f4_activation_causality_popular200_trustworthy_meaninit_topk5_alphasearch_poplist_relprob.pdf}
-\caption{PopQA-style activation causality on trustworthy entity cells ($k=131$ entities out of $N=200$; $K{=}2$ questions per entity, $n=262$ examples). Bars report $\mathrm{RelProb}$ (answer-token probability divided by the entity-present probability). All interventions operate at the placeholder \texttt{X} position in two stages: (1) set the full layer vector to the mean-entity initialization, then (2) overwrite the selected top-$k$ coordinates ($k{=}5$) using per-entity $\alpha \in \{1,2,4,8,16,32,64,128,200\}$. We show entity-present, mean-entity, correct-cell, and wrong-cell conditions; no-injection is omitted because it is numerically almost identical to mean-entity in this run (0.0670 vs.\ 0.0673).}
+\caption{Activation causality on trustworthy entities ($k=131$, $n=262$). $\mathrm{RelProb}$ is normalized by the entity-present condition. Interventions at \texttt{X} use mean-entity initialization plus top-$k$ overwrite ($k{=}5$, per-entity $\alpha$ sweep). Correct-cell injection strongly exceeds wrong-cell control.}
 \label{fig:f4}
 \end{figure}
 
-\begin{finding}{Finding 3: Localization Is Robust to Surface-Form Variation}
+\begin{finding}{Finding 3: Localization Tracks Identity Across Surface Forms}
 \textbf{Experiment.} We repeat localization under surface-form perturbations while holding relation prompts fixed. We test (i) spelling/phrasing variants (Barack Obama), (ii) acronym variants (Federal Bureau of Investigation vs.\ FBI), and (iii) multilingual variants of the same place name (Paris written in different scripts).
 
-\textbf{Result.} The same cell (L2-N10941) remains top-ranked across spelling and phrasing variants of ``Barack Obama'' (Figure~\ref{fig:f3}). We observe similar robustness for acronym and multilingual surface forms (Figures~\ref{fig:f3_acronym} and~\ref{fig:f3_multilingual}), supporting an entity-level representation rather than a brittle single-token artifact.
+\textbf{Result.} The same cell (L2-N10941) remains top-ranked across spelling and phrasing variants of ``Barack Obama'' (Figure~\ref{fig:f3}). We observe similar robustness for acronym and multilingual surface forms (Figures~\ref{fig:f3_acronym} and~\ref{fig:f3_multilingual}), supporting a canonicalization role: the localized feature tracks latent identity across tokenization changes rather than memorizing one surface token sequence.
 \end{finding}
 
 \begin{figure}[!h]
@@ -217,32 +217,32 @@ We report four primary findings with matched experiments and controls. Unless no
 \begin{figure}[!h]
 \centering
 \includegraphics[width=\columnwidth]{figures/f3_multilingual_grid_2x2.pdf}
-\caption{Multilingual robustness: ``Paris'' written in different scripts (Latin, Hebrew, Chinese, Arabic) localizes to the same top-ranked cell (L1-N231), suggesting the criterion tracks entity identity beyond token-level spelling.}
+\caption{Multilingual robustness: ``Paris'' written in different scripts (Latin, Hebrew, Chinese, Arabic) localizes to the same top-ranked cell (L1-N231), consistent with surface-form canonicalization into a shared identity coordinate.}
 \label{fig:f3_multilingual}
 \end{figure}
 \FloatBarrier
 
-\begin{finding}{Finding 4: Single-Cell Ablation Produces Selective Unlearning}
+\begin{finding}{Finding 4: Negative Ablation Induces Entity-Specific Amnesia}
 \textbf{Experiment.} Case study (Obama vs.\ Trump control): we scale the localized Obama cell (L2-N10941) activation by $\alpha \in [1,-3]$ and evaluate target (Barack Obama) and control (Donald Trump) fact sets.
 
-\textbf{Result.} Target retention drops from 1.0 to 0.430 at $\alpha=-3$, while control retention stays near baseline (1.0 to 0.999; Figure~\ref{fig:f6}). This indicates selective degradation rather than a broad collapse of model behavior.
+\textbf{Result.} Target retention drops from 1.0 to 0.430 at $\alpha=-3$, while control retention stays near baseline (1.0 to 0.999; Figure~\ref{fig:f6}). This pattern is consistent with entity-specific amnesia: ablation disrupts access to an identity signal for the targeted entity without broad behavioral collapse.
 \end{finding}
 
 \begin{figure}[!h]
 \centering
 \includegraphics[width=\columnwidth]{figures/f6_unlearning_obama_trump.pdf}
-\caption{Selective unlearning under negative ablation for the localized Obama cell (L2-N10941). Target (Barack Obama) knowledge drops substantially as $\alpha$ decreases, while control (Donald Trump) remains near baseline.}
+\caption{Entity-specific amnesia under negative ablation for the localized Obama cell (L2-N10941). Target (Barack Obama) recall drops substantially as $\alpha$ decreases, while control (Donald Trump) remains near baseline.}
 \label{fig:f6}
 \end{figure}
 
 \section{Discussion}
-The combined evidence supports a sparse-key view of entity knowledge in Qwen2.5-7B base. Localization is strong, concentrated in early blocks, and robust to surface-form variation. Controlled injection recovers answer-token probability in QA-style prompts relative to no-injection and wrong-cell controls, and negative ablation can selectively degrade entity knowledge relative to a control entity without collapsing model behavior. Cross-model extension results (Appendix~\ref{app:cross_model}) show that sparse entity-cell candidates can be found across model families, but their causal strength and surface-form robustness are model dependent.
+The combined evidence supports a canonicalization-and-control view of entity cells in Qwen2.5-7B base. Localization is strong, early-layer concentrated, and robust across typos, acronyms, and multilingual forms, which is consistent with latent identity anchoring. Controlled injection then shows that these anchors are causally actionable: moving selected coordinates from a shared mean-entity state shifts answer probability in the expected direction, while wrong-cell controls do not. Negative ablation produces entity-specific amnesia, suggesting loss of access to an identity pointer rather than erasure of all related knowledge. Cross-model extension (Appendix~\ref{app:cross_model}) is mostly negative: outside Qwen2.5-7B-Instruct and OLMo-7B, the same signals are much weaker.
 
 \section{Limitations and Scope}
-This study focuses on one base model and one dataset family. The stability score is heuristic and may miss distributed or multi-cell codes. Metrics are mostly first-token based, which can understate multi-token factual competence. Our injection and ablation experiments are narrow (limited prompt families and a small set of entities for causal checks), and should be expanded across entities, relations, and models. We also include an exploratory \emph{factual modification} procedure via latent steering: optimizing a small perturbation injected at an entity-associated activation site to rewrite a specific relation while preserving unrelated facts; Appendix~\ref{app:latent_steering} provides a concrete template (Algorithm~\ref{alg:steer}) and prompt set.
+This study focuses on one base model and one dataset family. The stability score is heuristic and may miss distributed or multi-cell codes. Metrics are mostly first-token based, which can understate multi-token factual competence and can reflect lexical priming effects. We use $K{=}2$ prompts per entity for localization and causal checks, which can introduce per-entity instability. In Finding 2, $\alpha$ is selected per entity from a sweep; this improves sensitivity but can introduce optimistic bias, and a fixed-$\alpha$ protocol is an important next step. Our injection and ablation experiments are still narrow in relation coverage. We also include an exploratory \emph{factual modification} procedure via latent steering: optimizing a small perturbation injected at an entity-associated activation site to rewrite a specific relation while preserving unrelated facts; Appendix~\ref{app:latent_steering} provides a concrete template (Algorithm~\ref{alg:steer}) and prompt set.
 
 \section{Conclusion}
-Entity-centric knowledge in Qwen2.5-7B base is often tied to sparse, stable, and causally actionable cells. Across a curated PopQA-200 benchmark, we find early-layer concentration, robustness to name variants, causal recovery under controlled injection, and selective single-cell unlearning relative to a control entity. These findings provide a practical blueprint for turning mechanistic observations into paper-grade causal evidence.
+Entity behavior in Qwen2.5-7B base is strongly shaped by sparse, stable, and causally actionable entity cells. Across a curated PopQA-200 benchmark, we find early-layer concentration, robustness to surface-form variation, directional causal modulation under controlled injection, and entity-specific amnesia under negative ablation. These results support a practical mechanistic picture in which localized cells function as latent identity anchors within larger circuits, offering concrete intervention points for interpretable factual control.
 
 \bibliographystyle{plain}
 \bibliography{refs}
@@ -278,8 +278,8 @@ Factual modification & {\ttfamily The spouse of <entity> is named} \\
 \label{tab:prompts}
 \end{table}
 
-\paragraph{Key hyperparameters.} Unless stated otherwise: curated PopQA $N=200$ entities, $K=2$ questions per entity for localization and causal checks, seed 7, and $\epsilon=10^{-6}$ for stability computations. Selective unlearning (main Finding 4) uses $\alpha \in [1, -3]$ with 20 steps.
-\paragraph{Finding 2 injection setting.} For Finding 2 we use set-injection at the placeholder position with mean-entity initialization. Concretely, we first set the full hidden vector at \texttt{X} to the layer-specific mean-entity vector, then overwrite the selected top-$k$ coordinates ($k{=}5$). We sweep an interpolation/extrapolation factor $\alpha \in \{1,2,4,8,16,32,64,128,200\}$ per entity, selecting the best-performing $\alpha$ for reporting. We additionally flag entity-level success when $\mathrm{RelProb}\ge 0.30$ and both margins $\mathrm{RelProb}-\mathrm{RelProb}_{\mathrm{no\ inj}}\ge 0.05$ and $\mathrm{RelProb}-\mathrm{RelProb}_{\mathrm{wrong}}\ge 0.05$.
+\paragraph{Key hyperparameters.} Unless stated otherwise: curated PopQA $N=200$ entities, $K=2$ questions per entity for localization and causal checks, seed 7, and $\epsilon=10^{-6}$ for stability computations. Entity-specific amnesia (main Finding 4) uses $\alpha \in [1, -3]$ with 20 steps.
+\paragraph{Finding 2 injection setting.} For Finding 2 we use set-injection at the placeholder position with mean-entity initialization. Concretely, we first set the full hidden vector at \texttt{X} to the layer-specific mean-entity vector, then overwrite the selected top-$k$ coordinates ($k{=}5$). We sweep an interpolation/extrapolation factor $\alpha \in \{1,2,4,8,16,32,64,128,200\}$ per entity, selecting the best-performing $\alpha$ for reporting; this choice is intentionally high-sensitivity and may be optimistic relative to a fixed-$\alpha$ protocol. We additionally flag entity-level success when $\mathrm{RelProb}\ge 0.30$ and both margins $\mathrm{RelProb}-\mathrm{RelProb}_{\mathrm{no\ inj}}\ge 0.05$ and $\mathrm{RelProb}-\mathrm{RelProb}_{\mathrm{wrong}}\ge 0.05$.
 
 \section{Algorithms}
 \label{app:algorithms}
@@ -404,14 +404,7 @@ The full PopQA-200 entity map is grouped by category to improve readability. The
 \clearpage
 \section{Extension to Other Models}
 \label{app:cross_model}
-We extend the full pipeline to six additional open $\sim$7B checkpoints and keep the protocol fixed: PopQA-200 localization ($K{=}2$), then causal injection on found cells, then robustness to multiple surface forms. All coordinates are re-localized per model (no coordinate transfer).
-
-\paragraph{Pipeline used per model.}
-\begin{enumerate}
-\item Localize one top cell per entity on PopQA-200 (same normalization and stability score as the main model).
-\item Run activation-causality on found cells (correct-cell vs.\ wrong-cell controls) with model-specific found coordinates.
-\item Probe robustness of top-cell identity under three variant families: Obama typos (4 forms), FBI acronym (2 forms), and Paris multilingual forms (4 scripts).
-\end{enumerate}
+We rerun the same pipeline on six additional open $\sim$7B checkpoints: PopQA-200 localization ($K{=}2$), causal injection on found cells, and variant robustness checks. Coordinates are re-localized per model (no coordinate transfer). The main outcome is negative: outside Qwen2.5-7B-Instruct and OLMo-7B, the causal and robustness signals are weak.
 
 \begin{table}[!h]
 \centering
@@ -430,16 +423,9 @@ Mistral-7B-v0.3 & 200 & 36.0 & 13.0 & 0.006 & 12.5 & 5/40 & 4/10 \\
 OpenLLaMA-7B & 200 & 43.0 & 10.0 & 0.116 & 36.4 & 12/33 & 3/10 \\
 \bottomrule
 \end{tabular}
-\caption{Cross-model extension summary. $n$ and layer statistics are from PopQA-200 localization. $\Delta$(C-W) is the gap in relative answer probability between correct-cell and wrong-cell injection. ``Succ.'' uses the same entity-level success criterion as Finding~2. ``Var. match'' is exact top-cell match across 10 surface-form probes (Obama typos 4, FBI acronym 2, Paris multilingual 4).}
+\caption{Cross-model summary. $\Delta$(C-W) is the correct-minus-wrong injection gap in relative answer probability. ``Succ.'' is the Finding~2 entity-level success criterion. ``Var. match'' is exact top-cell match across 10 surface-form probes.}
 \label{tab:cross_model_summary}
 \end{table}
-
-\begin{figure}[!h]
-\centering
-\includegraphics[width=\linewidth]{figures/fx_cross_model_layer06_mass.pdf}
-\caption{Localization depth across models: share of PopQA-200 entities whose found top cell is in layers 0--6.}
-\label{fig:cross_model_layer_mass}
-\end{figure}
 
 \begin{figure}[!h]
 \centering
@@ -448,56 +434,10 @@ OpenLLaMA-7B & 200 & 43.0 & 10.0 & 0.116 & 36.4 & 12/33 & 3/10 \\
 \label{fig:cross_model_f4}
 \end{figure}
 
-\begin{table}[!h]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{1.08}
-\begin{tabular}{lcccc}
-\toprule
-\textbf{Model} & \textbf{Obama} & \textbf{Trump} & \textbf{Paris} & \textbf{W. House} \\
-\midrule
-Qwen2.5-7B-Inst & L6-N14965 & L3-N8501 & L0-N7948 & L1-N11990 \\
-OLMo-7B & L27-N2691 & L3-N267 & L0-N411 & L2-N1461 \\
-Llama-3.1-8B-Inst & L0-N13195 & L2-N7199 & L7-N2408 & L26-N720 \\
-Gemma-2-9B-it & L3-N13553 & L0-N5682 & L5-N12649 & L0-N14144 \\
-Mistral-7B-v0.3 & L1-N7352 & L10-N13192 & L14-N7661 & L26-N9637 \\
-OpenLLaMA-7B & L0-N1305 & L14-N4834 & L8-N2680 & L0-N2022 \\
-\bottomrule
-\end{tabular}
-\caption{Representative found-cell coordinates from full PopQA-200 localization (independently localized per model).}
-\label{tab:cross_model_cells}
-\end{table}
-
-\begin{table}[!h]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{1.08}
-\begin{tabular}{lcccccc}
-\toprule
-\textbf{Model} & \textbf{Obama cell} & \textbf{Match} & \textbf{FBI cell} & \textbf{Match} & \textbf{Paris cell} & \textbf{Match} \\
-\midrule
-Qwen2.5-7B-Inst & L2-N10941 & 4/4 & L2-N11955 & 2/2 & L1-N231 & 4/4 \\
-OLMo-7B & L0-N1593 & 1/4 & L0-N8497 & 1/2 & L0-N4909 & 1/4 \\
-Llama-3.1-8B-Inst & L0-N13569 & 1/4 & L0-N6128 & 1/2 & L0-N11720 & 3/4 \\
-Gemma-2-9B-it & L0-N5682 & 2/4 & L0-N5682 & 2/2 & L0-N5682 & 1/4 \\
-Mistral-7B-v0.3 & L0-N2890 & 2/4 & L0-N6319 & 1/2 & L0-N4867 & 1/4 \\
-OpenLLaMA-7B & L1-N5242 & 1/4 & L1-N2405 & 1/2 & L1-N4422 & 1/4 \\
-\bottomrule
-\end{tabular}
-\caption{Canonical found cells and exact-match counts under variant probes.}
-\label{tab:cross_model_variant_cells}
-\end{table}
-
-\begin{figure}[!h]
-\centering
-\includegraphics[width=0.75\linewidth]{figures/fx_cross_model_variant_heatmap.pdf}
-\caption{Variant robustness heatmap (exact top-cell match rate by probe family and model).}
-\label{fig:cross_model_variants}
-\end{figure}
-
 \paragraph{Takeaway.}
-The extension supports a qualified claim: sparse, localizable entity-cell candidates appear across all tested model families, and causal manipulation on found cells is reproducible in multiple models. However, the strength of the causal effect and robustness to alternate surface forms vary substantially by architecture. In this setting, Qwen2.5-7B-Instruct and OLMo-7B show the strongest alignment between localization, causal controllability, and variant stability.
+The findings do not transfer uniformly across model families. While sparse candidates can be localized broadly, strong causal separation and variant robustness are concentrated in Qwen2.5-7B-Instruct and OLMo-7B.
+
+\paragraph{Why might Qwen be stronger?}
+We see three plausible hypotheses. First, Qwen tokenization and pretraining coverage may better canonicalize noisy aliases, acronyms, and multilingual forms into stable early-layer features. Second, architecture and optimization details may induce sharper sparse gating in early MLP blocks, which makes top-cell interventions more effective. Third, the Qwen data mixture may produce stronger entity-centric QA behavior at next-token level, which aligns better with our metric and intervention protocol. These are hypotheses; distinguishing them requires targeted ablations.
 
 \end{document}

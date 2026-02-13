@@ -203,7 +203,7 @@ plt.axhline(0.0, color='gray', ls=':', alpha=0.7, label="Unknown Entity Baseline
 
 plt.xlabel(f"Multiplier for Neuron {neuron_id} (Layer {layer_idx})")
 plt.ylabel("Relative Knowledge Score\n(Normalized Log-Prob)")
-plt.title("Selective Unlearning via Neuron Ablation")
+plt.title("Entity-Specific Amnesia via Neuron Ablation")
 plt.legend(frameon=True)
 plt.grid(alpha=0.2)
 plt.gca().invert_xaxis()

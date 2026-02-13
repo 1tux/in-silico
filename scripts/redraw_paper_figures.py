@@ -168,7 +168,7 @@ def plot_unlearning_curve_from_results(results_path: Path, out_base: Path) -> No
     else:
         ax.set_xlabel("Ablation Multiplier")
     ax.set_ylabel("Relative Knowledge Score")
-    ax.set_title("Selective Unlearning via Neuron Ablation")
+    ax.set_title("Entity-Specific Amnesia via Neuron Ablation")
     ax.legend(frameon=True)
     ax.invert_xaxis()
     fig.tight_layout()

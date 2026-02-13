@@ -196,7 +196,7 @@ def main():
 
     ax.set_xlabel(f"Multiplier for Neuron {args.neuron} (Layer {args.layer})")
     ax.set_ylabel("Relative Knowledge Score")
-    ax.set_title("Selective Unlearning via Neuron Ablation")
+    ax.set_title("Entity-Specific Amnesia via Neuron Ablation")
     ax.legend(frameon=True)
     ax.invert_xaxis()
     fig.tight_layout()
