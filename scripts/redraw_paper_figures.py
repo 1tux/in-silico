@@ -16,6 +16,21 @@ os.environ.setdefault("XDG_CACHE_HOME", "/tmp/xdg_cache")
 from plot_style import set_paper_style  # noqa: E402
 
 
+F2_MODEL_TITLES = {
+    "qwen_qwen2_5_7b": "Qwen2.5-7B",
+    "qwen_qwen2_5_7b_instruct": "Qwen2.5-7B-Instruct",
+    "deepseek_ai_deepseek_r1_distill_qwen_7b": "DeepSeek-R1-Distill-Qwen-7B",
+    "qwen_qwen3_8b": "Qwen3-8B",
+    "allenai_olmo_7b_0724_hf": "OLMo-7B-0724",
+    "meta_llama_llama_3_1_8b_instruct": "Llama-3.1-8B-Instruct",
+    "google_gemma_2_9b_it": "Gemma-2-9B-it",
+    "mistralai_mistral_7b_v0_3": "Mistral-7B-v0.3",
+    "openlm_research_open_llama_7b": "OpenLLaMA-7B",
+    "01_ai_yi_6b": "Yi-6B",
+    "thudm_chatglm3_6b": "ChatGLM3-6B",
+}
+
+
 def _save(fig, out_base: Path) -> None:
     out_base.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(out_base.with_suffix(".pdf"))
@@ -24,6 +39,18 @@ def _save(fig, out_base: Path) -> None:
 
 def _load_json(path: Path) -> Dict[str, Any]:
     return json.loads(path.read_text())
+
+
+def _infer_f2_model_title(localization_path: Path) -> str:
+    tag = localization_path.stem.removeprefix("f2_popqa_popular_200_")
+    return F2_MODEL_TITLES.get(tag, tag.replace("_", "-"))
+
+
+def _infer_model_title(model_name: str | None) -> str:
+    if not model_name:
+        return "Unknown Model"
+    tag = model_name.replace("/", "_").replace(":", "_").lower()
+    return F2_MODEL_TITLES.get(tag, model_name)
 
 
 def plot_layer_hist_from_localization(localization_path: Path, out_base: Path) -> None:
@@ -50,12 +77,13 @@ def plot_layer_hist_from_localization(localization_path: Path, out_base: Path) -
     import matplotlib.pyplot as plt
 
     set_paper_style()
+    model_title = _infer_f2_model_title(localization_path)
     fig, ax = plt.subplots(figsize=(3.4, 2.4))
     bins = list(range(min(layers), max(layers) + 2))
     ax.hist(layers, bins=bins, color="#4C78A8", edgecolor="white")
     ax.set_xlabel("Layer (Top Neuron)")
     ax.set_ylabel("Entity Count")
-    ax.set_title("Top-Neuron Layer Distribution")
+    ax.set_title(f"Top-Neuron Layer Distribution\n{model_title}")
     fig.tight_layout()
     _save(fig, out_base)
     plt.close(fig)
@@ -144,6 +172,7 @@ def plot_unlearning_curve_from_results(results_path: Path, out_base: Path) -> No
     normalize = payload.get("normalize", "unknown")
     layer = payload.get("layer", None)
     neuron = payload.get("neuron", None)
+    model_title = _infer_model_title(payload.get("model"))
 
     import matplotlib.pyplot as plt
 
@@ -168,7 +197,7 @@ def plot_unlearning_curve_from_results(results_path: Path, out_base: Path) -> No
     else:
         ax.set_xlabel("Ablation Multiplier")
     ax.set_ylabel("Relative Knowledge Score")
-    ax.set_title("Entity-Specific Amnesia via Neuron Ablation")
+    ax.set_title(f"Entity-Specific Amnesia via Neuron Ablation\n{model_title}")
     ax.legend(frameon=True)
     ax.invert_xaxis()
     fig.tight_layout()
@@ -219,7 +248,17 @@ def plot_edit_vs_preserve_from_latent_results(results_path: Path, out_base: Path
     import matplotlib.pyplot as plt
 
     set_paper_style()
-    fig = plt.figure(figsize=(6.8, 3.0))
+    plt.rcParams.update(
+        {
+            "font.size": 12,
+            "axes.titlesize": 14,
+            "axes.labelsize": 13,
+            "xtick.labelsize": 12,
+            "ytick.labelsize": 12,
+            "legend.fontsize": 11,
+        }
+    )
+    fig = plt.figure(figsize=(7.6, 4.4))
     gs = fig.add_gridspec(2, 1, height_ratios=[1.0, 1.0], hspace=0.55)
 
     ax1 = fig.add_subplot(gs[0])
@@ -245,7 +284,7 @@ def plot_edit_vs_preserve_from_latent_results(results_path: Path, out_base: Path
     ax2.set_ylim(0.0, ymax)
     ax2.set_title("Preservation prompts (non-target facts)")
 
-    fig.tight_layout()
+    fig.tight_layout(pad=1.0)
     _save(fig, out_base)
     plt.close(fig)
 

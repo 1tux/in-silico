@@ -17,6 +17,7 @@ from activations import (
     rank_neurons,
     z_score_normalize,
 )
+from model_load import language_model_kwargs
 from plot_style import set_paper_style
 from prompts import entity_questions, load_generic_prompts
 
@@ -109,7 +110,7 @@ def plot_entity_ranking(entity: str, scores: torch.Tensor, best_neurons: torch.T
             f"{value:.2f}",
             va="center",
             ha=ha,
-            fontsize=7,
+            fontsize=8,
             color=color,
             fontweight="bold" if is_top else "normal",
         )
@@ -129,6 +130,12 @@ def plot_variant_grid(
     *,
     ncols: int | None = None,
     titles: List[str] | None = None,
+    panel_width: float = 2.1,
+    panel_height: float = 2.3,
+    axis_label_size: float = 11.0,
+    tick_label_size: float = 10.0,
+    title_size: float = 11.5,
+    annotation_size: float = 10.0,
 ):
     import matplotlib.pyplot as plt
 
@@ -142,7 +149,7 @@ def plot_variant_grid(
     ncols = max(1, min(int(ncols), n))
     nrows = int(math.ceil(n / ncols))
 
-    fig, axes = plt.subplots(nrows, ncols, figsize=(3.6 * ncols, 2.2 * nrows))
+    fig, axes = plt.subplots(nrows, ncols, figsize=(panel_width * ncols, panel_height * nrows))
     axes = np.asarray(axes).reshape(-1)
 
     if titles is not None and len(titles) != len(entities):
@@ -168,7 +175,8 @@ def plot_variant_grid(
         ax.set_yticks(y_pos)
         ax.set_yticklabels(labels)
         ax.set_xlim(0, 1.0)
-        ax.set_xlabel("Rel. Stability")
+        ax.set_xlabel("Rel. Stability", fontsize=axis_label_size)
+        ax.tick_params(axis="both", labelsize=tick_label_size)
 
         for i, (bar, value) in enumerate(zip(bars, rel_scores)):
             is_top = (i == top_idx)
@@ -187,13 +195,13 @@ def plot_variant_grid(
                 f"{value:.2f}",
                 va="center",
                 ha=ha,
-                fontsize=6.5,
+                fontsize=annotation_size,
                 color=color,
                 fontweight="bold" if is_top else "normal",
             )
 
         title = titles[idx] if titles is not None else ent
-        ax.set_title(_safe_bidi(title), pad=4, fontweight="bold")
+        ax.set_title(_safe_bidi(title), pad=4, fontweight="bold", fontsize=title_size)
 
     for ax in axes[len(entities) :]:
         ax.axis("off")
@@ -255,7 +263,7 @@ def main():
     entities = load_entities(Path(args.entities))
     generic_prompts = load_generic_prompts(args.generic_prompts)
 
-    model = LanguageModel(args.model, device_map="auto")
+    model = LanguageModel(args.model, **language_model_kwargs(args.model))
 
     cache_path = None
     if args.cache_baseline:
