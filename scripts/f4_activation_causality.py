@@ -21,6 +21,8 @@ from activations import (
     z_score_normalize,
 )
 from data_utils import build_entity_index, infer_fields
+from model_load import language_model_kwargs
+from model_layout import assign_token_neuron, assign_token_vector, get_token_neuron_proxy, get_token_vector_proxy
 from plot_style import set_paper_style
 from prompts import load_generic_prompts
 
@@ -203,7 +205,7 @@ def get_layer_cells(
     for prompt, pos in prompts_with_pos:
         with torch.no_grad():
             with model.trace(prompt):
-                vec = model.model.layers[layer_idx].mlp.down_proj.input[0][pos].cpu().save()
+                vec = get_token_vector_proxy(model, layer_idx, pos).cpu().save()
         acts.append(vec)
         torch.cuda.empty_cache()
 
@@ -314,11 +316,38 @@ def infer_prompt_style(model_name: str, override: str | None = None) -> str:
     return "base"
 
 
-def format_prompt(question: str, style: str) -> str:
+def format_prompt(question: str, style: str, tokenizer=None) -> str:
     if style == "raw":
         return question
     if style == "base":
         return f"Question: {question}\nAnswer:"
+    if style == "instruction":
+        return (
+            "Answer the following question with a short factual answer.\n"
+            f"Question: {question}\n"
+            "Answer:"
+        )
+    if style == "post_think":
+        return f"Question: {question}\n</think>\nAnswer:"
+    if style == "fewshot":
+        return (
+            "Question: What is the capital of France?\n"
+            "Answer: Paris\n\n"
+            "Question: Who wrote Hamlet?\n"
+            "Answer: William Shakespeare\n\n"
+            "Question: Who painted the Mona Lisa?\n"
+            "Answer: Leonardo da Vinci\n\n"
+            f"Question: {question}\n"
+            "Answer:"
+        )
+    if style == "chat":
+        if tokenizer is None or not hasattr(tokenizer, "apply_chat_template"):
+            raise ValueError("Chat prompt style requires a tokenizer with apply_chat_template.")
+        return tokenizer.apply_chat_template(
+            [{"role": "user", "content": question}],
+            tokenize=False,
+            add_generation_prompt=True,
+        )
     raise ValueError(f"Unknown prompt style: {style}")
 
 
@@ -330,41 +359,46 @@ def run_condition(
     injection_targets: List[Tuple[int, float]] | None,
     token_pos: int | None,
     injection_mode: str,
+    pass_k: int,
     *,
     mean_init_layer: int | None = None,
     mean_init_vector: torch.Tensor | None = None,
 ):
     with model.trace(prompt):
         if mean_init_layer is not None and token_pos is not None and mean_init_vector is not None:
-            model.model.layers[mean_init_layer].mlp.down_proj.input[0, token_pos, :] = mean_init_vector
+            assign_token_vector(model, mean_init_layer, token_pos, mean_init_vector)
 
         if injection_layer is not None and injection_targets and token_pos is not None:
             for neuron, value in injection_targets:
                 if mean_init_vector is not None:
                     # When using a mean-initialized baseline, treat injection as a targeted "set"
                     # so the coordinate matches the entity-specific activation estimate.
-                    model.model.layers[injection_layer].mlp.down_proj.input[0, token_pos, neuron] = value
+                    assign_token_neuron(model, injection_layer, token_pos, neuron, value)
                 elif injection_mode == "set":
-                    model.model.layers[injection_layer].mlp.down_proj.input[0, token_pos, neuron] = value
+                    assign_token_neuron(model, injection_layer, token_pos, neuron, value)
                 else:
-                    current = model.model.layers[injection_layer].mlp.down_proj.input[0, token_pos, neuron].save()
-                    model.model.layers[injection_layer].mlp.down_proj.input[0, token_pos, neuron] = current + value
+                    current = get_token_neuron_proxy(model, injection_layer, token_pos, neuron).save()
+                    assign_token_neuron(model, injection_layer, token_pos, neuron, current + value)
         logits = model.output.logits[0, -1, :].save()
 
     probs = torch.softmax(logits, dim=-1)
     valid_ids = [i for i in answer_ids if i is not None]
     if not valid_ids:
-        return None, None
+        return None, None, None
     prob = max(probs[i].item() for i in valid_ids)
     pred = int(torch.argmax(probs).item())
-    correct = 1 if pred in valid_ids else 0
-    return prob, correct
+    correct_top1 = 1 if pred in valid_ids else 0
+    k = max(1, min(int(pass_k), int(probs.numel())))
+    topk = torch.topk(probs, k=k).indices.tolist()
+    correct_passk = 1 if any(i in topk for i in valid_ids) else 0
+    return prob, correct_top1, correct_passk
 
 
 def run_entity_present(
     model,
     prompt: str,
     answer_ids: List[int],
+    pass_k: int,
     *,
     capture_layers: List[int] | None = None,
     token_pos: int | None = None,
@@ -373,17 +407,20 @@ def run_entity_present(
     with model.trace(prompt):
         if capture_layers and token_pos is not None:
             for layer in capture_layers:
-                captures[int(layer)] = model.model.layers[layer].mlp.down_proj.input[0, token_pos, :].save()
+                captures[int(layer)] = get_token_vector_proxy(model, layer, token_pos).save()
         logits = model.output.logits[0, -1, :].save()
 
     probs = torch.softmax(logits, dim=-1)
     valid_ids = [i for i in answer_ids if i is not None]
     if not valid_ids:
-        return None, None, {}
+        return None, None, None, {}
     prob = max(probs[i].item() for i in valid_ids)
     pred = int(torch.argmax(probs).item())
-    correct = 1 if pred in valid_ids else 0
-    return prob, correct, captures
+    correct_top1 = 1 if pred in valid_ids else 0
+    k = max(1, min(int(pass_k), int(probs.numel())))
+    topk = torch.topk(probs, k=k).indices.tolist()
+    correct_passk = 1 if any(i in topk for i in valid_ids) else 0
+    return prob, correct_top1, correct_passk, captures
 
 
 def main():
@@ -429,6 +466,17 @@ def main():
     parser.add_argument("--success-min-relprob", type=float, default=0.30)
     parser.add_argument("--success-min-over-wrong", type=float, default=0.05)
     parser.add_argument("--success-min-over-baseline", type=float, default=0.05)
+    parser.add_argument(
+        "--pass-k",
+        type=int,
+        default=5,
+        help="Compute pass@k accuracy: whether a correct answer's first token appears in the top-k next-token distribution.",
+    )
+    parser.add_argument(
+        "--require-entity-passk",
+        action="store_true",
+        help="Evaluate only examples where the entity-present prompt is already correct under pass@k.",
+    )
     parser.add_argument("--fixed-injection-value", type=float, default=None)
     parser.add_argument("--injection-mode", choices=["add", "set"], default="add")
     parser.add_argument(
@@ -436,7 +484,7 @@ def main():
         action="store_true",
         help="Initialize the placeholder token's MLP activation to a mean entity activation vector (estimated from entity-present prompts) before injecting the entity-specific cell.",
     )
-    parser.add_argument("--prompt-style", choices=["auto", "base", "raw"], default="auto")
+    parser.add_argument("--prompt-style", choices=["auto", "base", "raw", "instruction", "post_think", "fewshot", "chat"], default="auto")
     parser.add_argument("--output", default=str(Path(__file__).resolve().parents[1] / "figures" / "f4_activation_causality"))
     args = parser.parse_args()
 
@@ -456,7 +504,7 @@ def main():
         if len(entities) < args.n_entities:
             raise RuntimeError(f"Only {len(entities)} entities available with >= {args.n_questions} questions")
 
-    model = LanguageModel(args.model, device_map="auto")
+    model = LanguageModel(args.model, **language_model_kwargs(args.model))
     prompt_style = infer_prompt_style(args.model, args.prompt_style)
     generic_prompts = load_generic_prompts(args.generic_prompts)
     known_map = load_known_neuron_map(args.known_neurons) if args.known_neurons else {}
@@ -470,21 +518,26 @@ def main():
 
     baseline_probs = []
     baseline_acc = []
+    baseline_passk = []
     mean_probs = []
     mean_acc = []
+    mean_passk = []
     entity_probs = []
     entity_acc = []
+    entity_passk = []
     correct_probs = []
     correct_acc = []
+    correct_passk = []
     wrong_probs = []
     wrong_acc = []
+    wrong_passk = []
 
     entity_top = {}
     for ent in entities:
         qa = entity_index[ent][:]
         rng.shuffle(qa)
         questions = [q for q, _ in qa[: args.n_questions]]
-        prompts = [format_prompt(q, prompt_style) for q in questions]
+        prompts = [format_prompt(q, prompt_style, model.tokenizer) for q in questions]
 
         if ent in known_map:
             info = {
@@ -595,8 +648,8 @@ def main():
             if matched_alias is None:
                 continue
             question_x = question.replace(matched_alias, "X", 1)
-            prompt = format_prompt(question_x, prompt_style)
-            prompt_full = format_prompt(question, prompt_style)
+            prompt = format_prompt(question_x, prompt_style, model.tokenizer)
+            prompt_full = format_prompt(question, prompt_style, model.tokenizer)
             token_pos = find_placeholder_index(model.tokenizer, prompt, "X")
             if token_pos is None:
                 continue
@@ -641,12 +694,15 @@ def main():
     mean_count: Dict[int, int] = {}
     mean_dtype: Dict[int, torch.dtype] = {}
 
-    n_denoms = 0
+    n_denoms_total = 0
+    n_entity_passk_total = 0
+    n_denoms_kept = 0
     for ex in examples:
-        p_full, c_full, captures = run_entity_present(
+        p_full, c_full, pk_full, captures = run_entity_present(
             model,
             ex["prompt_full"],
             ex["answer_ids"],
+            int(args.pass_k),
             capture_layers=[int(ex["layer"])] if args.mean_entity_init else None,
             token_pos=ex["ent_pos"],
         )
@@ -656,7 +712,15 @@ def main():
         ex["skip"] = False
         ex["p_full"] = float(p_full)
         ex["c_full"] = int(c_full)
-        n_denoms += 1
+        ex["pk_full"] = int(pk_full)
+        n_denoms_total += 1
+        n_entity_passk_total += int(pk_full)
+
+        if args.require_entity_passk and int(pk_full) == 0:
+            ex["skip"] = True
+            continue
+
+        n_denoms_kept += 1
 
         if args.mean_entity_init:
             for layer, vec in captures.items():
@@ -667,8 +731,10 @@ def main():
                 mean_sum[layer] += vec.float()
                 mean_count[layer] += 1
 
-    if n_denoms == 0:
+    if n_denoms_total == 0:
         raise RuntimeError("No valid entity-present prompts produced; cannot compute denominators.")
+    if n_denoms_kept == 0:
+        raise RuntimeError("No examples remain after --require-entity-passk filtering.")
 
     mean_vec_by_layer: Dict[int, torch.Tensor] = {}
     if args.mean_entity_init:
@@ -703,16 +769,25 @@ def main():
         if ex.get("skip"):
             continue
 
-        p0, c0 = run_condition(model, ex["prompt"], ex["answer_ids"], None, None, None, args.injection_mode)
+        p0, c0, pk0 = run_condition(
+            model,
+            ex["prompt"],
+            ex["answer_ids"],
+            None,
+            None,
+            None,
+            args.injection_mode,
+            int(args.pass_k),
+        )
         if p0 is None:
             continue
 
-        p_mean, c_mean = None, None
+        p_mean, c_mean, pk_mean = None, None, None
         if args.mean_entity_init:
             mean_vec = mean_vec_by_layer.get(int(ex["layer"]))
             if mean_vec is None:
                 continue
-            p_mean, c_mean = run_condition(
+            p_mean, c_mean, pk_mean = run_condition(
                 model,
                 ex["prompt"],
                 ex["answer_ids"],
@@ -720,6 +795,7 @@ def main():
                 None,
                 ex["x_pos"],
                 args.injection_mode,
+                int(args.pass_k),
                 mean_init_layer=int(ex["layer"]),
                 mean_init_vector=mean_vec,
             )
@@ -729,9 +805,11 @@ def main():
         ex2 = dict(ex)
         ex2["p0"] = float(p0)
         ex2["c0"] = int(c0)
+        ex2["pk0"] = int(pk0)
         if args.mean_entity_init:
             ex2["p_mean"] = float(p_mean)
             ex2["c_mean"] = int(c_mean)
+            ex2["pk_mean"] = int(pk_mean)
         eval_examples.append(ex2)
 
     if not eval_examples:
@@ -770,7 +848,7 @@ def main():
 
         for a_idx, alpha in enumerate(alpha_grid):
             targets_top1 = build_targets(cells_top1, alpha=alpha, mean_vec=mean_vec)
-            p1, _ = run_condition(
+            p1, _, _ = run_condition(
                 model,
                 ex["prompt"],
                 ex["answer_ids"],
@@ -778,6 +856,7 @@ def main():
                 targets_top1,
                 ex["x_pos"],
                 args.injection_mode,
+                int(args.pass_k),
                 mean_init_layer=layer if args.mean_entity_init else None,
                 mean_init_vector=mean_vec if args.mean_entity_init else None,
             )
@@ -787,7 +866,7 @@ def main():
 
             if int(args.topk) > 1:
                 targets_topk = build_targets(cells, alpha=alpha, mean_vec=mean_vec)
-                pK, _ = run_condition(
+                pK, _, _ = run_condition(
                     model,
                     ex["prompt"],
                     ex["answer_ids"],
@@ -795,6 +874,7 @@ def main():
                     targets_topk,
                     ex["x_pos"],
                     args.injection_mode,
+                    int(args.pass_k),
                     mean_init_layer=layer if args.mean_entity_init else None,
                     mean_init_vector=mean_vec if args.mean_entity_init else None,
                 )
@@ -829,7 +909,7 @@ def main():
         targets_correct_k = build_targets(list(ex.get("cells", [])), alpha=alpha_k, mean_vec=mean_vec)
         targets_wrong_k = build_targets(list(ex.get("wrong_cells", [])), alpha=alpha_k, mean_vec=mean_vec_wrong)
 
-        p_correct_k, c_correct_k = run_condition(
+        p_correct_k, c_correct_k, pk_correct_k = run_condition(
             model,
             ex["prompt"],
             ex["answer_ids"],
@@ -837,10 +917,11 @@ def main():
             targets_correct_k,
             ex["x_pos"],
             args.injection_mode,
+            int(args.pass_k),
             mean_init_layer=layer if args.mean_entity_init else None,
             mean_init_vector=mean_vec if args.mean_entity_init else None,
         )
-        p_wrong_k, c_wrong_k = run_condition(
+        p_wrong_k, c_wrong_k, pk_wrong_k = run_condition(
             model,
             ex["prompt"],
             ex["answer_ids"],
@@ -848,6 +929,7 @@ def main():
             targets_wrong_k,
             ex["x_pos"],
             args.injection_mode,
+            int(args.pass_k),
             mean_init_layer=wrong_layer if args.mean_entity_init else None,
             mean_init_vector=mean_vec_wrong if args.mean_entity_init else None,
         )
@@ -856,25 +938,30 @@ def main():
 
         entity_probs.append(float(ex["p_full"]))
         entity_acc.append(int(ex["c_full"]))
+        entity_passk.append(int(ex.get("pk_full", 0)))
 
         baseline_probs.append(float(ex["p0"]))
         baseline_acc.append(int(ex["c0"]))
+        baseline_passk.append(int(ex.get("pk0", 0)))
 
         if args.mean_entity_init:
             mean_probs.append(float(ex.get("p_mean", 0.0)))
             mean_acc.append(int(ex.get("c_mean", 0)))
+            mean_passk.append(int(ex.get("pk_mean", 0)))
 
         correct_probs.append(float(p_correct_k))
         correct_acc.append(int(c_correct_k))
+        correct_passk.append(int(pk_correct_k))
         wrong_probs.append(float(p_wrong_k))
         wrong_acc.append(int(c_wrong_k))
+        wrong_passk.append(int(pk_wrong_k))
 
         sum_wrong_at_best_topk[ent] += float(p_wrong_k)
         used_entities_final.append(ent)
 
         alpha_1 = float(best_alpha_top1[ent]) if args.alpha_search else float(args.injection_scale)
         targets_wrong_1 = build_targets(list(ex.get("wrong_cells", []))[:1], alpha=alpha_1, mean_vec=mean_vec_wrong)
-        p_wrong_1, _ = run_condition(
+        p_wrong_1, _, _ = run_condition(
             model,
             ex["prompt"],
             ex["answer_ids"],
@@ -882,6 +969,7 @@ def main():
             targets_wrong_1,
             ex["x_pos"],
             args.injection_mode,
+            int(args.pass_k),
             mean_init_layer=wrong_layer if args.mean_entity_init else None,
             mean_init_vector=mean_vec_wrong if args.mean_entity_init else None,
         )
@@ -946,11 +1034,13 @@ def main():
         labels = ["No Injection", "Mean Entity", "Correct Cell", "Wrong Cell"]
         prob_series = [baseline_probs, mean_probs, correct_probs, wrong_probs]
         acc_series = [baseline_acc, mean_acc, correct_acc, wrong_acc]
+        pass_series = [entity_passk, mean_passk, correct_passk, wrong_passk]
         colors = ["#4C78A8", "#9C755F", "#F58518", "#54A24B"]
     else:
         labels = ["No Injection", "Correct Cell", "Wrong Cell"]
         prob_series = [baseline_probs, correct_probs, wrong_probs]
         acc_series = [baseline_acc, correct_acc, wrong_acc]
+        pass_series = [entity_passk, baseline_passk, correct_passk, wrong_passk]
         colors = ["#4C78A8", "#F58518", "#54A24B"]
 
     prob_means = [float(np.mean(values)) if values else math.nan for values in prob_series]
@@ -960,6 +1050,9 @@ def main():
 
     acc_means = [float(np.mean(values)) if values else math.nan for values in acc_series]
     acc_errs = [float(np.std(values) / np.sqrt(len(values))) if values else math.nan for values in acc_series]
+
+    pass_means = [float(np.mean(values)) if values else math.nan for values in pass_series]
+    pass_errs = [float(np.std(values) / np.sqrt(len(values))) if values else math.nan for values in pass_series]
 
     fig, ax = plt.subplots(figsize=(3.8, 2.6))
     ax.bar(labels, prob_means, yerr=prob_errs, color=colors, capsize=3)
@@ -973,8 +1066,6 @@ def main():
     plt.close(fig)
 
     # Relative to the entity-present prompt: 1.0 means "matches the probability under the full prompt".
-    # Include an explicit "Entity Present" bar to make the normalization unambiguous.
-    rel_labels = ["Entity Present"] + labels
     entity_arr = np.asarray(entity_probs, dtype=float)
     base_arr = np.asarray(baseline_probs, dtype=float)
     mean_arr = np.asarray(mean_probs, dtype=float)
@@ -1010,9 +1101,20 @@ def main():
     rel_errs.append(float(np.std(boot["correct"])))
     rel_errs.append(float(np.std(boot["wrong"])))
 
+    # Plot a compact normalized view: mean-init baseline + correct vs wrong.
+    if args.mean_entity_init:
+        rel_labels_plot = ["Entity Present", "Mean Entity", "Correct Cell", "Wrong Cell"]
+        rel_means_plot = [1.0, rel_means[2], rel_means[3], rel_means[4]]
+        rel_errs_plot = [0.0, rel_errs[2], rel_errs[3], rel_errs[4]]
+        rel_colors = ["#6C7A89", "#9C755F", "#F58518", "#54A24B"]
+    else:
+        rel_labels_plot = ["Entity Present", "No Injection", "Correct Cell", "Wrong Cell"]
+        rel_means_plot = [1.0, rel_means[1], rel_means[2], rel_means[3]]
+        rel_errs_plot = [0.0, rel_errs[1], rel_errs[2], rel_errs[3]]
+        rel_colors = ["#6C7A89", "#4C78A8", "#F58518", "#54A24B"]
+
     fig, ax = plt.subplots(figsize=(3.8, 2.6))
-    rel_colors = ["#6C7A89"] + colors
-    ax.bar(rel_labels, rel_means, yerr=rel_errs, color=rel_colors, capsize=3)
+    ax.bar(rel_labels_plot, rel_means_plot, yerr=rel_errs_plot, color=rel_colors, capsize=3)
     ax.set_ylabel("Relative Answer Probability")
     ax.set_title(f"Activation Causality (Normalized)\nModel: {args.model}")
     ax.axhline(1.0, color="black", linestyle="--", linewidth=1.0, alpha=0.6)
@@ -1032,6 +1134,24 @@ def main():
     fig.savefig(acc_path.with_suffix(".png"))
     plt.close(fig)
 
+    pass_labels = ["Entity Present"]
+    if args.mean_entity_init:
+        pass_labels += ["Mean Entity", "Correct Cell", "Wrong Cell"]
+        pass_colors = ["#6C7A89", "#9C755F", "#F58518", "#54A24B"]
+    else:
+        pass_labels += ["No Injection", "Correct Cell", "Wrong Cell"]
+        pass_colors = ["#6C7A89", "#4C78A8", "#F58518", "#54A24B"]
+
+    fig, ax = plt.subplots(figsize=(3.8, 2.6))
+    ax.bar(pass_labels, pass_means, yerr=pass_errs, color=pass_colors, capsize=3)
+    ax.set_ylabel(f"Pass@{int(args.pass_k)} Accuracy")
+    ax.set_title(f"Activation Causality\nModel: {args.model}")
+    fig.tight_layout()
+    pass_path = out_path.with_name(out_path.name + f"_pass{int(args.pass_k)}")
+    fig.savefig(pass_path.with_suffix(".pdf"))
+    fig.savefig(pass_path.with_suffix(".png"))
+    plt.close(fig)
+
     results = {
         "model": args.model,
         "prompt_style": prompt_style,
@@ -1042,8 +1162,17 @@ def main():
         "n_entities_localized": len(entity_top),
         "n_entities_used": len(set(used_entities_final)),
         "n_examples": len(baseline_acc),
+        "require_entity_passk": bool(args.require_entity_passk),
+        "entity_present_passk_summary": {
+            "pass_k": int(args.pass_k),
+            "n_total_examples": int(n_denoms_total),
+            "n_correct_examples": int(n_entity_passk_total),
+            "rate": float(n_entity_passk_total / max(n_denoms_total, 1)),
+            "n_examples_after_filter": int(n_denoms_kept),
+        },
         "min_dominance": args.min_dominance,
         "trustworthy_only": bool(args.trustworthy_only),
+        "pass_k": int(args.pass_k),
         "trust_thresholds": {
             "min_dominance": args.trust_min_dominance,
             "min_loss": args.trust_min_loss,
@@ -1084,6 +1213,7 @@ def main():
         "means": {
             "prob": prob_means,
             "acc": acc_means,
+            "passk": pass_means,
             "relprob": rel_means,
         },
     }

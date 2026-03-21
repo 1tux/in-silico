@@ -20,6 +20,7 @@ from activations import (
     z_score_normalize,
 )
 from data_utils import build_entity_index, infer_fields
+from model_load import language_model_kwargs
 from plot_style import set_paper_style
 from prompts import entity_questions, load_generic_prompts
 
@@ -51,6 +52,16 @@ def find_entity_token_pos(tokenizer, question: str, entity: str) -> int | None:
             if q_ids[i : i + len(c_ids)] == c_ids:
                 return i + len(c_ids) - 1
     return None
+
+
+def prompts_with_entity_positions(tokenizer, prompts: List[str], entity: str) -> List[Tuple[str, int]]:
+    positioned: List[Tuple[str, int]] = []
+    for prompt in prompts:
+        pos = find_entity_token_pos(tokenizer, prompt, entity)
+        if pos is None:
+            continue
+        positioned.append((prompt, pos))
+    return positioned
 
 
 def infer_prompt_style(model_name: str, override: str | None = None) -> str:
@@ -99,7 +110,7 @@ def main():
     parser.add_argument("--fig-dir", default=str(Path(__file__).resolve().parents[1] / "figures"))
     args = parser.parse_args()
 
-    model = LanguageModel(args.model, device_map="auto")
+    model = LanguageModel(args.model, **language_model_kwargs(args.model))
     prompt_style = infer_prompt_style(args.model, args.prompt_style)
     generic_prompts = load_generic_prompts(args.generic_prompts)
     known_neurons = load_known_neurons(args.known_neurons) if args.known_neurons else {}
@@ -143,8 +154,10 @@ def main():
             rng.shuffle(questions)
             if args.entity_prompt_k > 0:
                 questions = questions[: args.entity_prompt_k]
-            # Keep prompts in raw cloze form so the final token aligns with the entity mention.
-            acts = get_activations(model, questions)
+            prompts_with_pos = prompts_with_entity_positions(model.tokenizer, questions, ent)
+            if not prompts_with_pos:
+                continue
+            acts = get_activations_at_pos(model, prompts_with_pos)
         else:
             qa = entity_index[ent][:]
             rng.shuffle(qa)
@@ -189,6 +202,7 @@ def main():
             "topk_mean": float(topk),
             "randk_mean": float(rand),
             "localization_source": args.localization_source,
+            "token_target": "last_entity_token",
         }
         if ent in known_neurons:
             known_layer, known_neuron = known_neurons[ent]

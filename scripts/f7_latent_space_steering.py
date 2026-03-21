@@ -10,6 +10,8 @@ import numpy as np
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
+from model_load import automodel_kwargs, tokenizer_kwargs
+from model_layout import get_layers, get_layout, get_mlp_output_module
 from plot_style import set_paper_style
 
 
@@ -86,10 +88,14 @@ def get_logprob(
 
         def inject_hook(_module, _input, output):
             patched = output.clone()
-            patched[:, pos, :] = patched[:, pos, :] + delta_local.to(patched.dtype)
+            layout = get_layout(model)
+            if layout == "batch_first":
+                patched[:, pos, :] = patched[:, pos, :] + delta_local.to(patched.dtype)
+            else:
+                patched[pos, :, :] = patched[pos, :, :] + delta_local.to(patched.dtype)
             return patched
 
-        hook = model.model.layers[layer_idx].mlp.down_proj.register_forward_hook(inject_hook)
+        hook = get_mlp_output_module(get_layers(model)[layer_idx]).register_forward_hook(inject_hook)
 
     outputs = model(**inputs)
 
@@ -127,12 +133,8 @@ def main():
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(args.seed)
 
-    tokenizer = AutoTokenizer.from_pretrained(args.model)
-    model = AutoModelForCausalLM.from_pretrained(
-        args.model,
-        torch_dtype=torch.float16,
-        device_map="auto",
-    )
+    tokenizer = AutoTokenizer.from_pretrained(args.model, **tokenizer_kwargs(args.model))
+    model = AutoModelForCausalLM.from_pretrained(args.model, **automodel_kwargs(args.model))
     model.eval()
     for param in model.parameters():
         param.requires_grad = False

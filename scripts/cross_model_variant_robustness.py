@@ -15,6 +15,7 @@ from activations import (
     rank_neurons,
     z_score_normalize,
 )
+from model_load import language_model_kwargs
 from prompts import entity_questions, load_generic_prompts
 
 
@@ -90,7 +91,7 @@ def main() -> None:
     if not groups:
         raise RuntimeError("No probe groups provided.")
 
-    model = LanguageModel(args.model, device_map="auto")
+    model = LanguageModel(args.model, **language_model_kwargs(args.model))
     generic_prompts = load_generic_prompts(args.generic_prompts)
     base_acts = get_activations(model, generic_prompts)
     base_mean, base_std = compute_metrics(base_acts)

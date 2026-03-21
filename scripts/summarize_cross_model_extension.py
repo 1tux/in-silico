@@ -18,30 +18,24 @@ from plot_style import set_paper_style  # noqa: E402
 
 
 MODEL_ORDER = [
-    "Qwen/Qwen2.5-7B-Instruct",
     "allenai/OLMo-7B-0724-hf",
     "meta-llama/Llama-3.1-8B-Instruct",
-    "google/gemma-2-9b-it",
     "mistralai/Mistral-7B-v0.3",
     "openlm-research/open_llama_7b",
 ]
 
 
 MODEL_LABEL = {
-    "Qwen/Qwen2.5-7B-Instruct": "Qwen2.5-7B-Inst",
     "allenai/OLMo-7B-0724-hf": "OLMo-7B",
     "meta-llama/Llama-3.1-8B-Instruct": "Llama-3.1-8B-Inst",
-    "google/gemma-2-9b-it": "Gemma-2-9B-it",
     "mistralai/Mistral-7B-v0.3": "Mistral-7B-v0.3",
     "openlm-research/open_llama_7b": "OpenLLaMA-7B",
 }
 
 
 LOCALIZATION_RESULT_FILE = {
-    "Qwen/Qwen2.5-7B-Instruct": "results/f2_popqa_popular_200_qwen2_5_7b_instruct.json",
     "allenai/OLMo-7B-0724-hf": "results/f2_popqa_popular_200_olmo_7b_0724.json",
     "meta-llama/Llama-3.1-8B-Instruct": "results/f2_popqa_popular_200_llama3_1_8b_instruct.json",
-    "google/gemma-2-9b-it": "results/f2_popqa_popular_200_gemma2_9b_it.json",
     "mistralai/Mistral-7B-v0.3": "results/f2_popqa_popular_200_mistral_7b_v03.json",
     "openlm-research/open_llama_7b": "results/f2_popqa_popular_200_open_llama_7b.json",
 }
@@ -235,27 +229,36 @@ def main() -> None:
     import matplotlib.pyplot as plt
 
     set_paper_style()
+    plt.rcParams.update(
+        {
+            "axes.labelsize": 10.6,
+            "axes.titlesize": 11.2,
+            "xtick.labelsize": 9.6,
+            "ytick.labelsize": 9.6,
+            "legend.fontsize": 9.6,
+        }
+    )
     labels = [MODEL_LABEL[m] for m in MODEL_ORDER]
     x = np.arange(len(labels), dtype=float)
     delta = np.asarray([f4_rows[m]["delta_correct_minus_wrong"] for m in MODEL_ORDER], dtype=float)
     success_pct = 100.0 * np.asarray([f4_rows[m]["success_rate"] for m in MODEL_ORDER], dtype=float)
 
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.0, 3.0))
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(4.9, 3.25))
     ax1.bar(x, delta, color="#F58518")
     ax1.axhline(0.0, color="black", linestyle="--", linewidth=0.9, alpha=0.7)
     ax1.set_ylabel(r"$\Delta$ RelProb (Correct $-$ Wrong)")
     ax1.set_xticks(x)
-    ax1.set_xticklabels(labels, rotation=30, ha="right")
-    ax1.set_title("Causal separation")
+    ax1.set_xticklabels(labels, rotation=24, ha="right")
+    ax1.set_title("Causal separation", pad=6)
 
     ax2.bar(x, success_pct, color="#4C78A8")
     ax2.set_ylabel("Success Rate (%)")
     ax2.set_ylim(0, 100)
     ax2.set_xticks(x)
-    ax2.set_xticklabels(labels, rotation=30, ha="right")
-    ax2.set_title("Entity-level success")
+    ax2.set_xticklabels(labels, rotation=24, ha="right")
+    ax2.set_title("Entity-level success", pad=6)
 
-    fig.tight_layout()
+    fig.tight_layout(pad=0.9, w_pad=1.0)
     fig.savefig(figures_dir / "fx_cross_model_f4_delta_success.pdf")
     fig.savefig(figures_dir / "fx_cross_model_f4_delta_success.png", dpi=220)
     plt.close(fig)

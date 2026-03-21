@@ -10,6 +10,8 @@ import torch
 from nnsight import LanguageModel
 from transformers import AutoTokenizer
 
+from model_load import language_model_kwargs, tokenizer_kwargs
+from model_layout import assign_sequence_neuron, get_sequence_neuron_proxy
 from plot_style import set_paper_style
 
 
@@ -67,8 +69,8 @@ def run_ablation_sweep(
 
         for val in x_steps:
             with model.trace(p["prompt"]):
-                activity = model.model.layers[layer_idx].mlp.down_proj.input[0, :, neuron_id].save()
-                model.model.layers[layer_idx].mlp.down_proj.input[0, :, neuron_id] = activity * val
+                activity = get_sequence_neuron_proxy(model, layer_idx, neuron_id).save()
+                assign_sequence_neuron(model, layer_idx, neuron_id, activity * val)
                 logits = model.output.logits[0, -1, :].save()
             prob = torch.softmax(logits, dim=-1)[target_token_id].item()
             prompt_probs.append(max(prob, 1e-12))
@@ -139,8 +141,8 @@ def main():
     x_steps = np.linspace(1, -3, args.steps)
 
     print("Loading model...")
-    model = LanguageModel(args.model, device_map="auto")
-    tokenizer = AutoTokenizer.from_pretrained(args.model)
+    model = LanguageModel(args.model, **language_model_kwargs(args.model))
+    tokenizer = AutoTokenizer.from_pretrained(args.model, **tokenizer_kwargs(args.model))
 
     baseline_probs, results_matrix = run_ablation_sweep(
         model, tokenizer, prompts, args.layer, args.neuron, x_steps

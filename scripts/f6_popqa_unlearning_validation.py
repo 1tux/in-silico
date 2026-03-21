@@ -12,6 +12,8 @@ from datasets import load_dataset
 from nnsight import LanguageModel
 
 from data_utils import build_entity_index, infer_fields
+from model_load import language_model_kwargs
+from model_layout import assign_token_neuron, get_token_neuron_proxy
 from plot_style import set_paper_style
 
 
@@ -91,8 +93,8 @@ def run_prob(
 ):
     with model.trace(prompt):
         if multiplier is not None:
-            activity = model.model.layers[layer_idx].mlp.down_proj.input[0, token_pos, neuron_idx].save()
-            model.model.layers[layer_idx].mlp.down_proj.input[0, token_pos, neuron_idx] = activity * multiplier
+            activity = get_token_neuron_proxy(model, layer_idx, token_pos, neuron_idx).save()
+            assign_token_neuron(model, layer_idx, token_pos, neuron_idx, activity * multiplier)
         logits = model.output.logits[0, -1, :].save()
     probs = torch.softmax(logits, dim=-1)
     return max(float(probs[idx].item()) for idx in answer_ids)
@@ -133,7 +135,7 @@ def main():
         raise RuntimeError("No entities available for validation after filtering")
 
     rng = random.Random(args.seed)
-    model = LanguageModel(args.model, device_map="auto")
+    model = LanguageModel(args.model, **language_model_kwargs(args.model))
     prompt_style = infer_prompt_style(args.model, args.prompt_style)
 
     per_entity = []

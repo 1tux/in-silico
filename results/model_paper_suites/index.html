@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Model Suite Report</title>
+  <style>
+    :root {
+      --bg: #f6f3ed;
+      --panel: #fffdf9;
+      --ink: #18222d;
+      --muted: #5b6670;
+      --line: #d6cec2;
+      --accent: #9f2b00;
+    }
+    body {
+      margin: 0;
+      font: 16px/1.5 Georgia, "Iowan Old Style", serif;
+      color: var(--ink);
+      background: radial-gradient(circle at top left, #fffaf0 0%, var(--bg) 55%);
+    }
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 20px 64px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 34px;
+    }
+    p.lead {
+      margin: 0 0 24px;
+      color: var(--muted);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      margin-bottom: 28px;
+    }
+    th, td {
+      border-bottom: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f2ece3;
+      font-size: 13px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-right: 10px;
+    }
+    .subtle {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .badge.ok {
+      background: #d9efe0;
+      color: #1d5e35;
+    }
+    .badge.partial {
+      background: #f7e8bf;
+      color: #805f00;
+    }
+    .badge.failed {
+      background: #f5d8d5;
+      color: #8a2218;
+    }
+    .badge.legacy {
+      background: #e6e2dc;
+      color: #5a544c;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 16px;
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      font-size: 22px;
+    }
+    .card p {
+      margin: 6px 0;
+    }
+    .links {
+      margin-top: 12px;
+    }
+    .steps {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .step {
+      display: inline-block;
+      padding: 2px 7px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: #ece6dc;
+      color: #5e584f;
+    }
+    .step.ok {
+      background: #d9efe0;
+      color: #1d5e35;
+    }
+    .step.failed {
+      background: #f5d8d5;
+      color: #8a2218;
+    }
+    .step.skipped_missing_dependency, .step.skipped_missing_barack_neuron {
+      background: #efe6d6;
+      color: #826118;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Model Suite Report</h1>
+    <p class="lead">Per-model overview of localization, PopQA validation, causal checks, rendered paper figures, and suite completion state.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Status</th>
+          <th>Obama Neuron</th>
+          <th>Early Layers</th>
+          <th>F6 Validation</th>
+          <th>Figure 4 Set</th>
+          <th>Figure Coverage</th>
+          <th>Failed Steps</th>
+          <th>Figures</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>allenai_olmo_7b_0724_hf<div class="subtle">allenai_olmo_7b_0724_hf</div></td><td><span class="badge partial">partial</span></td><td>n/a</td><td>97.0% (194/200)</td><td>200<div class="subtle">0.770 clipped / 0.575 signed</div></td><td>n/a</td><td>4/8<div class="subtle">Missing: Fig. 4, Fig. 5, Fig. 6, Fig. 7</div></td><td>none</td><td><a href="allenai_olmo_7b_0724_hf/figures/figure2_layer_hist.pdf">Fig. 2</a> <a href="allenai_olmo_7b_0724_hf/figures/figure3_variants_grid_2x2.pdf">Fig. 3a</a> <a href="allenai_olmo_7b_0724_hf/figures/figure3_acronym_grid.pdf">Fig. 3b</a> <a href="allenai_olmo_7b_0724_hf/figures/figure3_multilingual_grid_2x2.pdf">Fig. 3c</a></td></tr><tr><td>google/gemma-2-9b-it<div class="subtle">google_gemma_2_9b_it</div></td><td><span class="badge partial">partial</span></td><td>n/a</td><td>99.0% (198/200)</td><td>200<div class="subtle">0.585 clipped / 0.405 signed</div></td><td>n/a</td><td>0/8<div class="subtle">Missing: Fig. 2, Fig. 3a, Fig. 3b, Fig. 3c, Fig. 4, Fig. 5, Fig. 6, Fig. 7</div></td><td>f2_localization, f3_localization_variants, f6_popqa_validation, f4_activation_causality</td><td></td></tr><tr><td>meta-llama/Llama-3.1-8B-Instruct<div class="subtle">meta_llama_llama_3_1_8b_instruct</div></td><td><span class="badge partial">partial</span></td><td>L0-N13569</td><td>100.0% (200/200)</td><td>200<div class="subtle">0.620 clipped / 0.455 signed</div></td><td>n/a</td><td>7/8<div class="subtle">Missing: Fig. 4</div></td><td>f4_activation_causality</td><td><a href="meta_llama_llama_3_1_8b_instruct/figures/figure2_layer_hist.pdf">Fig. 2</a> <a href="meta_llama_llama_3_1_8b_instruct/figures/figure3_variants_grid_2x2.pdf">Fig. 3a</a> <a href="meta_llama_llama_3_1_8b_instruct/figures/figure3_acronym_grid.pdf">Fig. 3b</a> <a href="meta_llama_llama_3_1_8b_instruct/figures/figure3_multilingual_grid_2x2.pdf">Fig. 3c</a> <a href="meta_llama_llama_3_1_8b_instruct/figures/figure5_injection_obama_anchor.pdf">Fig. 5</a> <a href="meta_llama_llama_3_1_8b_instruct/figures/figure6_unlearning_obama_trump.pdf">Fig. 6</a> <a href="meta_llama_llama_3_1_8b_instruct/figures/figure7_edit_vs_preserve.pdf">Fig. 7</a></td></tr><tr><td>Qwen/Qwen2.5-7B<div class="subtle">qwen_qwen2_5_7b_analysis</div></td><td><span class="badge ok">ok</span></td><td>L2-N10941</td><td>98.5% (197/200)</td><td>200<div class="subtle">0.875 clipped / 0.655 signed</div></td><td>82/128 entities, 115 examples</td><td>8/8<div class="subtle">Missing: none</div></td><td>none</td><td><a href="qwen_qwen2_5_7b_analysis/figures/figure2_layer_hist.pdf">Fig. 2</a> <a href="qwen_qwen2_5_7b_analysis/figures/figure3_variants_grid_2x2.pdf">Fig. 3a</a> <a href="qwen_qwen2_5_7b_analysis/figures/figure3_acronym_grid.pdf">Fig. 3b</a> <a href="qwen_qwen2_5_7b_analysis/figures/figure3_multilingual_grid_2x2.pdf">Fig. 3c</a> <a href="qwen_qwen2_5_7b_analysis/figures/figure4_controlled_injection_pass5.pdf">Fig. 4</a> <a href="qwen_qwen2_5_7b_analysis/figures/figure5_injection_obama_anchor.pdf">Fig. 5</a> <a href="qwen_qwen2_5_7b_analysis/figures/figure6_unlearning_obama_trump.pdf">Fig. 6</a> <a href="qwen_qwen2_5_7b_analysis/figures/figure7_edit_vs_preserve.pdf">Fig. 7</a></td></tr><tr><td>Qwen/Qwen2.5-7B-Instruct<div class="subtle">qwen_qwen2_5_7b_instruct_analysis</div></td><td><span class="badge ok">ok</span></td><td>L2-N10941</td><td>98.5% (197/200)</td><td>200<div class="subtle">0.825 clipped / 0.595 signed</div></td><td>50/97 entities, 66 examples</td><td>8/8<div class="subtle">Missing: none</div></td><td>none</td><td><a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure2_layer_hist.pdf">Fig. 2</a> <a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure3_variants_grid_2x2.pdf">Fig. 3a</a> <a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure3_acronym_grid.pdf">Fig. 3b</a> <a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure3_multilingual_grid_2x2.pdf">Fig. 3c</a> <a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure4_controlled_injection_pass5.pdf">Fig. 4</a> <a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure5_injection_obama_anchor.pdf">Fig. 5</a> <a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure6_unlearning_obama_trump.pdf">Fig. 6</a> <a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure7_edit_vs_preserve.pdf">Fig. 7</a></td></tr><tr><td>Qwen/Qwen3-8B<div class="subtle">qwen_qwen3_8b_analysis</div></td><td><span class="badge ok">ok</span></td><td>L0-N2883</td><td>97.5% (195/200)</td><td>200<div class="subtle">0.790 clipped / 0.490 signed</div></td><td>42/54 entities, 62 examples</td><td>8/8<div class="subtle">Missing: none</div></td><td>none</td><td><a href="qwen_qwen3_8b_analysis/figures/figure2_layer_hist.pdf">Fig. 2</a> <a href="qwen_qwen3_8b_analysis/figures/figure3_variants_grid_2x2.pdf">Fig. 3a</a> <a href="qwen_qwen3_8b_analysis/figures/figure3_acronym_grid.pdf">Fig. 3b</a> <a href="qwen_qwen3_8b_analysis/figures/figure3_multilingual_grid_2x2.pdf">Fig. 3c</a> <a href="qwen_qwen3_8b_analysis/figures/figure4_controlled_injection_pass5.pdf">Fig. 4</a> <a href="qwen_qwen3_8b_analysis/figures/figure5_injection_obama_anchor.pdf">Fig. 5</a> <a href="qwen_qwen3_8b_analysis/figures/figure6_unlearning_obama_trump.pdf">Fig. 6</a> <a href="qwen_qwen3_8b_analysis/figures/figure7_edit_vs_preserve.pdf">Fig. 7</a></td></tr>
+      </tbody>
+    </table>
+    <div class="grid">
+      
+            <section class="card">
+              <h2>allenai_olmo_7b_0724_hf</h2>
+              <p><strong>Status:</strong> <span class="badge partial">partial</span></p>
+              <p><strong>Suite:</strong> allenai_olmo_7b_0724_hf</p>
+              <p><strong>Barack neuron:</strong> n/a</p>
+              <p><strong>Early-layer concentration:</strong> 97.0% (194/200)</p>
+              <p><strong>F6 entities used:</strong> 200</p>
+              <p><strong>F6 loss fractions:</strong> 0.770 clipped / 0.575 signed</p>
+              <p><strong>Trustworthy entities:</strong> n/a</p>
+              <p><strong>Figure 4 usable set:</strong> n/a</p>
+              <p><strong>Figures present:</strong> 4/8</p>
+              <p><strong>Missing figures:</strong> Fig. 4, Fig. 5, Fig. 6, Fig. 7</p>
+              <p><strong>Completed steps:</strong> n/a</p>
+              <p><strong>Failed steps:</strong> none</p>
+              <p class="links"><a href="allenai_olmo_7b_0724_hf/figures/figure2_layer_hist.pdf">Fig. 2</a> <a href="allenai_olmo_7b_0724_hf/figures/figure3_variants_grid_2x2.pdf">Fig. 3a</a> <a href="allenai_olmo_7b_0724_hf/figures/figure3_acronym_grid.pdf">Fig. 3b</a> <a href="allenai_olmo_7b_0724_hf/figures/figure3_multilingual_grid_2x2.pdf">Fig. 3c</a></p>
+              <p class="links"><a href="allenai_olmo_7b_0724_hf/artifacts/f2/f2_popqa_popular_200_allenai_olmo_7b_0724_hf.json">f2 json</a> <a href="allenai_olmo_7b_0724_hf/artifacts/f6_popqa/f6_popqa_validation_allenai_olmo_7b_0724_hf.json">f6_popqa json</a></p>
+              <div class="steps"><span class="subtle">No step metadata</span></div>
+            </section>
+            
+            <section class="card">
+              <h2>google/gemma-2-9b-it</h2>
+              <p><strong>Status:</strong> <span class="badge partial">partial</span></p>
+              <p><strong>Suite:</strong> google_gemma_2_9b_it</p>
+              <p><strong>Barack neuron:</strong> n/a</p>
+              <p><strong>Early-layer concentration:</strong> 99.0% (198/200)</p>
+              <p><strong>F6 entities used:</strong> 200</p>
+              <p><strong>F6 loss fractions:</strong> 0.585 clipped / 0.405 signed</p>
+              <p><strong>Trustworthy entities:</strong> n/a</p>
+              <p><strong>Figure 4 usable set:</strong> n/a</p>
+              <p><strong>Figures present:</strong> 0/8</p>
+              <p><strong>Missing figures:</strong> Fig. 2, Fig. 3a, Fig. 3b, Fig. 3c, Fig. 4, Fig. 5, Fig. 6, Fig. 7</p>
+              <p><strong>Completed steps:</strong> 0</p>
+              <p><strong>Failed steps:</strong> f2_localization, f3_localization_variants, f6_popqa_validation, f4_activation_causality</p>
+              <p class="links">No figures yet</p>
+              <p class="links"><a href="google_gemma_2_9b_it/suite_manifest.json">manifest</a> <a href="google_gemma_2_9b_it/artifacts/f2/f2_popqa_popular_200_google_gemma_2_9b_it.json">f2 json</a> <a href="google_gemma_2_9b_it/artifacts/f6_popqa/f6_popqa_validation_google_gemma_2_9b_it.json">f6_popqa json</a></p>
+              <div class="steps"><span class="step failed">f2_localization</span> <span class="step failed">f3_localization_variants</span> <span class="step skipped_missing_dependency">figure3_copy</span> <span class="step failed">f6_popqa_validation</span> <span class="step failed">f4_activation_causality</span> <span class="step skipped_missing_dependency">figure4_copy</span> <span class="step skipped_missing_barack_neuron">f5_entity_injection</span> <span class="step skipped_missing_barack_neuron">figure5_copy</span> <span class="step skipped_missing_barack_neuron">f6_entity_unlearning</span> <span class="step skipped_missing_barack_neuron">figure6_copy</span> <span class="step skipped_missing_barack_neuron">f7_latent_space_steering</span> <span class="step skipped_missing_barack_neuron">figure7_render</span></div>
+            </section>
+            
+            <section class="card">
+              <h2>meta-llama/Llama-3.1-8B-Instruct</h2>
+              <p><strong>Status:</strong> <span class="badge partial">partial</span></p>
+              <p><strong>Suite:</strong> meta_llama_llama_3_1_8b_instruct</p>
+              <p><strong>Barack neuron:</strong> L0-N13569</p>
+              <p><strong>Early-layer concentration:</strong> 100.0% (200/200)</p>
+              <p><strong>F6 entities used:</strong> 200</p>
+              <p><strong>F6 loss fractions:</strong> 0.620 clipped / 0.455 signed</p>
+              <p><strong>Trustworthy entities:</strong> n/a</p>
+              <p><strong>Figure 4 usable set:</strong> n/a</p>
+              <p><strong>Figures present:</strong> 7/8</p>
+              <p><strong>Missing figures:</strong> Fig. 4</p>
+              <p><strong>Completed steps:</strong> 11</p>
+              <p><strong>Failed steps:</strong> f4_activation_causality</p>
+              <p class="links"><a href="meta_llama_llama_3_1_8b_instruct/figures/figure2_layer_hist.pdf">Fig. 2</a> <a href="meta_llama_llama_3_1_8b_instruct/figures/figure3_variants_grid_2x2.pdf">Fig. 3a</a> <a href="meta_llama_llama_3_1_8b_instruct/figures/figure3_acronym_grid.pdf">Fig. 3b</a> <a href="meta_llama_llama_3_1_8b_instruct/figures/figure3_multilingual_grid_2x2.pdf">Fig. 3c</a> <a href="meta_llama_llama_3_1_8b_instruct/figures/figure5_injection_obama_anchor.pdf">Fig. 5</a> <a href="meta_llama_llama_3_1_8b_instruct/figures/figure6_unlearning_obama_trump.pdf">Fig. 6</a> <a href="meta_llama_llama_3_1_8b_instruct/figures/figure7_edit_vs_preserve.pdf">Fig. 7</a></p>
+              <p class="links"><a href="meta_llama_llama_3_1_8b_instruct/suite_manifest.json">manifest</a> <a href="meta_llama_llama_3_1_8b_instruct/artifacts/f2/f2_popqa_popular_200_meta_llama_llama_3_1_8b_instruct.json">f2 json</a> <a href="meta_llama_llama_3_1_8b_instruct/artifacts/f6_popqa/f6_popqa_validation_meta_llama_llama_3_1_8b_instruct.json">f6_popqa json</a></p>
+              <div class="steps"><span class="step ok">f2_localization</span> <span class="step ok">figure2_render</span> <span class="step ok">f3_localization_variants</span> <span class="step ok">figure3_copy</span> <span class="step ok">f6_popqa_validation</span> <span class="step failed">f4_activation_causality</span> <span class="step skipped_missing_dependency">figure4_copy</span> <span class="step ok">f5_entity_injection</span> <span class="step ok">figure5_copy</span> <span class="step ok">f6_entity_unlearning</span> <span class="step ok">figure6_copy</span> <span class="step ok">f7_latent_space_steering</span> <span class="step ok">figure7_render</span></div>
+            </section>
+            
+            <section class="card">
+              <h2>Qwen/Qwen2.5-7B</h2>
+              <p><strong>Status:</strong> <span class="badge ok">ok</span></p>
+              <p><strong>Suite:</strong> qwen_qwen2_5_7b_analysis</p>
+              <p><strong>Barack neuron:</strong> L2-N10941</p>
+              <p><strong>Early-layer concentration:</strong> 98.5% (197/200)</p>
+              <p><strong>F6 entities used:</strong> 200</p>
+              <p><strong>F6 loss fractions:</strong> 0.875 clipped / 0.655 signed</p>
+              <p><strong>Trustworthy entities:</strong> n/a</p>
+              <p><strong>Figure 4 usable set:</strong> 82/128 entities, 115 examples</p>
+              <p><strong>Figures present:</strong> 8/8</p>
+              <p><strong>Missing figures:</strong> none</p>
+              <p><strong>Completed steps:</strong> n/a</p>
+              <p><strong>Failed steps:</strong> none</p>
+              <p class="links"><a href="qwen_qwen2_5_7b_analysis/figures/figure2_layer_hist.pdf">Fig. 2</a> <a href="qwen_qwen2_5_7b_analysis/figures/figure3_variants_grid_2x2.pdf">Fig. 3a</a> <a href="qwen_qwen2_5_7b_analysis/figures/figure3_acronym_grid.pdf">Fig. 3b</a> <a href="qwen_qwen2_5_7b_analysis/figures/figure3_multilingual_grid_2x2.pdf">Fig. 3c</a> <a href="qwen_qwen2_5_7b_analysis/figures/figure4_controlled_injection_pass5.pdf">Fig. 4</a> <a href="qwen_qwen2_5_7b_analysis/figures/figure5_injection_obama_anchor.pdf">Fig. 5</a> <a href="qwen_qwen2_5_7b_analysis/figures/figure6_unlearning_obama_trump.pdf">Fig. 6</a> <a href="qwen_qwen2_5_7b_analysis/figures/figure7_edit_vs_preserve.pdf">Fig. 7</a></p>
+              <p class="links"><a href="qwen_qwen2_5_7b_analysis/suite_manifest.json">manifest</a> <a href="qwen_qwen2_5_7b_analysis/artifacts/f2/f2_popqa_popular_200_qwen_qwen2_5_7b.json">f2 json</a> <a href="qwen_qwen2_5_7b_analysis/artifacts/f4/f4_activation_causality_qwen_qwen2_5_7b_results.json">f4 json</a> <a href="qwen_qwen2_5_7b_analysis/artifacts/f6_popqa/f6_popqa_validation_qwen_qwen2_5_7b.json">f6_popqa json</a></p>
+              <div class="steps"><span class="subtle">No step metadata</span></div>
+            </section>
+            
+            <section class="card">
+              <h2>Qwen/Qwen2.5-7B-Instruct</h2>
+              <p><strong>Status:</strong> <span class="badge ok">ok</span></p>
+              <p><strong>Suite:</strong> qwen_qwen2_5_7b_instruct_analysis</p>
+              <p><strong>Barack neuron:</strong> L2-N10941</p>
+              <p><strong>Early-layer concentration:</strong> 98.5% (197/200)</p>
+              <p><strong>F6 entities used:</strong> 200</p>
+              <p><strong>F6 loss fractions:</strong> 0.825 clipped / 0.595 signed</p>
+              <p><strong>Trustworthy entities:</strong> n/a</p>
+              <p><strong>Figure 4 usable set:</strong> 50/97 entities, 66 examples</p>
+              <p><strong>Figures present:</strong> 8/8</p>
+              <p><strong>Missing figures:</strong> none</p>
+              <p><strong>Completed steps:</strong> n/a</p>
+              <p><strong>Failed steps:</strong> none</p>
+              <p class="links"><a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure2_layer_hist.pdf">Fig. 2</a> <a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure3_variants_grid_2x2.pdf">Fig. 3a</a> <a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure3_acronym_grid.pdf">Fig. 3b</a> <a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure3_multilingual_grid_2x2.pdf">Fig. 3c</a> <a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure4_controlled_injection_pass5.pdf">Fig. 4</a> <a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure5_injection_obama_anchor.pdf">Fig. 5</a> <a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure6_unlearning_obama_trump.pdf">Fig. 6</a> <a href="qwen_qwen2_5_7b_instruct_analysis/figures/figure7_edit_vs_preserve.pdf">Fig. 7</a></p>
+              <p class="links"><a href="qwen_qwen2_5_7b_instruct_analysis/suite_manifest.json">manifest</a> <a href="qwen_qwen2_5_7b_instruct_analysis/artifacts/f2/f2_popqa_popular_200_qwen_qwen2_5_7b_instruct.json">f2 json</a> <a href="qwen_qwen2_5_7b_instruct_analysis/artifacts/f4/f4_activation_causality_qwen_qwen2_5_7b_instruct_results.json">f4 json</a> <a href="qwen_qwen2_5_7b_instruct_analysis/artifacts/f6_popqa/f6_popqa_validation_qwen_qwen2_5_7b_instruct.json">f6_popqa json</a></p>
+              <div class="steps"><span class="subtle">No step metadata</span></div>
+            </section>
+            
+            <section class="card">
+              <h2>Qwen/Qwen3-8B</h2>
+              <p><strong>Status:</strong> <span class="badge ok">ok</span></p>
+              <p><strong>Suite:</strong> qwen_qwen3_8b_analysis</p>
+              <p><strong>Barack neuron:</strong> L0-N2883</p>
+              <p><strong>Early-layer concentration:</strong> 97.5% (195/200)</p>
+              <p><strong>F6 entities used:</strong> 200</p>
+              <p><strong>F6 loss fractions:</strong> 0.790 clipped / 0.490 signed</p>
+              <p><strong>Trustworthy entities:</strong> n/a</p>
+              <p><strong>Figure 4 usable set:</strong> 42/54 entities, 62 examples</p>
+              <p><strong>Figures present:</strong> 8/8</p>
+              <p><strong>Missing figures:</strong> none</p>
+              <p><strong>Completed steps:</strong> n/a</p>
+              <p><strong>Failed steps:</strong> none</p>
+              <p class="links"><a href="qwen_qwen3_8b_analysis/figures/figure2_layer_hist.pdf">Fig. 2</a> <a href="qwen_qwen3_8b_analysis/figures/figure3_variants_grid_2x2.pdf">Fig. 3a</a> <a href="qwen_qwen3_8b_analysis/figures/figure3_acronym_grid.pdf">Fig. 3b</a> <a href="qwen_qwen3_8b_analysis/figures/figure3_multilingual_grid_2x2.pdf">Fig. 3c</a> <a href="qwen_qwen3_8b_analysis/figures/figure4_controlled_injection_pass5.pdf">Fig. 4</a> <a href="qwen_qwen3_8b_analysis/figures/figure5_injection_obama_anchor.pdf">Fig. 5</a> <a href="qwen_qwen3_8b_analysis/figures/figure6_unlearning_obama_trump.pdf">Fig. 6</a> <a href="qwen_qwen3_8b_analysis/figures/figure7_edit_vs_preserve.pdf">Fig. 7</a></p>
+              <p class="links"><a href="qwen_qwen3_8b_analysis/suite_manifest.json">manifest</a> <a href="qwen_qwen3_8b_analysis/artifacts/f2/f2_popqa_popular_200_qwen_qwen3_8b.json">f2 json</a> <a href="qwen_qwen3_8b_analysis/artifacts/f4/f4_activation_causality_qwen_qwen3_8b_results.json">f4 json</a> <a href="qwen_qwen3_8b_analysis/artifacts/f6_popqa/f6_popqa_validation_qwen_qwen3_8b.json">f6_popqa json</a></p>
+              <div class="steps"><span class="subtle">No step metadata</span></div>
+            </section>
+            
+    </div>
+  </main>
+</body>
+</html>

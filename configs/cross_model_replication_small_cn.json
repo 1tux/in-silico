@@ -1,0 +1,65 @@
+[
+  {
+    "label": "Qwen2.5-7B-Base",
+    "model": "Qwen/Qwen2.5-7B",
+    "include": true
+  },
+  {
+    "label": "Qwen2.5-7B-Instruct",
+    "model": "Qwen/Qwen2.5-7B-Instruct",
+    "include": true
+  },
+  {
+    "label": "Qwen3-8B",
+    "model": "Qwen/Qwen3-8B",
+    "include": true
+  },
+  {
+    "label": "OLMo-7B-0724",
+    "model": "allenai/OLMo-7B-0724-hf",
+    "include": true
+  },
+  {
+    "label": "Llama-3.1-8B-Instruct",
+    "model": "meta-llama/Llama-3.1-8B-Instruct",
+    "include": true
+  },
+  {
+    "label": "Gemma-2-9B-it",
+    "model": "google/gemma-2-9b-it",
+    "include": true
+  },
+  {
+    "label": "Mistral-7B-v0.3",
+    "model": "mistralai/Mistral-7B-v0.3",
+    "include": true
+  },
+  {
+    "label": "OpenLLaMA-7B",
+    "model": "openlm-research/open_llama_7b",
+    "include": true
+  },
+  {
+    "label": "DeepSeek-R1-Distill-Qwen-7B",
+    "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+    "include": true,
+    "note": "Small DeepSeek-family candidate that fits the <=8B constraint, though it is a distilled Qwen-based model."
+  },
+  {
+    "label": "Yi-6B",
+    "model": "01-ai/Yi-6B",
+    "include": true
+  },
+  {
+    "label": "ChatGLM3-6B",
+    "model": "THUDM/chatglm3-6b",
+    "include": true,
+    "note": "Small GLM-family candidate; uses ChatGLM architecture support in the patched scripts."
+  },
+  {
+    "label": "Kimi-K2-Instruct",
+    "model": "moonshotai/Kimi-K2-Instruct",
+    "include": false,
+    "reason": "Excluded because it exceeds the <=8B request: Kimi K2 is a 1T-total / 32B-active MoE model."
+  }
+]

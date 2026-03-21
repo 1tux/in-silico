@@ -7,19 +7,20 @@ import nnsight
 import torch
 import tqdm
 
+from model_layout import get_layers, get_token_vector_proxy
+
 
 def get_activations_at_pos(model, prompts_with_pos: Iterable[Tuple[str, int]]) -> torch.Tensor:
     """Return activations [num_prompts, num_layers, hidden] on CPU."""
-    activations: List[List[torch.Tensor]] = [[] for _ in range(len(model.model.layers))]
+    layers = get_layers(model)
+    activations: List[List[torch.Tensor]] = [[] for _ in range(len(layers))]
 
     for prompt, position in tqdm.tqdm(list(prompts_with_pos), desc="Tracing prompts"):
         with torch.no_grad():
             with model.trace(prompt):
                 activations_for_prompt = nnsight.list().save()
-                for layer_idx, layer in enumerate(model.model.layers):
-                    activations_for_prompt.append(
-                        layer.mlp.down_proj.input[0][position].cpu().save()
-                    )
+                for layer_idx in range(len(layers)):
+                    activations_for_prompt.append(get_token_vector_proxy(model, layer_idx, position).cpu().save())
 
             for layer_idx, layer_activations in enumerate(activations_for_prompt):
                 activations[layer_idx].append(layer_activations)

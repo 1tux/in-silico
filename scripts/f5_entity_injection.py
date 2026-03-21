@@ -18,6 +18,8 @@ from activations import (
     rank_neurons,
     z_score_normalize,
 )
+from model_load import language_model_kwargs
+from model_layout import get_attn_output_module, get_layers, get_layout, get_mlp_output_module
 from plot_style import set_paper_style
 from prompts import entity_questions, load_generic_prompts
 
@@ -53,8 +55,10 @@ def compute_means(model, relation: str, cache_path: Path | None = None):
         data = torch.load(cache_path)
         return data["mlp"], data["attn"]
 
-    running_mlp_means = [None for _ in model.model.layers]
-    running_attn_means = [None for _ in model.model.layers]
+    layers = get_layers(model)
+    layout = get_layout(model)
+    running_mlp_means = [None for _ in layers]
+    running_attn_means = [None for _ in layers]
     count = 0
 
     for person in tqdm.tqdm(DUMMY_PERSONS, desc="Collecting means"):
@@ -65,12 +69,18 @@ def compute_means(model, relation: str, cache_path: Path | None = None):
             with model.trace(prompt):
                 attn_out = nnsight.list().save()
                 mlp_neurons = nnsight.list().save()
-                for layer in model.model.layers:
-                    attn_out.append(layer.self_attn.o_proj.output.cpu().save()[0, -2:, :])
-                    mlp_neurons.append(layer.mlp.down_proj.input.cpu().save()[0, -2:, :])
+                for layer in layers:
+                    attn_proxy = get_attn_output_module(layer).output.cpu().save()
+                    mlp_proxy = get_mlp_output_module(layer).input.cpu().save()
+                    if layout == "batch_first":
+                        attn_out.append(attn_proxy[0, -2:, :])
+                        mlp_neurons.append(mlp_proxy[0, -2:, :])
+                    else:
+                        attn_out.append(attn_proxy[-2:, 0, :])
+                        mlp_neurons.append(mlp_proxy[-2:, 0, :])
 
         count += 1
-        for layer in range(len(model.model.layers)):
+        for layer in range(len(layers)):
             if running_mlp_means[layer] is None:
                 running_mlp_means[layer] = mlp_neurons[layer].clone()
                 running_attn_means[layer] = attn_out[layer].clone()
@@ -101,22 +111,42 @@ def perform_injection(
 ):
     prompt = f"Fact: the {relation} of {dummy_entity}:"
     name_idx = -2
+    layers = get_layers(model)
+    layout = get_layout(model)
 
     with model.trace(prompt):
-        for layer_idx, layer in enumerate(model.model.layers):
-            layer_attn = layer.self_attn.output[0].clone()
-            layer_attn[0, name_idx, :] = attn_means[layer_idx][-2].clone()
-            if layer_idx not in last_token_loose_attn_layers:
-                layer_attn[0, name_idx + 1, :] = attn_means[layer_idx][-1].clone()
-            layer.self_attn.output[0][:] = layer_attn
+        for layer_idx, layer in enumerate(layers):
+            attn_proxy = get_attn_output_module(layer).output
+            mlp_proxy = get_mlp_output_module(layer).input
 
-            layer_neurons = layer.mlp.down_proj.input[0].clone()
-            layer_neurons[name_idx][:] = mlp_means[layer_idx][-2].clone()
-            if layer_idx == neuron_layer:
-                layer_neurons[name_idx, neuron_id] = neuron_multiplier
-            if layer_idx not in last_token_loose_mlp_layers:
-                layer_neurons[name_idx + 1, :] = mlp_means[layer_idx][-1].clone()
-            layer.mlp.down_proj.input[0][:, :] = layer_neurons
+            if layout == "batch_first":
+                layer_attn = attn_proxy.clone()
+                layer_attn[0, name_idx, :] = attn_means[layer_idx][-2].clone()
+                if layer_idx not in last_token_loose_attn_layers:
+                    layer_attn[0, name_idx + 1, :] = attn_means[layer_idx][-1].clone()
+                attn_proxy[:, :, :] = layer_attn
+
+                layer_neurons = mlp_proxy.clone()
+                layer_neurons[0, name_idx, :] = mlp_means[layer_idx][-2].clone()
+                if layer_idx == neuron_layer:
+                    layer_neurons[0, name_idx, neuron_id] = neuron_multiplier
+                if layer_idx not in last_token_loose_mlp_layers:
+                    layer_neurons[0, name_idx + 1, :] = mlp_means[layer_idx][-1].clone()
+                mlp_proxy[:, :, :] = layer_neurons
+            else:
+                layer_attn = attn_proxy.clone()
+                layer_attn[name_idx, 0, :] = attn_means[layer_idx][-2].clone()
+                if layer_idx not in last_token_loose_attn_layers:
+                    layer_attn[name_idx + 1, 0, :] = attn_means[layer_idx][-1].clone()
+                attn_proxy[:, :, :] = layer_attn
+
+                layer_neurons = mlp_proxy.clone()
+                layer_neurons[name_idx, 0, :] = mlp_means[layer_idx][-2].clone()
+                if layer_idx == neuron_layer:
+                    layer_neurons[name_idx, 0, neuron_id] = neuron_multiplier
+                if layer_idx not in last_token_loose_mlp_layers:
+                    layer_neurons[name_idx + 1, 0, :] = mlp_means[layer_idx][-1].clone()
+                mlp_proxy[:, :, :] = layer_neurons
 
         final_out = model.output[0].save()
 
@@ -147,7 +177,7 @@ def main():
     last_token_loose_mlp = tuple(int(x) for x in args.last_token_loose_mlp.split(",") if x.strip())
     last_token_loose_attn = tuple(int(x) for x in args.last_token_loose_attn.split(",") if x.strip())
 
-    model = LanguageModel(args.model, device_map="auto")
+    model = LanguageModel(args.model, **language_model_kwargs(args.model))
     generic_prompts = load_generic_prompts(args.generic_prompts)
 
     if args.layer is not None and args.neuron is not None:
