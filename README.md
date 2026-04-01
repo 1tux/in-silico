@@ -18,7 +18,6 @@ The current snapshot contains:
 - `data/`: entity inventories, anchor metadata, and small local replication assets
 - `figures/`: manuscript-ready figures and supporting plots
 - `results/`: experiment outputs, summaries, and model-suite artifacts
-- `paper/`: manuscript sources and bibliography assets
 
 ## Main Scripts
 - `scripts/f1_f3_localization.py`: localization and variant robustness runs
