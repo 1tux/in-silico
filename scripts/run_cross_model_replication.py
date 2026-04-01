@@ -42,7 +42,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--manifest",
-        default=str(Path(__file__).resolve().parents[1] / "configs" / "cross_model_replication_small_cn.json"),
+        default=str(Path(__file__).resolve().parents[1] / "data" / "cross-model-replication-small-cn.json"),
     )
     parser.add_argument(
         "--run-name",
@@ -62,7 +62,7 @@ def main() -> None:
     manifest = load_manifest(Path(args.manifest))
     selected = set(args.models)
 
-    entities_file = repo / "configs" / "entities_popqa_popular_200_minq2.txt"
+    entities_file = repo / "data" / "popqa-200.txt"
     if not entities_file.exists():
         raise FileNotFoundError(f"Missing entities file: {entities_file}")
 

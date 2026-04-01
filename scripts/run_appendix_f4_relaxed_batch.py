@@ -30,7 +30,7 @@ def main() -> None:
     repo = Path(args.repo_root)
     py = sys.executable
     suite_root = repo / "results" / "model_paper_suites"
-    entities = repo / "configs" / "entities_popqa_popular_200_minq2.txt"
+    entities = repo / "data" / "popqa-200.txt"
 
     tags = list(args.include) if args.include else list(MODEL_BY_TAG.keys())
     for tag in tags:

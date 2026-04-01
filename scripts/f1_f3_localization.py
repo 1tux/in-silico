@@ -232,7 +232,7 @@ def plot_layer_hist(layer_ids: List[int], out_path: Path):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", default="Qwen/Qwen2.5-7B")
-    parser.add_argument("--entities", default=str(Path(__file__).resolve().parents[1] / "configs" / "entities_default.txt"))
+    parser.add_argument("--entities", default=str(Path(__file__).resolve().parents[1] / "data" / "entities-default.txt"))
     parser.add_argument("--generic-prompts", default=str(Path(__file__).resolve().parents[1] / "data" / "generic_prompts.txt"))
     parser.add_argument("--cache-baseline", action="store_true")
     parser.add_argument("--output", default=str(Path(__file__).resolve().parents[1] / "results" / "f1_f3_localization.json"))

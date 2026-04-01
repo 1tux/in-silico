@@ -15,8 +15,7 @@ The current snapshot contains:
 
 ## Repository Layout
 - `scripts/`: core experiment and plotting entry points
-- `configs/`: active run configs and anchor metadata
-- `data/`: entity inventories and small local data assets
+- `data/`: entity inventories, anchor metadata, and small local replication assets
 - `figures/`: manuscript-ready figures and supporting plots
 - `results/`: experiment outputs, summaries, and model-suite artifacts
 - `paper/`: manuscript sources and bibliography assets
@@ -31,9 +30,9 @@ The current snapshot contains:
 
 ## Data Files
 - `data/entities_popqa_popular_200.txt`: 200-entity PopQA inventory
-- `configs/entities_popqa_popular_200_minq2.txt`: PopQA subset with question-count filtering used by active evaluation scripts
-- `configs/entities_default.txt`: small default entity set for localization / sanity-check runs
-- `configs/known_anchor_neurons.json`: fixed anchor neurons for reference experiments
+- `data/popqa-200.txt`: PopQA subset with question-count filtering used by active evaluation scripts
+- `data/entities-default.txt`: small default entity set for localization / sanity-check runs
+- `data/known-anchor-neurons.json`: fixed anchor neurons for reference experiments
 
 ## Paper Figures
 ### Main text

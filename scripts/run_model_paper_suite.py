@@ -124,8 +124,8 @@ def main() -> None:
     ):
         sub.mkdir(parents=True, exist_ok=True)
 
-    entities_popqa = repo / "configs" / "entities_popqa_popular_200_minq2.txt"
-    entities_default = repo / "configs" / "entities_default.txt"
+    entities_popqa = repo / "data" / "popqa-200.txt"
+    entities_default = repo / "data" / "entities-default.txt"
 
     f2_json = artifacts / "f2" / f"f2_popqa_popular_200_{tag}.json"
     f3_json = artifacts / "f3" / f"f1_f3_localization_{tag}.json"
@@ -216,7 +216,7 @@ def main() -> None:
                     "--prompt-style",
                     "auto",
                     "--known-neurons",
-                    str(repo / "configs" / "known_anchor_neurons.json"),
+                    str(repo / "data" / "known-anchor-neurons.json"),
                     "--output",
                     str(f2_json),
                     "--fig-dir",

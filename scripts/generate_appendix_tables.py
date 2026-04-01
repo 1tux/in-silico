@@ -341,7 +341,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--anchors",
-        default=str(Path(__file__).resolve().parents[1] / "configs" / "known_anchor_neurons.json"),
+        default=str(Path(__file__).resolve().parents[1] / "data" / "known-anchor-neurons.json"),
     )
     parser.add_argument(
         "--out-anchor-table",

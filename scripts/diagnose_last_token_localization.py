@@ -135,7 +135,7 @@ def plot_match_bars(summary: Dict[str, float | int], out_base: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", default="Qwen/Qwen2.5-7B")
-    parser.add_argument("--entities-file", default=str(Path(__file__).resolve().parents[1] / "configs" / "entities_popqa_popular_200_minq2.txt"))
+    parser.add_argument("--entities-file", default=str(Path(__file__).resolve().parents[1] / "data" / "popqa-200.txt"))
     parser.add_argument("--generic-prompts", default=str(Path(__file__).resolve().parents[1] / "data" / "generic_prompts.txt"))
     parser.add_argument("--prompt-k", type=int, default=32)
     parser.add_argument("--limit", type=int, default=0, help="Optional cap on number of multi-token entities.")
