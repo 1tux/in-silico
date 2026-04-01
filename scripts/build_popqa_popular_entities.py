@@ -107,7 +107,7 @@ def main():
     parser.add_argument("--min-questions", type=int, default=5)
     parser.add_argument(
         "--output",
-        default=str(Path(__file__).resolve().parents[1] / "configs" / "entities_popqa_popular_200.txt"),
+        default=str(Path(__file__).resolve().parents[1] / "data" / "entities_popqa_popular_200.txt"),
     )
     parser.add_argument(
         "--meta-output",
