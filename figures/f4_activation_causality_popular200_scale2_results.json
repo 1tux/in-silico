@@ -1,0 +1,2239 @@
+{
+  "model": "Qwen/Qwen2.5-7B",
+  "prompt_style": "base",
+  "dataset": "akariasai/PopQA",
+  "split": "test",
+  "n_entities_requested": 200,
+  "n_entities_candidate": 200,
+  "n_entities_localized": 200,
+  "n_entities_used": 200,
+  "n_examples": 400,
+  "min_dominance": 2.0,
+  "injection_scale": 2.0,
+  "fixed_injection_value": null,
+  "injection_mode": "set",
+  "known_neurons_file": null,
+  "use_known_only": false,
+  "entities_used": [
+    "19",
+    "Abraham Lincoln",
+    "Afghanistan",
+    "Al Gore",
+    "Alexander the Great",
+    "Alexandria",
+    "Alien",
+    "Aliens",
+    "Al\u012b ibn Ab\u012b \u1e6c\u0101lib",
+    "Amitabh Bachchan",
+    "Apollo",
+    "Arizona",
+    "Arkansas",
+    "Athens",
+    "Atl\u00e9tico de Madrid",
+    "Aung San Suu Kyi",
+    "Australia",
+    "Avatar",
+    "Babylon",
+    "Back to the Future",
+    "Barack Obama",
+    "Barcelona",
+    "Battlefield",
+    "Beijing",
+    "Beloved",
+    "Berlin",
+    "Bertrand Russell",
+    "Billy Joel",
+    "Boston",
+    "Brazil",
+    "Breaking Bad",
+    "Brussels Capital Region",
+    "Budapest",
+    "Byzantine Empire",
+    "California",
+    "Canada",
+    "Cape Town",
+    "Carl Linnaeus",
+    "Carrie",
+    "Cars",
+    "Chicago",
+    "China",
+    "Chris Jericho",
+    "Colorado",
+    "Confederate States of America",
+    "Dallas",
+    "David",
+    "Delhi",
+    "Doctor Who",
+    "Donald Trump",
+    "Drive",
+    "Dublin",
+    "E.T. the Extra-Terrestrial",
+    "Edgar Allan Poe",
+    "El Salvador",
+    "Elizabeth II",
+    "Empire of Japan",
+    "European Union",
+    "Final Destination",
+    "Flight",
+    "Florence",
+    "Florida",
+    "Francis",
+    "Friends",
+    "Frozen",
+    "Ganesha",
+    "Gautama Buddha",
+    "George VI",
+    "George W. Bush",
+    "George Washington",
+    "Georgia",
+    "Ghost",
+    "Grease",
+    "Halloween",
+    "Hamilton",
+    "Happy Birthday to You",
+    "Hawaii",
+    "Heart",
+    "Helen of Troy",
+    "Houston",
+    "Idaho",
+    "India",
+    "Inside Out",
+    "Into the Wild",
+    "Iron Man",
+    "It",
+    "Italy",
+    "Jacob",
+    "James Madison",
+    "James VI and I",
+    "Japan",
+    "Jerusalem",
+    "Jesus",
+    "Jesus in Islam",
+    "Johann Sebastian Bach",
+    "Jordan",
+    "Kansas",
+    "King Arthur",
+    "Krishna",
+    "Kuala Lumpur",
+    "Lebanon",
+    "Legend",
+    "Let It Be",
+    "London",
+    "Lost",
+    "L\u00e9on: The Professional",
+    "Madrid",
+    "Mali",
+    "Manila",
+    "Mark Twain",
+    "Mary, Princess Royal and Countess of Harewood",
+    "Melbourne",
+    "Mexico",
+    "Michael Jackson",
+    "Milan",
+    "Minnesota",
+    "Montana",
+    "Muhammad",
+    "Muhammad Ali",
+    "Nebraska",
+    "Neon Genesis Evangelion",
+    "Netherlands",
+    "New Jersey",
+    "New Mexico",
+    "New York",
+    "New York City",
+    "Nine Inch Nails",
+    "Nineteen Eighty-Four",
+    "Oasis",
+    "Oregon",
+    "Paris",
+    "Paul",
+    "Peru",
+    "Peter",
+    "Philadelphia",
+    "Phoenix",
+    "Pittsburgh",
+    "Poland",
+    "Power",
+    "Prague",
+    "Prince",
+    "Puerto Rico",
+    "Queen Victoria",
+    "Rama",
+    "Rent",
+    "Republic of China 1912\u20131949",
+    "Rio de Janeiro",
+    "Rocky",
+    "Roman Republic",
+    "Rome",
+    "Ronan Farrow",
+    "Rumi",
+    "San Francisco",
+    "Saw",
+    "Scooby-Doo",
+    "Seven",
+    "Singapore",
+    "South Africa",
+    "Spain",
+    "Sri Lanka",
+    "Star Wars",
+    "Stockholm",
+    "Suits",
+    "T.\u00a0S. Eliot",
+    "Tennessee",
+    "Texas",
+    "The Band",
+    "The Birds",
+    "The Challenge",
+    "The Departed",
+    "The Fly",
+    "The Fog",
+    "The Graduate",
+    "The Holiday",
+    "The Matrix",
+    "The Mist",
+    "The Omen",
+    "The Prestige",
+    "The Ring",
+    "The Shining",
+    "The Social Network",
+    "The Terminal",
+    "The Thing",
+    "The Village",
+    "They Live",
+    "Thomas Jefferson",
+    "Thor",
+    "Tokyo",
+    "Toronto",
+    "Toy Story",
+    "Training Day",
+    "Troy",
+    "Turin",
+    "Up",
+    "Vajiralongkorn",
+    "Vienna",
+    "Virginia",
+    "Washington, D.C.",
+    "White House",
+    "Will Smith"
+  ],
+  "entity_top": {
+    "Barack Obama": {
+      "layer": 20,
+      "neuron": 14235,
+      "dominance": 21.263282767377838,
+      "inject_value": -0.8610179424285889,
+      "aliases": [
+        "Barack Obama"
+      ],
+      "source": "localized"
+    },
+    "Donald Trump": {
+      "layer": 19,
+      "neuron": 8680,
+      "dominance": 113.42685123019069,
+      "inject_value": 0.17283441126346588,
+      "aliases": [
+        "Donald Trump"
+      ],
+      "source": "localized"
+    },
+    "Italy": {
+      "layer": 0,
+      "neuron": 2041,
+      "dominance": 13.026330821903331,
+      "inject_value": 0.002173406770452857,
+      "aliases": [
+        "Italy"
+      ],
+      "source": "localized"
+    },
+    "Spain": {
+      "layer": 2,
+      "neuron": 5876,
+      "dominance": 1467.3103640104948,
+      "inject_value": -35.97630310058594,
+      "aliases": [
+        "Spain"
+      ],
+      "source": "localized"
+    },
+    "China": {
+      "layer": 8,
+      "neuron": 10055,
+      "dominance": 39.22919584846113,
+      "inject_value": 0.0739109069108963,
+      "aliases": [
+        "China"
+      ],
+      "source": "localized"
+    },
+    "Japan": {
+      "layer": 1,
+      "neuron": 7726,
+      "dominance": 4.487523153168981,
+      "inject_value": -30.00678253173828,
+      "aliases": [
+        "Japan"
+      ],
+      "source": "localized"
+    },
+    "India": {
+      "layer": 12,
+      "neuron": 2949,
+      "dominance": 193.31228868923637,
+      "inject_value": -0.24528613686561584,
+      "aliases": [
+        "India"
+      ],
+      "source": "localized"
+    },
+    "Canada": {
+      "layer": 19,
+      "neuron": 12724,
+      "dominance": 43.28557228035661,
+      "inject_value": -0.10493387281894684,
+      "aliases": [
+        "Canada"
+      ],
+      "source": "localized"
+    },
+    "Brazil": {
+      "layer": 9,
+      "neuron": 14061,
+      "dominance": 7.231788613982457,
+      "inject_value": -0.19460847973823547,
+      "aliases": [
+        "Brazil"
+      ],
+      "source": "localized"
+    },
+    "Mexico": {
+      "layer": 25,
+      "neuron": 3990,
+      "dominance": 75.47560592315276,
+      "inject_value": -0.7882413864135742,
+      "aliases": [
+        "Mexico"
+      ],
+      "source": "localized"
+    },
+    "Australia": {
+      "layer": 9,
+      "neuron": 2578,
+      "dominance": 23.65291422314573,
+      "inject_value": 0.19083555042743683,
+      "aliases": [
+        "Australia"
+      ],
+      "source": "localized"
+    },
+    "South Africa": {
+      "layer": 1,
+      "neuron": 1385,
+      "dominance": 655.3592173007224,
+      "inject_value": -36.05459213256836,
+      "aliases": [
+        "South Africa"
+      ],
+      "source": "localized"
+    },
+    "London": {
+      "layer": 2,
+      "neuron": 17407,
+      "dominance": 3268.4724939093994,
+      "inject_value": -42.00788116455078,
+      "aliases": [
+        "London"
+      ],
+      "source": "localized"
+    },
+    "Paris": {
+      "layer": 8,
+      "neuron": 7706,
+      "dominance": 57.12588903607828,
+      "inject_value": 0.31257444620132446,
+      "aliases": [
+        "Paris"
+      ],
+      "source": "localized"
+    },
+    "New York City": {
+      "layer": 2,
+      "neuron": 14812,
+      "dominance": 2.0077693828755545,
+      "inject_value": -0.000491434009745717,
+      "aliases": [
+        "New York City"
+      ],
+      "source": "localized"
+    },
+    "Chicago": {
+      "layer": 3,
+      "neuron": 10161,
+      "dominance": 8.69463469013528,
+      "inject_value": 54.325416564941406,
+      "aliases": [
+        "Chicago"
+      ],
+      "source": "localized"
+    },
+    "San Francisco": {
+      "layer": 1,
+      "neuron": 9914,
+      "dominance": 445.0461158515703,
+      "inject_value": -53.94215393066406,
+      "aliases": [
+        "San Francisco"
+      ],
+      "source": "localized"
+    },
+    "Washington, D.C.": {
+      "layer": 4,
+      "neuron": 14252,
+      "dominance": 6.655840802478416,
+      "inject_value": -14.735593795776367,
+      "aliases": [
+        "Washington, D.C."
+      ],
+      "source": "localized"
+    },
+    "Tokyo": {
+      "layer": 5,
+      "neuron": 14139,
+      "dominance": 35.98359904320524,
+      "inject_value": -1.3548473119735718,
+      "aliases": [
+        "Tokyo"
+      ],
+      "source": "localized"
+    },
+    "Beijing": {
+      "layer": 2,
+      "neuron": 9567,
+      "dominance": 114.13418025159571,
+      "inject_value": -39.8828010559082,
+      "aliases": [
+        "Beijing"
+      ],
+      "source": "localized"
+    },
+    "Berlin": {
+      "layer": 2,
+      "neuron": 17703,
+      "dominance": 505.1781183137411,
+      "inject_value": 58.478363037109375,
+      "aliases": [
+        "Berlin"
+      ],
+      "source": "localized"
+    },
+    "Rome": {
+      "layer": 18,
+      "neuron": 4280,
+      "dominance": 7.431684975007698,
+      "inject_value": 0.4236096739768982,
+      "aliases": [
+        "Rome"
+      ],
+      "source": "localized"
+    },
+    "Madrid": {
+      "layer": 2,
+      "neuron": 10473,
+      "dominance": 2209.9324377854473,
+      "inject_value": -65.00391387939453,
+      "aliases": [
+        "Madrid"
+      ],
+      "source": "localized"
+    },
+    "Toronto": {
+      "layer": 8,
+      "neuron": 8783,
+      "dominance": 182.95947640913195,
+      "inject_value": 0.673909604549408,
+      "aliases": [
+        "Toronto"
+      ],
+      "source": "localized"
+    },
+    "Athens": {
+      "layer": 1,
+      "neuron": 18605,
+      "dominance": 906.3425327480812,
+      "inject_value": 62.68513107299805,
+      "aliases": [
+        "Athens"
+      ],
+      "source": "localized"
+    },
+    "Jerusalem": {
+      "layer": 6,
+      "neuron": 16679,
+      "dominance": 22.828579429531544,
+      "inject_value": 0.05961979925632477,
+      "aliases": [
+        "Jerusalem"
+      ],
+      "source": "localized"
+    },
+    "Muhammad Ali": {
+      "layer": 1,
+      "neuron": 17041,
+      "dominance": 191.9861451253332,
+      "inject_value": -40.574607849121094,
+      "aliases": [
+        "Muhammad Ali"
+      ],
+      "source": "localized"
+    },
+    "Abraham Lincoln": {
+      "layer": 21,
+      "neuron": 5251,
+      "dominance": 33.62341944214969,
+      "inject_value": 0.6834578514099121,
+      "aliases": [
+        "Abraham Lincoln"
+      ],
+      "source": "localized"
+    },
+    "George Washington": {
+      "layer": 1,
+      "neuron": 3732,
+      "dominance": 35.59613534260485,
+      "inject_value": 45.49279022216797,
+      "aliases": [
+        "George Washington"
+      ],
+      "source": "localized"
+    },
+    "Elizabeth II": {
+      "layer": 3,
+      "neuron": 13910,
+      "dominance": 4.888744826662055,
+      "inject_value": 0.07454361021518707,
+      "aliases": [
+        "Elizabeth II"
+      ],
+      "source": "localized"
+    },
+    "Halloween": {
+      "layer": 4,
+      "neuron": 2177,
+      "dominance": 291.6700270099324,
+      "inject_value": 56.96152877807617,
+      "aliases": [
+        "Halloween"
+      ],
+      "source": "localized"
+    },
+    "California": {
+      "layer": 2,
+      "neuron": 4130,
+      "dominance": 189.79012519730747,
+      "inject_value": -38.07264709472656,
+      "aliases": [
+        "California"
+      ],
+      "source": "localized"
+    },
+    "Michael Jackson": {
+      "layer": 1,
+      "neuron": 14542,
+      "dominance": 34.009747387866646,
+      "inject_value": 0.09073963761329651,
+      "aliases": [
+        "Michael Jackson"
+      ],
+      "source": "localized"
+    },
+    "Afghanistan": {
+      "layer": 4,
+      "neuron": 14559,
+      "dominance": 52.25398316067442,
+      "inject_value": -1.5164055824279785,
+      "aliases": [
+        "Afghanistan"
+      ],
+      "source": "localized"
+    },
+    "Queen Victoria": {
+      "layer": 5,
+      "neuron": 5597,
+      "dominance": 40.60020764021884,
+      "inject_value": 0.2325214296579361,
+      "aliases": [
+        "Queen Victoria"
+      ],
+      "source": "localized"
+    },
+    "Singapore": {
+      "layer": 11,
+      "neuron": 11928,
+      "dominance": 4.200975235975724,
+      "inject_value": -0.24643152952194214,
+      "aliases": [
+        "Singapore"
+      ],
+      "source": "localized"
+    },
+    "George VI": {
+      "layer": 6,
+      "neuron": 6796,
+      "dominance": 60.93727944555503,
+      "inject_value": -0.43974265456199646,
+      "aliases": [
+        "George VI"
+      ],
+      "source": "localized"
+    },
+    "Netherlands": {
+      "layer": 3,
+      "neuron": 15677,
+      "dominance": 26.96347009633723,
+      "inject_value": -43.51324462890625,
+      "aliases": [
+        "Netherlands"
+      ],
+      "source": "localized"
+    },
+    "Muhammad": {
+      "layer": 3,
+      "neuron": 14892,
+      "dominance": 236.15773222857797,
+      "inject_value": -21.22128677368164,
+      "aliases": [
+        "Muhammad"
+      ],
+      "source": "localized"
+    },
+    "Texas": {
+      "layer": 10,
+      "neuron": 8200,
+      "dominance": 32.74346529892363,
+      "inject_value": 0.4605984389781952,
+      "aliases": [
+        "Texas"
+      ],
+      "source": "localized"
+    },
+    "Alexander the Great": {
+      "layer": 4,
+      "neuron": 15707,
+      "dominance": 23.54618060565745,
+      "inject_value": 0.10216628015041351,
+      "aliases": [
+        "Alexander the Great"
+      ],
+      "source": "localized"
+    },
+    "Prince": {
+      "layer": 27,
+      "neuron": 7221,
+      "dominance": 10.542079093861426,
+      "inject_value": -0.8609832525253296,
+      "aliases": [
+        "Prince"
+      ],
+      "source": "localized"
+    },
+    "Hawaii": {
+      "layer": 13,
+      "neuron": 1230,
+      "dominance": 864.2063659619372,
+      "inject_value": -0.9079954624176025,
+      "aliases": [
+        "Hawaii"
+      ],
+      "source": "localized"
+    },
+    "New York": {
+      "layer": 0,
+      "neuron": 2539,
+      "dominance": 126.75834376308315,
+      "inject_value": 11.493877410888672,
+      "aliases": [
+        "New York"
+      ],
+      "source": "localized"
+    },
+    "Poland": {
+      "layer": 1,
+      "neuron": 5444,
+      "dominance": 6.359921275513589,
+      "inject_value": 0.0004744872567243874,
+      "aliases": [
+        "Poland"
+      ],
+      "source": "localized"
+    },
+    "Jesus": {
+      "layer": 19,
+      "neuron": 18374,
+      "dominance": 16.567947979751168,
+      "inject_value": 0.21732407808303833,
+      "aliases": [
+        "Jesus"
+      ],
+      "source": "localized"
+    },
+    "Will Smith": {
+      "layer": 3,
+      "neuron": 15898,
+      "dominance": 98.57275406407766,
+      "inject_value": -72.77293395996094,
+      "aliases": [
+        "Will Smith"
+      ],
+      "source": "localized"
+    },
+    "Florida": {
+      "layer": 2,
+      "neuron": 7558,
+      "dominance": 642.9375863686896,
+      "inject_value": -42.224266052246094,
+      "aliases": [
+        "Florida"
+      ],
+      "source": "localized"
+    },
+    "The Shining": {
+      "layer": 5,
+      "neuron": 9949,
+      "dominance": 1667.3704349437946,
+      "inject_value": 87.1044692993164,
+      "aliases": [
+        "The Shining"
+      ],
+      "source": "localized"
+    },
+    "European Union": {
+      "layer": 2,
+      "neuron": 12264,
+      "dominance": 5689.663900812474,
+      "inject_value": -46.98751449584961,
+      "aliases": [
+        "European Union"
+      ],
+      "source": "localized"
+    },
+    "Sri Lanka": {
+      "layer": 2,
+      "neuron": 6010,
+      "dominance": 704.9983080270497,
+      "inject_value": -41.5283317565918,
+      "aliases": [
+        "Sri Lanka"
+      ],
+      "source": "localized"
+    },
+    "George W. Bush": {
+      "layer": 3,
+      "neuron": 18856,
+      "dominance": 18.812717668621673,
+      "inject_value": 0.26487451791763306,
+      "aliases": [
+        "George W. Bush"
+      ],
+      "source": "localized"
+    },
+    "Amitabh Bachchan": {
+      "layer": 2,
+      "neuron": 11746,
+      "dominance": 39.165018316940376,
+      "inject_value": 0.8974098563194275,
+      "aliases": [
+        "Amitabh Bachchan"
+      ],
+      "source": "localized"
+    },
+    "Friends": {
+      "layer": 5,
+      "neuron": 9314,
+      "dominance": 59.32347456133957,
+      "inject_value": 59.93645477294922,
+      "aliases": [
+        "Friends"
+      ],
+      "source": "localized"
+    },
+    "The Matrix": {
+      "layer": 8,
+      "neuron": 16106,
+      "dominance": 11.173673416621144,
+      "inject_value": -0.8094846606254578,
+      "aliases": [
+        "The Matrix"
+      ],
+      "source": "localized"
+    },
+    "Virginia": {
+      "layer": 27,
+      "neuron": 17984,
+      "dominance": 50.485102156938716,
+      "inject_value": -5.901612281799316,
+      "aliases": [
+        "Virginia"
+      ],
+      "source": "localized"
+    },
+    "Doctor Who": {
+      "layer": 9,
+      "neuron": 9374,
+      "dominance": 82.32793553713778,
+      "inject_value": 0.6914606094360352,
+      "aliases": [
+        "Doctor Who"
+      ],
+      "source": "localized"
+    },
+    "Star Wars": {
+      "layer": 2,
+      "neuron": 18659,
+      "dominance": 21.363795868979064,
+      "inject_value": 0.07395859807729721,
+      "aliases": [
+        "Star Wars"
+      ],
+      "source": "localized"
+    },
+    "Edgar Allan Poe": {
+      "layer": 6,
+      "neuron": 6524,
+      "dominance": 117.67930962278136,
+      "inject_value": 0.5271204710006714,
+      "aliases": [
+        "Edgar Allan Poe"
+      ],
+      "source": "localized"
+    },
+    "Francis": {
+      "layer": 19,
+      "neuron": 14722,
+      "dominance": 153.5223453089312,
+      "inject_value": -0.22567318379878998,
+      "aliases": [
+        "Francis"
+      ],
+      "source": "localized"
+    },
+    "Georgia": {
+      "layer": 1,
+      "neuron": 12233,
+      "dominance": 503.4705672488485,
+      "inject_value": 31.051124572753906,
+      "aliases": [
+        "Georgia"
+      ],
+      "source": "localized"
+    },
+    "New Jersey": {
+      "layer": 1,
+      "neuron": 13014,
+      "dominance": 44.123468622897235,
+      "inject_value": 2.178429126739502,
+      "aliases": [
+        "New Jersey"
+      ],
+      "source": "localized"
+    },
+    "Breaking Bad": {
+      "layer": 2,
+      "neuron": 12152,
+      "dominance": 328.6161841100903,
+      "inject_value": -22.619800567626953,
+      "aliases": [
+        "Breaking Bad"
+      ],
+      "source": "localized"
+    },
+    "Alien": {
+      "layer": 3,
+      "neuron": 10404,
+      "dominance": 150.89339262950872,
+      "inject_value": 68.34610748291016,
+      "aliases": [
+        "Alien"
+      ],
+      "source": "localized"
+    },
+    "Gautama Buddha": {
+      "layer": 1,
+      "neuron": 5429,
+      "dominance": 6.307902740789513,
+      "inject_value": -0.0007500539068132639,
+      "aliases": [
+        "Gautama Buddha"
+      ],
+      "source": "localized"
+    },
+    "Arizona": {
+      "layer": 2,
+      "neuron": 6378,
+      "dominance": 7.5602939891229175,
+      "inject_value": 0.08987565338611603,
+      "aliases": [
+        "Arizona"
+      ],
+      "source": "localized"
+    },
+    "Colorado": {
+      "layer": 9,
+      "neuron": 6819,
+      "dominance": 15.771583832638827,
+      "inject_value": -0.19592824578285217,
+      "aliases": [
+        "Colorado"
+      ],
+      "source": "localized"
+    },
+    "New Mexico": {
+      "layer": 1,
+      "neuron": 9149,
+      "dominance": 7.155176027554016,
+      "inject_value": -0.09097398817539215,
+      "aliases": [
+        "New Mexico"
+      ],
+      "source": "localized"
+    },
+    "Minnesota": {
+      "layer": 27,
+      "neuron": 13681,
+      "dominance": 21.463011899960236,
+      "inject_value": 0.5054118633270264,
+      "aliases": [
+        "Minnesota"
+      ],
+      "source": "localized"
+    },
+    "Hamilton": {
+      "layer": 2,
+      "neuron": 17860,
+      "dominance": 256.23329755023815,
+      "inject_value": 15.418485641479492,
+      "aliases": [
+        "Hamilton"
+      ],
+      "source": "localized"
+    },
+    "Lebanon": {
+      "layer": 2,
+      "neuron": 12647,
+      "dominance": 10.90457668965163,
+      "inject_value": -0.11868610978126526,
+      "aliases": [
+        "Lebanon"
+      ],
+      "source": "localized"
+    },
+    "Thomas Jefferson": {
+      "layer": 2,
+      "neuron": 1755,
+      "dominance": 3.0438337200378642,
+      "inject_value": 0.00019241144764237106,
+      "aliases": [
+        "Thomas Jefferson"
+      ],
+      "source": "localized"
+    },
+    "Montana": {
+      "layer": 6,
+      "neuron": 16128,
+      "dominance": 68.02895295602451,
+      "inject_value": -0.3002496361732483,
+      "aliases": [
+        "Montana"
+      ],
+      "source": "localized"
+    },
+    "Tennessee": {
+      "layer": 2,
+      "neuron": 2090,
+      "dominance": 14.296123256875589,
+      "inject_value": -0.09216509014368057,
+      "aliases": [
+        "Tennessee"
+      ],
+      "source": "localized"
+    },
+    "Oregon": {
+      "layer": 1,
+      "neuron": 16068,
+      "dominance": 14.123742806077379,
+      "inject_value": 0.04876134544610977,
+      "aliases": [
+        "Oregon"
+      ],
+      "source": "localized"
+    },
+    "Nineteen Eighty-Four": {
+      "layer": 1,
+      "neuron": 17795,
+      "dominance": 2.6185541915776254,
+      "inject_value": -0.00023610296193510294,
+      "aliases": [
+        "Nineteen Eighty-Four"
+      ],
+      "source": "localized"
+    },
+    "Avatar": {
+      "layer": 11,
+      "neuron": 2236,
+      "dominance": 21.26775905997068,
+      "inject_value": -0.3138376474380493,
+      "aliases": [
+        "Avatar"
+      ],
+      "source": "localized"
+    },
+    "Puerto Rico": {
+      "layer": 4,
+      "neuron": 10651,
+      "dominance": 713.8653519150596,
+      "inject_value": -0.6236609220504761,
+      "aliases": [
+        "Puerto Rico"
+      ],
+      "source": "localized"
+    },
+    "Kansas": {
+      "layer": 6,
+      "neuron": 3074,
+      "dominance": 6.025187384722785,
+      "inject_value": -4.691738128662109,
+      "aliases": [
+        "Kansas"
+      ],
+      "source": "localized"
+    },
+    "Arkansas": {
+      "layer": 2,
+      "neuron": 9648,
+      "dominance": 9.34378848908909,
+      "inject_value": -0.0003236268530599773,
+      "aliases": [
+        "Arkansas"
+      ],
+      "source": "localized"
+    },
+    "Idaho": {
+      "layer": 5,
+      "neuron": 9681,
+      "dominance": 27.7774257870211,
+      "inject_value": -0.026705054566264153,
+      "aliases": [
+        "Idaho"
+      ],
+      "source": "localized"
+    },
+    "Delhi": {
+      "layer": 2,
+      "neuron": 2211,
+      "dominance": 131.8801155470625,
+      "inject_value": 28.01457405090332,
+      "aliases": [
+        "Delhi"
+      ],
+      "source": "localized"
+    },
+    "Byzantine Empire": {
+      "layer": 4,
+      "neuron": 16416,
+      "dominance": 7.128150418226165,
+      "inject_value": 0.1310897171497345,
+      "aliases": [
+        "Byzantine Empire"
+      ],
+      "source": "localized"
+    },
+    "Nebraska": {
+      "layer": 0,
+      "neuron": 4161,
+      "dominance": 3.2177755376993407,
+      "inject_value": 0.11401386559009552,
+      "aliases": [
+        "Nebraska"
+      ],
+      "source": "localized"
+    },
+    "The Thing": {
+      "layer": 2,
+      "neuron": 3955,
+      "dominance": 578.4722347230112,
+      "inject_value": -20.01734161376953,
+      "aliases": [
+        "The Thing"
+      ],
+      "source": "localized"
+    },
+    "Billy Joel": {
+      "layer": 3,
+      "neuron": 8274,
+      "dominance": 7.233124022053192,
+      "inject_value": 1.0956579446792603,
+      "aliases": [
+        "Billy Joel"
+      ],
+      "source": "localized"
+    },
+    "King Arthur": {
+      "layer": 4,
+      "neuron": 14144,
+      "dominance": 75.4868613768943,
+      "inject_value": -37.34528350830078,
+      "aliases": [
+        "King Arthur"
+      ],
+      "source": "localized"
+    },
+    "Jordan": {
+      "layer": 9,
+      "neuron": 5353,
+      "dominance": 14.74128779302736,
+      "inject_value": 0.627765953540802,
+      "aliases": [
+        "Jordan"
+      ],
+      "source": "localized"
+    },
+    "Boston": {
+      "layer": 13,
+      "neuron": 1149,
+      "dominance": 106.97766978444463,
+      "inject_value": 0.67808997631073,
+      "aliases": [
+        "Boston"
+      ],
+      "source": "localized"
+    },
+    "Krishna": {
+      "layer": 2,
+      "neuron": 13176,
+      "dominance": 8.835749952984123,
+      "inject_value": 0.04617563635110855,
+      "aliases": [
+        "Krishna"
+      ],
+      "source": "localized"
+    },
+    "Neon Genesis Evangelion": {
+      "layer": 4,
+      "neuron": 4605,
+      "dominance": 48.20138293857022,
+      "inject_value": -70.64083862304688,
+      "aliases": [
+        "Neon Genesis Evangelion"
+      ],
+      "source": "localized"
+    },
+    "Philadelphia": {
+      "layer": 23,
+      "neuron": 16942,
+      "dominance": 100.02146405600669,
+      "inject_value": 0.3063194751739502,
+      "aliases": [
+        "Philadelphia"
+      ],
+      "source": "localized"
+    },
+    "El Salvador": {
+      "layer": 2,
+      "neuron": 16769,
+      "dominance": 5.20430272204104,
+      "inject_value": 0.004300944972783327,
+      "aliases": [
+        "El Salvador"
+      ],
+      "source": "localized"
+    },
+    "The Terminal": {
+      "layer": 2,
+      "neuron": 4649,
+      "dominance": 5.541842922274761,
+      "inject_value": 0.042453113943338394,
+      "aliases": [
+        "The Terminal"
+      ],
+      "source": "localized"
+    },
+    "Lost": {
+      "layer": 11,
+      "neuron": 3072,
+      "dominance": 49.17101310716571,
+      "inject_value": 0.3505041003227234,
+      "aliases": [
+        "Lost"
+      ],
+      "source": "localized"
+    },
+    "Stockholm": {
+      "layer": 5,
+      "neuron": 14077,
+      "dominance": 969.8257288337815,
+      "inject_value": -76.64404296875,
+      "aliases": [
+        "Stockholm"
+      ],
+      "source": "localized"
+    },
+    "Suits": {
+      "layer": 2,
+      "neuron": 9620,
+      "dominance": 107.42000559507979,
+      "inject_value": 34.91743469238281,
+      "aliases": [
+        "Suits"
+      ],
+      "source": "localized"
+    },
+    "James VI and I": {
+      "layer": 5,
+      "neuron": 12887,
+      "dominance": 4.635005620487251,
+      "inject_value": 25.290864944458008,
+      "aliases": [
+        "James VI and I"
+      ],
+      "source": "localized"
+    },
+    "Back to the Future": {
+      "layer": 5,
+      "neuron": 12365,
+      "dominance": 7.62101294150915,
+      "inject_value": 0.25356948375701904,
+      "aliases": [
+        "Back to the Future"
+      ],
+      "source": "localized"
+    },
+    "Saw": {
+      "layer": 2,
+      "neuron": 7728,
+      "dominance": 14.114496929775076,
+      "inject_value": 0.07403038442134857,
+      "aliases": [
+        "Saw"
+      ],
+      "source": "localized"
+    },
+    "L\u00e9on: The Professional": {
+      "layer": 6,
+      "neuron": 18173,
+      "dominance": 18.28062320146386,
+      "inject_value": -0.4672809839248657,
+      "aliases": [
+        "L\u00e9on: The Professional"
+      ],
+      "source": "localized"
+    },
+    "Mark Twain": {
+      "layer": 23,
+      "neuron": 14919,
+      "dominance": 30.62520637379103,
+      "inject_value": -1.7929344177246094,
+      "aliases": [
+        "Mark Twain"
+      ],
+      "source": "localized"
+    },
+    "Babylon": {
+      "layer": 2,
+      "neuron": 17281,
+      "dominance": 5.443891269139902,
+      "inject_value": 0.2264551967382431,
+      "aliases": [
+        "Babylon"
+      ],
+      "source": "localized"
+    },
+    "Atl\u00e9tico de Madrid": {
+      "layer": 3,
+      "neuron": 18587,
+      "dominance": 5.000122235800049,
+      "inject_value": 0.48469603061676025,
+      "aliases": [
+        "Atl\u00e9tico de Madrid"
+      ],
+      "source": "localized"
+    },
+    "The Departed": {
+      "layer": 5,
+      "neuron": 2625,
+      "dominance": 24.88228111686343,
+      "inject_value": -55.07487106323242,
+      "aliases": [
+        "The Departed"
+      ],
+      "source": "localized"
+    },
+    "Peru": {
+      "layer": 15,
+      "neuron": 9540,
+      "dominance": 18.830840658660392,
+      "inject_value": 0.23267579078674316,
+      "aliases": [
+        "Peru"
+      ],
+      "source": "localized"
+    },
+    "Seven": {
+      "layer": 22,
+      "neuron": 8139,
+      "dominance": 4.796275004857193,
+      "inject_value": -0.5875381827354431,
+      "aliases": [
+        "Seven"
+      ],
+      "source": "localized"
+    },
+    "Paul": {
+      "layer": 27,
+      "neuron": 11554,
+      "dominance": 6.513178009237621,
+      "inject_value": 0.20744547247886658,
+      "aliases": [
+        "Paul"
+      ],
+      "source": "localized"
+    },
+    "Let It Be": {
+      "layer": 9,
+      "neuron": 7110,
+      "dominance": 36.914782146886836,
+      "inject_value": -3.4190404415130615,
+      "aliases": [
+        "Let It Be"
+      ],
+      "source": "localized"
+    },
+    "Budapest": {
+      "layer": 3,
+      "neuron": 10222,
+      "dominance": 1182.9943923378971,
+      "inject_value": 62.16914367675781,
+      "aliases": [
+        "Budapest"
+      ],
+      "source": "localized"
+    },
+    "Beloved": {
+      "layer": 7,
+      "neuron": 2264,
+      "dominance": 9.403633831751664,
+      "inject_value": -0.4442839026451111,
+      "aliases": [
+        "Beloved"
+      ],
+      "source": "localized"
+    },
+    "Aliens": {
+      "layer": 1,
+      "neuron": 7483,
+      "dominance": 69.44205794542226,
+      "inject_value": 18.5175724029541,
+      "aliases": [
+        "Aliens"
+      ],
+      "source": "localized"
+    },
+    "Carrie": {
+      "layer": 1,
+      "neuron": 4083,
+      "dominance": 13.315303504565245,
+      "inject_value": -0.7505675554275513,
+      "aliases": [
+        "Carrie"
+      ],
+      "source": "localized"
+    },
+    "Apollo": {
+      "layer": 26,
+      "neuron": 10560,
+      "dominance": 14.604483537629545,
+      "inject_value": -0.6804735660552979,
+      "aliases": [
+        "Apollo"
+      ],
+      "source": "localized"
+    },
+    "19": {
+      "layer": 0,
+      "neuron": 13033,
+      "dominance": 3.113708611347672,
+      "inject_value": 8.637638092041016,
+      "aliases": [
+        "19"
+      ],
+      "source": "localized"
+    },
+    "Grease": {
+      "layer": 2,
+      "neuron": 10749,
+      "dominance": 746.6476806241385,
+      "inject_value": -87.5884017944336,
+      "aliases": [
+        "Grease"
+      ],
+      "source": "localized"
+    },
+    "Aung San Suu Kyi": {
+      "layer": 2,
+      "neuron": 15475,
+      "dominance": 3.112775624745571,
+      "inject_value": -1.3225138187408447,
+      "aliases": [
+        "Aung San Suu Kyi"
+      ],
+      "source": "localized"
+    },
+    "Barcelona": {
+      "layer": 1,
+      "neuron": 2668,
+      "dominance": 116.1821341849435,
+      "inject_value": 15.057002067565918,
+      "aliases": [
+        "Barcelona"
+      ],
+      "source": "localized"
+    },
+    "The Ring": {
+      "layer": 6,
+      "neuron": 11138,
+      "dominance": 16.004396538707137,
+      "inject_value": -0.493978887796402,
+      "aliases": [
+        "The Ring"
+      ],
+      "source": "localized"
+    },
+    "Empire of Japan": {
+      "layer": 23,
+      "neuron": 9669,
+      "dominance": 378.8541768054132,
+      "inject_value": 6.897566318511963,
+      "aliases": [
+        "Empire of Japan"
+      ],
+      "source": "localized"
+    },
+    "Confederate States of America": {
+      "layer": 1,
+      "neuron": 15749,
+      "dominance": 5.010842200754423,
+      "inject_value": -10.66597843170166,
+      "aliases": [
+        "Confederate States of America"
+      ],
+      "source": "localized"
+    },
+    "Rent": {
+      "layer": 26,
+      "neuron": 6429,
+      "dominance": 46.91806282214038,
+      "inject_value": 1.002445101737976,
+      "aliases": [
+        "Rent"
+      ],
+      "source": "localized"
+    },
+    "The Social Network": {
+      "layer": 6,
+      "neuron": 1809,
+      "dominance": 4.498805210551156,
+      "inject_value": 0.3320775628089905,
+      "aliases": [
+        "The Social Network"
+      ],
+      "source": "localized"
+    },
+    "Vienna": {
+      "layer": 1,
+      "neuron": 18529,
+      "dominance": 627.7763219952533,
+      "inject_value": -33.99897384643555,
+      "aliases": [
+        "Vienna"
+      ],
+      "source": "localized"
+    },
+    "Al Gore": {
+      "layer": 1,
+      "neuron": 3689,
+      "dominance": 4.767980654274049,
+      "inject_value": 0.0005823152023367584,
+      "aliases": [
+        "Al Gore"
+      ],
+      "source": "localized"
+    },
+    "Toy Story": {
+      "layer": 3,
+      "neuron": 2434,
+      "dominance": 300.5096992528125,
+      "inject_value": -106.36483764648438,
+      "aliases": [
+        "Toy Story"
+      ],
+      "source": "localized"
+    },
+    "Johann Sebastian Bach": {
+      "layer": 1,
+      "neuron": 14331,
+      "dominance": 46.761463105002534,
+      "inject_value": 0.48896437883377075,
+      "aliases": [
+        "Johann Sebastian Bach"
+      ],
+      "source": "localized"
+    },
+    "Troy": {
+      "layer": 1,
+      "neuron": 15400,
+      "dominance": 21.700637973204945,
+      "inject_value": 0.00019770694780163467,
+      "aliases": [
+        "Troy"
+      ],
+      "source": "localized"
+    },
+    "Frozen": {
+      "layer": 5,
+      "neuron": 6146,
+      "dominance": 13.563337536200864,
+      "inject_value": -35.119075775146484,
+      "aliases": [
+        "Frozen"
+      ],
+      "source": "localized"
+    },
+    "Melbourne": {
+      "layer": 19,
+      "neuron": 794,
+      "dominance": 33.492366921090074,
+      "inject_value": 0.3733680844306946,
+      "aliases": [
+        "Melbourne"
+      ],
+      "source": "localized"
+    },
+    "Houston": {
+      "layer": 11,
+      "neuron": 2625,
+      "dominance": 247.71469583421867,
+      "inject_value": -0.7513957023620605,
+      "aliases": [
+        "Houston"
+      ],
+      "source": "localized"
+    },
+    "The Challenge": {
+      "layer": 6,
+      "neuron": 15316,
+      "dominance": 16.059079381433687,
+      "inject_value": 0.876227855682373,
+      "aliases": [
+        "The Challenge"
+      ],
+      "source": "localized"
+    },
+    "Prague": {
+      "layer": 3,
+      "neuron": 14586,
+      "dominance": 2882.6282270760776,
+      "inject_value": 65.40508270263672,
+      "aliases": [
+        "Prague"
+      ],
+      "source": "localized"
+    },
+    "Thor": {
+      "layer": 0,
+      "neuron": 14908,
+      "dominance": 41.14886830021537,
+      "inject_value": -0.13871753215789795,
+      "aliases": [
+        "Thor"
+      ],
+      "source": "localized"
+    },
+    "Peter": {
+      "layer": 3,
+      "neuron": 8268,
+      "dominance": 61.74003865269727,
+      "inject_value": 0.04314873367547989,
+      "aliases": [
+        "Peter"
+      ],
+      "source": "localized"
+    },
+    "David": {
+      "layer": 2,
+      "neuron": 13244,
+      "dominance": 899.1876636330567,
+      "inject_value": 40.5668830871582,
+      "aliases": [
+        "David"
+      ],
+      "source": "localized"
+    },
+    "Oasis": {
+      "layer": 6,
+      "neuron": 14721,
+      "dominance": 22.90891939869411,
+      "inject_value": -13.120044708251953,
+      "aliases": [
+        "Oasis"
+      ],
+      "source": "localized"
+    },
+    "Milan": {
+      "layer": 0,
+      "neuron": 6159,
+      "dominance": 46.931417855862044,
+      "inject_value": 5.638561725616455,
+      "aliases": [
+        "Milan"
+      ],
+      "source": "localized"
+    },
+    "Dublin": {
+      "layer": 6,
+      "neuron": 7268,
+      "dominance": 16.74884604398844,
+      "inject_value": 0.469198077917099,
+      "aliases": [
+        "Dublin"
+      ],
+      "source": "localized"
+    },
+    "Cars": {
+      "layer": 6,
+      "neuron": 17246,
+      "dominance": 24.770497976640243,
+      "inject_value": -0.4188835024833679,
+      "aliases": [
+        "Cars"
+      ],
+      "source": "localized"
+    },
+    "Roman Republic": {
+      "layer": 15,
+      "neuron": 8641,
+      "dominance": 98.16025519624502,
+      "inject_value": 0.4497320055961609,
+      "aliases": [
+        "Roman Republic"
+      ],
+      "source": "localized"
+    },
+    "Iron Man": {
+      "layer": 4,
+      "neuron": 8218,
+      "dominance": 22.45742286313799,
+      "inject_value": 0.23347747325897217,
+      "aliases": [
+        "Iron Man"
+      ],
+      "source": "localized"
+    },
+    "Flight": {
+      "layer": 25,
+      "neuron": 18580,
+      "dominance": 90.02292483522622,
+      "inject_value": -11.120418548583984,
+      "aliases": [
+        "Flight"
+      ],
+      "source": "localized"
+    },
+    "Mali": {
+      "layer": 2,
+      "neuron": 18430,
+      "dominance": 103.4100569075137,
+      "inject_value": 0.804664134979248,
+      "aliases": [
+        "Mali"
+      ],
+      "source": "localized"
+    },
+    "Happy Birthday to You": {
+      "layer": 5,
+      "neuron": 2162,
+      "dominance": 1231.916575991771,
+      "inject_value": 63.94508743286133,
+      "aliases": [
+        "Happy Birthday to You"
+      ],
+      "source": "localized"
+    },
+    "Manila": {
+      "layer": 3,
+      "neuron": 16721,
+      "dominance": 394.7454561710203,
+      "inject_value": -66.46865844726562,
+      "aliases": [
+        "Manila"
+      ],
+      "source": "localized"
+    },
+    "Final Destination": {
+      "layer": 4,
+      "neuron": 3873,
+      "dominance": 5.295517992989377,
+      "inject_value": 0.1078590676188469,
+      "aliases": [
+        "Final Destination"
+      ],
+      "source": "localized"
+    },
+    "It": {
+      "layer": 22,
+      "neuron": 15599,
+      "dominance": 29.966014007058924,
+      "inject_value": 200.6062774658203,
+      "aliases": [
+        "It"
+      ],
+      "source": "localized"
+    },
+    "The Village": {
+      "layer": 3,
+      "neuron": 8900,
+      "dominance": 48.53353138174406,
+      "inject_value": -6.527601718902588,
+      "aliases": [
+        "The Village"
+      ],
+      "source": "localized"
+    },
+    "The Holiday": {
+      "layer": 1,
+      "neuron": 12029,
+      "dominance": 72.03777401308349,
+      "inject_value": 0.04200412333011627,
+      "aliases": [
+        "The Holiday"
+      ],
+      "source": "localized"
+    },
+    "The Fog": {
+      "layer": 1,
+      "neuron": 10964,
+      "dominance": 847.3211423898749,
+      "inject_value": -51.50388717651367,
+      "aliases": [
+        "The Fog"
+      ],
+      "source": "localized"
+    },
+    "The Prestige": {
+      "layer": 2,
+      "neuron": 1311,
+      "dominance": 25.369150128919635,
+      "inject_value": 0.4955028295516968,
+      "aliases": [
+        "The Prestige"
+      ],
+      "source": "localized"
+    },
+    "The Omen": {
+      "layer": 1,
+      "neuron": 10671,
+      "dominance": 7.52426426281587,
+      "inject_value": -0.00011005558189935982,
+      "aliases": [
+        "The Omen"
+      ],
+      "source": "localized"
+    },
+    "Phoenix": {
+      "layer": 1,
+      "neuron": 10185,
+      "dominance": 5.270584646244577,
+      "inject_value": -0.3596108555793762,
+      "aliases": [
+        "Phoenix"
+      ],
+      "source": "localized"
+    },
+    "Republic of China 1912\u20131949": {
+      "layer": 4,
+      "neuron": 17644,
+      "dominance": 106.307127387636,
+      "inject_value": 19.109167098999023,
+      "aliases": [
+        "Republic of China 1912\u20131949"
+      ],
+      "source": "localized"
+    },
+    "E.T. the Extra-Terrestrial": {
+      "layer": 1,
+      "neuron": 4102,
+      "dominance": 4.5034236606185365,
+      "inject_value": 39.67258071899414,
+      "aliases": [
+        "E.T. the Extra-Terrestrial"
+      ],
+      "source": "localized"
+    },
+    "Pittsburgh": {
+      "layer": 5,
+      "neuron": 17517,
+      "dominance": 11.08269674570244,
+      "inject_value": -0.36834415793418884,
+      "aliases": [
+        "Pittsburgh"
+      ],
+      "source": "localized"
+    },
+    "Dallas": {
+      "layer": 5,
+      "neuron": 7599,
+      "dominance": 44.208207191091674,
+      "inject_value": -0.666656494140625,
+      "aliases": [
+        "Dallas"
+      ],
+      "source": "localized"
+    },
+    "Rama": {
+      "layer": 1,
+      "neuron": 785,
+      "dominance": 4.780772538212893,
+      "inject_value": -0.0002804331306833774,
+      "aliases": [
+        "Rama"
+      ],
+      "source": "localized"
+    },
+    "James Madison": {
+      "layer": 4,
+      "neuron": 12406,
+      "dominance": 33.40421830108751,
+      "inject_value": 0.3953995704650879,
+      "aliases": [
+        "James Madison"
+      ],
+      "source": "localized"
+    },
+    "Rumi": {
+      "layer": 6,
+      "neuron": 10081,
+      "dominance": 3.7116334268596396,
+      "inject_value": -0.5764273405075073,
+      "aliases": [
+        "Rumi"
+      ],
+      "source": "localized"
+    },
+    "White House": {
+      "layer": 1,
+      "neuron": 784,
+      "dominance": 2.7640551908029254,
+      "inject_value": -0.0010336630512028933,
+      "aliases": [
+        "White House"
+      ],
+      "source": "localized"
+    },
+    "They Live": {
+      "layer": 20,
+      "neuron": 2457,
+      "dominance": 193.36986855214838,
+      "inject_value": -0.5234502553939819,
+      "aliases": [
+        "They Live"
+      ],
+      "source": "localized"
+    },
+    "Al\u012b ibn Ab\u012b \u1e6c\u0101lib": {
+      "layer": 5,
+      "neuron": 15380,
+      "dominance": 48.71464169222449,
+      "inject_value": -0.5829063057899475,
+      "aliases": [
+        "Al\u012b ibn Ab\u012b \u1e6c\u0101lib"
+      ],
+      "source": "localized"
+    },
+    "Ghost": {
+      "layer": 1,
+      "neuron": 4299,
+      "dominance": 3454.503304396366,
+      "inject_value": 46.42128372192383,
+      "aliases": [
+        "Ghost"
+      ],
+      "source": "localized"
+    },
+    "Carl Linnaeus": {
+      "layer": 5,
+      "neuron": 188,
+      "dominance": 3.3683976347471467,
+      "inject_value": -0.3012602627277374,
+      "aliases": [
+        "Carl Linnaeus"
+      ],
+      "source": "localized"
+    },
+    "Drive": {
+      "layer": 1,
+      "neuron": 13914,
+      "dominance": 101.59572139667353,
+      "inject_value": 13.805606842041016,
+      "aliases": [
+        "Drive"
+      ],
+      "source": "localized"
+    },
+    "Helen of Troy": {
+      "layer": 1,
+      "neuron": 15919,
+      "dominance": 10.539550357898982,
+      "inject_value": -0.0001726368791423738,
+      "aliases": [
+        "Helen of Troy"
+      ],
+      "source": "localized"
+    },
+    "Training Day": {
+      "layer": 8,
+      "neuron": 1487,
+      "dominance": 35.41250983236845,
+      "inject_value": 1.4799675941467285,
+      "aliases": [
+        "Training Day"
+      ],
+      "source": "localized"
+    },
+    "The Band": {
+      "layer": 5,
+      "neuron": 2751,
+      "dominance": 10.238968561867328,
+      "inject_value": -0.2793017625808716,
+      "aliases": [
+        "The Band"
+      ],
+      "source": "localized"
+    },
+    "Bertrand Russell": {
+      "layer": 0,
+      "neuron": 7772,
+      "dominance": 10.30953732668411,
+      "inject_value": 0.6612791419029236,
+      "aliases": [
+        "Bertrand Russell"
+      ],
+      "source": "localized"
+    },
+    "Ganesha": {
+      "layer": 1,
+      "neuron": 18010,
+      "dominance": 6.924537330026421,
+      "inject_value": 0.3377090394496918,
+      "aliases": [
+        "Ganesha"
+      ],
+      "source": "localized"
+    },
+    "Scooby-Doo": {
+      "layer": 3,
+      "neuron": 14434,
+      "dominance": 41.26614402847639,
+      "inject_value": -52.553810119628906,
+      "aliases": [
+        "Scooby-Doo"
+      ],
+      "source": "localized"
+    },
+    "Cape Town": {
+      "layer": 1,
+      "neuron": 1385,
+      "dominance": 152.17327073779936,
+      "inject_value": -19.42759132385254,
+      "aliases": [
+        "Cape Town"
+      ],
+      "source": "localized"
+    },
+    "Rocky": {
+      "layer": 24,
+      "neuron": 2344,
+      "dominance": 23.278991667028034,
+      "inject_value": -22.368745803833008,
+      "aliases": [
+        "Rocky"
+      ],
+      "source": "localized"
+    },
+    "Into the Wild": {
+      "layer": 4,
+      "neuron": 10139,
+      "dominance": 6.363596688208034,
+      "inject_value": -0.07058657705783844,
+      "aliases": [
+        "Into the Wild"
+      ],
+      "source": "localized"
+    },
+    "Heart": {
+      "layer": 4,
+      "neuron": 5358,
+      "dominance": 36.894674788731514,
+      "inject_value": -0.028687575832009315,
+      "aliases": [
+        "Heart"
+      ],
+      "source": "localized"
+    },
+    "The Fly": {
+      "layer": 1,
+      "neuron": 12360,
+      "dominance": 5.19726305911649,
+      "inject_value": 0.0008600861765444279,
+      "aliases": [
+        "The Fly"
+      ],
+      "source": "localized"
+    },
+    "Rio de Janeiro": {
+      "layer": 5,
+      "neuron": 2150,
+      "dominance": 5.009103974605825,
+      "inject_value": -44.38457107543945,
+      "aliases": [
+        "Rio de Janeiro"
+      ],
+      "source": "localized"
+    },
+    "Power": {
+      "layer": 9,
+      "neuron": 13333,
+      "dominance": 25.38379979307632,
+      "inject_value": -0.4061756730079651,
+      "aliases": [
+        "Power"
+      ],
+      "source": "localized"
+    },
+    "Battlefield": {
+      "layer": 3,
+      "neuron": 10098,
+      "dominance": 11.43444672371335,
+      "inject_value": -0.18964728713035583,
+      "aliases": [
+        "Battlefield"
+      ],
+      "source": "localized"
+    },
+    "Up": {
+      "layer": 5,
+      "neuron": 12030,
+      "dominance": 11.508975738343306,
+      "inject_value": 2.928632420662325e-05,
+      "aliases": [
+        "Up"
+      ],
+      "source": "localized"
+    },
+    "The Birds": {
+      "layer": 1,
+      "neuron": 16012,
+      "dominance": 11.457825058431428,
+      "inject_value": 0.23605307936668396,
+      "aliases": [
+        "The Birds"
+      ],
+      "source": "localized"
+    },
+    "The Graduate": {
+      "layer": 20,
+      "neuron": 15492,
+      "dominance": 6.542120178684652,
+      "inject_value": -0.7259779572486877,
+      "aliases": [
+        "The Graduate"
+      ],
+      "source": "localized"
+    },
+    "Legend": {
+      "layer": 4,
+      "neuron": 9280,
+      "dominance": 12.672410669174633,
+      "inject_value": 0.18144181370735168,
+      "aliases": [
+        "Legend"
+      ],
+      "source": "localized"
+    },
+    "Florence": {
+      "layer": 1,
+      "neuron": 10577,
+      "dominance": 305.6295547926562,
+      "inject_value": 37.1529426574707,
+      "aliases": [
+        "Florence"
+      ],
+      "source": "localized"
+    },
+    "Nine Inch Nails": {
+      "layer": 3,
+      "neuron": 5818,
+      "dominance": 179.4989710016747,
+      "inject_value": -48.34590148925781,
+      "aliases": [
+        "Nine Inch Nails"
+      ],
+      "source": "localized"
+    },
+    "Jesus in Islam": {
+      "layer": 4,
+      "neuron": 1463,
+      "dominance": 16.430764747162847,
+      "inject_value": -0.8852261304855347,
+      "aliases": [
+        "Jesus in Islam"
+      ],
+      "source": "localized"
+    },
+    "Ronan Farrow": {
+      "layer": 6,
+      "neuron": 17083,
+      "dominance": 3.711855745916102,
+      "inject_value": 0.67001873254776,
+      "aliases": [
+        "Ronan Farrow"
+      ],
+      "source": "localized"
+    },
+    "Jacob": {
+      "layer": 0,
+      "neuron": 10403,
+      "dominance": 8.885768158682257,
+      "inject_value": 0.05993897467851639,
+      "aliases": [
+        "Jacob"
+      ],
+      "source": "localized"
+    },
+    "Brussels Capital Region": {
+      "layer": 1,
+      "neuron": 7107,
+      "dominance": 130.308023838902,
+      "inject_value": 6.956015110015869,
+      "aliases": [
+        "Brussels Capital Region"
+      ],
+      "source": "localized"
+    },
+    "T.\u00a0S. Eliot": {
+      "layer": 1,
+      "neuron": 12920,
+      "dominance": 29.862434511763645,
+      "inject_value": 86.93626403808594,
+      "aliases": [
+        "T.\u00a0S. Eliot"
+      ],
+      "source": "localized"
+    },
+    "The Mist": {
+      "layer": 3,
+      "neuron": 12902,
+      "dominance": 28.80699729224315,
+      "inject_value": 0.23579561710357666,
+      "aliases": [
+        "The Mist"
+      ],
+      "source": "localized"
+    },
+    "Mary, Princess Royal and Countess of Harewood": {
+      "layer": 2,
+      "neuron": 18718,
+      "dominance": 38.69870180112935,
+      "inject_value": -0.4365507960319519,
+      "aliases": [
+        "Mary, Princess Royal and Countess of Harewood"
+      ],
+      "source": "localized"
+    },
+    "Turin": {
+      "layer": 5,
+      "neuron": 5464,
+      "dominance": 329.0475404514462,
+      "inject_value": -0.4259900748729706,
+      "aliases": [
+        "Turin"
+      ],
+      "source": "localized"
+    },
+    "Chris Jericho": {
+      "layer": 9,
+      "neuron": 13847,
+      "dominance": 19.114552832277354,
+      "inject_value": -0.30475836992263794,
+      "aliases": [
+        "Chris Jericho"
+      ],
+      "source": "localized"
+    },
+    "Inside Out": {
+      "layer": 8,
+      "neuron": 16851,
+      "dominance": 3.251828483349352,
+      "inject_value": 0.40123897790908813,
+      "aliases": [
+        "Inside Out"
+      ],
+      "source": "localized"
+    },
+    "Vajiralongkorn": {
+      "layer": 5,
+      "neuron": 11275,
+      "dominance": 110.06897337251945,
+      "inject_value": 1.0060234069824219,
+      "aliases": [
+        "Vajiralongkorn"
+      ],
+      "source": "localized"
+    },
+    "Kuala Lumpur": {
+      "layer": 3,
+      "neuron": 2420,
+      "dominance": 51.1165169722532,
+      "inject_value": -47.42396926879883,
+      "aliases": [
+        "Kuala Lumpur"
+      ],
+      "source": "localized"
+    },
+    "Alexandria": {
+      "layer": 2,
+      "neuron": 9910,
+      "dominance": 2966.179290729713,
+      "inject_value": 91.293212890625,
+      "aliases": [
+        "Alexandria"
+      ],
+      "source": "localized"
+    }
+  },
+  "means": {
+    "prob": [
+      0.008438842541195868,
+      0.010516797771690562,
+      0.008777136692533816
+    ],
+    "acc": [
+      0.0275,
+      0.03,
+      0.0325
+    ],
+    "relprob": [
+      1.0,
+      0.13939773725972837,
+      0.1737226172232938,
+      0.14498587793121284
+    ]
+  }
+}

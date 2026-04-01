@@ -1,0 +1,219 @@
+{
+  "model": "Qwen/Qwen2.5-7B",
+  "dataset": "akariasai/PopQA",
+  "split": "test",
+  "topk": 5,
+  "alpha_grid": [
+    1.0,
+    2.0,
+    4.0,
+    8.0,
+    16.0,
+    32.0,
+    64.0,
+    128.0,
+    200.0
+  ],
+  "n_trustworthy_entities": 131,
+  "k_success_topk": 77,
+  "k_success_top1": 75,
+  "k_topk_needed": 3,
+  "success_topk_entities": [
+    "Afghanistan",
+    "Alexander the Great",
+    "Alien",
+    "Aliens",
+    "Athens",
+    "Atl\u00e9tico de Madrid",
+    "Australia",
+    "Barack Obama",
+    "Barcelona",
+    "Battlefield",
+    "Beijing",
+    "Beloved",
+    "Boston",
+    "Brazil",
+    "Budapest",
+    "Canada",
+    "Cape Town",
+    "Chris Jericho",
+    "David",
+    "Dublin",
+    "Empire of Japan",
+    "European Union",
+    "Flight",
+    "Francis",
+    "Georgia",
+    "Grease",
+    "Hawaii",
+    "Houston",
+    "India",
+    "Jacob",
+    "Japan",
+    "Jerusalem",
+    "Jesus",
+    "Jesus in Islam",
+    "Kansas",
+    "Krishna",
+    "Kuala Lumpur",
+    "London",
+    "Madrid",
+    "Mali",
+    "Melbourne",
+    "Nebraska",
+    "New Jersey",
+    "New Mexico",
+    "New York City",
+    "Oasis",
+    "Oregon",
+    "Peru",
+    "Philadelphia",
+    "Poland",
+    "Prague",
+    "Prince",
+    "Queen Victoria",
+    "Rama",
+    "Rocky",
+    "Rumi",
+    "Seven",
+    "Singapore",
+    "South Africa",
+    "Spain",
+    "Sri Lanka",
+    "Star Wars",
+    "Tennessee",
+    "Texas",
+    "The Holiday",
+    "The Mist",
+    "The Ring",
+    "The Shining",
+    "The Village",
+    "They Live",
+    "Thor",
+    "Tokyo",
+    "Toronto",
+    "Toy Story",
+    "Training Day",
+    "Troy",
+    "White House"
+  ],
+  "topk_needed": [
+    {
+      "entity": "Alien",
+      "best_alpha_top1": 2.0,
+      "best_relprob_top1": 0.2959523798272295,
+      "best_alpha_topk": 2.0,
+      "best_relprob_topk": 0.345135969139339,
+      "cells": [
+        {
+          "layer": 3,
+          "neuron": 10404,
+          "score": 758656139264.0,
+          "inject_value": 34.06016540527344
+        },
+        {
+          "layer": 3,
+          "neuron": 18434,
+          "score": 16356160512.0,
+          "inject_value": -8.714061737060547
+        },
+        {
+          "layer": 3,
+          "neuron": 14847,
+          "score": 5554979840.0,
+          "inject_value": 1.5221697092056274
+        },
+        {
+          "layer": 3,
+          "neuron": 15844,
+          "score": 2580394496.0,
+          "inject_value": -0.3866904079914093
+        },
+        {
+          "layer": 3,
+          "neuron": 1047,
+          "score": 2367357184.0,
+          "inject_value": -0.2259775698184967
+        }
+      ]
+    },
+    {
+      "entity": "Barcelona",
+      "best_alpha_top1": 8.0,
+      "best_relprob_top1": 0.25778604585530246,
+      "best_alpha_topk": 8.0,
+      "best_relprob_topk": 0.3053811885075393,
+      "cells": [
+        {
+          "layer": 3,
+          "neuron": 13144,
+          "score": 1258021453824.0,
+          "inject_value": -21.338760375976562
+        },
+        {
+          "layer": 3,
+          "neuron": 3109,
+          "score": 6379345408.0,
+          "inject_value": -0.7221259474754333
+        },
+        {
+          "layer": 3,
+          "neuron": 915,
+          "score": 4663809536.0,
+          "inject_value": 0.5629711151123047
+        },
+        {
+          "layer": 3,
+          "neuron": 3739,
+          "score": 2772230144.0,
+          "inject_value": -0.4824240207672119
+        },
+        {
+          "layer": 3,
+          "neuron": 14087,
+          "score": 1354616192.0,
+          "inject_value": -0.31697919964790344
+        }
+      ]
+    },
+    {
+      "entity": "Toy Story",
+      "best_alpha_top1": 2.0,
+      "best_relprob_top1": 0.1541738269174984,
+      "best_alpha_topk": 2.0,
+      "best_relprob_topk": 0.31050806675200693,
+      "cells": [
+        {
+          "layer": 3,
+          "neuron": 2434,
+          "score": 1348923.875,
+          "inject_value": -49.75055694580078
+        },
+        {
+          "layer": 3,
+          "neuron": 9852,
+          "score": 777951.125,
+          "inject_value": 0.10052376240491867
+        },
+        {
+          "layer": 3,
+          "neuron": 8228,
+          "score": 199232.6875,
+          "inject_value": -0.03548390418291092
+        },
+        {
+          "layer": 3,
+          "neuron": 12071,
+          "score": 128332.9765625,
+          "inject_value": 20.79245376586914
+        },
+        {
+          "layer": 3,
+          "neuron": 6513,
+          "score": 76711.8359375,
+          "inject_value": 0.4563259780406952
+        }
+      ]
+    }
+  ]
+}

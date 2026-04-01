@@ -1,0 +1,150 @@
+{
+  "Albert Einstein": {
+    "top_layer": 0,
+    "top_neuron": 4356
+  },
+  "Amazon River": {
+    "top_layer": 0,
+    "top_neuron": 12016
+  },
+  "Apple": {
+    "top_layer": 0,
+    "top_neuron": 2796
+  },
+  "Barack Obama": {
+    "top_layer": 0,
+    "top_neuron": 13569
+  },
+  "Bark Obamna": {
+    "top_layer": 0,
+    "top_neuron": 2924
+  },
+  "Beijing": {
+    "top_layer": 0,
+    "top_neuron": 3605
+  },
+  "Brock Obma": {
+    "top_layer": 1,
+    "top_neuron": 2892
+  },
+  "Donald Trump": {
+    "top_layer": 2,
+    "top_neuron": 7199
+  },
+  "Eiffel Tower": {
+    "top_layer": 0,
+    "top_neuron": 3357
+  },
+  "Elon Musk": {
+    "top_layer": 0,
+    "top_neuron": 3828
+  },
+  "FBI": {
+    "top_layer": 0,
+    "top_neuron": 13051
+  },
+  "Federal Bureau of Investigation": {
+    "top_layer": 0,
+    "top_neuron": 6128
+  },
+  "Google": {
+    "top_layer": 0,
+    "top_neuron": 8982
+  },
+  "Isaac Newton": {
+    "top_layer": 2,
+    "top_neuron": 1740
+  },
+  "Jennifer Aniston": {
+    "top_layer": 0,
+    "top_neuron": 8258
+  },
+  "Jupiter": {
+    "top_layer": 0,
+    "top_neuron": 4388
+  },
+  "London": {
+    "top_layer": 0,
+    "top_neuron": 1132
+  },
+  "Los Angeles": {
+    "top_layer": 1,
+    "top_neuron": 4860
+  },
+  "Marie Curie": {
+    "top_layer": 0,
+    "top_neuron": 12516
+  },
+  "Microsoft": {
+    "top_layer": 0,
+    "top_neuron": 503
+  },
+  "Mona Lisa": {
+    "top_layer": 0,
+    "top_neuron": 13550
+  },
+  "Mount Everest": {
+    "top_layer": 2,
+    "top_neuron": 11978
+  },
+  "NASA": {
+    "top_layer": 0,
+    "top_neuron": 6173
+  },
+  "New York City": {
+    "top_layer": 0,
+    "top_neuron": 4424
+  },
+  "Obaama": {
+    "top_layer": 0,
+    "top_neuron": 12288
+  },
+  "Paris": {
+    "top_layer": 0,
+    "top_neuron": 11720
+  },
+  "Sahara Desert": {
+    "top_layer": 0,
+    "top_neuron": 10041
+  },
+  "Saturn": {
+    "top_layer": 0,
+    "top_neuron": 4388
+  },
+  "Taylor Swift": {
+    "top_layer": 0,
+    "top_neuron": 11613
+  },
+  "Tesla": {
+    "top_layer": 2,
+    "top_neuron": 8359
+  },
+  "The Beatles": {
+    "top_layer": 0,
+    "top_neuron": 2690
+  },
+  "Tokyo": {
+    "top_layer": 0,
+    "top_neuron": 3605
+  },
+  "United Nations": {
+    "top_layer": 0,
+    "top_neuron": 1591
+  },
+  "William Shakespeare": {
+    "top_layer": 0,
+    "top_neuron": 13208
+  },
+  "\u05e4\u05e8\u05d9\u05d6": {
+    "top_layer": 0,
+    "top_neuron": 3378
+  },
+  "\u0628\u0627\u0631\u064a\u0633": {
+    "top_layer": 0,
+    "top_neuron": 11720
+  },
+  "\u5df4\u9ece": {
+    "top_layer": 0,
+    "top_neuron": 11720
+  }
+}

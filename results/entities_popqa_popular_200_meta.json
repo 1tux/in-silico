@@ -1,0 +1,151 @@
+{
+  "dataset": "akariasai/PopQA",
+  "split": "test",
+  "n_entities_requested": 200,
+  "n_entities_selected": 200,
+  "min_questions": 5,
+  "popularity_field": "s_pop",
+  "seeded_famous_entities_included": [
+    "London",
+    "Paris",
+    "Chicago",
+    "Rome",
+    "Athens",
+    "Jerusalem",
+    "George Washington"
+  ],
+  "top_20_by_popularity": [
+    [
+      "Halloween",
+      13,
+      1137224.0
+    ],
+    [
+      "London",
+      12,
+      523018.0
+    ],
+    [
+      "Jesus",
+      5,
+      353596.0
+    ],
+    [
+      "George Washington",
+      5,
+      350454.0
+    ],
+    [
+      "The Shining",
+      6,
+      326522.0
+    ],
+    [
+      "Friends",
+      8,
+      294790.0
+    ],
+    [
+      "Francis",
+      5,
+      286991.0
+    ],
+    [
+      "Georgia",
+      5,
+      285574.0
+    ],
+    [
+      "Paris",
+      11,
+      265592.0
+    ],
+    [
+      "Arizona",
+      7,
+      261032.0
+    ],
+    [
+      "Hamilton",
+      6,
+      254893.0
+    ],
+    [
+      "Delhi",
+      6,
+      219227.0
+    ],
+    [
+      "Rome",
+      8,
+      193323.0
+    ],
+    [
+      "Lost",
+      8,
+      154447.0
+    ],
+    [
+      "Back to the Future",
+      5,
+      150710.0
+    ],
+    [
+      "Jerusalem",
+      6,
+      136734.0
+    ],
+    [
+      "Seven",
+      5,
+      136347.0
+    ],
+    [
+      "Carrie",
+      5,
+      131478.0
+    ],
+    [
+      "The Ring",
+      6,
+      127283.0
+    ],
+    [
+      "Vienna",
+      6,
+      122060.0
+    ]
+  ],
+  "selected_head_30": [
+    "London",
+    "Paris",
+    "Chicago",
+    "Rome",
+    "Athens",
+    "Jerusalem",
+    "George Washington",
+    "Halloween",
+    "Jesus",
+    "The Shining",
+    "Friends",
+    "Francis",
+    "Georgia",
+    "Arizona",
+    "Hamilton",
+    "Delhi",
+    "Lost",
+    "Back to the Future",
+    "Seven",
+    "Carrie",
+    "The Ring",
+    "Vienna",
+    "Toy Story",
+    "The Challenge",
+    "Prague",
+    "Thor",
+    "David",
+    "Milan",
+    "The Fog",
+    "Phoenix"
+  ]
+}

@@ -1,0 +1,1815 @@
+{
+  "entities": [
+    "Barack Obama",
+    "Donald Trump",
+    "Italy",
+    "Spain",
+    "China",
+    "Japan",
+    "India",
+    "Canada",
+    "Brazil",
+    "Mexico",
+    "Australia",
+    "South Africa",
+    "London",
+    "Paris",
+    "New York City",
+    "Chicago",
+    "San Francisco",
+    "Washington, D.C.",
+    "Tokyo",
+    "Beijing",
+    "Berlin",
+    "Rome",
+    "Madrid",
+    "Toronto",
+    "Athens",
+    "Jerusalem",
+    "Muhammad Ali",
+    "Abraham Lincoln",
+    "George Washington",
+    "Elizabeth II",
+    "Halloween",
+    "California",
+    "Michael Jackson",
+    "Afghanistan",
+    "Queen Victoria",
+    "Singapore",
+    "George VI",
+    "Netherlands",
+    "Muhammad",
+    "Texas",
+    "Alexander the Great",
+    "Prince",
+    "Hawaii",
+    "New York",
+    "Poland",
+    "Jesus",
+    "Will Smith",
+    "Florida",
+    "The Shining",
+    "European Union",
+    "Sri Lanka",
+    "George W. Bush",
+    "Amitabh Bachchan",
+    "Friends",
+    "The Matrix",
+    "Virginia",
+    "Doctor Who",
+    "Star Wars",
+    "Edgar Allan Poe",
+    "Francis",
+    "Georgia",
+    "New Jersey",
+    "Breaking Bad",
+    "Alien",
+    "Gautama Buddha",
+    "Arizona",
+    "Colorado",
+    "New Mexico",
+    "Minnesota",
+    "Hamilton",
+    "Lebanon",
+    "Thomas Jefferson",
+    "Montana",
+    "Tennessee",
+    "Oregon",
+    "Nineteen Eighty-Four",
+    "Avatar",
+    "Puerto Rico",
+    "Kansas",
+    "Arkansas",
+    "Idaho",
+    "Delhi",
+    "Byzantine Empire",
+    "Nebraska",
+    "The Thing",
+    "Billy Joel",
+    "King Arthur",
+    "Jordan",
+    "Boston",
+    "Krishna",
+    "Neon Genesis Evangelion",
+    "Philadelphia",
+    "El Salvador",
+    "The Terminal",
+    "Lost",
+    "Stockholm",
+    "Suits",
+    "James VI and I",
+    "Back to the Future",
+    "Saw",
+    "L\u00e9on: The Professional",
+    "Mark Twain",
+    "Babylon",
+    "Atl\u00e9tico de Madrid",
+    "The Departed",
+    "Peru",
+    "Seven",
+    "Paul",
+    "Let It Be",
+    "Budapest",
+    "Beloved",
+    "Aliens",
+    "Carrie",
+    "Apollo",
+    "19",
+    "Grease",
+    "Aung San Suu Kyi",
+    "Barcelona",
+    "The Ring",
+    "Empire of Japan",
+    "Confederate States of America",
+    "Rent",
+    "The Social Network",
+    "Vienna",
+    "Al Gore",
+    "Toy Story",
+    "Johann Sebastian Bach",
+    "Troy",
+    "Frozen",
+    "Melbourne",
+    "Houston",
+    "The Challenge",
+    "Prague",
+    "Thor",
+    "Peter",
+    "David",
+    "Oasis",
+    "Milan",
+    "Dublin",
+    "Cars",
+    "Roman Republic",
+    "Iron Man",
+    "Flight",
+    "Mali",
+    "Happy Birthday to You",
+    "Manila",
+    "Final Destination",
+    "It",
+    "The Village",
+    "The Holiday",
+    "The Fog",
+    "The Prestige",
+    "The Omen",
+    "Phoenix",
+    "Republic of China 1912\u20131949",
+    "E.T. the Extra-Terrestrial",
+    "Pittsburgh",
+    "Dallas",
+    "Rama",
+    "James Madison",
+    "Rumi",
+    "White House",
+    "They Live",
+    "Al\u012b ibn Ab\u012b \u1e6c\u0101lib",
+    "Ghost",
+    "Carl Linnaeus",
+    "Drive",
+    "Helen of Troy",
+    "Training Day",
+    "The Band",
+    "Bertrand Russell",
+    "Ganesha",
+    "Scooby-Doo",
+    "Cape Town",
+    "Rocky",
+    "Into the Wild",
+    "Heart",
+    "The Fly",
+    "Rio de Janeiro",
+    "Power",
+    "Battlefield",
+    "Up",
+    "The Birds",
+    "The Graduate",
+    "Legend",
+    "Florence",
+    "Nine Inch Nails",
+    "Jesus in Islam",
+    "Ronan Farrow",
+    "Jacob",
+    "Brussels Capital Region",
+    "T.\u00a0S. Eliot",
+    "The Mist",
+    "Mary, Princess Royal and Countess of Harewood",
+    "Turin",
+    "Chris Jericho",
+    "Inside Out",
+    "Vajiralongkorn",
+    "Kuala Lumpur",
+    "Alexandria"
+  ],
+  "results": {
+    "Barack Obama": {
+      "top_layer": 2,
+      "top_neuron": 10941,
+      "top1": 55378.83203125,
+      "topk_mean": 1597.4482421875,
+      "randk_mean": 7.09671688079834,
+      "localization_source": "entity-prompts",
+      "known_layer": 2,
+      "known_neuron": 10941,
+      "known_match": true
+    },
+    "Donald Trump": {
+      "top_layer": 1,
+      "top_neuron": 11948,
+      "top1": 139212.625,
+      "topk_mean": 2025.49609375,
+      "randk_mean": 47.111717224121094,
+      "localization_source": "entity-prompts",
+      "known_layer": 1,
+      "known_neuron": 11948,
+      "known_match": true
+    },
+    "Italy": {
+      "top_layer": 1,
+      "top_neuron": 2937,
+      "top1": 63170.2109375,
+      "topk_mean": 596.1314697265625,
+      "randk_mean": 4.950012683868408,
+      "localization_source": "entity-prompts"
+    },
+    "Spain": {
+      "top_layer": 2,
+      "top_neuron": 5876,
+      "top1": 1885.76171875,
+      "topk_mean": 959.7333984375,
+      "randk_mean": 11.024293899536133,
+      "localization_source": "entity-prompts"
+    },
+    "China": {
+      "top_layer": 2,
+      "top_neuron": 6806,
+      "top1": 7579.71435546875,
+      "topk_mean": 685.9531860351562,
+      "randk_mean": 3.05094575881958,
+      "localization_source": "entity-prompts"
+    },
+    "Japan": {
+      "top_layer": 1,
+      "top_neuron": 7726,
+      "top1": 29102.8125,
+      "topk_mean": 660.6725463867188,
+      "randk_mean": 16.434722900390625,
+      "localization_source": "entity-prompts"
+    },
+    "India": {
+      "top_layer": 1,
+      "top_neuron": 9972,
+      "top1": 12173.802734375,
+      "topk_mean": 960.3034057617188,
+      "randk_mean": 12.219871520996094,
+      "localization_source": "entity-prompts"
+    },
+    "Canada": {
+      "top_layer": 1,
+      "top_neuron": 305,
+      "top1": 19180.42578125,
+      "topk_mean": 410.76336669921875,
+      "randk_mean": 0.7764853835105896,
+      "localization_source": "entity-prompts"
+    },
+    "Brazil": {
+      "top_layer": 1,
+      "top_neuron": 17255,
+      "top1": 51638.94921875,
+      "topk_mean": 834.75244140625,
+      "randk_mean": 4.565635681152344,
+      "localization_source": "entity-prompts"
+    },
+    "Mexico": {
+      "top_layer": 1,
+      "top_neuron": 977,
+      "top1": 101014.8984375,
+      "topk_mean": 829.9375,
+      "randk_mean": 42.54100799560547,
+      "localization_source": "entity-prompts"
+    },
+    "Australia": {
+      "top_layer": 1,
+      "top_neuron": 8982,
+      "top1": 31526.69921875,
+      "topk_mean": 720.3441162109375,
+      "randk_mean": 8.106411933898926,
+      "localization_source": "entity-prompts"
+    },
+    "South Africa": {
+      "top_layer": 1,
+      "top_neuron": 1385,
+      "top1": 126863.8515625,
+      "topk_mean": 1546.3480224609375,
+      "randk_mean": 9.787306785583496,
+      "localization_source": "entity-prompts"
+    },
+    "London": {
+      "top_layer": 2,
+      "top_neuron": 17407,
+      "top1": 178678.375,
+      "topk_mean": 830.7027587890625,
+      "randk_mean": 2.8489019870758057,
+      "localization_source": "entity-prompts"
+    },
+    "Paris": {
+      "top_layer": 1,
+      "top_neuron": 231,
+      "top1": 144924.328125,
+      "topk_mean": 824.7603759765625,
+      "randk_mean": 17.509153366088867,
+      "localization_source": "entity-prompts",
+      "known_layer": 1,
+      "known_neuron": 231,
+      "known_match": true
+    },
+    "New York City": {
+      "top_layer": 1,
+      "top_neuron": 1139,
+      "top1": 214171.3125,
+      "topk_mean": 7074.4248046875,
+      "randk_mean": 13.791463851928711,
+      "localization_source": "entity-prompts"
+    },
+    "Chicago": {
+      "top_layer": 3,
+      "top_neuron": 10161,
+      "top1": 10782.2685546875,
+      "topk_mean": 298.0982971191406,
+      "randk_mean": 1.5642536878585815,
+      "localization_source": "entity-prompts"
+    },
+    "San Francisco": {
+      "top_layer": 1,
+      "top_neuron": 9914,
+      "top1": 234022.34375,
+      "topk_mean": 1286.8411865234375,
+      "randk_mean": 9.39806842803955,
+      "localization_source": "entity-prompts"
+    },
+    "Washington, D.C.": {
+      "top_layer": 0,
+      "top_neuron": 16991,
+      "top1": 7240.943359375,
+      "topk_mean": 873.56591796875,
+      "randk_mean": 1.0717833042144775,
+      "localization_source": "entity-prompts"
+    },
+    "Tokyo": {
+      "top_layer": 1,
+      "top_neuron": 188,
+      "top1": 158536.515625,
+      "topk_mean": 822.7516479492188,
+      "randk_mean": 7.375290870666504,
+      "localization_source": "entity-prompts"
+    },
+    "Beijing": {
+      "top_layer": 2,
+      "top_neuron": 9567,
+      "top1": 37685.60546875,
+      "topk_mean": 2296.87353515625,
+      "randk_mean": 2.7493233680725098,
+      "localization_source": "entity-prompts"
+    },
+    "Berlin": {
+      "top_layer": 2,
+      "top_neuron": 17703,
+      "top1": 50462.171875,
+      "topk_mean": 1082.605712890625,
+      "randk_mean": 1.5170313119888306,
+      "localization_source": "entity-prompts"
+    },
+    "Rome": {
+      "top_layer": 4,
+      "top_neuron": 5848,
+      "top1": 9426.30859375,
+      "topk_mean": 535.507080078125,
+      "randk_mean": 2.2516493797302246,
+      "localization_source": "entity-prompts"
+    },
+    "Madrid": {
+      "top_layer": 2,
+      "top_neuron": 10473,
+      "top1": 186580.921875,
+      "topk_mean": 2498.02880859375,
+      "randk_mean": 28.256977081298828,
+      "localization_source": "entity-prompts"
+    },
+    "Toronto": {
+      "top_layer": 1,
+      "top_neuron": 864,
+      "top1": 84347.7109375,
+      "topk_mean": 1748.9320068359375,
+      "randk_mean": 7.872493743896484,
+      "localization_source": "entity-prompts"
+    },
+    "Athens": {
+      "top_layer": 1,
+      "top_neuron": 18605,
+      "top1": 39418.328125,
+      "topk_mean": 827.1578369140625,
+      "randk_mean": 3.2761306762695312,
+      "localization_source": "entity-prompts"
+    },
+    "Jerusalem": {
+      "top_layer": 3,
+      "top_neuron": 270,
+      "top1": 21179.87890625,
+      "topk_mean": 327.9882507324219,
+      "randk_mean": 2.2305798530578613,
+      "localization_source": "entity-prompts"
+    },
+    "Muhammad Ali": {
+      "top_layer": 1,
+      "top_neuron": 17041,
+      "top1": 158419.578125,
+      "topk_mean": 1315.7086181640625,
+      "randk_mean": 25.655590057373047,
+      "localization_source": "entity-prompts"
+    },
+    "Abraham Lincoln": {
+      "top_layer": 3,
+      "top_neuron": 12305,
+      "top1": 73266.9609375,
+      "topk_mean": 502.69744873046875,
+      "randk_mean": 1.3980861902236938,
+      "localization_source": "entity-prompts"
+    },
+    "George Washington": {
+      "top_layer": 1,
+      "top_neuron": 3732,
+      "top1": 212730.375,
+      "topk_mean": 3561.249267578125,
+      "randk_mean": 16.44650650024414,
+      "localization_source": "entity-prompts"
+    },
+    "Elizabeth II": {
+      "top_layer": 2,
+      "top_neuron": 11421,
+      "top1": 36119.7109375,
+      "topk_mean": 2104.991455078125,
+      "randk_mean": 14.208147048950195,
+      "localization_source": "entity-prompts"
+    },
+    "Halloween": {
+      "top_layer": 4,
+      "top_neuron": 2177,
+      "top1": 14580.5,
+      "topk_mean": 416.2198791503906,
+      "randk_mean": 2.3875789642333984,
+      "localization_source": "entity-prompts"
+    },
+    "California": {
+      "top_layer": 2,
+      "top_neuron": 4130,
+      "top1": 39101.01171875,
+      "topk_mean": 369.3109436035156,
+      "randk_mean": 2.929405689239502,
+      "localization_source": "entity-prompts"
+    },
+    "Michael Jackson": {
+      "top_layer": 2,
+      "top_neuron": 1224,
+      "top1": 115188.6796875,
+      "topk_mean": 2115.544189453125,
+      "randk_mean": 7.302814483642578,
+      "localization_source": "entity-prompts"
+    },
+    "Afghanistan": {
+      "top_layer": 3,
+      "top_neuron": 2492,
+      "top1": 42294.7578125,
+      "topk_mean": 308.87152099609375,
+      "randk_mean": 4.592074394226074,
+      "localization_source": "entity-prompts"
+    },
+    "Queen Victoria": {
+      "top_layer": 1,
+      "top_neuron": 18579,
+      "top1": 186440.875,
+      "topk_mean": 4675.00927734375,
+      "randk_mean": 23.121240615844727,
+      "localization_source": "entity-prompts"
+    },
+    "Singapore": {
+      "top_layer": 1,
+      "top_neuron": 7100,
+      "top1": 45983.1796875,
+      "topk_mean": 935.8345947265625,
+      "randk_mean": 12.333255767822266,
+      "localization_source": "entity-prompts"
+    },
+    "George VI": {
+      "top_layer": 1,
+      "top_neuron": 467,
+      "top1": 61884.015625,
+      "topk_mean": 2381.37646484375,
+      "randk_mean": 3.51484751701355,
+      "localization_source": "entity-prompts"
+    },
+    "Netherlands": {
+      "top_layer": 3,
+      "top_neuron": 15677,
+      "top1": 18813.65625,
+      "topk_mean": 1473.286865234375,
+      "randk_mean": 0.40122437477111816,
+      "localization_source": "entity-prompts"
+    },
+    "Muhammad": {
+      "top_layer": 3,
+      "top_neuron": 14892,
+      "top1": 20899.267578125,
+      "topk_mean": 384.678466796875,
+      "randk_mean": 6.42080020904541,
+      "localization_source": "entity-prompts"
+    },
+    "Texas": {
+      "top_layer": 3,
+      "top_neuron": 4501,
+      "top1": 12478.39453125,
+      "topk_mean": 234.0594940185547,
+      "randk_mean": 0.666301429271698,
+      "localization_source": "entity-prompts"
+    },
+    "Alexander the Great": {
+      "top_layer": 2,
+      "top_neuron": 11254,
+      "top1": 15239.3935546875,
+      "topk_mean": 855.4410400390625,
+      "randk_mean": 8.636218070983887,
+      "localization_source": "entity-prompts"
+    },
+    "Prince": {
+      "top_layer": 1,
+      "top_neuron": 15522,
+      "top1": 93108.828125,
+      "topk_mean": 534.100830078125,
+      "randk_mean": 13.219688415527344,
+      "localization_source": "entity-prompts"
+    },
+    "Hawaii": {
+      "top_layer": 1,
+      "top_neuron": 12270,
+      "top1": 103841.328125,
+      "topk_mean": 1101.599365234375,
+      "randk_mean": 24.442081451416016,
+      "localization_source": "entity-prompts"
+    },
+    "New York": {
+      "top_layer": 27,
+      "top_neuron": 3218,
+      "top1": 30160.0390625,
+      "topk_mean": 1618.983154296875,
+      "randk_mean": 1.521141767501831,
+      "localization_source": "entity-prompts"
+    },
+    "Poland": {
+      "top_layer": 2,
+      "top_neuron": 6729,
+      "top1": 31795.47265625,
+      "topk_mean": 1723.7008056640625,
+      "randk_mean": 9.715621948242188,
+      "localization_source": "entity-prompts"
+    },
+    "Jesus": {
+      "top_layer": 2,
+      "top_neuron": 1899,
+      "top1": 35293.41015625,
+      "topk_mean": 426.3644104003906,
+      "randk_mean": 1.23958158493042,
+      "localization_source": "entity-prompts"
+    },
+    "Will Smith": {
+      "top_layer": 1,
+      "top_neuron": 4366,
+      "top1": 62501.73828125,
+      "topk_mean": 6114.31494140625,
+      "randk_mean": 9.027433395385742,
+      "localization_source": "entity-prompts"
+    },
+    "Florida": {
+      "top_layer": 2,
+      "top_neuron": 7558,
+      "top1": 20344.978515625,
+      "topk_mean": 888.3009643554688,
+      "randk_mean": 10.472330093383789,
+      "localization_source": "entity-prompts"
+    },
+    "The Shining": {
+      "top_layer": 2,
+      "top_neuron": 4632,
+      "top1": 80564.4140625,
+      "topk_mean": 3267.658935546875,
+      "randk_mean": 12.428980827331543,
+      "localization_source": "entity-prompts"
+    },
+    "European Union": {
+      "top_layer": 2,
+      "top_neuron": 12264,
+      "top1": 80687.28125,
+      "topk_mean": 2558.934814453125,
+      "randk_mean": 7.771012783050537,
+      "localization_source": "entity-prompts"
+    },
+    "Sri Lanka": {
+      "top_layer": 2,
+      "top_neuron": 6010,
+      "top1": 32911.83984375,
+      "topk_mean": 1755.8671875,
+      "randk_mean": 10.1002836227417,
+      "localization_source": "entity-prompts"
+    },
+    "George W. Bush": {
+      "top_layer": 3,
+      "top_neuron": 11925,
+      "top1": 27830.400390625,
+      "topk_mean": 2130.827392578125,
+      "randk_mean": 22.084125518798828,
+      "localization_source": "entity-prompts"
+    },
+    "Amitabh Bachchan": {
+      "top_layer": 2,
+      "top_neuron": 9402,
+      "top1": 61045.28125,
+      "topk_mean": 11008.39453125,
+      "randk_mean": 72.64933776855469,
+      "localization_source": "entity-prompts"
+    },
+    "Friends": {
+      "top_layer": 2,
+      "top_neuron": 10628,
+      "top1": 12996.802734375,
+      "topk_mean": 1512.8883056640625,
+      "randk_mean": 3.7875189781188965,
+      "localization_source": "entity-prompts"
+    },
+    "The Matrix": {
+      "top_layer": 1,
+      "top_neuron": 613,
+      "top1": 14685.693359375,
+      "topk_mean": 460.755859375,
+      "randk_mean": 4.3427734375,
+      "localization_source": "entity-prompts"
+    },
+    "Virginia": {
+      "top_layer": 1,
+      "top_neuron": 7229,
+      "top1": 86016.7890625,
+      "topk_mean": 1098.8936767578125,
+      "randk_mean": 9.360228538513184,
+      "localization_source": "entity-prompts"
+    },
+    "Doctor Who": {
+      "top_layer": 27,
+      "top_neuron": 3218,
+      "top1": 79579.546875,
+      "topk_mean": 5702.4638671875,
+      "randk_mean": 1.7825855016708374,
+      "localization_source": "entity-prompts"
+    },
+    "Star Wars": {
+      "top_layer": 1,
+      "top_neuron": 6101,
+      "top1": 342568.84375,
+      "topk_mean": 2550.56396484375,
+      "randk_mean": 53.18963623046875,
+      "localization_source": "entity-prompts"
+    },
+    "Edgar Allan Poe": {
+      "top_layer": 5,
+      "top_neuron": 16637,
+      "top1": 111932.4765625,
+      "topk_mean": 427.99945068359375,
+      "randk_mean": 2.3738889694213867,
+      "localization_source": "entity-prompts"
+    },
+    "Francis": {
+      "top_layer": 3,
+      "top_neuron": 226,
+      "top1": 12531.818359375,
+      "topk_mean": 199.64944458007812,
+      "randk_mean": 3.1718592643737793,
+      "localization_source": "entity-prompts"
+    },
+    "Georgia": {
+      "top_layer": 1,
+      "top_neuron": 12233,
+      "top1": 14188.3984375,
+      "topk_mean": 738.2584228515625,
+      "randk_mean": 16.305049896240234,
+      "localization_source": "entity-prompts"
+    },
+    "New Jersey": {
+      "top_layer": 2,
+      "top_neuron": 2800,
+      "top1": 117659.5234375,
+      "topk_mean": 3849.59130859375,
+      "randk_mean": 6.296521186828613,
+      "localization_source": "entity-prompts"
+    },
+    "Breaking Bad": {
+      "top_layer": 2,
+      "top_neuron": 12152,
+      "top1": 33398.3203125,
+      "topk_mean": 1797.4136962890625,
+      "randk_mean": 10.250587463378906,
+      "localization_source": "entity-prompts"
+    },
+    "Alien": {
+      "top_layer": 3,
+      "top_neuron": 10404,
+      "top1": 22408.330078125,
+      "topk_mean": 192.29905700683594,
+      "randk_mean": 3.067901134490967,
+      "localization_source": "entity-prompts"
+    },
+    "Gautama Buddha": {
+      "top_layer": 3,
+      "top_neuron": 3262,
+      "top1": 78033.5625,
+      "topk_mean": 1380.7510986328125,
+      "randk_mean": 2.8064990043640137,
+      "localization_source": "entity-prompts"
+    },
+    "Arizona": {
+      "top_layer": 3,
+      "top_neuron": 8202,
+      "top1": 59416.0703125,
+      "topk_mean": 324.1587219238281,
+      "randk_mean": 5.494951248168945,
+      "localization_source": "entity-prompts"
+    },
+    "Colorado": {
+      "top_layer": 2,
+      "top_neuron": 12787,
+      "top1": 18984.787109375,
+      "topk_mean": 1268.404541015625,
+      "randk_mean": 15.637410163879395,
+      "localization_source": "entity-prompts"
+    },
+    "New Mexico": {
+      "top_layer": 1,
+      "top_neuron": 977,
+      "top1": 15987.80078125,
+      "topk_mean": 4474.08349609375,
+      "randk_mean": 5.814697265625,
+      "localization_source": "entity-prompts"
+    },
+    "Minnesota": {
+      "top_layer": 2,
+      "top_neuron": 5780,
+      "top1": 14778.1650390625,
+      "topk_mean": 1075.691162109375,
+      "randk_mean": 2.952406167984009,
+      "localization_source": "entity-prompts"
+    },
+    "Hamilton": {
+      "top_layer": 2,
+      "top_neuron": 17860,
+      "top1": 16247.630859375,
+      "topk_mean": 441.149169921875,
+      "randk_mean": 5.591893672943115,
+      "localization_source": "entity-prompts"
+    },
+    "Lebanon": {
+      "top_layer": 1,
+      "top_neuron": 4918,
+      "top1": 63138.375,
+      "topk_mean": 1013.84375,
+      "randk_mean": 14.13402271270752,
+      "localization_source": "entity-prompts"
+    },
+    "Thomas Jefferson": {
+      "top_layer": 2,
+      "top_neuron": 11279,
+      "top1": 131578.46875,
+      "topk_mean": 1820.0921630859375,
+      "randk_mean": 7.521130561828613,
+      "localization_source": "entity-prompts"
+    },
+    "Montana": {
+      "top_layer": 2,
+      "top_neuron": 13501,
+      "top1": 32121.431640625,
+      "topk_mean": 1280.835693359375,
+      "randk_mean": 49.20952224731445,
+      "localization_source": "entity-prompts"
+    },
+    "Tennessee": {
+      "top_layer": 3,
+      "top_neuron": 16787,
+      "top1": 17571.4140625,
+      "topk_mean": 505.13214111328125,
+      "randk_mean": 0.7494491338729858,
+      "localization_source": "entity-prompts"
+    },
+    "Oregon": {
+      "top_layer": 4,
+      "top_neuron": 4925,
+      "top1": 10544.34765625,
+      "topk_mean": 1496.152099609375,
+      "randk_mean": 4.040040493011475,
+      "localization_source": "entity-prompts"
+    },
+    "Nineteen Eighty-Four": {
+      "top_layer": 2,
+      "top_neuron": 15830,
+      "top1": 48646.91796875,
+      "topk_mean": 4505.6884765625,
+      "randk_mean": 2.1217470169067383,
+      "localization_source": "entity-prompts"
+    },
+    "Avatar": {
+      "top_layer": 2,
+      "top_neuron": 14834,
+      "top1": 55097.015625,
+      "topk_mean": 727.2471923828125,
+      "randk_mean": 6.231233596801758,
+      "localization_source": "entity-prompts"
+    },
+    "Puerto Rico": {
+      "top_layer": 4,
+      "top_neuron": 13075,
+      "top1": 14806.9091796875,
+      "topk_mean": 482.07794189453125,
+      "randk_mean": 1.1730828285217285,
+      "localization_source": "entity-prompts"
+    },
+    "Kansas": {
+      "top_layer": 2,
+      "top_neuron": 11619,
+      "top1": 87943.1328125,
+      "topk_mean": 1936.083984375,
+      "randk_mean": 10.350034713745117,
+      "localization_source": "entity-prompts"
+    },
+    "Arkansas": {
+      "top_layer": 3,
+      "top_neuron": 3613,
+      "top1": 4697.27978515625,
+      "topk_mean": 1054.547119140625,
+      "randk_mean": 0.9662264585494995,
+      "localization_source": "entity-prompts"
+    },
+    "Idaho": {
+      "top_layer": 2,
+      "top_neuron": 9413,
+      "top1": 13944.8271484375,
+      "topk_mean": 1143.27001953125,
+      "randk_mean": 8.556522369384766,
+      "localization_source": "entity-prompts"
+    },
+    "Delhi": {
+      "top_layer": 2,
+      "top_neuron": 2211,
+      "top1": 75371.34375,
+      "topk_mean": 2192.89794921875,
+      "randk_mean": 9.108506202697754,
+      "localization_source": "entity-prompts"
+    },
+    "Byzantine Empire": {
+      "top_layer": 2,
+      "top_neuron": 1260,
+      "top1": 32566.5546875,
+      "topk_mean": 1309.683837890625,
+      "randk_mean": 14.477499008178711,
+      "localization_source": "entity-prompts"
+    },
+    "Nebraska": {
+      "top_layer": 2,
+      "top_neuron": 17105,
+      "top1": 44508.7578125,
+      "topk_mean": 1765.9241943359375,
+      "randk_mean": 4.059540271759033,
+      "localization_source": "entity-prompts"
+    },
+    "The Thing": {
+      "top_layer": 2,
+      "top_neuron": 3955,
+      "top1": 162966.515625,
+      "topk_mean": 1673.4306640625,
+      "randk_mean": 10.916339874267578,
+      "localization_source": "entity-prompts"
+    },
+    "Billy Joel": {
+      "top_layer": 2,
+      "top_neuron": 8277,
+      "top1": 483948.46875,
+      "topk_mean": 3491.96728515625,
+      "randk_mean": 3.579162120819092,
+      "localization_source": "entity-prompts"
+    },
+    "King Arthur": {
+      "top_layer": 2,
+      "top_neuron": 4534,
+      "top1": 58512.22265625,
+      "topk_mean": 2147.00244140625,
+      "randk_mean": 6.597970485687256,
+      "localization_source": "entity-prompts"
+    },
+    "Jordan": {
+      "top_layer": 2,
+      "top_neuron": 1661,
+      "top1": 36898.453125,
+      "topk_mean": 1291.622802734375,
+      "randk_mean": 3.2164788246154785,
+      "localization_source": "entity-prompts"
+    },
+    "Boston": {
+      "top_layer": 3,
+      "top_neuron": 18601,
+      "top1": 16382.71875,
+      "topk_mean": 280.628173828125,
+      "randk_mean": 1.0364269018173218,
+      "localization_source": "entity-prompts"
+    },
+    "Krishna": {
+      "top_layer": 3,
+      "top_neuron": 12927,
+      "top1": 55116.55078125,
+      "topk_mean": 383.99017333984375,
+      "randk_mean": 4.863572597503662,
+      "localization_source": "entity-prompts"
+    },
+    "Neon Genesis Evangelion": {
+      "top_layer": 2,
+      "top_neuron": 5644,
+      "top1": 33241.09765625,
+      "topk_mean": 10377.4111328125,
+      "randk_mean": 52.9031982421875,
+      "localization_source": "entity-prompts"
+    },
+    "Philadelphia": {
+      "top_layer": 1,
+      "top_neuron": 8853,
+      "top1": 20899.158203125,
+      "topk_mean": 1069.6666259765625,
+      "randk_mean": 15.233291625976562,
+      "localization_source": "entity-prompts"
+    },
+    "El Salvador": {
+      "top_layer": 1,
+      "top_neuron": 2281,
+      "top1": 108585.5546875,
+      "topk_mean": 3097.40283203125,
+      "randk_mean": 155.4373779296875,
+      "localization_source": "entity-prompts"
+    },
+    "The Terminal": {
+      "top_layer": 2,
+      "top_neuron": 16927,
+      "top1": 49249.87890625,
+      "topk_mean": 752.9740600585938,
+      "randk_mean": 1.5760689973831177,
+      "localization_source": "entity-prompts"
+    },
+    "Lost": {
+      "top_layer": 1,
+      "top_neuron": 5217,
+      "top1": 25797.25390625,
+      "topk_mean": 653.5029296875,
+      "randk_mean": 4.025694847106934,
+      "localization_source": "entity-prompts"
+    },
+    "Stockholm": {
+      "top_layer": 5,
+      "top_neuron": 14077,
+      "top1": 47020.375,
+      "topk_mean": 304.5838623046875,
+      "randk_mean": 3.1150364875793457,
+      "localization_source": "entity-prompts"
+    },
+    "Suits": {
+      "top_layer": 2,
+      "top_neuron": 9620,
+      "top1": 23845.87109375,
+      "topk_mean": 2553.27587890625,
+      "randk_mean": 0.9436818957328796,
+      "localization_source": "entity-prompts"
+    },
+    "James VI and I": {
+      "top_layer": 22,
+      "top_neuron": 14290,
+      "top1": 2758.671630859375,
+      "topk_mean": 171.03314208984375,
+      "randk_mean": 3.2970471382141113,
+      "localization_source": "entity-prompts"
+    },
+    "Back to the Future": {
+      "top_layer": 1,
+      "top_neuron": 7360,
+      "top1": 12974.1689453125,
+      "topk_mean": 1168.8922119140625,
+      "randk_mean": 8.529953956604004,
+      "localization_source": "entity-prompts"
+    },
+    "Saw": {
+      "top_layer": 1,
+      "top_neuron": 10896,
+      "top1": 33115.4296875,
+      "topk_mean": 1299.4884033203125,
+      "randk_mean": 6.920875549316406,
+      "localization_source": "entity-prompts"
+    },
+    "L\u00e9on: The Professional": {
+      "top_layer": 2,
+      "top_neuron": 9734,
+      "top1": 218518.25,
+      "topk_mean": 2670.30029296875,
+      "randk_mean": 1.4697723388671875,
+      "localization_source": "entity-prompts"
+    },
+    "Mark Twain": {
+      "top_layer": 1,
+      "top_neuron": 11338,
+      "top1": 126049.1171875,
+      "topk_mean": 4246.92236328125,
+      "randk_mean": 33.5732536315918,
+      "localization_source": "entity-prompts"
+    },
+    "Babylon": {
+      "top_layer": 3,
+      "top_neuron": 11790,
+      "top1": 3569.99609375,
+      "topk_mean": 162.3108673095703,
+      "randk_mean": 2.091562032699585,
+      "localization_source": "entity-prompts"
+    },
+    "Atl\u00e9tico de Madrid": {
+      "top_layer": 2,
+      "top_neuron": 10473,
+      "top1": 344082.875,
+      "topk_mean": 5560.84619140625,
+      "randk_mean": 35.21552276611328,
+      "localization_source": "entity-prompts"
+    },
+    "The Departed": {
+      "top_layer": 2,
+      "top_neuron": 11707,
+      "top1": 25783.607421875,
+      "topk_mean": 4679.16943359375,
+      "randk_mean": 10.371599197387695,
+      "localization_source": "entity-prompts"
+    },
+    "Peru": {
+      "top_layer": 2,
+      "top_neuron": 17476,
+      "top1": 110691.6640625,
+      "topk_mean": 3430.798828125,
+      "randk_mean": 5.5668511390686035,
+      "localization_source": "entity-prompts"
+    },
+    "Seven": {
+      "top_layer": 2,
+      "top_neuron": 9649,
+      "top1": 28796.189453125,
+      "topk_mean": 1624.534423828125,
+      "randk_mean": 1.3474379777908325,
+      "localization_source": "entity-prompts"
+    },
+    "Paul": {
+      "top_layer": 1,
+      "top_neuron": 18738,
+      "top1": 50091.4765625,
+      "topk_mean": 347.500732421875,
+      "randk_mean": 6.503241062164307,
+      "localization_source": "entity-prompts"
+    },
+    "Let It Be": {
+      "top_layer": 4,
+      "top_neuron": 12105,
+      "top1": 13260.634765625,
+      "topk_mean": 1235.53759765625,
+      "randk_mean": 9.502211570739746,
+      "localization_source": "entity-prompts"
+    },
+    "Budapest": {
+      "top_layer": 3,
+      "top_neuron": 10222,
+      "top1": 72820.7734375,
+      "topk_mean": 253.2843780517578,
+      "randk_mean": 0.4556911587715149,
+      "localization_source": "entity-prompts"
+    },
+    "Beloved": {
+      "top_layer": 1,
+      "top_neuron": 7245,
+      "top1": 73733.109375,
+      "topk_mean": 2001.4234619140625,
+      "randk_mean": 23.073801040649414,
+      "localization_source": "entity-prompts"
+    },
+    "Aliens": {
+      "top_layer": 3,
+      "top_neuron": 10404,
+      "top1": 12775.2451171875,
+      "topk_mean": 386.52203369140625,
+      "randk_mean": 0.9822761416435242,
+      "localization_source": "entity-prompts"
+    },
+    "Carrie": {
+      "top_layer": 3,
+      "top_neuron": 18279,
+      "top1": 31146.24609375,
+      "topk_mean": 556.5281982421875,
+      "randk_mean": 1.2165840864181519,
+      "localization_source": "entity-prompts"
+    },
+    "Apollo": {
+      "top_layer": 4,
+      "top_neuron": 2802,
+      "top1": 469.0503845214844,
+      "topk_mean": 155.7406768798828,
+      "randk_mean": 1.6396766901016235,
+      "localization_source": "entity-prompts"
+    },
+    "19": {
+      "top_layer": 27,
+      "top_neuron": 15812,
+      "top1": 90035.265625,
+      "topk_mean": 35171.4765625,
+      "randk_mean": 21.447195053100586,
+      "localization_source": "entity-prompts"
+    },
+    "Grease": {
+      "top_layer": 2,
+      "top_neuron": 10749,
+      "top1": 181133.375,
+      "topk_mean": 3127.374267578125,
+      "randk_mean": 34.57323455810547,
+      "localization_source": "entity-prompts"
+    },
+    "Aung San Suu Kyi": {
+      "top_layer": 2,
+      "top_neuron": 3507,
+      "top1": 245075.15625,
+      "topk_mean": 51067.16015625,
+      "randk_mean": 82.1275634765625,
+      "localization_source": "entity-prompts"
+    },
+    "Barcelona": {
+      "top_layer": 3,
+      "top_neuron": 13144,
+      "top1": 18735.380859375,
+      "topk_mean": 287.75445556640625,
+      "randk_mean": 0.3270007073879242,
+      "localization_source": "entity-prompts"
+    },
+    "The Ring": {
+      "top_layer": 2,
+      "top_neuron": 14458,
+      "top1": 10095.787109375,
+      "topk_mean": 527.7510986328125,
+      "randk_mean": 1.975264310836792,
+      "localization_source": "entity-prompts"
+    },
+    "Empire of Japan": {
+      "top_layer": 1,
+      "top_neuron": 7726,
+      "top1": 56571.36328125,
+      "topk_mean": 1406.228759765625,
+      "randk_mean": 32.4808464050293,
+      "localization_source": "entity-prompts"
+    },
+    "Confederate States of America": {
+      "top_layer": 1,
+      "top_neuron": 15749,
+      "top1": 14106.46875,
+      "topk_mean": 3100.599609375,
+      "randk_mean": 49.49423599243164,
+      "localization_source": "entity-prompts"
+    },
+    "Rent": {
+      "top_layer": 2,
+      "top_neuron": 11038,
+      "top1": 39760.21484375,
+      "topk_mean": 433.8016052246094,
+      "randk_mean": 6.016117572784424,
+      "localization_source": "entity-prompts"
+    },
+    "The Social Network": {
+      "top_layer": 2,
+      "top_neuron": 804,
+      "top1": 232276.671875,
+      "topk_mean": 1861.9349365234375,
+      "randk_mean": 13.357542037963867,
+      "localization_source": "entity-prompts"
+    },
+    "Vienna": {
+      "top_layer": 4,
+      "top_neuron": 10645,
+      "top1": 8351.3349609375,
+      "topk_mean": 778.5899047851562,
+      "randk_mean": 3.4243311882019043,
+      "localization_source": "entity-prompts"
+    },
+    "Al Gore": {
+      "top_layer": 1,
+      "top_neuron": 11620,
+      "top1": 1087909.625,
+      "topk_mean": 17118.8203125,
+      "randk_mean": 215.61013793945312,
+      "localization_source": "entity-prompts"
+    },
+    "Toy Story": {
+      "top_layer": 3,
+      "top_neuron": 2434,
+      "top1": 129676.3984375,
+      "topk_mean": 2595.515625,
+      "randk_mean": 7.260556697845459,
+      "localization_source": "entity-prompts"
+    },
+    "Johann Sebastian Bach": {
+      "top_layer": 4,
+      "top_neuron": 11153,
+      "top1": 25108.330078125,
+      "topk_mean": 1718.251220703125,
+      "randk_mean": 8.196858406066895,
+      "localization_source": "entity-prompts"
+    },
+    "Troy": {
+      "top_layer": 2,
+      "top_neuron": 17460,
+      "top1": 121009.6015625,
+      "topk_mean": 3541.151123046875,
+      "randk_mean": 2.76253080368042,
+      "localization_source": "entity-prompts"
+    },
+    "Frozen": {
+      "top_layer": 2,
+      "top_neuron": 16115,
+      "top1": 13692.9013671875,
+      "topk_mean": 677.843017578125,
+      "randk_mean": 3.4213650226593018,
+      "localization_source": "entity-prompts"
+    },
+    "Melbourne": {
+      "top_layer": 1,
+      "top_neuron": 5250,
+      "top1": 136281.015625,
+      "topk_mean": 1003.61328125,
+      "randk_mean": 19.154109954833984,
+      "localization_source": "entity-prompts"
+    },
+    "Houston": {
+      "top_layer": 1,
+      "top_neuron": 11316,
+      "top1": 218114.015625,
+      "topk_mean": 722.7205810546875,
+      "randk_mean": 26.363445281982422,
+      "localization_source": "entity-prompts"
+    },
+    "The Challenge": {
+      "top_layer": 27,
+      "top_neuron": 16856,
+      "top1": 18787.173828125,
+      "topk_mean": 4831.9541015625,
+      "randk_mean": 1.7375004291534424,
+      "localization_source": "entity-prompts"
+    },
+    "Prague": {
+      "top_layer": 3,
+      "top_neuron": 14586,
+      "top1": 26567.16796875,
+      "topk_mean": 384.9306640625,
+      "randk_mean": 0.5889948606491089,
+      "localization_source": "entity-prompts"
+    },
+    "Thor": {
+      "top_layer": 4,
+      "top_neuron": 6521,
+      "top1": 12766.7734375,
+      "topk_mean": 826.1583251953125,
+      "randk_mean": 3.0928943157196045,
+      "localization_source": "entity-prompts"
+    },
+    "Peter": {
+      "top_layer": 2,
+      "top_neuron": 13512,
+      "top1": 60311.71875,
+      "topk_mean": 640.4771118164062,
+      "randk_mean": 2.182112216949463,
+      "localization_source": "entity-prompts"
+    },
+    "David": {
+      "top_layer": 2,
+      "top_neuron": 13244,
+      "top1": 23279.392578125,
+      "topk_mean": 607.5927734375,
+      "randk_mean": 4.380648136138916,
+      "localization_source": "entity-prompts"
+    },
+    "Oasis": {
+      "top_layer": 3,
+      "top_neuron": 13059,
+      "top1": 11646.59375,
+      "topk_mean": 735.5311279296875,
+      "randk_mean": 8.263557434082031,
+      "localization_source": "entity-prompts"
+    },
+    "Milan": {
+      "top_layer": 2,
+      "top_neuron": 13790,
+      "top1": 22784.287109375,
+      "topk_mean": 2666.84423828125,
+      "randk_mean": 4.224809646606445,
+      "localization_source": "entity-prompts"
+    },
+    "Dublin": {
+      "top_layer": 2,
+      "top_neuron": 11470,
+      "top1": 24897.890625,
+      "topk_mean": 1648.2327880859375,
+      "randk_mean": 7.8658952713012695,
+      "localization_source": "entity-prompts"
+    },
+    "Cars": {
+      "top_layer": 1,
+      "top_neuron": 18321,
+      "top1": 12764.142578125,
+      "topk_mean": 493.8685607910156,
+      "randk_mean": 9.613831520080566,
+      "localization_source": "entity-prompts"
+    },
+    "Roman Republic": {
+      "top_layer": 1,
+      "top_neuron": 6083,
+      "top1": 46604.38671875,
+      "topk_mean": 977.7567138671875,
+      "randk_mean": 25.919635772705078,
+      "localization_source": "entity-prompts"
+    },
+    "Iron Man": {
+      "top_layer": 1,
+      "top_neuron": 16367,
+      "top1": 83854.109375,
+      "topk_mean": 2188.945556640625,
+      "randk_mean": 15.108137130737305,
+      "localization_source": "entity-prompts"
+    },
+    "Flight": {
+      "top_layer": 2,
+      "top_neuron": 2518,
+      "top1": 11158.1708984375,
+      "topk_mean": 1151.0694580078125,
+      "randk_mean": 4.066127300262451,
+      "localization_source": "entity-prompts"
+    },
+    "Mali": {
+      "top_layer": 3,
+      "top_neuron": 10631,
+      "top1": 48112.08984375,
+      "topk_mean": 1388.1082763671875,
+      "randk_mean": 1.8093757629394531,
+      "localization_source": "entity-prompts"
+    },
+    "Happy Birthday to You": {
+      "top_layer": 1,
+      "top_neuron": 15841,
+      "top1": 8371.54296875,
+      "topk_mean": 2749.47607421875,
+      "randk_mean": 4.836568355560303,
+      "localization_source": "entity-prompts"
+    },
+    "Manila": {
+      "top_layer": 1,
+      "top_neuron": 9093,
+      "top1": 15546.548828125,
+      "topk_mean": 1380.04736328125,
+      "randk_mean": 18.65984535217285,
+      "localization_source": "entity-prompts"
+    },
+    "Final Destination": {
+      "top_layer": 2,
+      "top_neuron": 12738,
+      "top1": 63562.6171875,
+      "topk_mean": 848.5833740234375,
+      "randk_mean": 14.375073432922363,
+      "localization_source": "entity-prompts"
+    },
+    "It": {
+      "top_layer": 22,
+      "top_neuron": 15599,
+      "top1": 4820.80712890625,
+      "topk_mean": 252.05154418945312,
+      "randk_mean": 0.14353781938552856,
+      "localization_source": "entity-prompts"
+    },
+    "The Village": {
+      "top_layer": 1,
+      "top_neuron": 14056,
+      "top1": 28019.72265625,
+      "topk_mean": 761.2026977539062,
+      "randk_mean": 15.0618314743042,
+      "localization_source": "entity-prompts"
+    },
+    "The Holiday": {
+      "top_layer": 1,
+      "top_neuron": 2834,
+      "top1": 133053.65625,
+      "topk_mean": 1325.5634765625,
+      "randk_mean": 11.455865859985352,
+      "localization_source": "entity-prompts"
+    },
+    "The Fog": {
+      "top_layer": 1,
+      "top_neuron": 10964,
+      "top1": 200783.40625,
+      "topk_mean": 4104.48828125,
+      "randk_mean": 13.384140014648438,
+      "localization_source": "entity-prompts"
+    },
+    "The Prestige": {
+      "top_layer": 1,
+      "top_neuron": 1538,
+      "top1": 133413.734375,
+      "topk_mean": 4684.564453125,
+      "randk_mean": 69.67497253417969,
+      "localization_source": "entity-prompts"
+    },
+    "The Omen": {
+      "top_layer": 3,
+      "top_neuron": 5504,
+      "top1": 80909.046875,
+      "topk_mean": 2724.74951171875,
+      "randk_mean": 6.016390323638916,
+      "localization_source": "entity-prompts"
+    },
+    "Phoenix": {
+      "top_layer": 1,
+      "top_neuron": 11122,
+      "top1": 146337.1875,
+      "topk_mean": 1066.5853271484375,
+      "randk_mean": 11.295502662658691,
+      "localization_source": "entity-prompts"
+    },
+    "Republic of China 1912\u20131949": {
+      "top_layer": 1,
+      "top_neuron": 10980,
+      "top1": 25410.611328125,
+      "topk_mean": 3431.65478515625,
+      "randk_mean": 2.253999710083008,
+      "localization_source": "entity-prompts"
+    },
+    "E.T. the Extra-Terrestrial": {
+      "top_layer": 1,
+      "top_neuron": 4102,
+      "top1": 170241.515625,
+      "topk_mean": 5972.6171875,
+      "randk_mean": 30.122283935546875,
+      "localization_source": "entity-prompts"
+    },
+    "Pittsburgh": {
+      "top_layer": 1,
+      "top_neuron": 8853,
+      "top1": 235136.90625,
+      "topk_mean": 1832.9840087890625,
+      "randk_mean": 20.119853973388672,
+      "localization_source": "entity-prompts"
+    },
+    "Dallas": {
+      "top_layer": 3,
+      "top_neuron": 3153,
+      "top1": 35375.796875,
+      "topk_mean": 207.58804321289062,
+      "randk_mean": 0.5925177931785583,
+      "localization_source": "entity-prompts"
+    },
+    "Rama": {
+      "top_layer": 2,
+      "top_neuron": 12268,
+      "top1": 85883.84375,
+      "topk_mean": 10572.083984375,
+      "randk_mean": 3.845932722091675,
+      "localization_source": "entity-prompts"
+    },
+    "James Madison": {
+      "top_layer": 2,
+      "top_neuron": 3867,
+      "top1": 147254.1875,
+      "topk_mean": 2799.208251953125,
+      "randk_mean": 5.288440227508545,
+      "localization_source": "entity-prompts"
+    },
+    "Rumi": {
+      "top_layer": 2,
+      "top_neuron": 6292,
+      "top1": 70148.6875,
+      "topk_mean": 29108.69921875,
+      "randk_mean": 69.28680419921875,
+      "localization_source": "entity-prompts"
+    },
+    "White House": {
+      "top_layer": 1,
+      "top_neuron": 18670,
+      "top1": 217941.40625,
+      "topk_mean": 5599.2138671875,
+      "randk_mean": 35.89506530761719,
+      "localization_source": "entity-prompts"
+    },
+    "They Live": {
+      "top_layer": 0,
+      "top_neuron": 4923,
+      "top1": 8084.24951171875,
+      "topk_mean": 635.2202758789062,
+      "randk_mean": 4.811005592346191,
+      "localization_source": "entity-prompts"
+    },
+    "Al\u012b ibn Ab\u012b \u1e6c\u0101lib": {
+      "top_layer": 2,
+      "top_neuron": 13369,
+      "top1": 46969.40625,
+      "topk_mean": 21902.890625,
+      "randk_mean": 53.32927703857422,
+      "localization_source": "entity-prompts"
+    },
+    "Ghost": {
+      "top_layer": 1,
+      "top_neuron": 4299,
+      "top1": 101730.78125,
+      "topk_mean": 878.0386962890625,
+      "randk_mean": 3.0402214527130127,
+      "localization_source": "entity-prompts"
+    },
+    "Carl Linnaeus": {
+      "top_layer": 2,
+      "top_neuron": 460,
+      "top1": 57578.84765625,
+      "topk_mean": 22662.42578125,
+      "randk_mean": 191.26998901367188,
+      "localization_source": "entity-prompts"
+    },
+    "Drive": {
+      "top_layer": 1,
+      "top_neuron": 13914,
+      "top1": 10648.8408203125,
+      "topk_mean": 1189.7152099609375,
+      "randk_mean": 4.025868892669678,
+      "localization_source": "entity-prompts"
+    },
+    "Helen of Troy": {
+      "top_layer": 2,
+      "top_neuron": 17460,
+      "top1": 172262.078125,
+      "topk_mean": 5736.89404296875,
+      "randk_mean": 23.481918334960938,
+      "localization_source": "entity-prompts"
+    },
+    "Training Day": {
+      "top_layer": 2,
+      "top_neuron": 12716,
+      "top1": 5273.84228515625,
+      "topk_mean": 3065.906005859375,
+      "randk_mean": 5.177416801452637,
+      "localization_source": "entity-prompts"
+    },
+    "The Band": {
+      "top_layer": 1,
+      "top_neuron": 6240,
+      "top1": 4228.4931640625,
+      "topk_mean": 1124.6910400390625,
+      "randk_mean": 1.9310001134872437,
+      "localization_source": "entity-prompts"
+    },
+    "Bertrand Russell": {
+      "top_layer": 3,
+      "top_neuron": 15419,
+      "top1": 82233.4609375,
+      "topk_mean": 1520.5341796875,
+      "randk_mean": 2.6452834606170654,
+      "localization_source": "entity-prompts"
+    },
+    "Ganesha": {
+      "top_layer": 2,
+      "top_neuron": 8157,
+      "top1": 61315.65234375,
+      "topk_mean": 8259.390625,
+      "randk_mean": 59.312889099121094,
+      "localization_source": "entity-prompts"
+    },
+    "Scooby-Doo": {
+      "top_layer": 3,
+      "top_neuron": 14434,
+      "top1": 352792.15625,
+      "topk_mean": 6325.81787109375,
+      "randk_mean": 27.031635284423828,
+      "localization_source": "entity-prompts"
+    },
+    "Cape Town": {
+      "top_layer": 1,
+      "top_neuron": 1385,
+      "top1": 19810.125,
+      "topk_mean": 4845.93701171875,
+      "randk_mean": 39.064048767089844,
+      "localization_source": "entity-prompts"
+    },
+    "Rocky": {
+      "top_layer": 3,
+      "top_neuron": 6169,
+      "top1": 15211.7919921875,
+      "topk_mean": 679.5355224609375,
+      "randk_mean": 2.3499183654785156,
+      "localization_source": "entity-prompts"
+    },
+    "Into the Wild": {
+      "top_layer": 1,
+      "top_neuron": 8382,
+      "top1": 71957.109375,
+      "topk_mean": 1339.376220703125,
+      "randk_mean": 18.953121185302734,
+      "localization_source": "entity-prompts"
+    },
+    "Heart": {
+      "top_layer": 1,
+      "top_neuron": 17053,
+      "top1": 27186.16796875,
+      "topk_mean": 797.3486328125,
+      "randk_mean": 12.547652244567871,
+      "localization_source": "entity-prompts"
+    },
+    "The Fly": {
+      "top_layer": 2,
+      "top_neuron": 10777,
+      "top1": 14595.1484375,
+      "topk_mean": 1496.750732421875,
+      "randk_mean": 9.73509407043457,
+      "localization_source": "entity-prompts"
+    },
+    "Rio de Janeiro": {
+      "top_layer": 5,
+      "top_neuron": 2150,
+      "top1": 9001.05078125,
+      "topk_mean": 833.3390502929688,
+      "randk_mean": 0.868840217590332,
+      "localization_source": "entity-prompts"
+    },
+    "Power": {
+      "top_layer": 2,
+      "top_neuron": 983,
+      "top1": 6138.15673828125,
+      "topk_mean": 720.5772705078125,
+      "randk_mean": 4.83038330078125,
+      "localization_source": "entity-prompts"
+    },
+    "Battlefield": {
+      "top_layer": 2,
+      "top_neuron": 10945,
+      "top1": 25110.74609375,
+      "topk_mean": 747.4173583984375,
+      "randk_mean": 8.709005355834961,
+      "localization_source": "entity-prompts"
+    },
+    "Up": {
+      "top_layer": 0,
+      "top_neuron": 3148,
+      "top1": 6227.18017578125,
+      "topk_mean": 408.9947814941406,
+      "randk_mean": 0.15482595562934875,
+      "localization_source": "entity-prompts"
+    },
+    "The Birds": {
+      "top_layer": 2,
+      "top_neuron": 8054,
+      "top1": 42418.578125,
+      "topk_mean": 834.7191162109375,
+      "randk_mean": 9.05033016204834,
+      "localization_source": "entity-prompts"
+    },
+    "The Graduate": {
+      "top_layer": 2,
+      "top_neuron": 17192,
+      "top1": 22568.70703125,
+      "topk_mean": 1072.582275390625,
+      "randk_mean": 3.515434980392456,
+      "localization_source": "entity-prompts"
+    },
+    "Legend": {
+      "top_layer": 3,
+      "top_neuron": 5050,
+      "top1": 11469.6767578125,
+      "topk_mean": 90.5966567993164,
+      "randk_mean": 2.171710968017578,
+      "localization_source": "entity-prompts"
+    },
+    "Florence": {
+      "top_layer": 1,
+      "top_neuron": 10577,
+      "top1": 41369.51953125,
+      "topk_mean": 994.0982666015625,
+      "randk_mean": 3.634841203689575,
+      "localization_source": "entity-prompts"
+    },
+    "Nine Inch Nails": {
+      "top_layer": 2,
+      "top_neuron": 16180,
+      "top1": 20503.072265625,
+      "topk_mean": 3524.380126953125,
+      "randk_mean": 12.658205032348633,
+      "localization_source": "entity-prompts"
+    },
+    "Jesus in Islam": {
+      "top_layer": 1,
+      "top_neuron": 5588,
+      "top1": 205174.078125,
+      "topk_mean": 1883.5023193359375,
+      "randk_mean": 2.4332361221313477,
+      "localization_source": "entity-prompts"
+    },
+    "Ronan Farrow": {
+      "top_layer": 2,
+      "top_neuron": 15899,
+      "top1": 46751.19140625,
+      "topk_mean": 19743.48046875,
+      "randk_mean": 27.930355072021484,
+      "localization_source": "entity-prompts"
+    },
+    "Jacob": {
+      "top_layer": 1,
+      "top_neuron": 4,
+      "top1": 26154.263671875,
+      "topk_mean": 929.8786010742188,
+      "randk_mean": 15.412683486938477,
+      "localization_source": "entity-prompts"
+    },
+    "Brussels Capital Region": {
+      "top_layer": 3,
+      "top_neuron": 13973,
+      "top1": 13283.2138671875,
+      "topk_mean": 2245.1904296875,
+      "randk_mean": 4.9160614013671875,
+      "localization_source": "entity-prompts"
+    },
+    "T.\u00a0S. Eliot": {
+      "top_layer": 1,
+      "top_neuron": 12920,
+      "top1": 287781.25,
+      "topk_mean": 9728.88671875,
+      "randk_mean": 9.520434379577637,
+      "localization_source": "entity-prompts"
+    },
+    "The Mist": {
+      "top_layer": 2,
+      "top_neuron": 13859,
+      "top1": 83454.2890625,
+      "topk_mean": 2654.842529296875,
+      "randk_mean": 3.808440685272217,
+      "localization_source": "entity-prompts"
+    },
+    "Mary, Princess Royal and Countess of Harewood": {
+      "top_layer": 1,
+      "top_neuron": 2422,
+      "top1": 72873.421875,
+      "topk_mean": 5747.99853515625,
+      "randk_mean": 78.08454132080078,
+      "localization_source": "entity-prompts"
+    },
+    "Turin": {
+      "top_layer": 3,
+      "top_neuron": 18612,
+      "top1": 32378.796875,
+      "topk_mean": 787.0639038085938,
+      "randk_mean": 4.124110221862793,
+      "localization_source": "entity-prompts"
+    },
+    "Chris Jericho": {
+      "top_layer": 3,
+      "top_neuron": 8819,
+      "top1": 73583.296875,
+      "topk_mean": 3294.163330078125,
+      "randk_mean": 36.60321044921875,
+      "localization_source": "entity-prompts"
+    },
+    "Inside Out": {
+      "top_layer": 2,
+      "top_neuron": 7023,
+      "top1": 45437.90625,
+      "topk_mean": 2826.25927734375,
+      "randk_mean": 26.932537078857422,
+      "localization_source": "entity-prompts"
+    },
+    "Vajiralongkorn": {
+      "top_layer": 2,
+      "top_neuron": 3566,
+      "top1": 78219.71875,
+      "topk_mean": 12522.1982421875,
+      "randk_mean": 161.53570556640625,
+      "localization_source": "entity-prompts"
+    },
+    "Kuala Lumpur": {
+      "top_layer": 3,
+      "top_neuron": 2420,
+      "top1": 7702.2421875,
+      "topk_mean": 1113.013427734375,
+      "randk_mean": 1.279478669166565,
+      "localization_source": "entity-prompts"
+    },
+    "Alexandria": {
+      "top_layer": 2,
+      "top_neuron": 9910,
+      "top1": 32295.486328125,
+      "topk_mean": 454.5464782714844,
+      "randk_mean": 3.8232169151306152,
+      "localization_source": "entity-prompts"
+    }
+  }
+}

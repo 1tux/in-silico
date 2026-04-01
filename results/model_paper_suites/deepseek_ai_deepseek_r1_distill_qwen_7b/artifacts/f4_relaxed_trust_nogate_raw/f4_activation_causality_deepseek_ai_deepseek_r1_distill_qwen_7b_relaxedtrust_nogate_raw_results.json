@@ -1,0 +1,533 @@
+{
+  "model": "deepseek-ai/DeepSeek-R1-Distill-Qwen-7B",
+  "prompt_style": "raw",
+  "dataset": "akariasai/PopQA",
+  "split": "test",
+  "n_entities_requested": 200,
+  "n_entities_candidate": 200,
+  "n_entities_localized": 5,
+  "n_entities_used": 5,
+  "n_examples": 10,
+  "require_entity_passk": false,
+  "entity_present_passk_summary": {
+    "pass_k": 5,
+    "n_total_examples": 10,
+    "n_correct_examples": 0,
+    "rate": 0.0,
+    "n_examples_after_filter": 10
+  },
+  "min_dominance": 2.0,
+  "trustworthy_only": true,
+  "pass_k": 5,
+  "trust_thresholds": {
+    "min_dominance": 5.0,
+    "min_loss": 0.005,
+    "min_layer": 0,
+    "max_layer": 6,
+    "min_ablated_prob": 0.0,
+    "max_relative_prob": 5.0
+  },
+  "injection_scale": 1.0,
+  "topk": 5,
+  "alpha_search": true,
+  "alpha_grid": [
+    1.0,
+    2.0,
+    4.0,
+    8.0,
+    16.0,
+    32.0,
+    64.0,
+    128.0,
+    200.0
+  ],
+  "success_thresholds": {
+    "min_relprob": 0.3,
+    "min_over_wrong": 0.05,
+    "min_over_baseline": 0.05
+  },
+  "fixed_injection_value": null,
+  "injection_mode": "add",
+  "mean_entity_init": true,
+  "known_neurons_file": null,
+  "use_known_only": false,
+  "localization_results_file": "results/model_paper_suites/deepseek_ai_deepseek_r1_distill_qwen_7b/artifacts/f2/f2_popqa_popular_200_deepseek_ai_deepseek_r1_distill_qwen_7b.json",
+  "unlearning_results_file": "results/model_paper_suites/deepseek_ai_deepseek_r1_distill_qwen_7b/artifacts/f6_popqa/f6_popqa_validation_deepseek_ai_deepseek_r1_distill_qwen_7b.json",
+  "entities_used": [
+    "Beloved",
+    "Johann Sebastian Bach",
+    "Kuala Lumpur",
+    "New York City",
+    "The Prestige"
+  ],
+  "entity_top": {
+    "New York City": {
+      "layer": 1,
+      "neuron": 1139,
+      "dominance": 30.27402487310212,
+      "aliases": [
+        "New York City"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 1139,
+          "score": 263.25,
+          "inject_value": -0.4482421875
+        },
+        {
+          "neuron": 15761,
+          "score": 29184.0,
+          "inject_value": -0.00040721893310546875
+        },
+        {
+          "neuron": 7366,
+          "score": 26736.0,
+          "inject_value": 0.0003032684326171875
+        },
+        {
+          "neuron": 3732,
+          "score": 24848.0,
+          "inject_value": 0.47021484375
+        },
+        {
+          "neuron": 12683,
+          "score": 19088.0,
+          "inject_value": -0.0004444122314453125
+        }
+      ],
+      "inject_value": -0.4482421875
+    },
+    "Beloved": {
+      "layer": 1,
+      "neuron": 7245,
+      "dominance": 36.84033428112475,
+      "aliases": [
+        "Beloved"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 7245,
+          "score": 2222.0,
+          "inject_value": 0.126953125
+        },
+        {
+          "neuron": 8179,
+          "score": 37920.0,
+          "inject_value": -0.0031890869140625
+        },
+        {
+          "neuron": 14531,
+          "score": 25008.0,
+          "inject_value": -4.351139068603516e-06
+        },
+        {
+          "neuron": 3926,
+          "score": 20528.0,
+          "inject_value": -0.0001773834228515625
+        },
+        {
+          "neuron": 14937,
+          "score": 20400.0,
+          "inject_value": 0.0005884170532226562
+        }
+      ],
+      "inject_value": 0.126953125
+    },
+    "Johann Sebastian Bach": {
+      "layer": 4,
+      "neuron": 11153,
+      "dominance": 14.612723550314389,
+      "aliases": [
+        "Johann Sebastian Bach"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 11153,
+          "score": 65.8125,
+          "inject_value": -0.27880859375
+        },
+        {
+          "neuron": 4927,
+          "score": 61856.0,
+          "inject_value": 0.67919921875
+        },
+        {
+          "neuron": 7956,
+          "score": 58368.0,
+          "inject_value": 0.00262451171875
+        },
+        {
+          "neuron": 6398,
+          "score": 37472.0,
+          "inject_value": -0.007110595703125
+        },
+        {
+          "neuron": 18619,
+          "score": 25504.0,
+          "inject_value": 0.031890869140625
+        }
+      ],
+      "inject_value": -0.27880859375
+    },
+    "The Prestige": {
+      "layer": 1,
+      "neuron": 1538,
+      "dominance": 28.479431910900868,
+      "aliases": [
+        "The Prestige"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 1538,
+          "score": 0.0,
+          "inject_value": -14.7890625
+        },
+        {
+          "neuron": 13882,
+          "score": 26304.0,
+          "inject_value": -0.00047779083251953125
+        },
+        {
+          "neuron": 7834,
+          "score": 26080.0,
+          "inject_value": 0.0003509521484375
+        },
+        {
+          "neuron": 13034,
+          "score": 22800.0,
+          "inject_value": -0.0005922317504882812
+        },
+        {
+          "neuron": 3537,
+          "score": 19040.0,
+          "inject_value": -0.0004572868347167969
+        }
+      ],
+      "inject_value": -14.7890625
+    },
+    "Kuala Lumpur": {
+      "layer": 3,
+      "neuron": 2420,
+      "dominance": 6.920170049680811,
+      "aliases": [
+        "Kuala Lumpur"
+      ],
+      "source": "precomputed",
+      "cells": [
+        {
+          "neuron": 2420,
+          "score": 0.0,
+          "inject_value": -9.3984375
+        },
+        {
+          "neuron": 14718,
+          "score": 65472.0,
+          "inject_value": 0.001922607421875
+        },
+        {
+          "neuron": 17924,
+          "score": 65472.0,
+          "inject_value": 0.0016107559204101562
+        },
+        {
+          "neuron": 17564,
+          "score": 65472.0,
+          "inject_value": -0.004405975341796875
+        },
+        {
+          "neuron": 5901,
+          "score": 65472.0,
+          "inject_value": 0.00066375732421875
+        }
+      ],
+      "inject_value": -9.3984375
+    }
+  },
+  "per_entity": {
+    "Beloved": {
+      "layer": 1,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 1,
+          "neuron": 7245,
+          "score": 2222.0,
+          "inject_value": 0.126953125
+        },
+        {
+          "layer": 1,
+          "neuron": 8179,
+          "score": 37920.0,
+          "inject_value": -0.0031890869140625
+        },
+        {
+          "layer": 1,
+          "neuron": 14531,
+          "score": 25008.0,
+          "inject_value": -4.351139068603516e-06
+        },
+        {
+          "layer": 1,
+          "neuron": 3926,
+          "score": 20528.0,
+          "inject_value": -0.0001773834228515625
+        },
+        {
+          "layer": 1,
+          "neuron": 14937,
+          "score": 20400.0,
+          "inject_value": 0.0005884170532226562
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 2.0,
+      "best_relprob_top1": 0.25391849529780564,
+      "wrong_relprob_at_best_top1": 0.2601880877742947,
+      "best_alpha_topk": 1.0,
+      "best_relprob_topk": 0.25391849529780564,
+      "wrong_relprob_at_best_topk": 0.2476489028213166,
+      "baseline_relprob": 0.2664576802507837,
+      "mean_relprob": 0.25391849529780564,
+      "success_top1": false,
+      "success_topk": false,
+      "topk_needed": false
+    },
+    "Johann Sebastian Bach": {
+      "layer": 4,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 4,
+          "neuron": 11153,
+          "score": 65.8125,
+          "inject_value": -0.27880859375
+        },
+        {
+          "layer": 4,
+          "neuron": 4927,
+          "score": 61856.0,
+          "inject_value": 0.67919921875
+        },
+        {
+          "layer": 4,
+          "neuron": 7956,
+          "score": 58368.0,
+          "inject_value": 0.00262451171875
+        },
+        {
+          "layer": 4,
+          "neuron": 6398,
+          "score": 37472.0,
+          "inject_value": -0.007110595703125
+        },
+        {
+          "layer": 4,
+          "neuron": 18619,
+          "score": 25504.0,
+          "inject_value": 0.031890869140625
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 1.0,
+      "best_relprob_top1": 0.0016545585941957323,
+      "wrong_relprob_at_best_top1": 0.0008558061694115858,
+      "best_alpha_topk": 1.0,
+      "best_relprob_topk": 0.0016545585941957323,
+      "wrong_relprob_at_best_topk": 0.0008653151268494922,
+      "baseline_relprob": 0.0007321897227188011,
+      "mean_relprob": 0.0016545585941957323,
+      "success_top1": false,
+      "success_topk": false,
+      "topk_needed": false
+    },
+    "Kuala Lumpur": {
+      "layer": 3,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 3,
+          "neuron": 2420,
+          "score": 0.0,
+          "inject_value": -9.3984375
+        },
+        {
+          "layer": 3,
+          "neuron": 14718,
+          "score": 65472.0,
+          "inject_value": 0.001922607421875
+        },
+        {
+          "layer": 3,
+          "neuron": 17924,
+          "score": 65472.0,
+          "inject_value": 0.0016107559204101562
+        },
+        {
+          "layer": 3,
+          "neuron": 17564,
+          "score": 65472.0,
+          "inject_value": -0.004405975341796875
+        },
+        {
+          "layer": 3,
+          "neuron": 5901,
+          "score": 65472.0,
+          "inject_value": 0.00066375732421875
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 1.0,
+      "best_relprob_top1": 0.21481481481481482,
+      "wrong_relprob_at_best_top1": 0.2302469135802469,
+      "best_alpha_topk": 1.0,
+      "best_relprob_topk": 0.21481481481481482,
+      "wrong_relprob_at_best_topk": 0.2302469135802469,
+      "baseline_relprob": 0.2245679012345679,
+      "mean_relprob": 0.21481481481481482,
+      "success_top1": false,
+      "success_topk": false,
+      "topk_needed": false
+    },
+    "New York City": {
+      "layer": 1,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 1,
+          "neuron": 1139,
+          "score": 263.25,
+          "inject_value": -0.4482421875
+        },
+        {
+          "layer": 1,
+          "neuron": 15761,
+          "score": 29184.0,
+          "inject_value": -0.00040721893310546875
+        },
+        {
+          "layer": 1,
+          "neuron": 7366,
+          "score": 26736.0,
+          "inject_value": 0.0003032684326171875
+        },
+        {
+          "layer": 1,
+          "neuron": 3732,
+          "score": 24848.0,
+          "inject_value": 0.47021484375
+        },
+        {
+          "layer": 1,
+          "neuron": 12683,
+          "score": 19088.0,
+          "inject_value": -0.0004444122314453125
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 2.0,
+      "best_relprob_top1": 1.2584373082429945,
+      "wrong_relprob_at_best_top1": 1.2663121292697894,
+      "best_alpha_topk": 2.0,
+      "best_relprob_topk": 1.2559828185723052,
+      "wrong_relprob_at_best_topk": 1.2667212108815709,
+      "baseline_relprob": 1.2326651667007569,
+      "mean_relprob": 1.2545510329310698,
+      "success_top1": false,
+      "success_topk": false,
+      "topk_needed": false
+    },
+    "The Prestige": {
+      "layer": 1,
+      "topk": 5,
+      "cells": [
+        {
+          "layer": 1,
+          "neuron": 1538,
+          "score": 0.0,
+          "inject_value": -14.7890625
+        },
+        {
+          "layer": 1,
+          "neuron": 13882,
+          "score": 26304.0,
+          "inject_value": -0.00047779083251953125
+        },
+        {
+          "layer": 1,
+          "neuron": 7834,
+          "score": 26080.0,
+          "inject_value": 0.0003509521484375
+        },
+        {
+          "layer": 1,
+          "neuron": 13034,
+          "score": 22800.0,
+          "inject_value": -0.0005922317504882812
+        },
+        {
+          "layer": 1,
+          "neuron": 3537,
+          "score": 19040.0,
+          "inject_value": -0.0004572868347167969
+        }
+      ],
+      "n_examples": 2,
+      "best_alpha_top1": 1.0,
+      "best_relprob_top1": 1.078781512605042,
+      "wrong_relprob_at_best_top1": 0.7521008403361344,
+      "best_alpha_topk": 1.0,
+      "best_relprob_topk": 1.074579831932773,
+      "wrong_relprob_at_best_topk": 0.7521008403361344,
+      "baseline_relprob": 0.7132352941176471,
+      "mean_relprob": 1.0325630252100841,
+      "success_top1": true,
+      "success_topk": true,
+      "topk_needed": false
+    }
+  },
+  "success_summary": {
+    "n_trustworthy_entities": 5,
+    "k_success_top1": 1,
+    "k_success_topk": 1,
+    "k_topk_needed": 0,
+    "success_top1_entities": [
+      "The Prestige"
+    ],
+    "success_topk_entities": [
+      "The Prestige"
+    ],
+    "topk_needed_entities": [],
+    "topk_needed_entity_cells": {}
+  },
+  "means": {
+    "prob": [
+      9.853839874267578e-05,
+      0.00010123848915100098,
+      0.00010156035423278809,
+      0.00010133981704711914
+    ],
+    "acc": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "passk": [
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "relprob": [
+      1.0,
+      0.12485178947686407,
+      0.1282729037179129,
+      0.1286807186605545,
+      0.12840128990355934
+    ]
+  }
+}

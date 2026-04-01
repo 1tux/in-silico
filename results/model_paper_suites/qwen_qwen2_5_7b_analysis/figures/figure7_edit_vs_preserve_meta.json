@@ -1,0 +1,20 @@
+{
+  "attack_prompt_keys": [
+    "The name of the wife of Barack Obama is",
+    "When Barack Obama was president, his wife's name was",
+    "Barack Obama is married to",
+    "The spouse of Barack Obama is named"
+  ],
+  "preserve_prompt_keys": [
+    "Barack Obama was born in",
+    "The political party of Barack Obama is",
+    "Barack Obama served as the 44th",
+    "The daughters of Barack Obama are Malia and",
+    "Barack Obama's vice president was Joe",
+    "The book written by Barack Obama is titled Dreams from My"
+  ],
+  "attack_base_mean": 5.762279033660889e-05,
+  "attack_steered_mean": 0.9931640625,
+  "preserve_ratio_median": 0.9737435933787865,
+  "preserve_ratio_mean": 1.121648881766119
+}

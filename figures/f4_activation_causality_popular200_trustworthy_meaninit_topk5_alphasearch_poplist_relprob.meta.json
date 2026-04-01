@@ -1,0 +1,7 @@
+{
+  "n_entities": 131,
+  "mean_no_injection_relprob": 0.06699572258785233,
+  "mean_mean_entity_relprob": 0.06727197999544257,
+  "mean_correct_relprob": 0.558578775473457,
+  "mean_wrong_relprob": 0.07536172305012118
+}

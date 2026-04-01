@@ -1,0 +1,26 @@
+# data and results
+# NOTE: We keep paper figures/results in-repo for reproducibility.
+data/*.pt
+data/*.bin
+data/*.safetensors
+
+# OS
+.DS_Store
+
+# Scratch figures
+figures/debug_*
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+
+# notebooks
+.ipynb_checkpoints/
+
+# logs
+*.log

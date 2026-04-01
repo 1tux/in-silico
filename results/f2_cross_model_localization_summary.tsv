@@ -1,0 +1,8 @@
+model	n_entities	k_layer_le_6	pct_layer_le_6	k_dom_ge_10	pct_dom_ge_10	k_joint	pct_joint	median_layer	median_dominance
+gemma2-9b-it	200	97	0.485	156	0.780	63	0.315	7.5	29.43
+llama3-1-8b-instruct	200	67	0.335	167	0.835	61	0.305	11.0	26.01
+minq2	200	198	0.990	175	0.875	173	0.865	2.0	42.78
+mistral-7b-v03	200	72	0.360	163	0.815	46	0.230	13.0	36.26
+olmo-7b-0724	200	146	0.730	127	0.635	80	0.400	2.0	21.32
+open-llama-7b	200	86	0.430	146	0.730	48	0.240	10.0	29.70
+qwen2-5-7b-instruct	200	139	0.695	156	0.780	99	0.495	3.0	33.74

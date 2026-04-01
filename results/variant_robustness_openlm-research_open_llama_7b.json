@@ -1,0 +1,105 @@
+{
+  "model": "openlm-research/open_llama_7b",
+  "groups": {
+    "person_typos_obama": {
+      "canonical_surface_form": "Barack Obama",
+      "canonical_layer": 1,
+      "canonical_neuron": 5242,
+      "canonical_score": 17037.8671875,
+      "k_match": 1,
+      "n_variants": 4,
+      "variant_rows": [
+        {
+          "surface_form": "Barack Obama",
+          "layer": 1,
+          "neuron": 5242,
+          "score": 17037.8671875,
+          "matches_canonical": true
+        },
+        {
+          "surface_form": "Obaama",
+          "layer": 2,
+          "neuron": 10779,
+          "score": 7460.1259765625,
+          "matches_canonical": false
+        },
+        {
+          "surface_form": "Brock Obma",
+          "layer": 0,
+          "neuron": 147,
+          "score": 12169.5869140625,
+          "matches_canonical": false
+        },
+        {
+          "surface_form": "Bark Obamna",
+          "layer": 1,
+          "neuron": 575,
+          "score": 20791.86328125,
+          "matches_canonical": false
+        }
+      ]
+    },
+    "acronym_fbi": {
+      "canonical_surface_form": "Federal Bureau of Investigation",
+      "canonical_layer": 1,
+      "canonical_neuron": 2405,
+      "canonical_score": 12931.8828125,
+      "k_match": 1,
+      "n_variants": 2,
+      "variant_rows": [
+        {
+          "surface_form": "Federal Bureau of Investigation",
+          "layer": 1,
+          "neuron": 2405,
+          "score": 12931.8828125,
+          "matches_canonical": true
+        },
+        {
+          "surface_form": "FBI",
+          "layer": 0,
+          "neuron": 1971,
+          "score": 16069.6171875,
+          "matches_canonical": false
+        }
+      ]
+    },
+    "multilingual_paris": {
+      "canonical_surface_form": "Paris",
+      "canonical_layer": 1,
+      "canonical_neuron": 4422,
+      "canonical_score": 15729.3564453125,
+      "k_match": 1,
+      "n_variants": 4,
+      "variant_rows": [
+        {
+          "surface_form": "Paris",
+          "layer": 1,
+          "neuron": 4422,
+          "score": 15729.3564453125,
+          "matches_canonical": true
+        },
+        {
+          "surface_form": "פריז",
+          "layer": 0,
+          "neuron": 3879,
+          "score": 27973.326171875,
+          "matches_canonical": false
+        },
+        {
+          "surface_form": "巴黎",
+          "layer": 0,
+          "neuron": 6786,
+          "score": 21843.43359375,
+          "matches_canonical": false
+        },
+        {
+          "surface_form": "باريس",
+          "layer": 0,
+          "neuron": 3120,
+          "score": 37650.4453125,
+          "matches_canonical": false
+        }
+      ]
+    }
+  }
+}

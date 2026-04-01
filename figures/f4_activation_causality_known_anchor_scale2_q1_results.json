@@ -1,0 +1,68 @@
+{
+  "model": "Qwen/Qwen2.5-7B",
+  "prompt_style": "base",
+  "dataset": "akariasai/PopQA",
+  "split": "test",
+  "n_entities_requested": 5,
+  "n_entities_candidate": 3,
+  "n_entities_localized": 3,
+  "n_entities_used": 3,
+  "n_examples": 3,
+  "min_dominance": 0.0,
+  "injection_scale": 2.0,
+  "fixed_injection_value": null,
+  "injection_mode": "add",
+  "known_neurons_file": "configs/known_anchor_neurons.json",
+  "use_known_only": true,
+  "entities_used": [
+    "Barack Obama",
+    "Donald Trump",
+    "Paris"
+  ],
+  "entity_top": {
+    "Paris": {
+      "layer": 1,
+      "neuron": 231,
+      "dominance": null,
+      "aliases": [
+        "Paris"
+      ],
+      "source": "known",
+      "inject_value": -38.933135986328125
+    },
+    "Barack Obama": {
+      "layer": 2,
+      "neuron": 10941,
+      "dominance": null,
+      "aliases": [
+        "Barack Obama",
+        "Obama"
+      ],
+      "source": "known",
+      "inject_value": -46.49540710449219
+    },
+    "Donald Trump": {
+      "layer": 1,
+      "neuron": 11948,
+      "dominance": null,
+      "aliases": [
+        "Donald Trump",
+        "Trump"
+      ],
+      "source": "known",
+      "inject_value": 43.51445007324219
+    }
+  },
+  "means": {
+    "prob": [
+      0.0016477880950939532,
+      0.0009558460054298242,
+      0.0005611439022080352
+    ],
+    "acc": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+}

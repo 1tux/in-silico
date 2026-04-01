@@ -1,0 +1,50 @@
+{
+  "Barack Obama": {
+    "top_layer": 2,
+    "top_neuron": 10941
+  },
+  "Bark Obamna": {
+    "top_layer": 2,
+    "top_neuron": 10941
+  },
+  "Brock Obma": {
+    "top_layer": 2,
+    "top_neuron": 10941
+  },
+  "Donald Trump": {
+    "top_layer": 1,
+    "top_neuron": 11948
+  },
+  "FBI": {
+    "top_layer": 2,
+    "top_neuron": 11955
+  },
+  "Federal Bureau of Investigation": {
+    "top_layer": 2,
+    "top_neuron": 11955
+  },
+  "Jennifer Aniston": {
+    "top_layer": 3,
+    "top_neuron": 1794
+  },
+  "Obaama": {
+    "top_layer": 2,
+    "top_neuron": 10941
+  },
+  "Paris": {
+    "top_layer": 1,
+    "top_neuron": 231
+  },
+  "\u05e4\u05e8\u05d9\u05d6": {
+    "top_layer": 1,
+    "top_neuron": 231
+  },
+  "\u0628\u0627\u0631\u064a\u0633": {
+    "top_layer": 1,
+    "top_neuron": 231
+  },
+  "\u5df4\u9ece": {
+    "top_layer": 1,
+    "top_neuron": 231
+  }
+}

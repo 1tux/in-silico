@@ -1,0 +1,66 @@
+{
+  "entities": [
+    "Paris",
+    "Federal Bureau of Investigation",
+    "Barack Obama",
+    "Donald Trump",
+    "Jennifer Aniston"
+  ],
+  "results": {
+    "Paris": {
+      "top_layer": 1,
+      "top_neuron": 231,
+      "top1": 78883.5390625,
+      "topk_mean": 682.4645385742188,
+      "randk_mean": 2.6706008911132812,
+      "localization_source": "entity-prompts",
+      "known_layer": 1,
+      "known_neuron": 231,
+      "known_match": true
+    },
+    "Federal Bureau of Investigation": {
+      "top_layer": 2,
+      "top_neuron": 11955,
+      "top1": 26575.73046875,
+      "topk_mean": 1414.060302734375,
+      "randk_mean": 9.797876358032227,
+      "localization_source": "entity-prompts",
+      "known_layer": 2,
+      "known_neuron": 11955,
+      "known_match": true
+    },
+    "Barack Obama": {
+      "top_layer": 2,
+      "top_neuron": 10941,
+      "top1": 59135.58203125,
+      "topk_mean": 922.6610107421875,
+      "randk_mean": 17.01398277282715,
+      "localization_source": "entity-prompts",
+      "known_layer": 2,
+      "known_neuron": 10941,
+      "known_match": true
+    },
+    "Donald Trump": {
+      "top_layer": 1,
+      "top_neuron": 11948,
+      "top1": 71115.734375,
+      "topk_mean": 1227.7852783203125,
+      "randk_mean": 42.85332107543945,
+      "localization_source": "entity-prompts",
+      "known_layer": 1,
+      "known_neuron": 11948,
+      "known_match": true
+    },
+    "Jennifer Aniston": {
+      "top_layer": 3,
+      "top_neuron": 1794,
+      "top1": 131261.53125,
+      "topk_mean": 10333.6455078125,
+      "randk_mean": 14.390597343444824,
+      "localization_source": "entity-prompts",
+      "known_layer": 3,
+      "known_neuron": 1794,
+      "known_match": true
+    }
+  }
+}
