@@ -17,7 +17,6 @@ The current snapshot contains:
 - `scripts/`: core experiment and plotting entry points
 - `data/`: entity inventories, anchor metadata, and small local replication assets
 - `figures/`: manuscript-ready figures and supporting plots
-- `results/`: experiment outputs, summaries, and model-suite artifacts
 
 ## Main Scripts
 - `scripts/f1_f3_localization.py`: localization and variant robustness runs

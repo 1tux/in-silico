@@ -1,5 +1,0 @@
-model	obama_cell	obama_matches	fbi_cell	fbi_matches	paris_cell	paris_matches
-OLMo-7B	L0-N1593	1/4	L0-N8497	1/2	L0-N4909	1/4
-Llama-3.1-8B-Inst	L0-N13569	1/4	L0-N6128	1/2	L0-N11720	3/4
-Mistral-7B-v0.3	L0-N2890	2/4	L0-N6319	1/2	L0-N4867	1/4
-OpenLLaMA-7B	L1-N5242	1/4	L1-N2405	1/2	L1-N4422	1/4

@@ -1,7 +1,0 @@
-model,tag,overall_status,early_pct,early_count,n_localized,f6_entities_used,trustworthy,f6_frac_clipped,f6_frac_signed,f4_entities_localized,f4_entities_used,f4_examples,failed_steps,barack_layer,barack_neuron,figure_count,missing_figures
-allenai_olmo_7b_0724_hf,allenai_olmo_7b_0724_hf,partial,97.0,194,200,200,,0.77,0.575,,,,,,,4,Fig. 4;Fig. 5;Fig. 6;Fig. 7
-google/gemma-2-9b-it,google_gemma_2_9b_it,partial,99.0,198,200,200,,0.585,0.405,,,,f2_localization;f3_localization_variants;f6_popqa_validation;f4_activation_causality,,,0,Fig. 2;Fig. 3a;Fig. 3b;Fig. 3c;Fig. 4;Fig. 5;Fig. 6;Fig. 7
-meta-llama/Llama-3.1-8B-Instruct,meta_llama_llama_3_1_8b_instruct,partial,100.0,200,200,200,,0.62,0.455,,,,f4_activation_causality,0,13569,7,Fig. 4
-Qwen/Qwen2.5-7B,qwen_qwen2_5_7b_analysis,ok,98.5,197,200,200,,0.875,0.655,128,82,115,,2,10941,8,
-Qwen/Qwen2.5-7B-Instruct,qwen_qwen2_5_7b_instruct_analysis,ok,98.5,197,200,200,,0.825,0.595,97,50,66,,2,10941,8,
-Qwen/Qwen3-8B,qwen_qwen3_8b_analysis,ok,97.5,195,200,200,,0.79,0.49,54,42,62,,0,2883,8,
