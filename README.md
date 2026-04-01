@@ -34,21 +34,29 @@ The current snapshot contains:
 - `data/entities-default.txt`: small default entity set for localization / sanity-check runs
 - `data/known-anchor-neurons.json`: fixed anchor neurons for reference experiments
 
-## Paper Figures
-### Main text
-- Figure 1 teaser: [figures/fig01_teaser_entity_neurons.png](figures/fig01_teaser_entity_neurons.png)
-- Figure 2 localization depth: [figures/fig02_qwen25_base_localization_depth.pdf](figures/fig02_qwen25_base_localization_depth.pdf)
-- Figure 3 amnesia: [figures/fig03_qwen25_base_amnesia_obama_trump.pdf](figures/fig03_qwen25_base_amnesia_obama_trump.pdf)
-- Figure 4 controlled injection: [figures/fig04_qwen25_base_entity_injection.pdf](figures/fig04_qwen25_base_entity_injection.pdf)
-- Figure 5 variant robustness: [figures/fig05_qwen25_base_variant_robustness.pdf](figures/fig05_qwen25_base_variant_robustness.pdf)
-- Figure 6 acronym robustness: [figures/fig06_qwen25_base_acronym_robustness.pdf](figures/fig06_qwen25_base_acronym_robustness.pdf)
-- Figure 7 multilingual robustness: [figures/fig07_qwen25_base_multilingual_robustness.pdf](figures/fig07_qwen25_base_multilingual_robustness.pdf)
-- Figure 8 latent steering: [figures/fig08_qwen25_base_latent_steering_edit_vs_preserve.pdf](figures/fig08_qwen25_base_latent_steering_edit_vs_preserve.pdf)
+## Qwen2.5 Main Figures
+The repository includes the main Qwen2.5-7B figures from the paper. The teaser is shown at the top; the next seven main figures are previewed below.
 
-### Appendix / extensions
-- Qwen2.5-Instruct figures: [figures/fig09_qwen25_instruct_localization_depth.pdf](figures/fig09_qwen25_instruct_localization_depth.pdf), [figures/fig10_qwen25_instruct_amnesia.pdf](figures/fig10_qwen25_instruct_amnesia.pdf), [figures/fig11_qwen25_instruct_entity_injection.pdf](figures/fig11_qwen25_instruct_entity_injection.pdf), [figures/fig12_qwen25_instruct_variant_robustness.pdf](figures/fig12_qwen25_instruct_variant_robustness.pdf), [figures/fig13_qwen25_instruct_acronym_robustness.pdf](figures/fig13_qwen25_instruct_acronym_robustness.pdf), [figures/fig14_qwen25_instruct_multilingual_robustness.pdf](figures/fig14_qwen25_instruct_multilingual_robustness.pdf)
-- Qwen3 figures: [figures/fig15_qwen3_localization_depth.pdf](figures/fig15_qwen3_localization_depth.pdf), [figures/fig16_qwen3_amnesia.pdf](figures/fig16_qwen3_amnesia.pdf), [figures/fig17_qwen3_entity_injection.pdf](figures/fig17_qwen3_entity_injection.pdf), [figures/fig18_qwen3_variant_robustness.pdf](figures/fig18_qwen3_variant_robustness.pdf), [figures/fig19_qwen3_acronym_robustness.pdf](figures/fig19_qwen3_acronym_robustness.pdf), [figures/fig20_qwen3_multilingual_robustness.pdf](figures/fig20_qwen3_multilingual_robustness.pdf)
-- Cross-family summaries: [figures/fig21_cross_family_localization_depth_grid.pdf](figures/fig21_cross_family_localization_depth_grid.pdf), [figures/fig22_cross_family_entity_injection_summary.pdf](figures/fig22_cross_family_entity_injection_summary.pdf), [figures/fig23_olmo_entity_injection.pdf](figures/fig23_olmo_entity_injection.pdf), [figures/fig24_olmo_amnesia.pdf](figures/fig24_olmo_amnesia.pdf)
+### Figure 2. Localization depth
+![Figure 2 localization depth](figures/f1_layer_hist.png)
+
+### Figure 3. Entity-specific amnesia
+![Figure 3 entity-specific amnesia](figures/f6_unlearning_obama_trump.png)
+
+### Figure 4. Controlled injection
+![Figure 4 controlled injection](figures/f4_activation_causality_popular200_trustworthy_meaninit_topk5_alphasearch_poplist_pass5.png)
+
+### Figure 5. Variant robustness
+![Figure 5 variant robustness](figures/f3_variants_grid_2x2.png)
+
+### Figure 6. Acronym robustness
+![Figure 6 acronym robustness](figures/f3_acronym_grid.png)
+
+### Figure 7. Multilingual robustness
+![Figure 7 multilingual robustness](figures/f3_multilingual_grid_2x2.png)
+
+### Figure 8. Latent steering
+![Figure 8 latent steering](figures/f7_edit_vs_preserve.png)
 
 ## Reproducing Runs
 Most paper-facing workflows are driven from the `scripts/` directory. Typical entry points are:
