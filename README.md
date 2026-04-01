@@ -9,10 +9,8 @@ This repository is the paper-ready version of the blog experiments.
 - `data/`: local data artifacts (ignored from VCS)
 - `results/`: metrics outputs (ignored from VCS)
 - `figures/`: generated plots (ignored from VCS)
-- `docs/`: experiment specs and paper notes
 
 ## Next Steps
-- Define experiment specs in `docs/experiments.md`.
 - Align with the existing Colab notebooks and port code into `scripts/`.
 - Run F1–F3 on Qwen2.5-7B; add cross-model checks after baseline is stable.
 
